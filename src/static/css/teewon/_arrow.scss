@@ -1,0 +1,23 @@
+/* 箭头 */
+$arrow-color:$color-border-main !default;
+
+.tw-arrow {
+  display: inline-block;
+  border: 5px solid transparent;
+}
+
+.tw-arrow.xup {
+  border-bottom-color: $arrow-color;
+}
+
+.tw-arrow.xright {
+  border-left-color: $arrow-color;
+}
+
+.tw-arrow.xdown {
+  border-top-color: $arrow-color;
+}
+
+.tw-arrow.xleft {
+  border-right-color: $arrow-color;
+}

@@ -1,0 +1,129 @@
+/** ---------------------------------------------------------------------
+ ** 描述：变量定义
+ ** 注释：语义说明
+ ** ---------------------------------------------------------------------
+ ** 颜色体系:
+ ** main: 主色
+ ** auxiliary: 辅助色
+ ** weaking: 弱化色
+ ** ---------------------------------------------------------------------
+ ** 尺寸体系:
+ ** step: 尺寸体系的步长值,相关的尺寸都是该步长的整数倍(特例情况可以n.5倍)
+ ** tiny: 超小尺寸, 默认计算公式为 base * 2
+ ** small: 小尺寸, 默认计算公式为 base * 3
+ ** medium: 中等尺寸, 默认计算公式为 base * 4
+ ** large: 大尺寸, 默认计算公式为 base * 6
+ ** huge: 超大尺寸, 默认计算公式为 base * 8
+ ** ---------------------------------------------------------------------
+ ** 响应式体系(l === landscape):
+ ** pc: 电脑屏幕,  1200px <= 默认分辨率
+ ** lpad: pad横屏, 992px <= 默认分辨率 < 1200px
+ ** pad: pad坚屏, 768px <= 默认分辨率 < 992px
+ ** lphone: 手机横屏, 554px <= 默认分辨率 < 768px
+ ** phone: 手机坚屏, 默认分辨率 < 554px
+ ** --------------------------------------------------------------------- */
+
+/* ------------------------------ 全局配置 ------------------------------ */
+/* 应用类型 */
+// 前台样式: web
+// 后台样式: admin
+$app-type: web;
+
+/* ------------------------------ 颜色体系 ------------------------------ */
+/* 主题色 */
+$color-main: #26a8ff !default; // 主色
+$color-main-hover: hover($color-main) !default; // 主色:滑过
+$color-main-active: active($color-main) !default; // 主色:激活
+$color-auxiliary: #6ec940 !default; // 辅色
+$color-auxiliary-hover: hover($color-auxiliary) !default; // 辅色:滑过
+$color-auxiliary-active: active($color-auxiliary) !default; // 辅色:激活
+$color-weaking: #fff !default; // 弱化色
+
+/* vi色 */
+$color-success:#fff !default;
+$color-warning:#fff !default;
+$color-error:#f00 !default;
+
+/* 背景色 */
+$color-bg-body:#f5f5f5 !default; // 页面背景
+$color-bg-footer: #afb9c9 !default;
+$color-bg-disabled: #eee !default;
+
+/* 文本色 */
+$color-text-main:#333 !default;
+$color-text-auxiliary:#666 !default;
+$color-text-weaking:#999 !default;
+$color-text-disabled:#ccc !default;
+$color-text-highlight:#479025 !default;
+$color-text-error:#f00 !default;
+$color-text-inverse: #fff !default;
+$color-text-link:$color-main !default;
+$color-text-link-hover: hover($color-text-link) !default;
+$color-text-placeholder: $color-text-weaking !default;
+
+// 边框色
+$color-border-main:#ccc !default;
+$color-border-auxiliary:#ddd !default;
+$color-border-disabled:#eee !default;
+$color-border-weaking:#eee !default;
+
+// ------------------------------ 字体体系 ------------------------------
+// 字体
+$font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", Arial, Helvetica, sans-serif !default;
+
+// 字体尺寸
+$font-size-default: 14px !default;
+$font-size-small: $font-size-default - 2px !default;
+$font-size-medium: $font-size-default + 2px !default;
+$font-size-large: $font-size-default + 6px !default;
+
+// ------------------------------ 间距体系 ------------------------------
+// 间距步长
+$spacing-step: 5px !default;
+
+// 外边距
+$margin-step: $spacing-step !default;
+$margin-tiny: $margin-step * 2;
+$margin-small: $margin-step * 3;
+$margin-medium: $margin-step * 4;
+$margin-large: $margin-step * 6;
+$margin-huge: $margin-step * 8;
+
+// 内边距
+$padding-step: $spacing-step !default;
+$padding-tiny: $padding-step * 2;
+$padding-small: $padding-step * 3;
+$padding-medium: $padding-step * 4;
+$padding-large: $padding-step * 6;
+$padding-huge: $padding-step * 8;
+
+// 行高
+$line-height-default: 1.5 !default;
+
+// ------------------------------ 响应式体系(pc优先) ------------------------------
+// 响应式断点
+$media-breakpoints: (
+  pc: 1200px,
+  lpad: 992px,
+  pad: 768px,
+  lphone: 554px,
+  phone: 0
+) !default;
+
+// 断点对应的主容器宽度
+// 默认状态下，平板电脑竖屏及其更小的屏幕容器自适应设备屏幕宽度
+$container-widths: (
+  pc:1200px,
+  lpad:960px,
+  pad:auto,
+  lphone:auto,
+  phone:auto
+) !default;
+
+// 栅格
+$grid-columns:12 !default;
+$grid-gutter-width:$padding-small * 2 !default;
+
+// ------------------------------ 过渡效果 ------------------------------
+// 过渡时间
+$time: .12s;

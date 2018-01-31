@@ -1,0 +1,33 @@
+/* 下拉列表 */
+.tw-dropdown {
+  position: relative;
+}
+
+.tw-dropdown-link {
+  position: relative;
+  display: block;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.tw-dropdown-link > .tw-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -2.5px;
+  transition: all $time linear;
+  transform-origin: 50% 30%;
+}
+
+.tw-dropdown-body {
+  position: absolute;
+  min-width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height $time linear;
+}
+
+.tw-dropdown.xactive > .tw-dropdown-link > .tw-arrow,
+.tw-dropdown.xhover:hover > .tw-dropdown-link > .tw-arrow {
+  transform: rotate(180deg);
+}

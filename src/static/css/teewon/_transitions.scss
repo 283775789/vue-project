@@ -1,0 +1,18 @@
+/* 过渡效果 */
+
+// 滑动效果
+.xslide-enter,
+.xslide-leave-to {
+  transform: scaleY(.1);
+}
+
+.xslide-enter-to,
+.xslide-leave {
+  transform: scaleY(1);
+}
+
+.xslide-enter-active,
+.xslide-leave-to {
+  transition: transform $time linear;
+  transform-origin: top center;
+}

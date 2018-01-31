@@ -1,0 +1,35 @@
+/* 标题 */
+$title-marker-left: -$margin-medium !default;
+$title-pb: $padding-small !default;
+$title-mb: $margin-small !default;
+$title-font-size: $font-size-default !default;
+$title-color: #525065;
+$title-border-color: $color-border-main !default;
+
+.tw-title {
+  @include clearfix;
+  position: relative;
+  padding-bottom: $title-pb - 4;
+  margin-bottom: $title-mb;
+  border-bottom: 1px dashed $title-border-color;
+}
+
+.tw-title:before {
+  content: "";
+  position: absolute;
+  left: $title-marker-left;
+  width: 3px;
+  height: $title-font-size * $line-height-default;
+  background: $color-main;
+}
+
+.tw-title-left {
+  float: left;
+  font-size: $title-font-size;
+  font-weight: bold;
+  color: $title-color;
+}
+
+.tw-title-right {
+  float: right;
+}

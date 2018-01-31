@@ -1,0 +1,27 @@
+/* 导航 */
+$nav-item-hover-bg: $color-main-hover !default;
+$nav-item-hover-color: $color-text-inverse !default;
+$nav-item-active-bg: $color-main-active !default;
+$nav-item-active-color: $color-text-inverse !default;
+$nav-item-px: $padding-small !default;
+$nav-item-font-size: inherit !default;
+$nav-item-ico-mr: $margin-step - 1 !default;
+
+// 水平导航
+.tw-nav.xhorizontal {
+  @include clearfix;
+}
+
+.tw-nav.xhorizontal > li {
+  float: left;
+}
+
+.tw-nav > li > a {
+  display: block;
+  padding: 0 $nav-item-px;
+  font-size: $nav-item-font-size;
+}
+
+.tw-nav > li > a > .tw-ico {
+  margin-right: $nav-item-ico-mr;
+}

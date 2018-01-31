@@ -1,0 +1,9 @@
+/* ---------------------------- 布局 -------------------------------- */
+/* 主体 */
+$content-bg: #fff !default;
+
+.tw-body {
+  @include make-container($paddingY:true);
+  min-height: 450px;
+  background: $content-bg;
+}
