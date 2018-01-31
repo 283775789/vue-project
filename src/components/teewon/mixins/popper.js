@@ -1,8 +1,17 @@
 export default {
+  props: {
+    trigger: {
+      type: String,
+      default: 'hover'
+    },
+    type: {
+      type: String,
+      default: 'vertical'
+    }
+  },
   data () {
     return {
-      visible: false,
-      isHover: false
+      visible: false
     }
   },
   methods: {
@@ -13,15 +22,21 @@ export default {
     placePopper () {
       this.$nextTick(() => {
         const selfRect = this.$el.getBoundingClientRect()
-        const dropBody = this.$refs.body
-        const dropBodyHeight = dropBody.offsetHeight
-        const windowHeight = window.innerHeight
+        const popperBody = this.$refs.body
 
-        if (selfRect.top + selfRect.height + dropBodyHeight > windowHeight && selfRect.top > dropBodyHeight) {
-          dropBody.style.bottom = selfRect.height + 'px'
+        popperBody.style.height = 'auto'
+        const popperBodyHeight = popperBody.offsetHeight
+        popperBody.style.height = '0'
+
+        if (selfRect.top + selfRect.height + popperBodyHeight > window.innerHeight && selfRect.top > popperBodyHeight) {
+          popperBody.style.bottom = selfRect.height + 'px'
         } else {
-          dropBody.style.bottom = ''
+          popperBody.style.bottom = ''
         }
+
+        setTimeout(() => {
+          popperBody.style.height = popperBodyHeight + 'px'
+        }, 30)
       })
     },
     handleHover (event) {
@@ -56,6 +71,11 @@ export default {
         this.placePopper()
         document.addEventListener('click', this.closePopper)
       }
+    }
+  },
+  watch: {
+    visible (value) {
+      if (!value) this.$refs.body.style.height = '0'
     }
   }
 }

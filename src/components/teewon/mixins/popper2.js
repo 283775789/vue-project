@@ -1,7 +1,8 @@
 export default {
   data () {
     return {
-      visible: false
+      visible: false,
+      isHover: false
     }
   },
   methods: {
@@ -12,21 +13,15 @@ export default {
     placePopper () {
       this.$nextTick(() => {
         const selfRect = this.$el.getBoundingClientRect()
-        const popperBody = this.$refs.body
+        const dropBody = this.$refs.body
+        const dropBodyHeight = dropBody.offsetHeight
+        const windowHeight = window.innerHeight
 
-        popperBody.style.height = 'auto'
-        const popperBodyHeight = popperBody.offsetHeight
-        popperBody.style.height = '0'
-
-        if (selfRect.top + selfRect.height + popperBodyHeight > window.innerHeight && selfRect.top > popperBodyHeight) {
-          popperBody.style.bottom = selfRect.height + 'px'
+        if (selfRect.top + selfRect.height + dropBodyHeight > windowHeight && selfRect.top > dropBodyHeight) {
+          dropBody.style.bottom = selfRect.height + 'px'
         } else {
-          popperBody.style.bottom = ''
+          dropBody.style.bottom = ''
         }
-
-        setTimeout(() => {
-          popperBody.style.height = popperBodyHeight + 'px'
-        }, 30)
       })
     },
     handleHover (event) {
@@ -61,11 +56,6 @@ export default {
         this.placePopper()
         document.addEventListener('click', this.closePopper)
       }
-    }
-  },
-  watch: {
-    visible (value) {
-      if (!value) this.$refs.body.style.height = '0'
     }
   }
 }

@@ -104,6 +104,7 @@ $header-navlink-px: $padding-small !default;
 .tw-header-menu {
   line-height: 36px;
   padding: $padding-tiny 5px;
+  white-space: nowrap;
 }
 
 // stylelint-disable no-descending-specificity

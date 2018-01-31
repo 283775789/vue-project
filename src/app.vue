@@ -26,7 +26,16 @@
               <span>下拉菜单</span>
               <ul class="tw-header-menu" slot="dropdown-body">
                 <li><a>菜单项1</a></li>
-                <li><a>菜单项2</a></li>
+                <li>
+                  <tw-dropdown class="xheader" type="horizontal">
+                    <span>二级</span>
+                    <ul class="tw-header-menu" slot="dropdown-body">
+                      <li><a>菜单项1</a></li>
+                      <li><a>菜单项2</a></li>
+                      <li><a>菜单项3</a></li>
+                    </ul>
+                  </tw-dropdown>
+                </li>
                 <li><a>菜单项3</a></li>
               </ul>
             </tw-dropdown>
@@ -34,10 +43,10 @@
           </ul>
         </div>
         <div class="tw-header-right">
-          <tw-dropdown class="xheader">
+          <tw-dropdown class="xheader xright">
             <span>右侧菜单</span>
             <ul class="tw-header-menu" slot="dropdown-body">
-              <li><a>菜单项1</a></li>
+              <li><a>菜单项1菜单项1</a></li>
               <li><a>菜单项2</a></li>
               <li><a>菜单项3</a></li>
             </ul>
