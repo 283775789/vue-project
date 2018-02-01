@@ -1,18 +1,19 @@
 /* 过渡效果 */
 
-// 滑动效果
-.xslide-enter,
-.xslide-leave-to {
+// 弹出过渡
+.xpop-enter,
+.xpop-leave-to {
+  opacity: 0;
   transform: scaleY(.1);
 }
 
-.xslide-enter-to,
-.xslide-leave {
+.xpop-enter-to,
+.xpop-leave {
+  opacity: 1;
   transform: scaleY(1);
 }
 
-.xslide-enter-active,
-.xslide-leave-to {
-  transition: transform $time linear;
-  transform-origin: top center;
+.xpop-enter-active,
+.xpop-leave-active {
+  transition: all $time linear;
 }

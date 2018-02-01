@@ -63,12 +63,12 @@ $header-navlink-px: $padding-small !default;
   padding: 0 $header-navlink-px;
 }
 
-.tw-dropdown.xheader > .tw-dropdown-link {
+.tw-poppane.xheader > .tw-poppane-link {
   padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
 }
 
 .tw-nav.xheader > li > a,
-.tw-dropdown.xheader > .tw-dropdown-link {
+.tw-poppane.xheader > .tw-poppane-link {
   display: block;
 
   &:hover {
@@ -82,17 +82,17 @@ $header-navlink-px: $padding-small !default;
   }
 }
 
-.tw-dropdown.xheader .tw-arrow.xdown {
+.tw-poppane.xheader .tw-arrow.xdown {
   right: $header-navlink-px;
   border-top-color: $header-color;
 }
 
 .tw-header-menu,
-.tw-dropdown.xheader:hover {
+.tw-poppane.xheader:hover {
   background: $header-navlink-hover-bg;
 }
 
-.tw-dropdown.xheader > .tw-dropdown-body:before {
+.tw-poppane.xheader > .tw-poppane-body:before {
   content: "";
   position: absolute;
   right: 5px;

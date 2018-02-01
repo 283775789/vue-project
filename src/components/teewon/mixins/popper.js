@@ -1,42 +1,26 @@
 export default {
-  props: {
-    trigger: {
-      type: String,
-      default: 'hover'
-    },
-    type: {
-      type: String,
-      default: 'vertical'
-    }
-  },
   data () {
     return {
       visible: false
     }
   },
   methods: {
-    closePopper () {
+    closePoppane () {
       this.visible = false
-      document.removeEventListener('click', this.closePopper)
+      document.removeEventListener('click', this.closePoppane)
     },
-    placePopper () {
+    placePoppane () {
       this.$nextTick(() => {
         const selfRect = this.$el.getBoundingClientRect()
-        const popperBody = this.$refs.body
+        const dropBody = this.$refs.body
+        const dropBodyHeight = dropBody.offsetHeight
+        const windowHeight = window.innerHeight
 
-        popperBody.style.height = 'auto'
-        const popperBodyHeight = popperBody.offsetHeight
-        popperBody.style.height = '0'
-
-        if (selfRect.top + selfRect.height + popperBodyHeight > window.innerHeight && selfRect.top > popperBodyHeight) {
-          popperBody.style.bottom = selfRect.height + 'px'
+        if (selfRect.top + selfRect.height + dropBodyHeight > windowHeight && selfRect.top > dropBodyHeight) {
+          dropBody.style.bottom = selfRect.height + 'px'
         } else {
-          popperBody.style.bottom = ''
+          dropBody.style.bottom = ''
         }
-
-        setTimeout(() => {
-          popperBody.style.height = popperBodyHeight + 'px'
-        }, 30)
       })
     },
     handleHover (event) {
@@ -46,36 +30,31 @@ export default {
 
       if (event.type === 'mouseover') {
         this.visible = true
-        this.placePopper()
+        this.placePoppane()
       } else {
         this.visible = false
       }
     },
-    handleClickDropdownLink (event) {
+    handleClickPoppaneLink (event) {
       if (this.trigger === 'hover') return
 
       event.stopPropagation()
 
-      if (!window.twPopper) {
-        window.twPopper = this
+      if (!window.twPoppane) {
+        window.twPoppane = this
       }
 
-      if (window.twPopper !== this) {
-        window.twPopper.visible = false
-        window.twPopper = this
+      if (window.twPoppane !== this) {
+        window.twPoppane.visible = false
+        window.twPoppane = this
       }
 
       this.visible = !this.visible
 
       if (this.visible) {
-        this.placePopper()
-        document.addEventListener('click', this.closePopper)
+        this.placePoppane()
+        document.addEventListener('click', this.closePoppane)
       }
-    }
-  },
-  watch: {
-    visible (value) {
-      if (!value) this.$refs.body.style.height = '0'
     }
   }
 }

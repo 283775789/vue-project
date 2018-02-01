@@ -30,9 +30,9 @@
           </ul>
         </div>
         <div class="tw-header-right">
-          <div class="tw-dropdown">
-            <a class="tw-dropdown-label">下拉菜单标签</a>
-            <div class="tw-dropdown-body">
+          <div class="tw-poppane">
+            <a class="tw-poppane-label">下拉菜单标签</a>
+            <div class="tw-poppane-body">
               <li><a>菜单项1</a></li>
               <li><a>菜单项2</a></li>
               <li><a>菜单项3</a></li>

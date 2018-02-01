@@ -1,16 +1,16 @@
 /* 下拉列表 */
-.tw-dropdown {
+.tw-poppane {
   position: relative;
 }
 
-.tw-dropdown-link {
+.tw-poppane-link {
   position: relative;
   display: block;
   padding-right: 15px;
   cursor: pointer;
 }
 
-.tw-dropdown-link > .tw-arrow {
+.tw-poppane-link > .tw-arrow {
   position: absolute;
   top: 50%;
   right: 0;
@@ -19,12 +19,13 @@
   transform-origin: 50% 30%;
 }
 
-.tw-dropdown-body {
+.tw-poppane-body {
   position: absolute;
   min-width: 100%;
+  transform-origin: top center;
 }
 
-.tw-dropdown.xactive > .tw-dropdown-link > .tw-arrow,
-.tw-dropdown.xhover:hover > .tw-dropdown-link > .tw-arrow {
+.tw-poppane.xactive > .tw-poppane-link > .tw-arrow,
+.tw-poppane.xhover:hover > .tw-poppane-link > .tw-arrow {
   transform: rotate(180deg);
 }

@@ -2,12 +2,12 @@
 import Vue from 'vue'
 import Footer from '@tv/footer/footer'
 import Menu from '@tv/menu/menu'
-import Dropdown from '@tv/dropdown/dropdown'
+import Poppane from '@tv/poppane/poppane'
 
 const components = [
   Footer,
   Menu,
-  Dropdown
+  Poppane
 ]
 
 components.forEach(function (component) {

@@ -22,35 +22,35 @@
               <router-link to="/url3"><i class="tw-ico xname"></i><span>Vue组件</span></router-link>
             </li>
             <li>
-             <tw-dropdown class="xheader">
+             <tw-poppane class="xheader">
               <span>下拉菜单</span>
-              <ul class="tw-header-menu" slot="dropdown-body">
+              <ul class="tw-header-menu" slot="poppane-body">
                 <li><a>菜单项1</a></li>
                 <li>
-                  <tw-dropdown class="xheader" type="horizontal">
+                  <tw-poppane class="xheader" type="horizontal">
                     <span>二级</span>
-                    <ul class="tw-header-menu" slot="dropdown-body">
+                    <ul class="tw-header-menu" slot="poppane-body">
                       <li><a>菜单项1</a></li>
                       <li><a>菜单项2</a></li>
                       <li><a>菜单项3</a></li>
                     </ul>
-                  </tw-dropdown>
+                  </tw-poppane>
                 </li>
                 <li><a>菜单项3</a></li>
               </ul>
-            </tw-dropdown>
+            </tw-poppane>
             </li>
           </ul>
         </div>
         <div class="tw-header-right">
-          <tw-dropdown class="xheader xright">
+          <tw-poppane class="xheader xcenter">
             <span>右侧菜单</span>
-            <ul class="tw-header-menu" slot="dropdown-body">
+            <ul class="tw-header-menu" slot="poppane-body">
               <li><a>菜单项1菜单项1</a></li>
               <li><a>菜单项2</a></li>
               <li><a>菜单项3</a></li>
             </ul>
-          </tw-dropdown>
+          </tw-poppane>
         </div>
       </div>
     </div>
@@ -61,12 +61,12 @@
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span>选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" /><span>选项文本</span></label>
 
-      <tw-dropdown trigger="click">
+      <tw-poppane trigger="click">
         <span>下拉菜单</span>
-        <tw-menu slot="dropdown-body" :items="members" @change="changeHandler">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-dropdown>
+      </tw-poppane>
     </div>
     <tw-footer></tw-footer>
   </div>
