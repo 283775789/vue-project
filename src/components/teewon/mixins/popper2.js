@@ -36,7 +36,7 @@ export default {
         this.visible = false
       }
     },
-    handleClickPoppaneLink (event) {
+    handleClickPopmenuLink (event) {
       if (this.trigger === 'hover') return
 
       event.stopPropagation()

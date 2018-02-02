@@ -1,16 +1,16 @@
 /* 下拉列表 */
-.tw-poppane {
+.tw-popmenu {
   position: relative;
 }
 
-.tw-poppane-link {
+.tw-popmenu-link {
   position: relative;
   display: block;
   padding-right: 15px;
   cursor: pointer;
 }
 
-.tw-poppane-link > .tw-arrow {
+.tw-popmenu-link > .tw-arrow {
   position: absolute;
   top: 50%;
   right: 0;
@@ -19,7 +19,7 @@
   transform-origin: 50% 30%;
 }
 
-.tw-poppane-body {
+.tw-popmenu-body {
   position: absolute;
   display: none;
   min-width: 100%;
@@ -27,26 +27,26 @@
   transition: height $time linear;
 }
 
-.tw-poppane.xright > .tw-poppane-body {
+.tw-popmenu.xright > .tw-popmenu-body {
   right: 0;
 }
 
-.tw-poppane.xleft > .tw-poppane-body {
+.tw-popmenu.xleft > .tw-popmenu-body {
   left: 0;
 }
 
-.tw-poppane-body.xhorizontal {
+.tw-popmenu-body.xhorizontal {
   top: 0;
   left: 100%;
   min-width: 0;
   height: auto;
 }
 
-.tw-poppane.xactive > .tw-poppane-body {
+.tw-popmenu.xactive > .tw-popmenu-body {
   display: block;
 }
 
-.tw-poppane.xactive > .tw-poppane-link > .tw-arrow,
-.tw-poppane.xhover:hover > .tw-poppane-link > .tw-arrow {
+.tw-popmenu.xactive > .tw-popmenu-link > .tw-arrow,
+.tw-popmenu.xhover:hover > .tw-popmenu-link > .tw-arrow {
   transform: rotate(180deg);
 }

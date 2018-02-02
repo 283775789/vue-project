@@ -1,13 +1,13 @@
 // 注册通用的全局组件
 import Vue from 'vue'
-import Footer from '@tv/footer/footer'
-import Menu from '@tv/menu/menu'
-import Poppane from '@tv/poppane/poppane'
+import Footer from '@tw/vue/footer/footer'
+import Menu from '@tw/vue/menu/menu'
+import Popmenu from '@tw/vue/popmenu/popmenu'
 
 const components = [
   Footer,
   Menu,
-  Poppane
+  Popmenu
 ]
 
 components.forEach(function (component) {

@@ -7,6 +7,10 @@ import App from '@/app'
 import router from '@/config/router'
 import '@/config/components'
 
+// 解决ios click bug
+var attachFastClick = require('fastclick')
+attachFastClick.attach(document.body)
+
 // 创建Vue应用根实例
 new Vue({
   el: '#app',

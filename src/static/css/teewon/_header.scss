@@ -63,12 +63,12 @@ $header-navlink-px: $padding-small !default;
   padding: 0 $header-navlink-px;
 }
 
-.tw-poppane.xheader > .tw-poppane-link {
+.tw-popmenu.xheader > .tw-popmenu-link {
   padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
 }
 
 .tw-nav.xheader > li > a,
-.tw-poppane.xheader > .tw-poppane-link {
+.tw-popmenu.xheader > .tw-popmenu-link {
   display: block;
 
   &:hover {
@@ -82,17 +82,17 @@ $header-navlink-px: $padding-small !default;
   }
 }
 
-.tw-poppane.xheader .tw-arrow.xdown {
+.tw-popmenu.xheader .tw-arrow.xdown {
   right: $header-navlink-px;
   border-top-color: $header-color;
 }
 
 .tw-header-menu,
-.tw-poppane.xheader:hover {
+.tw-popmenu.xheader:hover {
   background: $header-navlink-hover-bg;
 }
 
-.tw-poppane.xheader > .tw-poppane-body:before {
+.tw-popmenu.xheader > .tw-popmenu-body:before {
   content: "";
   position: absolute;
   right: 5px;

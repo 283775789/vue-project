@@ -1,60 +1,76 @@
+import eventUtil from '@tw/utils/event'
+import placement from '@tw/utils/placement'
+const trigger = eventUtil.trigger
+
 export default {
+  props: {
+    trigger: {
+      type: String,
+      default: 'hover'
+    },
+    placement: {
+      type: String,
+      default: 'auto'
+    }
+  },
   data () {
     return {
-      visible: false
+      visible: false,
+      triggerType: 'hover',
+      placementStyle: null
     }
   },
   methods: {
-    closePoppane () {
+    closePopmenu () {
       this.visible = false
-      document.removeEventListener('click', this.closePoppane)
+      document.removeEventListener('click', this.closePopmenu)
     },
-    placePoppane () {
+    placePopmenu () {
       this.$nextTick(() => {
-        const selfRect = this.$el.getBoundingClientRect()
-        const dropBody = this.$refs.body
-        const dropBodyHeight = dropBody.offsetHeight
-        const windowHeight = window.innerHeight
-
-        if (selfRect.top + selfRect.height + dropBodyHeight > windowHeight && selfRect.top > dropBodyHeight) {
-          dropBody.style.bottom = selfRect.height + 'px'
-        } else {
-          dropBody.style.bottom = ''
-        }
+        this.placementStyle = placement(this.$refs.body, this.$el)[this.placement]
       })
     },
     handleHover (event) {
-      if (this.trigger !== 'hover') return
+      if (this.triggerType !== 'hover') return
 
       if (this.$el.contains(event.relatedTarget)) return
 
       if (event.type === 'mouseover') {
         this.visible = true
-        this.placePoppane()
+        this.placePopmenu()
       } else {
         this.visible = false
       }
     },
-    handleClickPoppaneLink (event) {
-      if (this.trigger === 'hover') return
-
+    handleClickPopmenuLink (event) {
+      if (this.triggerType === 'hover') return
       event.stopPropagation()
 
-      if (!window.twPoppane) {
-        window.twPoppane = this
+      if (!window.twPopmenu) {
+        window.twPopmenu = this
       }
 
-      if (window.twPoppane !== this) {
-        window.twPoppane.visible = false
-        window.twPoppane = this
+      if (window.twPopmenu !== this) {
+        if (!window.twPopmenu.$el.contains(this.$el)) {
+          trigger(document, 'click')
+        }
+        window.twPopmenu = this
       }
 
       this.visible = !this.visible
 
       if (this.visible) {
-        this.placePoppane()
-        document.addEventListener('click', this.closePoppane)
+        this.placePopmenu()
+        document.addEventListener('click', this.closePopmenu)
       }
+    }
+  },
+  created () {
+    // 对触摸屏只使用click触发
+    if ('ontouchstart' in document) {
+      this.triggerType = 'click'
+    } else {
+      this.triggerType = this.trigger
     }
   }
 }

@@ -3,6 +3,7 @@ $optbox-marker-color: $color-border-main !default;
 $optbox-marker-checked-color: $color-main !default;
 $optbox-checkbox-checked-color: $color-text-inverse !default;
 
+// 选项框-容器
 .tw-optbox {
   position: relative;
   display: inline-block;
@@ -10,6 +11,7 @@ $optbox-checkbox-checked-color: $color-text-inverse !default;
   cursor: pointer;
 }
 
+// 选项框-单选或多选框本身
 .tw-optbox > input {
   position: absolute;
   left: -9999px;
@@ -83,4 +85,9 @@ $optbox-checkbox-checked-color: $color-text-inverse !default;
 
 .tw-optbox > input[type="checkbox"]:checked + span:before {
   background: $optbox-marker-checked-color;
+}
+
+// 解决移动端click事件触发两次的问题
+.tw-optbox > * {
+  pointer-events: none;
 }

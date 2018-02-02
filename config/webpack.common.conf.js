@@ -17,10 +17,7 @@ const webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
-      '@t': resolve('src/components/teewon'),
-      '@tc': resolve('src/components/teewon/css'),
-      '@tv': resolve('src/components/teewon/vue'),
-      '@tm': resolve('src/components/teewon/mixins'),
+      '@tw': resolve('src/components/teewon'),
       '@css': resolve('src/static/css'),
       '@font': resolve('src/static/font'),
       '@images': resolve('src/static/images')
