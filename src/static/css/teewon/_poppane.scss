@@ -1,0 +1,57 @@
+/* 弹出面板 */
+
+// 弹出面板-容器
+.tw-poppane {
+  position: relative;
+}
+
+// 弹出面板-触发链接
+.tw-popbtn {
+  position: relative;
+  display: block;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+// 弹出面板-箭头
+.tw-popbtn > .tw-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -2.5px;
+  transition: all $time linear;
+  transform-origin: 50% 30%;
+}
+
+.tw-poppane.xactive > .tw-popbtn > .tw-arrow,
+.tw-poppane.xhover:hover > .tw-popbtn > .tw-arrow {
+  transform: rotate(180deg);
+}
+
+// 弹出层
+.tw-poplayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+// 弹出面板
+.tw-poppane {
+  position: absolute;
+  transform-origin: top center;
+}
+
+.tw-poppane[class*="xtop"],
+.tw-poppane[class*="xauto"][style*="bottom"],
+.tw-poppane.xleftbottom,
+.tw-poppane.xrightbottom {
+  transform-origin: bottom center;
+}
+
+.tw-poppane.xleftcenter,
+.tw-poppane.xrightcenter {
+  transform-origin: center center;
+}
+
+

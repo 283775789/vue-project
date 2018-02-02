@@ -22,26 +22,26 @@
               <router-link to="/url3"><i class="tw-ico xname"></i><span>Vue组件</span></router-link>
             </li>
             <li>
-             <tw-popmenu class="xheader">
+             <tw-poppane class="xheader">
               <span>下拉菜单</span>
-              <ul class="tw-header-menu" slot="popmenu-body">
+              <ul class="tw-header-menu" slot="poppane-body">
                 <li><a>菜单项1</a></li>
                 <li><a>菜单项2</a></li>
                 <li><a>菜单项3</a></li>
               </ul>
-            </tw-popmenu>
+            </tw-poppane>
             </li>
           </ul>
         </div>
         <div class="tw-header-right">
-          <tw-popmenu class="xheader">
+          <tw-poppane class="xheader">
             <span>右侧菜单</span>
-            <ul class="tw-header-menu" slot="popmenu-body">
+            <ul class="tw-header-menu" slot="poppane-body">
               <li><a>菜单项1</a></li>
               <li><a>菜单项2</a></li>
               <li><a>菜单项3</a></li>
             </ul>
-          </tw-popmenu>
+          </tw-poppane>
         </div>
       </div>
     </div>
@@ -56,11 +56,11 @@
         <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
       </tw-menu>
 
-      <tw-popmenu trigger="click">
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler">
+      <tw-poppane trigger="click">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
+      </tw-poppane>
 
         <a id="link">link</a>
         <div class="" id="div" style="padding:10px; margin:10px; border:10px solid #ccc;">div</div>

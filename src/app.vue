@@ -22,35 +22,35 @@
               <router-link to="/url3"><i class="tw-ico xname"></i><span>Vue组件</span></router-link>
             </li>
             <li>
-             <tw-popmenu class="xheader" trigger="click">
+             <tw-poppane class="xheader" trigger="click">
               <span>下拉菜单</span>
-              <ul class="tw-header-menu" slot="popmenu-body">
+              <ul class="tw-header-menu" slot="poppane-body">
                 <li><a>菜单项1</a></li>
                 <li>
-                  <tw-popmenu class="xheader" placement="righttop" type="horizontal" trigger="click">
+                  <tw-poppane class="xheader" placement="righttop" type="horizontal" trigger="click">
                     <span>二级</span>
-                    <ul class="tw-header-menu" slot="popmenu-body">
+                    <ul class="tw-header-menu" slot="poppane-body">
                       <li><a>菜单项1</a></li>
                       <li><a>菜单项2</a></li>
                       <li><a>菜单项3</a></li>
                     </ul>
-                  </tw-popmenu>
+                  </tw-poppane>
                 </li>
                 <li><a>菜单项3</a></li>
               </ul>
-            </tw-popmenu>
+            </tw-poppane>
             </li>
           </ul>
         </div>
         <div class="tw-header-right">
-          <tw-popmenu class="xheader xcenter">
+          <tw-poppane class="xheader xcenter">
             <span>右侧菜单</span>
-            <ul class="tw-header-menu" slot="popmenu-body">
+            <ul class="tw-header-menu" slot="poppane-body">
               <li><a>菜单项1菜单项1</a></li>
               <li><a>菜单项2</a></li>
               <li><a>菜单项3</a></li>
             </ul>
-          </tw-popmenu>
+          </tw-poppane>
         </div>
       </div>
     </div>
@@ -61,12 +61,12 @@
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span>选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" /><span>选项文本</span></label>
 
-      <tw-popmenu trigger="click" style="float:right;" placement="topleft">
+      <tw-poppane trigger="click" style="float:right;" placement="topleft">
         <span>下拉菜单</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:300px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:300px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
+      </tw-poppane>
       <br>
       <br>
       <br>
@@ -81,84 +81,94 @@
             <br>
       <br>
 
-      <tw-popmenu trigger="click" style="float:left;">
+      <tw-poppane trigger="click" style="float:left;">
         <span>auto</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="topleft">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="topleft">
         <span>topleft</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="topcenter">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="topcenter">
         <span>topcenter</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="topright">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="topright">
         <span>topright</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="righttop">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="righttop">
         <span>righttop</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="rightcenter">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="rightcenter">
         <span>rightcenter</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="rightbottom">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="rightbottom">
         <span>rightbottom</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="bottomleft">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="bottomleft">
         <span>bottomleft</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="bottomcenter">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="bottomcenter">
         <span>bottomcenter</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="bottomright">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="bottomright">
         <span>bottomright</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="lefttop">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="lefttop">
         <span>lefttop</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="leftcenter">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="leftcenter">
         <span>leftcenter</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
-      <tw-popmenu trigger="click" style="float:left;" placement="leftbottom">
+      </tw-poppane>
+      <tw-poppane trigger="click" style="float:left;" placement="leftbottom">
         <span>leftbottom</span>
-        <tw-menu slot="popmenu-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
         </tw-menu>
-      </tw-popmenu>
+      </tw-poppane>
+      <br>
+      <br>
+      <br>
+      <br>
+      <tw-poppane v-for="item in members" :key="item.value" trigger="click" style="float:left;" placement="leftbottom">
+        <span>leftbottom</span>
+        <tw-menu slot="poppane-body" :items="members" @change="changeHandler" style="width:120px; background: #f2f2f2; border: 1px solid #ccc; white-space: nowrap;">
+          <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
+        </tw-menu>
+      </tw-poppane>
     </div>
     <tw-footer></tw-footer>
   </div>

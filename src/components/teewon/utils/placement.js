@@ -111,7 +111,7 @@ export default function (el, relatedElement) {
       }
 
       if (/right$/.test(item)) {
-        matrix[item].left = relatedRect.left + relatedRect.width + 'px'
+        matrix[item].left = relatedRect.left + relatedRect.width - elWidth + 'px'
       }
 
       if (/bottom$/.test(item)) {
@@ -130,6 +130,11 @@ export default function (el, relatedElement) {
         }
       }
     })
+
+    matrix.auto = {
+      top: relatedRect.top + relatedRect.height + 'px',
+      left: relatedRect.left + 'px'
+    }
 
     if (overallHeight > window.innerHeight && relatedRect.top > elHeight) {
       matrix.auto.top = relatedRect.top - elHeight + 'px'

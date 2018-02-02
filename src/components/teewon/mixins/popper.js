@@ -1,5 +1,6 @@
 import eventUtil from '@tw/utils/event'
 import placement from '@tw/utils/placement'
+import utils from '@tw/utils/utils'
 const trigger = eventUtil.trigger
 
 export default {
@@ -17,51 +18,62 @@ export default {
     return {
       visible: false,
       triggerType: 'hover',
-      placementStyle: null
+      placementStyle: null,
+      popLayer: false
     }
   },
   methods: {
-    closePopmenu () {
+    closePoppane () {
       this.visible = false
-      document.removeEventListener('click', this.closePopmenu)
+      document.removeEventListener('click', this.closePoppane)
     },
-    placePopmenu () {
+    placePoppane () {
       this.$nextTick(() => {
+        if (!this.popLayer) {
+          const popLayer = document.createElement('div')
+          popLayer.setAttribute('class', 'tw-poplayer')
+          popLayer.appendChild(this.$refs.body)
+          document.body.appendChild(popLayer)
+          this.popLayer = popLayer
+        }
+
         this.placementStyle = placement(this.$refs.body, this.$el)[this.placement]
       })
     },
     handleHover (event) {
       if (this.triggerType !== 'hover') return
 
-      if (this.$el.contains(event.relatedTarget)) return
+      if (this.popLayer && this.popLayer.contains(event.relatedTarget) || this.$el.contains(event.relatedTarget)) return
 
       if (event.type === 'mouseover') {
         this.visible = true
-        this.placePopmenu()
+        this.placePoppane()
       } else {
         this.visible = false
       }
     },
-    handleClickPopmenuLink (event) {
+    handleClickPoppaneLink (event) {
       if (this.triggerType === 'hover') return
+
       event.stopPropagation()
 
-      if (!window.twPopmenu) {
-        window.twPopmenu = this
+      if (!window.twPoppane) {
+        window.twPoppane = this
       }
 
-      if (window.twPopmenu !== this) {
-        if (!window.twPopmenu.$el.contains(this.$el)) {
+      if (window.twPoppane !== this) {
+        if (!utils.hasAncestor(this, 'twPoppane')) {
           trigger(document, 'click')
         }
-        window.twPopmenu = this
+
+        window.twPoppane = this
       }
 
       this.visible = !this.visible
 
       if (this.visible) {
-        this.placePopmenu()
-        document.addEventListener('click', this.closePopmenu)
+        this.placePoppane()
+        document.addEventListener('click', this.closePoppane)
       }
     }
   },
@@ -71,6 +83,11 @@ export default {
       this.triggerType = 'click'
     } else {
       this.triggerType = this.trigger
+    }
+  },
+  beforeDestroy () {
+    if (this.popLayer) {
+      document.body.removeChild(this.popLayer)
     }
   }
 }

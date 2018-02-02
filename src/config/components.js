@@ -2,12 +2,12 @@
 import Vue from 'vue'
 import Footer from '@tw/vue/footer/footer'
 import Menu from '@tw/vue/menu/menu'
-import Popmenu from '@tw/vue/popmenu/popmenu'
+import Poppane from '@tw/vue/poppane/poppane'
 
 const components = [
   Footer,
   Menu,
-  Popmenu
+  Poppane
 ]
 
 components.forEach(function (component) {
