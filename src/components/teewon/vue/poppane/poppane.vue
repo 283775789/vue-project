@@ -1,5 +1,5 @@
 <template>
-  <a class="tw-popbtn" :class="[{xactive: visible, xhover: trigger === 'hover', xclick: trigger === 'click'}]" @click="handleClickPoppaneLink" @mouseover="handleHover" @mouseout="handleHover">
+  <a class="tw-popbtn" :class="[{xopen: visible, xhover: trigger === 'hover', xclick: trigger === 'click'}]" @click="handleClickPoppaneLink" @mouseover="handleHover" @mouseout="handleHover">
     <slot></slot><i class="tw-arrow xdown"></i>
     <transition name="xpop">
       <div ref="body" v-show="visible" class="tw-poppane" :class="['x'+ placement]" :style="placementStyle" @mouseover="handleHover" @mouseout="handleHover">

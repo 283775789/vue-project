@@ -19,7 +19,8 @@ export default {
       visible: false,
       triggerType: 'hover',
       placementStyle: null,
-      popLayer: false
+      popLayer: false,
+      createdPopLayer: false
     }
   },
   methods: {
@@ -29,12 +30,9 @@ export default {
     },
     placePoppane () {
       this.$nextTick(() => {
-        if (!this.popLayer) {
-          const popLayer = document.createElement('div')
-          popLayer.setAttribute('class', 'tw-poplayer')
-          popLayer.appendChild(this.$refs.body)
-          document.body.appendChild(popLayer)
-          this.popLayer = popLayer
+        if (!this.createdPopLayer) {
+          document.body.appendChild(this.popLayer)
+          this.createdPopLayer = true
         }
 
         this.placementStyle = placement(this.$refs.body, this.$el)[this.placement]
@@ -43,7 +41,7 @@ export default {
     handleHover (event) {
       if (this.triggerType !== 'hover') return
 
-      if (this.popLayer && this.popLayer.contains(event.relatedTarget) || this.$el.contains(event.relatedTarget)) return
+      if ((this.popLayer && this.popLayer.contains(event.relatedTarget)) || this.$el.contains(event.relatedTarget)) return
 
       if (event.type === 'mouseover') {
         this.visible = true
@@ -56,10 +54,6 @@ export default {
       if (this.triggerType === 'hover') return
 
       event.stopPropagation()
-
-      if (!window.twPoppane) {
-        window.twPoppane = this
-      }
 
       if (window.twPoppane !== this) {
         if (!utils.hasAncestor(this, 'twPoppane')) {
@@ -85,8 +79,14 @@ export default {
       this.triggerType = this.trigger
     }
   },
+  mounted () {
+    const popLayer = document.createElement('div')
+    popLayer.setAttribute('class', 'tw-poplayer')
+    popLayer.appendChild(this.$refs.body)
+    this.popLayer = popLayer
+  },
   beforeDestroy () {
-    if (this.popLayer) {
+    if (!this.createdPopLayer) {
       document.body.removeChild(this.popLayer)
     }
   }

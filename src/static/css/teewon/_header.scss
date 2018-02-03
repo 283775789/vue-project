@@ -16,6 +16,7 @@ $header-navlink-active-bg: $color-main-active !default;
 $header-navlink-active-color: $color-text-inverse !default;
 $header-navlink-px: $padding-small !default;
 
+// 头部-容器
 .tw-header {
   position: relative;
   z-index: 1;
@@ -27,6 +28,7 @@ $header-navlink-px: $padding-small !default;
   background: $header-bg;
 }
 
+// 头部-内部内容区
 .tw-header-inner {
   @if $app-type == web {
     @include make-container(fasle);
@@ -36,6 +38,8 @@ $header-navlink-px: $padding-small !default;
   }
 }
 
+// 头部-左侧内容区(logo及站点名称等)
+// 头部-主体
 .tw-header-left,
 .tw-header-body {
   float: left;
@@ -47,6 +51,7 @@ $header-navlink-px: $padding-small !default;
   color: $header-color;
 }
 
+// 头部-标题
 .tw-header-title {
   display: inline-block;
   padding-left: $header-title-pl;
@@ -54,22 +59,14 @@ $header-navlink-px: $padding-small !default;
   vertical-align: middle;
 }
 
+// 头部-右侧内容区
 .tw-header-right {
   float: right;
 }
 
-// 头部-导航及下拉菜单
+// 头部-导航
 .tw-nav.xheader > li > a {
   padding: 0 $header-navlink-px;
-}
-
-.tw-poppane.xheader > .tw-poppane-link {
-  padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
-}
-
-.tw-nav.xheader > li > a,
-.tw-poppane.xheader > .tw-poppane-link {
-  display: block;
 
   &:hover {
     color: $header-navlink-hover-color;
@@ -82,29 +79,37 @@ $header-navlink-px: $padding-small !default;
   }
 }
 
-.tw-poppane.xheader .tw-arrow.xdown {
-  right: $header-navlink-px;
-  border-top-color: $header-color;
+// 头部-弹出按钮
+.tw-popbtn.xheader,
+.tw-nav.xheader > li > .tw-popbtn.xheader {
+  padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
 }
 
-.tw-header-menu,
-.tw-poppane.xheader:hover {
+.tw-popbtn.xheader > .tw-arrow {
+  right: $header-navlink-px;
+}
+
+.tw-popbtn.xheader.xopen {
   background: $header-navlink-hover-bg;
 }
 
-.tw-poppane.xheader > .tw-poppane-body:before {
+// 头部-下拉菜单项
+.tw-header-menu {
+  line-height: 36px;
+  padding: $padding-tiny 5px;
+  color: $header-color;
+  white-space: nowrap;
+  background: $header-navlink-hover-bg;
+}
+
+.tw-header-menu:after {
   content: "";
   position: absolute;
+  top: 0;
   right: 5px;
   left: 5px;
   height: 1px;
   background: rightDownColor($header-navlink-active-bg, 4%);
-}
-
-.tw-header-menu {
-  line-height: 36px;
-  padding: $padding-tiny 5px;
-  white-space: nowrap;
 }
 
 // stylelint-disable no-descending-specificity

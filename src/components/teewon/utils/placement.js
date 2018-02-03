@@ -5,6 +5,7 @@
  * @param {Element} relatedElement
  * 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
  */
+
 export default function (el, relatedElement) {
   const isdescendant = relatedElement.contains(el)
   const elWidth = el.offsetWidth
@@ -12,6 +13,8 @@ export default function (el, relatedElement) {
   const relatedRect = relatedElement.getBoundingClientRect()
   const overallWidth = relatedRect.left + relatedRect.width + elWidth
   const overallHeight = relatedRect.top + relatedRect.height + elHeight
+
+  /* eslint-disable */
 
   const placements = [
     'topleft',
@@ -87,66 +90,70 @@ export default function (el, relatedElement) {
     }
   } else {
     // 生成非父子关系时的位置信息(即element将直接放置在body中)
+    const relatedTop = window.pageYOffset + relatedRect.top
+    const relatedLeft = window.pageXOffset + relatedRect.left
+
     placements.forEach(function (item) {
       matrix[item] = {}
 
       if (/^top/.test(item)) {
-        matrix[item].top = relatedRect.top - elHeight + 'px'
+        matrix[item].top = relatedTop - elHeight + 'px'
       }
 
       if (/^right/.test(item)) {
-        matrix[item].left = relatedRect.left + relatedRect.width + 'px'
+        matrix[item].left = relatedLeft + relatedRect.width + 'px'
       }
 
       if (/^bottom/.test(item)) {
-        matrix[item].top = relatedRect.top + relatedRect.height + 'px'
+        matrix[item].top = relatedTop + relatedRect.height + 'px'
       }
 
       if (/^left/.test(item)) {
-        matrix[item].left = relatedRect.left - elWidth + 'px'
+        matrix[item].left = relatedLeft - elWidth + 'px'
       }
 
       if (/top$/.test(item)) {
-        matrix[item].top = relatedRect.top + 'px'
+        matrix[item].top = relatedTop + 'px'
       }
 
       if (/right$/.test(item)) {
-        matrix[item].left = relatedRect.left + relatedRect.width - elWidth + 'px'
+        matrix[item].left = relatedLeft + relatedRect.width - elWidth + 'px'
       }
 
       if (/bottom$/.test(item)) {
-        matrix[item].top = relatedRect.top + relatedRect.height - elHeight + 'px'
+        matrix[item].top = relatedTop + relatedRect.height - elHeight + 'px'
       }
 
       if (/left$/.test(item)) {
-        matrix[item].left = relatedRect.left + 'px'
+        matrix[item].left = relatedLeft + 'px'
       }
 
       if (/center$/.test(item)) {
         if (/^(top|bottom)/.test(item)) {
-          matrix[item].left = relatedRect.left + relatedRect.width / 2 - elWidth / 2 + 'px'
+          matrix[item].left = relatedLeft + relatedRect.width / 2 - elWidth / 2 + 'px'
         } else {
-          matrix[item].top = relatedRect.top + relatedRect.height / 2 - elHeight / 2 + 'px'
+          matrix[item].top = relatedTop + relatedRect.height / 2 - elHeight / 2 + 'px'
         }
       }
     })
 
     matrix.auto = {
-      top: relatedRect.top + relatedRect.height + 'px',
-      left: relatedRect.left + 'px'
+      top: relatedTop + relatedRect.height + 'px',
+      left: relatedLeft + 'px'
     }
 
     if (overallHeight > window.innerHeight && relatedRect.top > elHeight) {
-      matrix.auto.top = relatedRect.top - elHeight + 'px'
+      matrix.auto.top = relatedTop - elHeight + 'px'
     }
 
     if (overallWidth > window.innerWidth && relatedRect.left + relatedRect.width > elWidth) {
-      matrix.auto.left = relatedRect.left + relatedRect.width - elWidth + 'px'
+      matrix.auto.left = relatedLeft + relatedRect.width - elWidth + 'px'
     }
   }
 
   // 如未指定最小宽度，最小宽度取参照元素的宽度
-  if (window.getComputedStyle(el).minWidth === '0px') {
+  let minWidth = window.getComputedStyle(el).minWidth
+  if (minWidth === '0px' || minWidth === relatedRect.width + 'px') {
     for (const prop in matrix) {
       matrix[prop].minWidth = relatedRect.width + 'px'
     }

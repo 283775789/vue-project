@@ -1,10 +1,5 @@
 /* 弹出面板 */
 
-// 弹出面板-容器
-.tw-poppane {
-  position: relative;
-}
-
 // 弹出面板-触发链接
 .tw-popbtn {
   position: relative;
@@ -17,22 +12,22 @@
 .tw-popbtn > .tw-arrow {
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 5px;
   margin-top: -2.5px;
   transition: all $time linear;
   transform-origin: 50% 30%;
 }
 
-.tw-poppane.xactive > .tw-popbtn > .tw-arrow,
-.tw-poppane.xhover:hover > .tw-popbtn > .tw-arrow {
+.tw-popbtn.xopen > .tw-arrow,
+.tw-popbtn.xhover:hover > .tw-arrow {
   transform: rotate(180deg);
 }
 
 // 弹出层
 .tw-poplayer {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
 }
 
@@ -53,5 +48,3 @@
 .tw-poppane.xrightcenter {
   transform-origin: center center;
 }
-
-

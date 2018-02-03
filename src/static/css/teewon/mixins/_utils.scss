@@ -35,15 +35,23 @@
 }
 
 // 生成小三角形
-@mixin triangle($direction:bottom, $size:5px, $color:$color-main, $hoverRotate:true) {
-  $direction-map:(
+@mixin triangle($direction:bottom, $size:5px) {
+  $placements: top, left, bottom, right;
+
+  $placement-map:(
     up: bottom,
     right: left,
     down: top,
     left: right
   );
-  $direction-reversal: map-get($map: $direction-map, $key:$direction);
+
+  $direction-reversal: map-get($placement-map, $direction);
   display: inline-block;
-  border: $size solid transparent;
-  border-#{$direction-reversal}-color: $color;
+  border: $size solid;
+
+  @each $placement in $placements {
+    @if $placement != $direction-reversal {
+      border-#{$placement}-color: transparent;
+    }
+  }
 }
