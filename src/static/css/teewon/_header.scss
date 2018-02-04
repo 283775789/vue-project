@@ -80,16 +80,16 @@ $header-navlink-px: $padding-small !default;
 }
 
 // 头部-弹出按钮
-.tw-popbtn.xheader,
-.tw-nav.xheader > li > .tw-popbtn.xheader {
+.tw-poplink.xheader,
+.tw-nav.xheader > li > .tw-poplink.xheader {
   padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
 }
 
-.tw-popbtn.xheader > .tw-arrow {
+.tw-poplink.xheader > .tw-arrow {
   right: $header-navlink-px;
 }
 
-.tw-popbtn.xheader.xopen {
+.tw-poplink.xheader.xopen {
   background: $header-navlink-hover-bg;
 }
 

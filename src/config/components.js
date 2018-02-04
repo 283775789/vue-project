@@ -3,11 +3,13 @@ import Vue from 'vue'
 import Footer from '@tw/vue/footer/footer'
 import Menu from '@tw/vue/menu/menu'
 import Poppane from '@tw/vue/poppane/poppane'
+import Collapse from '@tw/vue/collapse/collapse'
 
 const components = [
   Footer,
   Menu,
-  Poppane
+  Poppane,
+  Collapse
 ]
 
 components.forEach(function (component) {

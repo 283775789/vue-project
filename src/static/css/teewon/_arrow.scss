@@ -1,16 +1,20 @@
 /* 箭头 */
 .tw-arrow.xup {
   @include triangle(up);
+  transform-origin: 50% 80%;
 }
 
 .tw-arrow.xright {
   @include triangle(right);
+  transform-origin: 30% 50%;
 }
 
 .tw-arrow.xdown {
   @include triangle(down);
+  transform-origin: 50% 30%;
 }
 
 .tw-arrow.xleft {
   @include triangle(left);
+  transform-origin: 80% 50%;
 }

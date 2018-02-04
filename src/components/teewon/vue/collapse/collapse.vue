@@ -1,19 +1,32 @@
 <template>
-  <div class="tw-collapse">
-    <a class="tw-collapse-link"><slot></slot><i class="tw-caret xright"></i></a>
-    <div class="tw-collapse-body">
-      <slot name="collapse-body"></slot>
-    </div>
+  <div v-show="visible" class="tw-collapse">
+    <slot>collapse self.</slot>
   </div>
 </template>
 
 <script>
   export default {
     name: 'twCollapse',
+    props: {
+      switch: {
+        type: String,
+        required: true
+      }
+    },
     data () {
       return {
         visible: false
       }
+    },
+    created () {
+      const vm = this
+      document.addEventListener('click', function (event) {
+        const collapseSwitch = document.querySelector(vm.switch)
+
+        if (collapseSwitch.contains(event.target)) {
+          vm.visible = !vm.visible
+        }
+      })
     }
   }
 </script>

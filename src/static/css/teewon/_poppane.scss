@@ -1,25 +1,45 @@
 /* 弹出面板 */
 
 // 弹出面板-触发链接
-.tw-popbtn {
+.tw-poplink {
   position: relative;
   display: block;
   padding-right: 15px;
   cursor: pointer;
 }
 
-// 弹出面板-箭头
-.tw-popbtn > .tw-arrow {
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  margin-top: -2.5px;
-  transition: all $time linear;
-  transform-origin: 50% 30%;
+// 弹出面板-置左时-触发链接
+.tw-poplink[class*="xleft"] {
+  padding-right: 0;
+  padding-left: 15px;
 }
 
-.tw-popbtn.xopen > .tw-arrow,
-.tw-popbtn.xhover:hover > .tw-arrow {
+// 弹出面板-禁用
+.tw-poplink.xdisabled {
+  @include disable();
+}
+
+// 弹出面板-箭头
+.tw-poplink > .tw-arrow {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  margin-top: -2px;
+  transition: all $time linear;
+}
+
+.tw-poplink > .tw-arrow.xleft,
+.tw-poplink > .tw-arrow.xright {
+  margin-top: -5px;
+}
+
+.tw-poplink[class*="xleft"] > .tw-arrow {
+  right: auto;
+  left: 0;
+}
+
+.tw-poplink.xopen > .tw-arrow,
+.tw-poplink.xhover:hover > .tw-arrow {
   transform: rotate(180deg);
 }
 
@@ -37,10 +57,10 @@
   transform-origin: top center;
 }
 
-.tw-poppane[class*="xtop"],
-.tw-poppane[class*="xauto"][style*="bottom"],
 .tw-poppane.xleftbottom,
-.tw-poppane.xrightbottom {
+.tw-poppane.xrightbottom,
+.tw-poppane[class*="xtop"],
+.tw-poppane[class*="xauto"][style*="bottom"] {
   transform-origin: bottom center;
 }
 

@@ -6,6 +6,7 @@ $title-font-size: $font-size-default !default;
 $title-color: #525065;
 $title-border-color: $color-border-main !default;
 
+// 标题-容器
 .tw-title {
   @include clearfix;
   position: relative;
@@ -14,6 +15,7 @@ $title-border-color: $color-border-main !default;
   border-bottom: 1px dashed $title-border-color;
 }
 
+// 标题-左侧坚线标记
 .tw-title:before {
   content: "";
   position: absolute;
@@ -23,6 +25,7 @@ $title-border-color: $color-border-main !default;
   background: $color-main;
 }
 
+// 标题-左侧内容
 .tw-title-left {
   float: left;
   font-size: $title-font-size;
@@ -30,6 +33,7 @@ $title-border-color: $color-border-main !default;
   color: $title-color;
 }
 
+// 标题-右侧内容
 .tw-title-right {
   float: right;
 }

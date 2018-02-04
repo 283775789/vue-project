@@ -12,6 +12,10 @@ export default {
     placement: {
       type: String,
       default: 'auto'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -39,6 +43,7 @@ export default {
       })
     },
     handleHover (event) {
+      if (this.disabled) return
       if (this.triggerType !== 'hover') return
 
       if ((this.popLayer && this.popLayer.contains(event.relatedTarget)) || this.$el.contains(event.relatedTarget)) return
@@ -51,6 +56,7 @@ export default {
       }
     },
     handleClickPoppaneLink (event) {
+      if (this.disabled) return
       if (this.triggerType === 'hover') return
 
       event.stopPropagation()
@@ -88,6 +94,15 @@ export default {
   beforeDestroy () {
     if (!this.createdPopLayer) {
       document.body.removeChild(this.popLayer)
+    }
+  },
+  watch: {
+    visible (value) {
+      if (value) {
+        this.$emit('show')
+      } else {
+        this.$emit('hide')
+      }
     }
   }
 }
