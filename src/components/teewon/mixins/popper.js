@@ -1,7 +1,6 @@
-import eventUtil from '@tw/utils/event'
+import {trigger} from '@tw/utils/event'
 import placement from '@tw/utils/placement'
 import utils from '@tw/utils/utils'
-const trigger = eventUtil.trigger
 
 export default {
   props: {

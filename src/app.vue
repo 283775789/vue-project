@@ -170,7 +170,7 @@
           <span>333</span>
         </div>
       </a>
-      <tw-collapse switch=".js-collapse"></tw-collapse>
+      <tw-collapse v-for="item in members" :key="item.value" switch=".js-collapse"></tw-collapse>
     </div>
     <tw-footer></tw-footer>
   </div>

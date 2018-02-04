@@ -5,28 +5,31 @@
 </template>
 
 <script>
-  export default {
-    name: 'twCollapse',
-    props: {
-      switch: {
-        type: String,
-        required: true
-      }
-    },
-    data () {
-      return {
-        visible: false
-      }
-    },
-    created () {
-      const vm = this
-      document.addEventListener('click', function (event) {
-        const collapseSwitch = document.querySelector(vm.switch)
+import {delegate, off} from '@tw/utils/event'
 
-        if (collapseSwitch.contains(event.target)) {
-          vm.visible = !vm.visible
-        }
-      })
+export default {
+  name: 'twCollapse',
+  props: {
+    switch: {
+      type: String,
+      required: true
     }
+  },
+  data () {
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    toggleCollapse () {
+      this.visible = !this.visible
+    }
+  },
+  created () {
+    delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
+  },
+  beforeDestroy () {
+    off(document, 'click.' + this._uid)
   }
+}
 </script>
