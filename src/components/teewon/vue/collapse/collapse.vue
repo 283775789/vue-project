@@ -1,11 +1,13 @@
 <template>
-  <div v-show="visible" class="tw-collapse">
-    <slot>collapse self.</slot>
-  </div>
+  <transition>
+    <div v-show="visible" class="tw-collapse">
+      <slot>collapse self.</slot>
+    </div>
+  </transition>
 </template>
 
 <script>
-import {delegate, off} from '@tw/utils/event'
+import {delegate, delegateOff} from '@tw/utils/event'
 
 export default {
   name: 'twCollapse',
@@ -30,7 +32,7 @@ export default {
     delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
   },
   beforeDestroy () {
-    off(document, 'click.' + this._uid)
+    delegateOff(document, 'click.' + this._uid)
   }
 }
 </script>
