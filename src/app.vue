@@ -171,6 +171,36 @@
         </div>
       </a>
       <tw-collapse v-for="item in members" :key="item.value" switch=".js-collapse"></tw-collapse>
+      <a @click="classDemo='xactive'">demo</a>
+      <div class="slideDown" :class="classDemo">
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+      </div>
     </div>
     <tw-footer></tw-footer>
   </div>
@@ -195,7 +225,8 @@ export default {
           value: '003',
           text: '陈知然'
         }
-      ]
+      ],
+      classDemo: ''
     }
   },
   methods: {
