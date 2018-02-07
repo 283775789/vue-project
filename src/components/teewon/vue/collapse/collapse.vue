@@ -28,7 +28,6 @@ export default {
     }
   },
   created () {
-    const toggle = this.toggleCollapse.bind(this)
     delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
   },
   beforeDestroy () {

@@ -1,0 +1,7 @@
+/* ---------------------------- 工具类样式 -------------------------------- */
+// 用于display:none元素的高度计算
+.u-swap {
+  position: absolute !important;
+  visibility: hidden !important;
+  transition-duration: 0 !important;
+}

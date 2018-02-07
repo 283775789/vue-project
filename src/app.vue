@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div class="tw-body">
+    <div class="tw-body" style="min-height:600px;">
       <label class="tw-optbox xradio"><input type="radio" name="radio-demo" /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xradio"><input type="radio" name="radio-demo" checked disabled /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span slot="link">选项文本</span></label>
@@ -171,8 +171,8 @@
         </div>
       </a>
       <tw-collapse v-for="item in members" :key="item.value" switch=".js-collapse"></tw-collapse>
-      <a @click="classDemo='xactive'">demo</a>
-      <div class="slideDown" :class="classDemo">
+      <a @click="demoMethod">demo</a>
+      <div ref='demo' class="slideDown" :class="classDemo">
         <p>1</p>
         <p>1</p>
         <p>1</p>
@@ -207,6 +207,8 @@
 </template>
 
 <script>
+import {toggleTransitionClass} from '@tw/utils/dom'
+
 export default {
   name: 'app',
   data () {
@@ -235,6 +237,8 @@ export default {
     },
     demoMethod () {
       console.log('The method is called.')
+      const demo = this.$refs.demo
+      toggleTransitionClass(demo, 'xactive', 'sliding')
     }
   },
   created () {
