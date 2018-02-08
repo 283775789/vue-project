@@ -170,37 +170,10 @@
           <span>333</span>
         </div>
       </a>
-      <tw-collapse v-for="item in members" :key="item.value" switch=".js-collapse"></tw-collapse>
-      <a @click="demoMethod">demo</a>
-      <div ref='demo' class="slideDown" :class="classDemo">
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-      </div>
+      <tw-collapse switch=".js-collapse">
+        <div style="height:300px; background:#f00;"></div>
+      </tw-collapse>
+      333
     </div>
     <tw-footer></tw-footer>
   </div>

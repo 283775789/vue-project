@@ -1,13 +1,12 @@
 <template>
-  <transition>
-    <div v-show="visible" class="tw-collapse">
-      <slot>collapse self.</slot>
-    </div>
-  </transition>
+  <div class="tw-collapse">
+    <slot>collapse self.</slot>
+  </div>
 </template>
 
 <script>
-import {delegate, delegateOff} from '@tw/utils/event'
+import { delegate, delegateOff } from '@tw/utils/event'
+import { toggleTransitionClass } from '@tw/utils/dom'
 
 export default {
   name: 'twCollapse',
@@ -17,20 +16,17 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      visible: false
-    }
-  },
   methods: {
     toggleCollapse () {
-      this.visible = !this.visible
+      toggleTransitionClass(this.$el, 'xopen', 'xtoggling', 'height')
     }
   },
   created () {
+    // 委托document代理切换开关(switch)的click事件
     delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
   },
   beforeDestroy () {
+    // 注销document代理切换开关(switch)的click事件
     delegateOff(document, 'click.' + this._uid)
   }
 }
