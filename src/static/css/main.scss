@@ -49,22 +49,5 @@
 }
 @import "sprite";
 
-.slideDown {
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-}
-
-.sliding {
-  overflow: hidden !important;
-  transition: all 10s linear;
-}
-
-.slideDown.xactive {
-  height: 150px;
-  overflow: visible;
-  visibility: visible;
-}
-
 // App(当前项目)
 // ------------------------------------------------------------

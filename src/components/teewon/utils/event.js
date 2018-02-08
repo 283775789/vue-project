@@ -17,6 +17,10 @@ const trigger = function (el, name, ...opts) {
 
   const evt = document.createEvent(eventName)
 
+  // 兼容IE9
+  if (typeof opts[0] === 'undefined') opts[0] = true
+  if (typeof opts[1] === 'undefined') opts[1] = true
+
   evt.initEvent(name, ...opts)
 
   el.dispatchEvent

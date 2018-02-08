@@ -86,6 +86,10 @@ const getToggleClassStyles = function (el, className, ...props) {
   toggleClass(el, className)
   el.style.transition = originalTransition
 
+  /* eslint-disable no-unused-vars */
+  // 强制重绘
+  const width = el.offsetWidth
+
   return value
 }
 
@@ -105,73 +109,54 @@ const compileStyle = function (el, styleObj) {
  * @param {*} el
  * @param {*} className
  * @param {*} transitionClass
- * @param {*} styles
+ * @param {*} callback
  */
-const toggleTransitionClass = function (el, className, transitionClass, ...resolveAuto) {
-  const resolve = function (prop, isAdd) {
-    const currentValue = window.getComputedStyle(el)[prop]
-    let targetValue
-
-    if (isAdd) {
-      el.style[prop] = 'auto'
-      targetValue = window.getComputedStyle(el)[prop]
-    } else {
-      targetValue = 0
-    }
-
-    el.style[prop] = currentValue
-    /* eslint-disable no-unused-vars */
-    const width = el.offsetWidth
-
-    return targetValue
-  }
-
-  let targetClass = el.getAttribute('class')
-  let targetHeight
-  let targetWidth
-
-  if (targetClass.indexOf(className) !== -1) {
-    if (resolveAuto.indexOf('height') !== -1) {
-      targetHeight = resolve('height')
-    }
-
-    if (resolveAuto.indexOf('width') !== -1) {
-      targetWidth = resolve('width')
-    }
-  } else {
-    if (resolveAuto.indexOf('height') !== -1) {
-      targetHeight = resolve('height', true)
-    }
-
-    if (resolveAuto.indexOf('width') !== -1) {
-      targetWidth = resolve('width', true)
-    }
-  }
-
-  const end = function () {
-    removeClass(el, transitionClass)
-    el.style.width = ''
-    el.style.height = ''
-    el.removeEventListener('transitionend', end)
-  }
-
+const toggleTransitionClass = function (el, className, transitionClass, callback) {
   if (el.style.transition !== undefined) {
-    addClass(el, transitionClass)
+    // 过渡进行中标志属性
+    const transitionPropName = 'tw' + className + transitionClass
+
+    // 过渡完成时调用
+    const end = function () {
+      removeClass(el, transitionClass)
+      el[transitionPropName]()
+      typeof callback === 'function' && callback()
+    }
+
+    // 当此函数被多次调用，且上次的过滤未完成又执行此函数时，
+    // 还原原来样式后，再进行当次调用
+    if (el[transitionPropName]) el[transitionPropName]()
+
+    const styleHeight = el.style.height
+    const styleWidth = el.style.width
+
+    // 设置过渡样式还原函数
+    el[transitionPropName] = function () {
+      el.style.width = styleWidth
+      el.style.height = styleHeight
+      delete el[transitionPropName]
+      el.removeEventListener('transitionend', end)
+    }
+
+    // 以下三个变量用于解决width或height值为auto时不触发transition
+    const currentWidth = window.getComputedStyle(el).width
+    const currentHeight = window.getComputedStyle(el).height
+    const targetValue = getToggleClassStyles(el, className, 'height', 'width')
+
+    el.style.width = currentWidth
+    el.style.height = currentHeight
+
+    transitionClass && addClass(el, transitionClass)
     el.addEventListener('transitionend', end)
-  }
+    const duration = window.getComputedStyle(el).transitionDuration
 
-  if (resolveAuto.indexOf('height') !== -1) {
-    el.style.height = targetHeight
-  }
+    el.style.height = targetValue.height
+    el.style.width = targetValue.width
 
-  if (resolveAuto.indexOf('width') !== -1) {
-    el.style.width = targetWidth
-  }
-
-  if (targetClass.indexOf(className) !== -1) {
-    removeClass(el, className)
+    toggleClass(el, className)
   } else {
-    addClass(el, className)
+    toggleClass(el, className)
+    typeof callback === 'function' && callback()
   }
 }
 

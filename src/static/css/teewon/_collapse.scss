@@ -2,21 +2,22 @@
 
 // 折叠面板-容器
 .tw-collapse {
-  height: 0;
-  visibility: hidden;
+  max-height: 0;
   overflow: hidden;
+  visibility: hidden;
+  transition: all 1s linear;
 }
 
 // 折叠面板-展开
 .tw-collapse.xopen {
-  height: auto;
-  visibility: visible;
+  max-height: 500px;
   overflow: visible;
+  visibility: visible;
 }
 
 // 折叠面板-切换中
 .tw-collapse.xtoggling {
   overflow: hidden;
-  transition: all $time linear;
+  visibility: visible;
 }
 

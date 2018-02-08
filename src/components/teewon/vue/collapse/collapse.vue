@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     toggleCollapse () {
-      toggleTransitionClass(this.$el, 'xopen', 'xtoggling', 'height')
+      toggleTransitionClass(this.$el, 'xopen', 'xtoggling')
     }
   },
   created () {
