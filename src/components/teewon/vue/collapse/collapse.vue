@@ -6,7 +6,7 @@
 
 <script>
 import { delegate, delegateOff } from '@tw/utils/event'
-import { toggleTransitionClass } from '@tw/utils/dom'
+import { toggleSpecialTransitionClass } from '@tw/utils/dom'
 
 export default {
   name: 'twCollapse',
@@ -18,15 +18,15 @@ export default {
   },
   methods: {
     toggleCollapse () {
-      toggleTransitionClass(this.$el, 'xopen', 'xtoggling')
+      toggleSpecialTransitionClass(this.$el, 'xopen', 'xtoggling', ['height'], (toggle) => {
+        toggle === 'add' ? this.$emit('show') : this.$emit('hide')
+      })
     }
   },
   created () {
-    // 委托document代理切换开关(switch)的click事件
     delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
   },
   beforeDestroy () {
-    // 注销document代理切换开关(switch)的click事件
     delegateOff(document, 'click.' + this._uid)
   }
 }

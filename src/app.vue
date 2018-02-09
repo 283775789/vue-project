@@ -170,18 +170,17 @@
           <span>333</span>
         </div>
       </a>
-      <tw-collapse switch=".js-collapse">
+      <tw-collapse switch=".js-collapse" @show="demoMethod">
         <div style="height:300px; background:#f00;"></div>
       </tw-collapse>
-      333
+
     </div>
+    <div ref="test" class="test" @click="testmethod"></div>
     <tw-footer></tw-footer>
   </div>
 </template>
 
 <script>
-import {toggleTransitionClass} from '@tw/utils/dom'
-
 export default {
   name: 'app',
   data () {
@@ -210,8 +209,10 @@ export default {
     },
     demoMethod () {
       console.log('The method is called.')
-      const demo = this.$refs.demo
-      toggleTransitionClass(demo, 'xactive', 'sliding')
+    },
+    testmethod () {
+      window.test = this.$refs.test
+      window.test.classList.add('xstart')
     }
   },
   created () {

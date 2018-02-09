@@ -48,14 +48,19 @@ const delegate = function (target, eventName, source, callback) {
   if (!target.twEvents[eventName]) target.twEvents[eventName] = []
 
   const delegateFunction = function (event) {
-    if (typeof source === 'string') source = document.querySelector(source)
+    let elemets = []
 
-    if (!(source instanceof window.Node)) {
-      throw new TypeError('委托元素为空，请检查第三个参数{source}是否为元素节点或为正确的css选择器。')
+    if (typeof source === 'string') {
+      elemets = document.querySelectorAll(source)
+    } else if (source instanceof window.Node) {
+      elemets.push(source)
     }
 
-    if (source.contains(event.target)) {
-      callback()
+    for (let i = 0; i < elemets.length; i++) {
+      if (elemets[i].contains(event.target)) {
+        callback()
+        break
+      }
     }
   }
 
