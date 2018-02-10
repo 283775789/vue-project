@@ -5,8 +5,7 @@
  * @param {Element} relatedElement
  * 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
  */
-
-export default function (el, relatedElement) {
+const placement = function (el, relatedElement) {
   const isdescendant = relatedElement.contains(el)
   const elWidth = el.offsetWidth
   const elHeight = el.offsetHeight
@@ -153,11 +152,15 @@ export default function (el, relatedElement) {
 
   // 如未指定最小宽度，最小宽度取参照元素的宽度
   let minWidth = window.getComputedStyle(el).minWidth
-  if (minWidth === '0px' || minWidth === relatedRect.width + 'px') {
+  if (minWidth === '0px' || minWidth === parseInt(relatedRect.width) + 'px') {
     for (const prop in matrix) {
-      matrix[prop].minWidth = relatedRect.width + 'px'
+      matrix[prop].minWidth = parseInt(relatedRect.width) + 'px'
     }
   }
 
   return matrix
+}
+
+export {
+  placement
 }

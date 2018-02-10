@@ -35,9 +35,16 @@ const trigger = function (el, name, ...opts) {
  * @param {Node} target
  * @param {String} eventName
  * @param {String, Node} source
+ * @param {Boolean} useCapture
  * @param {Function} callback
+ * 回调函数的第一个参数为委托元素本身,第二个参数为事件触发的event对象
  */
-const delegate = function (target, eventName, source, callback) {
+const delegate = function (target, eventName, source, useCapture = false, callback) {
+  if (typeof useCapture === 'function') {
+    callback = useCapture
+    useCapture = false
+  }
+
   if (!target.twEvents) {
     Object.defineProperty(target, 'twEvents', {
       value: {},
@@ -58,13 +65,13 @@ const delegate = function (target, eventName, source, callback) {
 
     for (let i = 0; i < elemets.length; i++) {
       if (elemets[i].contains(event.target)) {
-        callback()
+        callback(elemets[i], event)
         break
       }
     }
   }
 
-  target.addEventListener(/^[a-z]*/.exec(eventName)[0], delegateFunction)
+  target.addEventListener(/^[a-z]*/.exec(eventName)[0], delegateFunction, useCapture)
   target.twEvents[eventName].push(delegateFunction)
 
   return target
@@ -75,15 +82,19 @@ const delegate = function (target, eventName, source, callback) {
  * @param {Node} el
  * @param {String} eventName
  */
-const delegateOff = function (el, eventName) {
+const delegateOff = function (el, eventName, useCapture = false) {
   if (!el.twEvents) return
   if (!el.twEvents[eventName]) return
 
   el.twEvents[eventName].forEach(element => {
-    el.removeEventListener(/^[a-z]*/.exec(eventName)[0], element)
+    el.removeEventListener(/^[a-z]*/.exec(eventName)[0], element, useCapture)
   })
 
   delete el.twEvents[eventName]
 }
 
-export {trigger, delegate, delegateOff}
+export {
+  trigger,
+  delegate,
+  delegateOff
+}
