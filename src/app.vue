@@ -13,7 +13,7 @@
               <router-link class="xactive" to="/url1"><i class="tw-ico xname"></i><span>概要</span></router-link>
             </li>
             <li>
-              <router-link to="/url2"><i class="tw-ico xname"></i><span>规范</span></router-link>
+              <router-link class="js-delegate" to="/url2"><i class="tw-ico xname"></i><span>规范</span></router-link>
             </li>
             <li>
               <router-link to="/url3"><i class="tw-ico xname"></i><span>CSS组件</span></router-link>
@@ -80,10 +80,15 @@
         <span>poppane switch</span>
         <span>poppane delegate</span>
       </a>
-      <tw-poppane switch=".js-delegate">
-        <div style="height:300px; width:600px; background:#00f;">
+      <tw-poppane switch=".js-delegate" switchEvent="click" placement="leftcenter">
+        <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
           <div>delegate</div>
-          <div>delegate</div>
+          <div class="js-attribute">delegate</div>
+          <tw-poppane switch=".js-attribute" switchEvent="click" placement="leftcenter">
+            <div style="height:80px; background:#f5f5f5; border:1px solid #ccc;">
+              <div>attribute</div>
+            </div>
+          </tw-poppane>
         </div>
       </tw-poppane>
       <br>

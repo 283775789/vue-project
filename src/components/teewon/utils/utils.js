@@ -17,6 +17,18 @@ const hasAncestor = function (vnode, name) {
   return false
 }
 
+const hasDescendant = function (vnode, name) {
+  let parent = vnode.$parent
+
+  while (parent) {
+    if (parent.$options.name === name) return true
+    parent = parent.$parent
+  }
+
+  return false
+}
+
 export {
-  hasAncestor
+  hasAncestor,
+  hasDescendant
 }
