@@ -82,22 +82,31 @@ const getToggleClassStyles = function (el, className, ...props) {
  * 解决display:noen,width:auto,height:auto样式切换时不触发transition
  * @param {HTMLElement} el
  * @param {String} className
- * @param {String} transitionClass
- * 过渡中间状态的class，会在过渡开始时添加，完成时移除
- * @param {Array} resolveProps
- * 省略时默认为['display', 'width, 'height'],手动指定时可自由组合这三个值
- * @param {Function} callback
- * 过滤完成时的回调函数
+ * @param {Object} option
+ * option.type 指定切换的类型，不指定时默认为toggle，可选的值为:toggle,add,remove
+ * option.transitionClass 过渡状态时临时添加的过渡样式,在过渡开始时添加，完成时移除
+ * option.widthAuto 指出需要解决width为 auto时的过渡效果
+ * option.heightAuto 指出需要解决height为 auto时的过渡效果
+ * option.startCallback 过渡开始时调用的函数
+ * option.endCallback 过渡结束后调用的函数
  */
-const toggleSpecialTransitionClass = function (el, className, transitionClass, resolveProps, callback) {
-  let toggle
+const toggleSpecialTransitionClass = function (el, className, option) {
+  let toggle = option.type
+
+  const toggleFunction = function () {
+    if (toggle === 'add') {
+      addClass(el, className)
+    } else if (toggle === 'remove') {
+      removeClass(el, className)
+    } else {
+      toggle = toggleClass(el, className)
+    }
+  }
+
+  typeof option.startCallback === 'function' && option.startCallback()
 
   if (el.style.transition !== undefined) {
-    if (typeof resolveProps === 'function') callback = resolveProps
-    if (typeof transitionClass === 'function') callback = transitionClass
-    if (transitionClass instanceof Array) resolveProps = transitionClass
-
-    const stylePropName = 'tw' + className + (transitionClass || '')
+    const stylePropName = 'tw' + className + (option.transitionClass || '')
 
     // 获取当前的dispaly,width,height三个样式值
     const current = {
@@ -116,21 +125,17 @@ const toggleSpecialTransitionClass = function (el, className, transitionClass, r
     // 获取切换className后的三个样式值
     const target = getToggleClassStyles(el, className, 'display', 'width', 'height')
 
-    // 检测是否对width或height过渡
-    const widthAuto = resolveProps.length === 0 || resolveProps.indexOf('width') !== -1
-    const heightAuto = resolveProps.length === 0 || resolveProps.indexOf('height') !== -1
-
     // 修改过渡开始时的辅助样式
     el.style.display = current.display === 'none' ? target.display : current.display
-    if (widthAuto) el.style.width = current.width
-    if (heightAuto) el.style.height = current.height
+    if (option.widthAuto) el.style.width = current.width
+    if (option.heightAuto) el.style.height = current.height
     /* eslint-disable no-unused-vars */
     const forceRepaint = el.offsetWidth
 
     // 设置下一帧时的辅助样式,以触发过渡
     const setNextFrame = function () {
-      if (widthAuto) el.style.width = target.width
-      if (heightAuto) el.style.height = target.height
+      if (option.widthAuto) el.style.width = target.width
+      if (option.heightAuto) el.style.height = target.height
     }
 
     if (window.requestAnimationFrame) {
@@ -140,25 +145,27 @@ const toggleSpecialTransitionClass = function (el, className, transitionClass, r
     }
 
     // 设置过渡中间样式
-    if (typeof transitionClass === 'string') addClass(el, transitionClass)
+    if (typeof option.transitionClass === 'string') addClass(el, option.transitionClass)
 
     // 过渡结束调用函数
     el.removeEventListener('transitionend', el[stylePropName + 'end'])
+
     const end = function () {
       el.setAttribute('style', el[stylePropName] || '')
-      removeClass(el, transitionClass)
+      removeClass(el, option.transitionClass)
       el.removeEventListener('transitionend', end)
       delete el[stylePropName]
       delete el[stylePropName + 'end']
-      callback(toggle)
+      typeof option.endCallback === 'function' && option.endCallback(toggle)
     }
+
     el[stylePropName + 'end'] = end
 
     el.addEventListener('transitionend', end)
-    toggle = toggleClass(el, className)
+    toggleFunction()
   } else {
-    toggle = toggleClass(el, className)
-    callback(toggle)
+    toggleFunction()
+    typeof option.endCallback === 'function' && option.endCallback(toggle)
   }
 }
 

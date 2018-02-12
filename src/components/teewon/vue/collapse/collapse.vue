@@ -18,8 +18,13 @@
     },
     methods: {
       toggleCollapse () {
-        toggleSpecialTransitionClass(this.$el, 'xopen', 'xtoggling', ['height'], (toggle) => {
-          toggle === 'add' ? this.$emit('show') : this.$emit('hide')
+        const vm = this
+        toggleSpecialTransitionClass(vm.$el, 'xopen', {
+          transitionClass: 'xtoggling',
+          heightAuto: true,
+          endCallback (toggle) {
+            toggle === 'add' ? vm.$emit('show') : vm.$emit('hide')
+          }
         })
       }
     },

@@ -12,8 +12,9 @@
 .tw-poppane {
   position: absolute;
   display: none;
+  overflow: hidden;
   opacity: 0;
-  transition: all $time linear;
+  transition: all 1s linear;
   transform: scaleY(.1);
   transform-origin: top center;
 }

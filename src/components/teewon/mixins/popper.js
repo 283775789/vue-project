@@ -2,8 +2,20 @@
  * 类弹出面板需实现的属性
  */
 export default {
-  isPoppane: true,
+  isTwPoppane: true,
+  data () {
+    return {
+      isOpen: false,
+      hasOpenChildPoppane: false
+    }
+  },
   mounted () {
-    document.body.appendChild(this.$el)
+    const popLayer = document.createElement('div')
+    popLayer.setAttribute('class', 'tw-poplayer')
+    popLayer.appendChild(this.$el)
+    this.popLayer = popLayer
+  },
+  beforeDestroy () {
+    this.created && document.body.removeChild(this.popLayer)
   }
 }

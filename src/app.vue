@@ -76,16 +76,33 @@
       <br>
       <br>
       <br>
+      <a class="js-delegate1"  style="background:#00f; color:#fff;">
+        <span>poppane switch</span>
+        <span>poppane delegate</span>
+      </a>
+      <tw-poppane switch=".js-delegate1" switchEvent="click" placement="leftcenter">
+        <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
+          <div>delegate</div>
+        </div>
+      </tw-poppane>
       <a class="js-delegate"  style="float:right; background:#00f; color:#fff;">
         <span>poppane switch</span>
         <span>poppane delegate</span>
       </a>
-      <tw-poppane switch=".js-delegate" switchEvent="click" placement="leftcenter">
+      <tw-poppane id="p1" switch=".js-delegate" placement="leftcenter">
         <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
           <div>delegate</div>
           <div class="js-attribute">delegate</div>
-          <tw-poppane switch=".js-attribute" switchEvent="click" placement="leftcenter">
+          <tw-poppane id="p2" switch=".js-attribute" placement="leftcenter">
             <div style="height:80px; background:#f5f5f5; border:1px solid #ccc;">
+              <div>attribute</div>
+              <div>attribute</div>
+              <div class="js-abc">abc</div>
+              <tw-poppane switch=".js-abc" placement="leftcenter">
+                <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
+                  <div>delegate</div>
+                </div>
+              </tw-poppane>
               <div>attribute</div>
             </div>
           </tw-poppane>

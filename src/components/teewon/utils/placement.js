@@ -5,16 +5,18 @@
  * @param {Element} relatedElement
  * 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
  */
-const placement = function (el, relatedElement) {
+const placement = function (el, relatedElement, relatedWidth) {
   const isdescendant = relatedElement.contains(el)
-  const elWidth = el.offsetWidth
+  let elWidth = el.offsetWidth
   const elHeight = el.offsetHeight
   const relatedRect = relatedElement.getBoundingClientRect()
+  const minWidth = relatedWidth ? relatedRect.width * parseFloat(relatedWidth) / 100 : 0
+
+  if (elWidth < minWidth) elWidth = minWidth
   const overallWidth = relatedRect.left + relatedRect.width + elWidth
   const overallHeight = relatedRect.top + relatedRect.height + elHeight
 
   /* eslint-disable */
-
   const placements = [
     'topleft',
     'topcenter',
@@ -36,6 +38,10 @@ const placement = function (el, relatedElement) {
     // 生成父子关系时的位置信息
     placements.forEach(function (item) {
       matrix[item] = {}
+
+      if(minWidth) {
+        matrix[item].minWidth = minWidth + 'px'
+      }
 
       if (/^top/.test(item)) {
         matrix[item].bottom = relatedRect.height + 'px'
@@ -95,6 +101,10 @@ const placement = function (el, relatedElement) {
     placements.forEach(function (item) {
       matrix[item] = {}
 
+      if(minWidth) {
+        matrix[item].minWidth = minWidth  + 'px'
+      }
+
       if (/^top/.test(item)) {
         matrix[item].top = relatedTop - elHeight + 'px'
       }
@@ -147,14 +157,6 @@ const placement = function (el, relatedElement) {
 
     if (overallWidth > window.innerWidth && relatedRect.left + relatedRect.width > elWidth) {
       matrix.auto.left = relatedLeft + relatedRect.width - elWidth + 'px'
-    }
-  }
-
-  // 如未指定最小宽度，最小宽度取参照元素的宽度
-  let minWidth = window.getComputedStyle(el).minWidth
-  if (minWidth === '0px' || minWidth === parseInt(relatedRect.width) + 'px') {
-    for (const prop in matrix) {
-      matrix[prop].minWidth = parseInt(relatedRect.width) + 'px'
     }
   }
 
