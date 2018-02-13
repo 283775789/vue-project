@@ -1,5 +1,5 @@
 <template>
-  <div ref="poppane" class="tw-poppane" :style="placementStyle">
+  <div ref="poppane" class="tw-poppane">
     <slot></slot>
   </div>
 </template>
@@ -41,7 +41,6 @@
     },
     data () {
       return {
-        placementStyle: null,
         switchEl: null,
         popLayer: null,
         eventTarget: null,
@@ -63,16 +62,15 @@
 
         return false
       },
-      isParentSwitchElement (eventTarget) {
+      someParent (callback, ...agrs) {
         let value = false
         let parent = this.switchEl.parentNode
 
         while (parent) {
           if (parent.twPoppane) {
-            if (parent.twPoppane.switchEl.contains(eventTarget)) {
-              value = true
-              break
-            }
+            value = callback(parent.twPoppane, ...agrs)
+            if (value) break
+
             parent = parent.twPoppane.switchEl.parentNode
           } else {
             parent = parent.parentNode
@@ -81,22 +79,23 @@
 
         return value
       },
-      setParent (hasOpenChildPoppane) {
-        let parent = this.switchEl.parentNode
-
-        while (parent) {
-          if (parent.twPoppane) {
-            parent.twPoppane.hasOpenChildPoppane = hasOpenChildPoppane
-
-            if (!hasOpenChildPoppane && (!this.isSwitchElement(this.eventTarget) || this.isParentSwitchElement(this.eventTarget))) {
-              parent.twPoppane.closePoppane()
-            }
-
-            break
+      isParentSwitchElement (eventTarget) {
+        return this.someParent((parentPoppane, eventTarget) => {
+          if (parentPoppane.switchEl.contains(eventTarget)) {
+            return true
           }
 
-          parent = parent.parentNode
-        }
+          return false
+        }, eventTarget)
+      },
+      setParent (hasOpenChildPoppane) {
+        this.someParent((parentPoppane, hasOpenChildPoppane) => {
+          parentPoppane.hasOpenChildPoppane = hasOpenChildPoppane
+          if (!hasOpenChildPoppane && (!this.isSwitchElement(this.eventTarget) || this.isParentSwitchElement(this.eventTarget))) {
+            parentPoppane.closePoppane()
+          }
+          return true
+        }, hasOpenChildPoppane)
       },
       openPoppane () {
         toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'add'})
@@ -106,7 +105,6 @@
       closePoppane (event) {
         if (event) {
           this.eventTarget = event.target
-
           if (this.hasOpenChildPoppane) return
           if (this.switchEl.contains(event.target)) return
           if (this.$el.contains(event.target) && this.isSwitchElement(event.target)) return
@@ -122,26 +120,30 @@
         this.eventTarget = event.target
 
         !this.created && document.body.appendChild(this.popLayer)
+
         const poppaneEl = this.$el
         const positionEl = this.positionElement === 'auto' ? switchEl : this.positionElement
+        let placementStyle
 
         // 计算位置坐标
         if (!/\bxopen\b/.test(poppaneEl.getAttribute('class'))) {
           setTempStyle(poppaneEl, 'visibility', 'hidden !important', () => {
             addClass(poppaneEl, 'xopen')
-            this.placementStyle = placement(poppaneEl, positionEl, this.relatedMinWidth)[this.placement]
+            placementStyle = placement(poppaneEl, positionEl, this.relatedMinWidth)[this.placement]
             removeClass(poppaneEl, 'xopen')
           })
         }
 
-        this.$nextTick(() => {
-          if (/\bxopen\b/.test(poppaneEl.getAttribute('class'))) {
-            this.closePoppane()
-          } else {
-            this.openPoppane()
-            document.addEventListener(event.type, this.closePoppane)
-          }
-        })
+        for (const name in placementStyle) {
+          this.$el.style[name] = placementStyle[name]
+        }
+
+        if (/\bxopen\b/.test(poppaneEl.getAttribute('class'))) {
+          this.closePoppane()
+        } else {
+          this.openPoppane()
+          document.addEventListener(event.type, this.closePoppane)
+        }
       }
     },
     created () {
