@@ -22,26 +22,26 @@
               <router-link to="/url3"><i class="tw-ico xname"></i><span>Vue组件</span></router-link>
             </li>
             <li>
-              <router-link class="tw-poplink xheader js-menu1" to="/url3"><i class="tw-ico xname"></i><span>导航菜单</span><i class="tw-arrow xdown"></i></router-link>
+              <router-link class="tw-popswitch xheader js-menu1" to="/url3"><i class="tw-ico xname"></i><span>导航菜单</span></router-link>
               <tw-poppane class="js-position" switch=".js-menu1">
                 <ul class="tw-header-menu">
                     <li><a>菜单项1</a></li>
                     <li><a>菜单项2</a></li>
                     <li>
-                      <a class="tw-poplink xheader js-submenu1">菜单项3<i class="tw-arrow xdown"></i></a>
+                      <a class="tw-popswitch xheader js-submenu1">菜单项3</a>
                       <tw-poppane class="js-position2" switch=".js-submenu1" placement="righttop" positionElement=".js-position">
                         <ul class="tw-header-menu">
                           <li><a>子菜单项1</a></li>
                           <li><a>子菜单项2</a></li>
                           <li><a>子菜单项3</a></li>
                           <li>
-                            <a class="tw-poplink xheader js-submenu2">菜单项3<i class="tw-arrow xdown"></i></a>
+                            <a class="tw-popswitch xheader js-submenu2">菜单项3</a>
                             <tw-poppane class="js-position3" switch=".js-submenu2" placement="righttop" positionElement=".js-position2">
                               <ul class="tw-header-menu">
                                 <li><a>子菜单项1</a></li>
                                 <li><a>子菜单项2</a></li>
                                 <li>
-                                  <a class="tw-poplink xheader js-submenu3">菜单项3<i class="tw-arrow xdown"></i></a>
+                                  <a class="tw-popswitch xheader js-submenu3">菜单项3</a>
                                   <tw-poppane switch=".js-submenu3" placement="righttop" positionElement=".js-position3">
                                     <ul class="tw-header-menu">
                                       <li><a>子菜单项1</a></li>
@@ -90,6 +90,14 @@
           </ul>
         </div>
         <div class="tw-header-right">
+          <a class="tw-popswitch xheader xcenter js-rightmenu">右侧内容</a>
+          <tw-poppane switch=".js-rightmenu">
+            <ul class="tw-header-menu">
+              <li><a>菜单项1菜单项1</a></li>
+              <li><a>菜单项2</a></li>
+              <li><a>菜单项3</a></li>
+            </ul>
+          </tw-poppane>
           <!-- <tw-poppane class="xheader xcenter">
             <span slot="link">右侧菜单</span>
             <ul class="tw-header-menu" slot="body">
@@ -112,7 +120,166 @@
       <tw-collapse switch=".js-collapse">
         <div style="height:300px; background:#f00;"></div>
       </tw-collapse>
+      <br>
+      <br>
+      <br>
+      <a class="tw-popswitch js-auto">auto</a>
+      <tw-poppane switch=".js-auto" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-topleft">topleft</a>
+      <tw-poppane switch=".js-topleft" placement="topleft" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-topcenter">topcenter</a>
+      <tw-poppane switch=".js-topcenter" placement="topcenter" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-topright">topright</a>
+      <tw-poppane switch=".js-topright" placement="topright" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-righttop">righttop</a>
+      <tw-poppane switch=".js-righttop" placement="righttop" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-rightcenter">rightcenter</a>
+      <tw-poppane switch=".js-rightcenter" placement="rightcenter" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-rightbottom">rightbottom</a>
+      <tw-poppane switch=".js-rightbottom" placement="rightbottom" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-bottomleft">bottomleft</a>
+      <tw-poppane switch=".js-bottomleft" placement="bottomleft" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-bottomcenter">bottomcenter</a>
+      <tw-poppane switch=".js-bottomcenter" placement="bottomcenter" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-bottomright">bottomright</a>
+      <tw-poppane switch=".js-bottomright" placement="bottomright" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-lefttop">lefttop</a>
+      <tw-poppane switch=".js-lefttop" placement="lefttop" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-leftcenter">leftcenter</a>
+      <tw-poppane switch=".js-leftcenter" placement="leftcenter" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
+      <br>
+      <a class="tw-popswitch js-leftbottom">leftbottom</a>
+      <tw-poppane switch=".js-leftbottom" placement="leftbottom" no-arrow="true" style="border:1px solid #ccc;">
+        <ul>
+          <li><a>子菜单项1</a></li>
+          <li><a>子菜单项2</a></li>
+          <li><a>子菜单项3</a></li>
+          <li><a>子菜单项4</a></li>
+          <li><a>子菜单项5</a></li>
+          <li><a>子菜单项6</a></li>
+        </ul>
+      </tw-poppane>
     </div>
+
     <div ref="test" class="test" @click="testmethod"></div>
     <tw-footer></tw-footer>
   </div>
@@ -158,3 +325,4 @@ export default {
   }
 }
 </script>
+

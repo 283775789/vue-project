@@ -17,6 +17,7 @@
   transition: all $time linear;
   transform: scaleY(.1);
   transform-origin: top center;
+  background: #fff;
 }
 
 // 弹出面板-打开
@@ -39,26 +40,26 @@
   transform-origin: center center;
 }
 
-// 弹出面板-触发链接
-.tw-poplink {
+// 弹出面板-触发开关
+.tw-popswitch {
   position: relative;
   padding-right: 15px;
   cursor: pointer;
 }
 
-// 弹出面板-置左时-触发链接
-.tw-poplink[class*="xleft"] {
+// 弹出面板-置左时-触发开关
+.tw-popswitch[class*="xleft"] {
   padding-right: 0;
   padding-left: 15px;
 }
 
 // 弹出面板-禁用
-.tw-poplink.xdisabled {
+.tw-popswitch.xdisabled {
   @include disable();
 }
 
 // 弹出面板-箭头
-.tw-poplink > .tw-arrow {
+.tw-popswitch > .tw-arrow {
   position: absolute;
   top: 50%;
   right: 2px;
@@ -66,17 +67,22 @@
   transition: all $time linear;
 }
 
-.tw-poplink > .tw-arrow.xleft,
-.tw-poplink > .tw-arrow.xright {
+.tw-popswitch > .tw-arrow.xleft,
+.tw-popswitch > .tw-arrow.xright {
   margin-top: -5px;
 }
 
-.tw-poplink[class*="xleft"] > .tw-arrow {
+.tw-popswitch[class*="xleft"] > .tw-arrow {
   right: auto;
   left: 0;
 }
 
-.tw-poplink.xopen > .tw-arrow,
-.tw-poplink.xhover:hover > .tw-arrow {
+.tw-popswitch.xopen > .tw-arrow,
+.tw-popswitch.xhover:hover > .tw-arrow {
   transform: rotate(180deg);
+}
+
+// 弹出面板-触发开关-无箭头
+.tw-popswitch.xnoarrow {
+  padding-right:0;
 }

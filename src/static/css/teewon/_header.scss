@@ -79,17 +79,21 @@ $header-navlink-px: $padding-small !default;
   }
 }
 
-// 头部-弹出按钮
-.tw-poplink.xheader,
-.tw-nav.xheader > li > .tw-poplink.xheader {
+// 头部-弹出开关
+.tw-popswitch.xheader {
+  display: block;
+}
+
+.tw-popswitch.xheader,
+.tw-nav.xheader > li > .tw-popswitch.xheader {
   padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
 }
 
-.tw-poplink.xheader > .tw-arrow {
+.tw-popswitch.xheader > .tw-arrow {
   right: $header-navlink-px;
 }
 
-.tw-poplink.xheader.xopen {
+.tw-popswitch.xheader.xopen {
   background: $header-navlink-hover-bg;
 }
 
