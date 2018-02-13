@@ -1,11 +1,17 @@
 /**
  * 返回两个元素间位置相关的信息
- * @param {Element} el
+ * @param {Element,String} el
  * 目标元素
  * @param {Element} relatedElement
  * 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
  */
 const placement = function (el, relatedElement, relatedWidth) {
+  if (typeof relatedElement === 'string') {
+    relatedElement = document.querySelector(relatedElement)
+  }
+
+  if (!(relatedElement instanceof window.Element)) throw new TypeError('位置参照元素为空，请检查指定的元素或选择器是否正确。')
+
   const isdescendant = relatedElement.contains(el)
   let elWidth = el.offsetWidth
   const elHeight = el.offsetHeight

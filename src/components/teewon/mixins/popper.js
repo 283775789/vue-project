@@ -14,15 +14,15 @@ export default {
     popLayer.setAttribute('class', 'tw-poplayer')
     popLayer.appendChild(this.$el)
     this.popLayer = popLayer
+    this.$el.twPoppane = this
   },
   beforeDestroy () {
     this.created && document.body.removeChild(this.popLayer)
   },
   watch: {
-    open (value) {
-      if (value) {
-        this.switchEl.isTwSwitch = true
-      }
+    switchEl (value, oldvalue) {
+      oldvalue && delete oldvalue.twSwitch
+      value.twSwitch = this
     }
   }
 }

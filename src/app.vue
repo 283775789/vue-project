@@ -22,6 +22,53 @@
               <router-link to="/url3"><i class="tw-ico xname"></i><span>Vue组件</span></router-link>
             </li>
             <li>
+              <router-link class="tw-poplink xheader js-menu1" to="/url3"><i class="tw-ico xname"></i><span>导航菜单</span><i class="tw-arrow xdown"></i></router-link>
+              <tw-poppane class="js-position" switch=".js-menu1">
+                <ul class="tw-header-menu">
+                    <li><a>菜单项1</a></li>
+                    <li><a>菜单项2</a></li>
+                    <li>
+                      <a class="tw-poplink xheader js-submenu1">菜单项3<i class="tw-arrow xdown"></i></a>
+                      <tw-poppane class="js-position2" switch=".js-submenu1" placement="righttop" positionElement=".js-position">
+                        <ul class="tw-header-menu">
+                          <li><a>子菜单项1</a></li>
+                          <li><a>子菜单项2</a></li>
+                          <li><a>子菜单项3</a></li>
+                          <li>
+                            <a class="tw-poplink xheader js-submenu2">菜单项3<i class="tw-arrow xdown"></i></a>
+                            <tw-poppane class="js-position3" switch=".js-submenu2" placement="righttop" positionElement=".js-position2">
+                              <ul class="tw-header-menu">
+                                <li><a>子菜单项1</a></li>
+                                <li><a>子菜单项2</a></li>
+                                <li>
+                                  <a class="tw-poplink xheader js-submenu3">菜单项3<i class="tw-arrow xdown"></i></a>
+                                  <tw-poppane switch=".js-submenu3" placement="righttop" positionElement=".js-position3">
+                                    <ul class="tw-header-menu">
+                                      <li><a>子菜单项1</a></li>
+                                      <li><a>子菜单项2</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项4</a></li>
+                                      <li><a>子菜单项5</a></li>
+                                      <li><a>子菜单项6</a></li>
+                                    </ul>
+                                  </tw-poppane>
+                                </li>
+                                <li><a>子菜单项4</a></li>
+                                <li><a>子菜单项5</a></li>
+                                <li><a>子菜单项6</a></li>
+                              </ul>
+                            </tw-poppane>
+                          </li>
+                          <li><a>子菜单项5</a></li>
+                          <li><a>子菜单项6</a></li>
+                        </ul>
+                      </tw-poppane>
+                      </li>
+                    <li><a>菜单项4</a></li>
+                  </ul>
+              </tw-poppane>
+            </li>
+            <li>
              <!-- <tw-poppane class="xheader" trigger="click">
               <span slot="link">下拉菜单</span>
               <ul slot="body" class="tw-header-menu">
@@ -61,66 +108,10 @@
       <label class="tw-optbox xradio"><input type="radio" name="radio-demo" checked disabled /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" /><span slot="link">选项文本</span></label>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <select style="width:120px;">
-        <option value="dd">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</option>
-        <option value="dd">aaaa</option>
-        <option value="dd">aaaa</option>
-      </select>
-            <br>
-      <br>
-      <br>
-      <br>
-      <a class="js-delegate1"  style="background:#00f; color:#fff;">
-        <span>poppane switch</span>
-        <span>poppane delegate</span>
-      </a>
-      <tw-poppane switch=".js-delegate1" switchEvent="click">
-        <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
-          <div>delegate</div>
-        </div>
-      </tw-poppane>
-      <a class="js-delegate"  style="float:right; background:#00f; color:#fff;">
-        <span>poppane switch</span>
-        <span>poppane delegate</span>
-      </a>
-      <tw-poppane id="p1" switch=".js-delegate" placement="leftcenter">
-        <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
-          <div>delegate</div>
-          <div class="js-attribute">delegate</div>
-          <tw-poppane id="p2" switch=".js-attribute" placement="leftcenter">
-            <div style="height:80px; background:#f5f5f5; border:1px solid #ccc;">
-              <div>attribute</div>
-              <div>attribute</div>
-              <div class="js-abc">abc</div>
-              <tw-poppane switch=".js-abc" placement="leftcenter">
-                <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
-                  <div>delegate</div>
-                </div>
-              </tw-poppane>
-              <div>attribute</div>
-            </div>
-          </tw-poppane>
-        </div>
-      </tw-poppane>
-      <br>
-      <br>
-      <a class="js-collapse">
-        <div>
-          aaa
-          <br>
-          <span>333</span>
-        </div>
-      </a>
+      <a class="js-collapse">下拉列表</a>
       <tw-collapse switch=".js-collapse">
         <div style="height:300px; background:#f00;"></div>
       </tw-collapse>
-
     </div>
     <div ref="test" class="test" @click="testmethod"></div>
     <tw-footer></tw-footer>

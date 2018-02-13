@@ -19,11 +19,11 @@
         type: String,
         required: true
       },
-      switchEvent: {
-        type: String,
-        default: 'click'
-      },
       placement: {
+        type: String,
+        default: 'auto'
+      },
+      positionElement: {
         type: String,
         default: 'auto'
       },
@@ -44,84 +44,108 @@
         placementStyle: null,
         switchEl: null,
         popLayer: null,
+        eventTarget: null,
         created: false,
         open: false,
         hasOpenChildPoppane: false
       }
     },
     methods: {
-      setParent (hasOpenChildPoppane) {
-        let parent = this.$parent
+      isSwitchElement (el) {
+        let parent = el
+
+        do {
+          if (parent.twSwitch) {
+            return true
+          }
+          parent = parent.parentNode
+        } while (parent)
+
+        return false
+      },
+      isParentSwitchElement (eventTarget) {
+        let value = false
+        let parent = this.switchEl.parentNode
+
         while (parent) {
-          if (parent.$options.isTwPoppane) {
-            parent.hasOpenChildPoppane = hasOpenChildPoppane
+          if (parent.twPoppane) {
+            if (parent.twPoppane.switchEl.contains(eventTarget)) {
+              value = true
+              break
+            }
+            parent = parent.twPoppane.switchEl.parentNode
+          } else {
+            parent = parent.parentNode
+          }
+        }
+
+        return value
+      },
+      setParent (hasOpenChildPoppane) {
+        let parent = this.switchEl.parentNode
+
+        while (parent) {
+          if (parent.twPoppane) {
+            parent.twPoppane.hasOpenChildPoppane = hasOpenChildPoppane
+
+            if (!hasOpenChildPoppane && (!this.isSwitchElement(this.eventTarget) || this.isParentSwitchElement(this.eventTarget))) {
+              parent.twPoppane.closePoppane()
+            }
+
             break
           }
 
-          parent = parent.$parent
+          parent = parent.parentNode
         }
       },
       openPoppane () {
         toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'add'})
+        this.open = true
+        this.setParent(true)
       },
       closePoppane (event) {
         if (event) {
+          this.eventTarget = event.target
+
           if (this.hasOpenChildPoppane) return
           if (this.switchEl.contains(event.target)) return
-          if (this.$el.contains(event.target) && event.target.isTwSwitch) {
-            return
-          }
-          document.removeEventListener(event.type, this.closePoppane)
+          if (this.$el.contains(event.target) && this.isSwitchElement(event.target)) return
         }
 
         toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'remove'})
         this.open = false
-
-        let parent = this.$parent
-        while (parent) {
-          if (parent.$options.isTwPoppane) {
-            parent.hasOpenChildPoppane = false
-            break
-          }
-
-          parent = parent.$parent
-        }
+        this.setParent(false)
+        document.removeEventListener('click', this.closePoppane)
       },
       togglePoppane (switchEl, event) {
-        this.open = !this.open
         this.switchEl = switchEl
-
-        this.setParent(this.open)
+        this.eventTarget = event.target
 
         !this.created && document.body.appendChild(this.popLayer)
-
         const poppaneEl = this.$el
+        const positionEl = this.positionElement === 'auto' ? switchEl : this.positionElement
+
         // 计算位置坐标
         if (!/\bxopen\b/.test(poppaneEl.getAttribute('class'))) {
           setTempStyle(poppaneEl, 'visibility', 'hidden !important', () => {
             addClass(poppaneEl, 'xopen')
-            this.placementStyle = placement(poppaneEl, switchEl, this.relatedMinWidth)[this.placement]
+            this.placementStyle = placement(poppaneEl, positionEl, this.relatedMinWidth)[this.placement]
             removeClass(poppaneEl, 'xopen')
           })
         }
 
         this.$nextTick(() => {
-          if (this.open) {
+          if (/\bxopen\b/.test(poppaneEl.getAttribute('class'))) {
+            this.closePoppane()
+          } else {
             this.openPoppane()
             document.addEventListener(event.type, this.closePoppane)
-          } else {
-            this.closePoppane()
-            document.removeEventListener(event.type, this.closePoppane)
           }
         })
       }
     },
     created () {
-      if (this.switchEvent === 'click') {
-        delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane, true)
-      } else {
-        delegate(document, 'mouseover.' + this._uid, this.switch, this.togglePoppane, true)
-      }
+      delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane, true)
     },
     beforeDestroy () {
       delegateOff(document, 'click.' + this._uid, true)
