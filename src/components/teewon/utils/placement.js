@@ -160,6 +160,10 @@ const placement = function (el, relatedElement, relatedWidth) {
     }
   }
 
+  if(minWidth) {
+    matrix.auto.minWidth = minWidth  + 'px'
+  }
+
   return matrix
 }
 

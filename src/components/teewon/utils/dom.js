@@ -90,7 +90,7 @@ const getToggleClassStyles = function (el, className, ...props) {
  * option.startCallback 过渡开始时调用的函数
  * option.endCallback 过渡结束后调用的函数
  */
-const toggleSpecialTransitionClass = function (el, className, option) {
+const toggleSpecialTransitionClass = function (el, className, option = {}) {
   let toggle = option.type
 
   const toggleFunction = function () {

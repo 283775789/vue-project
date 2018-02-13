@@ -80,7 +80,7 @@
         <span>poppane switch</span>
         <span>poppane delegate</span>
       </a>
-      <tw-poppane switch=".js-delegate1" switchEvent="click" placement="leftcenter">
+      <tw-poppane switch=".js-delegate1" switchEvent="click">
         <div style="height:160px; background:#f5f5f5; border:1px solid #ccc;">
           <div>delegate</div>
         </div>

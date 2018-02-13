@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { trigger, delegate, delegateOff } from '@tw/utils/event'
+  import { delegate, delegateOff } from '@tw/utils/event'
   import { addClass, removeClass, setTempStyle, toggleSpecialTransitionClass } from '@tw/utils/dom'
   import { placement } from '@tw/utils/placement'
   // import { hasAncestor } from '@tw/utils/utils'
@@ -21,7 +21,7 @@
       },
       switchEvent: {
         type: String,
-        default: 'hover'
+        default: 'click'
       },
       placement: {
         type: String,
@@ -42,6 +42,7 @@
     data () {
       return {
         placementStyle: null,
+        switchEl: null,
         popLayer: null,
         created: false,
         open: false,
@@ -49,20 +50,48 @@
       }
     },
     methods: {
-      togglePoppane (switchEl, event) {
-        this.open = !this.open
-
+      setParent (hasOpenChildPoppane) {
         let parent = this.$parent
-
-        // 检查是否有父辈类poppane组件
         while (parent) {
           if (parent.$options.isTwPoppane) {
-            parent.hasOpenChildPoppane = this.open
+            parent.hasOpenChildPoppane = hasOpenChildPoppane
             break
           }
 
           parent = parent.$parent
         }
+      },
+      openPoppane () {
+        toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'add'})
+      },
+      closePoppane (event) {
+        if (event) {
+          if (this.hasOpenChildPoppane) return
+          if (this.switchEl.contains(event.target)) return
+          if (this.$el.contains(event.target) && event.target.isTwSwitch) {
+            return
+          }
+          document.removeEventListener(event.type, this.closePoppane)
+        }
+
+        toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'remove'})
+        this.open = false
+
+        let parent = this.$parent
+        while (parent) {
+          if (parent.$options.isTwPoppane) {
+            parent.hasOpenChildPoppane = false
+            break
+          }
+
+          parent = parent.$parent
+        }
+      },
+      togglePoppane (switchEl, event) {
+        this.open = !this.open
+        this.switchEl = switchEl
+
+        this.setParent(this.open)
 
         !this.created && document.body.appendChild(this.popLayer)
 
@@ -75,6 +104,16 @@
             removeClass(poppaneEl, 'xopen')
           })
         }
+
+        this.$nextTick(() => {
+          if (this.open) {
+            this.openPoppane()
+            document.addEventListener(event.type, this.closePoppane)
+          } else {
+            this.closePoppane()
+            document.removeEventListener(event.type, this.closePoppane)
+          }
+        })
       }
     },
     created () {

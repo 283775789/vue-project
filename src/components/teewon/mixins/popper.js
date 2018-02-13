@@ -17,5 +17,12 @@ export default {
   },
   beforeDestroy () {
     this.created && document.body.removeChild(this.popLayer)
+  },
+  watch: {
+    open (value) {
+      if (value) {
+        this.switchEl.isTwSwitch = true
+      }
+    }
   }
 }
