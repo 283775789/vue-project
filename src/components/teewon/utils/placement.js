@@ -10,7 +10,7 @@ const placement = function (el, relatedElement, relatedWidth) {
     relatedElement = document.querySelector(relatedElement)
   }
 
-  if (!(relatedElement instanceof window.Element)) throw new TypeError('位置参照元素为空，请检查指定的元素或选择器是否正确。')
+  if (relatedElement.nodeType !== 1) throw new TypeError('位置参照元素为空，请检查指定的元素或选择器是否正确。')
 
   const isdescendant = relatedElement.contains(el)
   let elWidth = el.offsetWidth

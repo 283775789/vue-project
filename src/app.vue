@@ -44,12 +44,25 @@
                                   <a class="tw-popswitch xheader js-submenu3">菜单项3</a>
                                   <tw-poppane switch=".js-submenu3" placement="righttop" positionElement=".js-position3">
                                     <ul class="tw-header-menu">
-                                      <li><a>子菜单项1</a></li>
-                                      <li><a>子菜单项2</a></li>
                                       <li><a>子菜单项3</a></li>
-                                      <li><a>子菜单项4</a></li>
-                                      <li><a>子菜单项5</a></li>
-                                      <li><a>子菜单项6</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项9</a></li>
+                                    </ul>
+                                  </tw-poppane>
+                                </li>
+                                <li>
+                                  <a class="tw-popswitch xheader js-submenu4">用户中心</a>
+                                  <tw-poppane switch=".js-submenu4" placement="righttop" positionElement=".js-position3">
+                                    <ul class="tw-header-menu">
+                                      <li><a>个人信息</a></li>
+                                      <li><a>个人积分</a></li>
+                                      <li><a>个人排名</a></li>
+                                      <li><a>操作日志</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项9</a></li>
                                     </ul>
                                   </tw-poppane>
                                 </li>
@@ -268,7 +281,7 @@
       </tw-poppane>
       <br>
       <a class="tw-popswitch js-leftbottom">leftbottom</a>
-      <tw-poppane switch=".js-leftbottom" placement="leftbottom" no-arrow="true" style="border:1px solid #ccc;">
+      <tw-poppane switch=".js-leftbottom" placement="leftbottom" :no-arrow="true" style="border:1px solid #ccc;">
         <ul>
           <li><a>子菜单项1</a></li>
           <li><a>子菜单项2</a></li>
@@ -281,7 +294,7 @@
     </div>
 
     <div ref="test" class="test" @click="testmethod"></div>
-    <tw-footer></tw-footer>
+    <tw-footer @click.native.stop="demo"></tw-footer>
   </div>
 </template>
 

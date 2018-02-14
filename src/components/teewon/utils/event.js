@@ -59,7 +59,7 @@ const delegate = function (target, eventName, source, useCapture = false, callba
 
     if (typeof source === 'string') {
       elemets = document.querySelectorAll(source)
-    } else if (source instanceof window.Node) {
+    } else if (source.nodeType === 1) {
       elemets.push(source)
     }
 

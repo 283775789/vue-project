@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { delegate, delegateOff } from '@tw/utils/event'
+  import { trigger, delegate, delegateOff } from '@tw/utils/event'
   import { addClass, removeClass, setTempStyle, toggleSpecialTransitionClass } from '@tw/utils/dom'
   import { placement } from '@tw/utils/placement'
 
@@ -56,7 +56,7 @@
         let parent = el
 
         do {
-          if (parent.twSwitch) {
+          if (parent.twPopSwitch) {
             return true
           }
           parent = parent.parentNode
@@ -64,14 +64,14 @@
 
         return false
       },
-      someParent (callback, ...agrs) {
-        let value = false
+      eachParent (callback, ...agrs) {
+        let returnValue = null
         let parent = this.switchEl.parentNode
 
         while (parent) {
           if (parent.twPoppane) {
-            value = callback(parent.twPoppane, ...agrs)
-            if (value) break
+            returnValue = callback(parent.twPoppane, ...agrs)
+            if (returnValue.break) break
 
             parent = parent.twPoppane.switchEl.parentNode
           } else {
@@ -79,42 +79,43 @@
           }
         }
 
-        return value
+        return returnValue !== null ? returnValue.value : false
       },
       isParentSwitchElement (eventTarget) {
-        return this.someParent((parentPoppane, eventTarget) => {
+        return this.eachParent((parentPoppane, eventTarget) => {
           if (parentPoppane.switchEl.contains(eventTarget)) {
-            return true
+            return {
+              break: true,
+              value: true
+            }
           }
 
-          return false
+          return {
+            break: false,
+            value: false
+          }
         }, eventTarget)
-      },
-      isChildSwitchElement (eventTarget) {
-        let value = false
-        let parent = this.switchEl.parentNode
-
-        while (parent) {
-          if (parent.twPoppane) {
-            if (value) break
-
-            parent = parent.twPoppane.switchEl.parentNode
-          } else {
-            parent = parent.parentNode
-          }
-        }
-
-        return value
       },
       setParent (hasOpenChildPoppane) {
         const vm = this
-        this.someParent((parentPoppane, hasOpenChildPoppane) => {
+
+        this.eachParent((parentPoppane, hasOpenChildPoppane) => {
           parentPoppane.hasOpenChildPoppane = hasOpenChildPoppane
-          if (!hasOpenChildPoppane && (!vm.isSwitchElement(vm.eventTarget) || vm.isParentSwitchElement(vm.eventTarget) || !vm.switchEl.contains(vm.eventTarget))) {
+
+          if (!hasOpenChildPoppane && !parentPoppane.switchEl.contains(vm.eventTarget) && (!vm.isSwitchElement(vm.eventTarget) || vm.isParentSwitchElement(vm.eventTarget) || !parentPoppane.$el.contains(vm.eventTarget))) {
             parentPoppane.closePoppane()
           }
-          return true
+
+          return {break: true}
         }, hasOpenChildPoppane)
+      },
+      getParent () {
+        return this.eachParent((parentPoppane) => {
+          return {
+            break: true,
+            value: parentPoppane
+          }
+        })
       },
       openPoppane () {
         toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'add'})
@@ -134,13 +135,25 @@
         removeClass(this.switchEl, 'xopen')
         this.open = false
         this.setParent(false)
-        document.removeEventListener('click', this.closePoppane)
+        document.removeEventListener('click', this.closePoppane, true)
       },
       togglePoppane (switchEl, event) {
         this.switchEl = switchEl
         this.eventTarget = event.target
 
         this.created || document.body.appendChild(this.popLayer)
+
+        if (!switchEl.twPopSwitch) {
+          this.noArrow = true
+          this.initSwitch()
+          let parent = this.getParent()
+
+          while (parent) {
+            parent.hasOpenChildPoppane = true
+            trigger(parent.switchEl, 'click')
+            parent = parent.getParent()
+          }
+        }
 
         const poppaneEl = this.$el
         const positionEl = this.positionElement === 'auto' ? switchEl : this.positionElement
@@ -163,26 +176,31 @@
           this.closePoppane()
         } else {
           this.openPoppane()
-          document.addEventListener(event.type, this.closePoppane)
+          document.addEventListener('click', this.closePoppane, true)
         }
       },
-      handleSwitchStyle () {
+      initSwitch () {
         const switchEls = document.querySelectorAll(this.switch)
+        let switchEl
 
-        switchEls.forEach(element => {
+        for (let i = 0; i < switchEls.length; i++) {
+          switchEl = switchEls[i]
+
           if (!this.noArrow) {
             const arrow = document.createElement('i')
             arrow.setAttribute('class', 'tw-arrow ' + ({a: 'xdown', t: 'xdown', r: 'xright', b: 'xdown', l: 'xleft'})[this.placement.substring(0, 1)])
-            element.appendChild(arrow)
-            addClass(element, 'x' + this.placement)
+            switchEl.appendChild(arrow)
+            addClass(switchEl, 'x' + this.placement)
           } else {
-            addClass(element, 'xnoarrow')
+            addClass(switchEl, 'xnoarrow')
           }
-        })
+
+          switchEl.twPopSwitch = this
+        }
       }
     },
     created () {
-      delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane, true)
+      delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane)
     },
     mounted () {
       const popLayer = document.createElement('div')
@@ -190,17 +208,11 @@
       popLayer.appendChild(this.$el)
       this.popLayer = popLayer
       this.$el.twPoppane = this
-      this.handleSwitchStyle()
+      this.initSwitch()
     },
     beforeDestroy () {
-      delegateOff(document, 'click.' + this._uid, true)
+      delegateOff(document, 'click.' + this._uid)
       this.created && document.body.removeChild(this.popLayer)
-    },
-    watch: {
-      switchEl (value, oldvalue) {
-        oldvalue && delete oldvalue.twSwitch
-        value.twSwitch = this
-      }
     }
   }
 </script>
