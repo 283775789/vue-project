@@ -4,12 +4,14 @@ import Footer from '@tw/vue/footer/footer'
 import Menu from '@tw/vue/menu/menu'
 import Poppane from '@tw/vue/poppane/poppane'
 import Collapse from '@tw/vue/collapse/collapse'
+import CollapseGroup from '@tw/vue/collapse/collapse-group'
 
 const components = [
   Footer,
   Menu,
   Poppane,
-  Collapse
+  Collapse,
+  CollapseGroup
 ]
 
 components.forEach(function (component) {

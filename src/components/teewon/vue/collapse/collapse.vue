@@ -17,13 +17,12 @@
       }
     },
     methods: {
-      toggleCollapse () {
-        const vm = this
-        toggleSpecialTransitionClass(vm.$el, 'xopen', {
+      toggleCollapse (switchEl) {
+        toggleSpecialTransitionClass(this.$el, 'xopen', {
           transitionClass: 'xtoggling',
           heightAuto: true,
           endCallback (toggle) {
-            toggle === 'add' ? vm.$emit('show') : vm.$emit('hide')
+            toggle === 'add' ? this.$emit('shown') : this.$emit('hidden')
           }
         })
       }

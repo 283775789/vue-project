@@ -129,10 +129,19 @@
       <label class="tw-optbox xradio"><input type="radio" name="radio-demo" checked disabled /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span slot="link">选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" /><span slot="link">选项文本</span></label>
+      <br>
+      <br>
       <a class="js-collapse">下拉列表</a>
       <tw-collapse switch=".js-collapse">
-        <div style="height:300px; background:#f00;"></div>
+        <div style="height:100px; background:#f00;"></div>
       </tw-collapse>
+      <br>
+      <tw-collapse-group @show="demoMethod">
+        <a class="js-collapse">下拉列表</a>
+        <tw-collapse switch=".js-collapse" @show="demoMethod">
+          <div style="height:100px; background:#f00;"></div>
+        </tw-collapse>
+      </tw-collapse-group>
       <br>
       <br>
       <br>
