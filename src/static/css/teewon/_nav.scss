@@ -28,7 +28,9 @@ $nav-item-ico-mr: $margin-step - 1 !default;
   position: relative;
 }
 
-.tw-nav > li > a > .tw-ico {
+.tw-nav > li > a > .tw-ico,
+.tw-nav > li > a > .tw-font {
+  line-height: 1;
   margin-right: $nav-item-ico-mr;
 }
 

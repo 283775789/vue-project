@@ -3,7 +3,12 @@
 $content-bg: #fff !default;
 
 .tw-body {
+  position: relative;
   @include make-container($paddingY:true);
   min-height: 450px;
   background: $content-bg;
+}
+
+.tw-body > .tw-multicol {
+  margin: -$padding-medium;
 }

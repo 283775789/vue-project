@@ -1,4 +1,6 @@
 /* 多栏布局 */
+$multicol-content-padding:$padding-medium;
+
 .tw-multicol {
   @include clearfix;
 }
@@ -26,4 +28,5 @@
 
 .tw-multicol-cell-cell {
   display: table-cell;
+  padding: $multicol-content-padding;
 }

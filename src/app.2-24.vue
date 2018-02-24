@@ -22,12 +22,63 @@
               <router-link to="/url3"><i class="tw-font xico"></i><span>Vue组件</span></router-link>
             </li>
             <li>
-              <router-link class="tw-popswitch xheader js-menu1" to="/url3"><i class="tw-font xico"></i><span>项目</span></router-link>
+              <router-link class="tw-popswitch xheader js-menu1" to="/url3"><i class="tw-font xico"></i><span>导航菜单</span></router-link>
               <tw-poppane class="js-position" switch=".js-menu1">
                 <ul class="tw-header-menu">
-                    <li><a>新项目</a></li>
-                    <li><a>项目库</a></li>
-                </ul>
+                    <li><a>菜单项1</a></li>
+                    <li><a>菜单项2</a></li>
+                    <li>
+                      <a class="tw-popswitch xheader js-submenu1">菜单项3</a>
+                      <tw-poppane class="js-position2" switch=".js-submenu1" placement="righttop" positionElement=".js-position">
+                        <ul class="tw-header-menu">
+                          <li><a>子菜单项1</a></li>
+                          <li><a>子菜单项2</a></li>
+                          <li><a>子菜单项3</a></li>
+                          <li>
+                            <a class="tw-popswitch xheader js-submenu2">菜单项3</a>
+                            <tw-poppane class="js-position3" switch=".js-submenu2" placement="righttop" positionElement=".js-position2">
+                              <ul class="tw-header-menu">
+                                <li><a>子菜单项1</a></li>
+                                <li><a>子菜单项2</a></li>
+                                <li>
+                                  <a class="tw-popswitch xheader js-submenu3">菜单项3</a>
+                                  <tw-poppane switch=".js-submenu3" placement="righttop" positionElement=".js-position3">
+                                    <ul class="tw-header-menu">
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项9</a></li>
+                                    </ul>
+                                  </tw-poppane>
+                                </li>
+                                <li>
+                                  <a class="tw-popswitch xheader js-submenu4">用户中心</a>
+                                  <tw-poppane switch=".js-submenu4" placement="righttop" positionElement=".js-position3">
+                                    <ul class="tw-header-menu">
+                                      <li><a>个人信息</a></li>
+                                      <li><a>个人积分</a></li>
+                                      <li><a>个人排名</a></li>
+                                      <li><a>操作日志</a></li>
+                                      <li><a>子菜单项3</a></li>
+                                      <li><a>子菜单项9</a></li>
+                                    </ul>
+                                  </tw-poppane>
+                                </li>
+                                <li><a>子菜单项4</a></li>
+                                <li><a>子菜单项5</a></li>
+                                <li><a>子菜单项6</a></li>
+                              </ul>
+                            </tw-poppane>
+                          </li>
+                          <li><a>子菜单项5</a></li>
+                          <li><a>子菜单项6</a></li>
+                        </ul>
+                      </tw-poppane>
+                      </li>
+                    <li><a>菜单项4</a></li>
+                  </ul>
               </tw-poppane>
             </li>
             <li>
