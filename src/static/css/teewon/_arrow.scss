@@ -1,20 +1,14 @@
 /* 箭头 */
-.tw-arrow.xup {
-  @include triangle(up);
-  transform-origin: 50% 80%;
+$arrow-color:#999 !default;
+
+.tw-arrow {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right:1px solid $arrow-color;
+  border-bottom:1px solid $arrow-color;
 }
 
 .tw-arrow.xright {
-  @include triangle(right);
-  transform-origin: 30% 50%;
-}
-
-.tw-arrow.xdown {
-  @include triangle(down);
-  transform-origin: 50% 30%;
-}
-
-.tw-arrow.xleft {
-  @include triangle(left);
-  transform-origin: 80% 50%;
+  transform: rotate(-45deg);
 }

@@ -59,7 +59,7 @@
 }
 
 // 弹出面板-箭头
-.tw-popswitch > .tw-arrow {
+.tw-popswitch > .tw-triangle {
   position: absolute;
   top: 50%;
   right: 2px;
@@ -67,18 +67,18 @@
   transition: all $time linear;
 }
 
-.tw-popswitch > .tw-arrow.xleft,
-.tw-popswitch > .tw-arrow.xright {
+.tw-popswitch > .tw-triangle.xleft,
+.tw-popswitch > .tw-triangle.xright {
   margin-top: -5px;
 }
 
-.tw-popswitch[class*="xleft"] > .tw-arrow {
+.tw-popswitch[class*="xleft"] > .tw-triangle {
   right: auto;
   left: 0;
 }
 
-.tw-popswitch.xopen > .tw-arrow,
-.tw-popswitch.xhover:hover > .tw-arrow {
+.tw-popswitch.xopen > .tw-triangle,
+.tw-popswitch.xhover:hover > .tw-triangle {
   transform: rotate(180deg);
 }
 

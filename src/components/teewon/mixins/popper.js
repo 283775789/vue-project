@@ -4,7 +4,6 @@
 import { addClass } from '@tw/utils/dom'
 
 export default {
-  isTwPoppane: true,
   props: {
     noArrow: {
       type: Boolean,
@@ -28,7 +27,7 @@ export default {
       switchEls.forEach(element => {
         if (!this.noArrow) {
           const arrow = document.createElement('i')
-          arrow.setAttribute('class', 'tw-arrow ' + ({a: 'xdown', t: 'xdown', r: 'xright', b: 'xdown', l: 'xleft'})[this.placement.substring(0, 1)])
+          arrow.setAttribute('class', 'tw-triangle ' + ({a: 'xdown', t: 'xdown', r: 'xright', b: 'xdown', l: 'xleft'})[this.placement.substring(0, 1)])
           element.appendChild(arrow)
           addClass(element, 'x' + this.placement)
         } else {

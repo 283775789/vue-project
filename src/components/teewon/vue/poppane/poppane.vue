@@ -188,7 +188,7 @@
 
           if (!this.noArrow) {
             const arrow = document.createElement('i')
-            arrow.setAttribute('class', 'tw-arrow ' + ({a: 'xdown', t: 'xdown', r: 'xright', b: 'xdown', l: 'xleft'})[this.placement.substring(0, 1)])
+            arrow.setAttribute('class', 'tw-triangle ' + ({a: 'xdown', t: 'xdown', r: 'xright', b: 'xdown', l: 'xleft'})[this.placement.substring(0, 1)])
             switchEl.appendChild(arrow)
             addClass(switchEl, 'x' + this.placement)
           } else {

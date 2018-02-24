@@ -6,7 +6,7 @@
 
 <script>
   import { delegate, delegateOff } from '@tw/utils/event'
-  import { toggleSpecialTransitionClass } from '@tw/utils/dom'
+  import { addClass, removeClass, toggleSpecialTransitionClass } from '@tw/utils/dom'
 
   export default {
     name: 'twCollapse',
@@ -16,15 +16,46 @@
         required: true
       }
     },
+    data () {
+      return {
+        switchEl: null
+      }
+    },
     methods: {
-      toggleCollapse (switchEl) {
+      openCollapse () {
+        const vm = this
         toggleSpecialTransitionClass(this.$el, 'xopen', {
+          type: 'add',
           transitionClass: 'xtoggling',
           heightAuto: true,
-          endCallback (toggle) {
-            toggle === 'add' ? this.$emit('shown') : this.$emit('hidden')
+          endCallback () {
+            vm.$emit('shown')
           }
         })
+        addClass(this.switchEl, 'xopen')
+      },
+      closeCollapse () {
+        const vm = this
+        toggleSpecialTransitionClass(this.$el, 'xopen', {
+          type: 'remove',
+          transitionClass: 'xtoggling',
+          heightAuto: true,
+          endCallback () {
+            vm.$emit('hidden')
+          }
+        })
+        removeClass(this.switchEl, 'xopen')
+      },
+      toggleCollapse (switchEl) {
+        this.switchEl = switchEl
+
+        if (/\bxopen\b/.test(this.$el.getAttribute('class'))) {
+          this.$emit('hide')
+          this.closeCollapse()
+        } else {
+          this.$emit('show')
+          this.openCollapse()
+        }
       }
     },
     created () {

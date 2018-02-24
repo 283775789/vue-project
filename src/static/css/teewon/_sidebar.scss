@@ -1,0 +1,77 @@
+/* 侧边栏 */
+$sidebar-width:200px !default;
+$sidebar-lineheight:50px !default;
+$sidebar-collapse-lineheight: 40px !default;
+$sidebar-collapse-bg: #fff !default;
+$sidebar-hover-bg: $color-main-hover !default;
+$sidebar-active-bg: $color-main-active !default;
+$sidebar-reversal-color:#fff !default;
+$sidebar-link-divider-space:$padding-step !default;
+$sidebar-link-divider:1px dashed $color-border-main !default;
+$sidebar-icon-font-size:20px !default;
+$sidebar-icon-font-color:$color-auxiliary !default;
+
+// 侧边栏-容器
+.tw-sidebar {
+  width: $sidebar-width;
+  line-height: $sidebar-lineheight;
+}
+
+// 侧边栏-导航
+.tw-nav.xsidebar > li > a {
+  padding-left: $sidebar-icon-font-size + 15px;
+}
+
+.tw-nav.xsidebar > li > a:hover {
+  color: $sidebar-reversal-color;
+  background: $sidebar-hover-bg;
+}
+
+.tw-nav.xsidebar > li > a.xactive {
+  background: $sidebar-active-bg;
+}
+
+.tw-nav.xsidebar > li > a:hover > .tw-arrow.xright,
+.tw-nav.xsidebar > li > a.xactive > .tw-arrow.xright {
+  border-right-color: $sidebar-reversal-color;
+  border-bottom-color: $sidebar-reversal-color;
+}
+
+.tw-nav.xsidebar > li > a > .tw-ico,
+.tw-nav.xsidebar > li > a > .tw-font {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.tw-nav.xsidebar > li > a > .tw-font {
+  width: $sidebar-icon-font-size;
+  height: $sidebar-icon-font-size;
+  line-height: 1;
+  font-size: $sidebar-icon-font-size;
+  color: $sidebar-icon-font-color;
+  white-space: nowrap;
+}
+
+// 侧边栏-分隔线
+.tw-nav.xsidebar > li + li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: $sidebar-link-divider-space;
+  right: $sidebar-link-divider-space;
+  height: 1px;
+  border-top: $sidebar-link-divider;
+}
+
+// 侧边栏-折叠面板
+.tw-collapse.xsidebar {
+  line-height: $sidebar-collapse-lineheight;
+  background: $sidebar-collapse-bg;
+}
+
+.tw-collapse.xsidebar > .tw-nav.xsidebar > li:before {
+  display: none;
+}

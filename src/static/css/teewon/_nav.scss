@@ -17,11 +17,31 @@ $nav-item-ico-mr: $margin-step - 1 !default;
 }
 
 .tw-nav > li > a {
+  position: relative;
   display: block;
   padding: 0 $nav-item-px;
   font-size: $nav-item-font-size;
+  @include cutoff;
+}
+
+.tw-nav > li {
+  position: relative;
 }
 
 .tw-nav > li > a > .tw-ico {
   margin-right: $nav-item-ico-mr;
+}
+
+/* 导航-作为collapse控件的开关时 */
+.tw-nav > li > a > .tw-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right:10px;
+  margin: auto;
+  transition: all $time linear;
+}
+
+.tw-nav > li > a.xopen > .tw-arrow {
+  transform: rotate(45deg) translateY(-2px);
 }

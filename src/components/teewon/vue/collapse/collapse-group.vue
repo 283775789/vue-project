@@ -1,5 +1,5 @@
 <template>
-  <div @show="showMethod">
+  <div>
     <slot>collapse group.</slot>
   </div>
 </template>
@@ -14,21 +14,26 @@
     },
     methods: {
       initCollapses () {
+        const vm = this
         const children = this.$children
         children.forEach((child) => {
           if (child.$options.name === 'twCollapse') {
             child.$on('show', () => {
+              if (vm.activeCollapse && vm.activeCollapse !== child) {
+                vm.activeCollapse.closeCollapse()
+              }
+              vm.activeCollapse = child
+            })
 
+            child.$on('hide', () => {
+              vm.activeCollapse === child && (vm.activeCollapse = null)
             })
           }
         })
       }
     },
     mounted () {
-      const children = this.$children
-      children.forEach((child) => {
-
-      })
+      this.initCollapses()
     }
   }
 </script>
