@@ -13,11 +13,11 @@
   position: absolute;
   display: none;
   overflow: hidden;
+  background: #fff;
   opacity: 0;
   transition: all $time linear;
   transform: scaleY(.1);
   transform-origin: top center;
-  background: #fff;
 }
 
 // 弹出面板-打开

@@ -2,8 +2,8 @@
 $title-marker-left: -$margin-medium !default;
 $title-pb: $padding-small !default;
 $title-mb: $margin-small !default;
-$title-font-size: $font-size-default !default;
-$title-color: #525065;
+$title-font-size: $font-size-medium !default;
+$title-color: $color-text-main;
 $title-border-color: $color-border-main !default;
 
 // 标题-容器
@@ -12,6 +12,8 @@ $title-border-color: $color-border-main !default;
   position: relative;
   padding-bottom: $title-pb - 4;
   margin-bottom: $title-mb;
+  font-size: $title-font-size;
+  color: $title-color;
   border-bottom: 1px dashed $title-border-color;
 }
 
@@ -28,9 +30,14 @@ $title-border-color: $color-border-main !default;
 // 标题-左侧内容
 .tw-title-left {
   float: left;
-  font-size: $title-font-size;
   font-weight: bold;
-  color: $title-color;
+}
+
+// 标题-标注
+.tw-title-note {
+  margin-left: $margin-step;
+  font-size: 85%;
+  color: lighten($title-color, 20%);
 }
 
 // 标题-右侧内容

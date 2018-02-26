@@ -7,6 +7,11 @@ $nav-item-px: $padding-small !default;
 $nav-item-font-size: inherit !default;
 $nav-item-ico-mr: $margin-step - 1 !default;
 
+// 导航-列表
+.tw-nav > li {
+  position: relative;
+}
+
 // 水平导航
 .tw-nav.xhorizontal {
   @include clearfix;
@@ -22,10 +27,6 @@ $nav-item-ico-mr: $margin-step - 1 !default;
   padding: 0 $nav-item-px;
   font-size: $nav-item-font-size;
   @include cutoff;
-}
-
-.tw-nav > li {
-  position: relative;
 }
 
 .tw-nav > li > a > .tw-ico,

@@ -1,12 +1,50 @@
-/* 选项框 */
+/* 表单控件 */
+$control-width: 160px !default;
+$control-height: 30px !default;
+$control-padding: $padding-step !default;
+$control-font-size: $font-size-default !default;
+$control-color: $color-text-auxiliary !default;
+$control-radius: 3px !default;
+$control-border-color: $color-border-main !default;
+$control-focus-border-color: $color-main !default;
+$control-label-space: $padding-step !default;
 $optbox-marker-color: $color-border-main !default;
 $optbox-marker-checked-color: $color-main !default;
 $optbox-checkbox-checked-color: $color-text-inverse !default;
+
+// 输入框
+.tw-input {
+  width: $control-width;
+  height: $control-height;
+  line-height: $control-height - 2px;
+  padding: 0 $control-padding;
+  font-size: $control-font-size;
+  color: $control-color;
+  border: 1px solid $control-border-color;
+  @if($control-radius != 0) {
+    border-radius: $control-radius;
+  }
+}
+
+.tw-input:focus {
+  border-color: $control-focus-border-color;
+}
+
+// 控件标签
+.tw-ctrlabel {
+  display: inline-block;
+  line-height: $control-height;
+  padding-right: $control-label-space;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+}
 
 // 选项框-容器
 .tw-optbox {
   position: relative;
   display: inline-block;
+  line-height: $control-height;
   overflow: hidden;
   cursor: pointer;
 }
@@ -20,7 +58,6 @@ $optbox-checkbox-checked-color: $color-text-inverse !default;
 .tw-optbox > span {
   display: inline-block;
   padding-left: 20px;
-  vertical-align: middle;
 }
 
 .tw-optbox > span:before,
@@ -54,6 +91,10 @@ $optbox-checkbox-checked-color: $color-text-inverse !default;
 }
 
 // 禁用状态
+.tw-optbox.xdisabled {
+  cursor: not-allowed;
+}
+
 .tw-optbox > input:disabled + span {
   @include disable();
 }
@@ -90,4 +131,8 @@ $optbox-checkbox-checked-color: $color-text-inverse !default;
 // 解决移动端click事件触发两次的问题
 .tw-optbox > * {
   pointer-events: none;
+}
+
+.tw-optbox + .tw-optbox {
+  margin-left: $margin-small;
 }

@@ -5,7 +5,8 @@ module.exports = {
   // 多个入口请增加entry对象的键值对【key:value】
   // 每个key将生成对应的html文件【key.html】
   entry: {
-    main: ['./src/main.js']
+    main: ['./src/main.js'],
+    project: ['./src/project.js']
   },
   dev: {
     host: host,

@@ -63,6 +63,12 @@ textarea {
   font-size: inherit;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
 img {
   vertical-align: middle;
   border-style: none;

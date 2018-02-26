@@ -3,3 +3,56 @@
   @include lineY($color-border-auxiliary);
   left: 200px;
 }
+
+/* --------------------------- 通用组件 --------------------------- */
+/* 色板 */
+.tw-palette > .tw-block + .tw-block {
+  margin-left: $margin-large;
+}
+
+.tw-palette > .tw-block.xlml {
+  margin-left: $margin-large * 2;
+}
+
+/* 颜色单元 */
+.tw-colorcell {
+  width: 65px;
+  height: 65px;
+  font-size: 12px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.tw-colorcell.xmain {
+  background: $color-main;
+
+}
+
+.tw-colorcell.xmain.xhover {
+  background: $color-main-hover;
+}
+
+.tw-colorcell.xmain.xactive {
+  background: $color-main-active;
+}
+
+.tw-colorcell.xauxiliary {
+  background: $color-auxiliary;
+}
+
+.tw-colorcell.xauxiliary.xhover {
+  background: $color-auxiliary-hover;
+}
+
+.tw-colorcell.xauxiliary.xactive {
+  background: $color-auxiliary-active;
+}
+
+.tw-colorcell.xweaking {
+  background: $color-weaking;
+  border: 1px solid $color-border-main;
+}
+
+.tw-colorcell + .tw-colorcell {
+  margin-left: $margin-large;
+}

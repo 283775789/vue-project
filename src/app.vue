@@ -10,19 +10,16 @@
         <div class="tw-header-body">
           <ul class="tw-nav xheader xhorizontal">
             <li>
-              <router-link class="xactive" to="/url1"><i class="tw-font xico"></i><span>概要</span></router-link>
+              <router-link class="xactive" to="/intro"><span>概要</span></router-link>
             </li>
             <li>
-              <router-link class="js-delegate" to="/url2"><i class="tw-font xico"></i><span>规范</span></router-link>
+              <router-link class="js-delegate" to="/guid"><span>规范</span></router-link>
             </li>
             <li>
-              <router-link to="/url3"><i class="tw-font xico"></i><span>CSS组件</span></router-link>
+              <router-link to="/component"><span>组件</span></router-link>
             </li>
             <li>
-              <router-link to="/url3"><i class="tw-font xico"></i><span>Vue组件</span></router-link>
-            </li>
-            <li>
-              <router-link class="tw-popswitch xheader js-menu1" to="/url3"><i class="tw-font xico"></i><span>项目</span></router-link>
+              <a class="tw-popswitch xheader js-menu1" href="project.html"><span>项目</span></a>
               <tw-poppane class="js-position" switch=".js-menu1">
                 <ul class="tw-header-menu">
                     <li><a>新项目</a></li>
@@ -48,53 +45,7 @@
     </div>
 
     <div class="tw-body">
-      <div class="tw-multicol">
-        <div class="tw-multicol-left">
-          <tw-collapse-group class="tw-sidebar">
-            <ul class="tw-nav xsidebar">
-              <li>
-                <a class="js-sidenav1"><i class="tw-font xico"></i>导航项<i class="tw-arrow xright"></i></a>
-                <tw-collapse class="xsidebar" switch=".js-sidenav1">
-                  <ul class="tw-nav xsidebar">
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                  </ul>
-                </tw-collapse>
-              </li>
-              <li>
-                <a class="js-sidenav2"><i class="tw-font xico"></i>导航项<i class="tw-arrow xright"></i></a>
-                <tw-collapse class="xsidebar" switch=".js-sidenav2">
-                  <ul class="tw-nav xsidebar">
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                  </ul>
-                </tw-collapse>
-              </li>
-              <li>
-                <a class="js-sidenav3"><i class="tw-font xico"></i>导航项<i class="tw-arrow xright"></i></a>
-                <tw-collapse class="xsidebar" switch=".js-sidenav3">
-                  <ul class="tw-nav xsidebar">
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                    <li><a>子导航</a></li>
-                  </ul>
-                </tw-collapse>
-              </li>
-              <li><a class="jst-close"><i class="tw-font xico"></i>侧边导航项</a></li>
-              <li><a class="jst-close"><i class="tw-font xico"></i>侧边导航项</a></li>
-            </ul>
-          </tw-collapse-group>
-        </div>
-        <div class="tw-multicol-cell">
-          <div class="tw-multicol-cell-table">
-            <div class="tw-multicol-cell-cell">
-              3321
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>
