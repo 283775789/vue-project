@@ -8,10 +8,16 @@ $block-border-color:$color-border-main !default;
   position: relative;
   display: inline-block;
   padding-bottom: 30px;
+  vertical-align: top;
 }
 
 .tw-block + .tw-block {
   margin-left: $block-ml - 4px;
+}
+
+// 内容块-主体
+.tw-block-body {
+  position: relative
 }
 
 // 内容块-标题

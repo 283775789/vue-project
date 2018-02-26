@@ -18,21 +18,35 @@
 .tw-colorcell {
   width: 65px;
   height: 65px;
-  font-size: 12px;
   vertical-align: top;
   cursor: pointer;
 }
 
-.tw-colorcell.xmain {
-  background: $color-main;
-
+.tw-colorcell > .el-color-picker__trigger {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
 }
 
-.tw-colorcell.xmain.xhover {
+.tw-colorcell .el-color-picker__color {
+  border-color: $color-border-main;
+}
+
+.tw-colorcell .el-color-picker__empty,
+.tw-colorcell .el-color-picker__icon {
+  display: none !important;
+}
+
+.tw-colorcell.xmain {
+  background: $color-main;
+}
+
+.tw-colorcell.xmainHover {
   background: $color-main-hover;
 }
 
-.tw-colorcell.xmain.xactive {
+.tw-colorcell.xmainActive {
   background: $color-main-active;
 }
 
@@ -40,11 +54,11 @@
   background: $color-auxiliary;
 }
 
-.tw-colorcell.xauxiliary.xhover {
+.tw-colorcell.xauxiliaryHover {
   background: $color-auxiliary-hover;
 }
 
-.tw-colorcell.xauxiliary.xactive {
+.tw-colorcell.xauxiliaryActive {
   background: $color-auxiliary-active;
 }
 

@@ -87,43 +87,43 @@
         <div class="tw-palette">
           <div class="tw-block">
             <div class="tw-block-body">
-              <div class="tw-colorcell xmain"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.main"></el-color-picker>
             </div>
             <div class="tw-block-title">主色</div>
           </div>
           <div class="tw-block">
             <div class="tw-block-body">
-              <div class="tw-colorcell xmain xhover"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.mainHover"></el-color-picker>
             </div>
             <div class="tw-block-title">主色-滑过</div>
           </div>
           <div class="tw-block">
             <div class="tw-block-body">
-              <div class="tw-colorcell xmain xactive"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.mainActive"></el-color-picker>
             </div>
             <div class="tw-block-title">主色-激活</div>
           </div>
           <div class="tw-block xlml">
             <div class="tw-block-body">
-              <div class="tw-colorcell xauxiliary"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.auxiliary"></el-color-picker>
             </div>
             <div class="tw-block-title">辅色</div>
           </div>
           <div class="tw-block">
             <div class="tw-block-body">
-              <div class="tw-colorcell xauxiliary xhover"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.auxiliaryHover"></el-color-picker>
             </div>
             <div class="tw-block-title">辅色-滑过</div>
           </div>
           <div class="tw-block">
             <div class="tw-block-body">
-              <div class="tw-colorcell xauxiliary xactive"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.auxiliaryActive"></el-color-picker>
             </div>
             <div class="tw-block-title">辅色-激活</div>
           </div>
           <div class="tw-block xlml">
             <div class="tw-block-body">
-              <div class="tw-colorcell xweaking"></div>
+              <el-color-picker class="tw-colorcell" v-model="theme.weaking"></el-color-picker>
             </div>
             <div class="tw-block-title">弱化色</div>
           </div>
@@ -139,6 +139,15 @@ export default {
   name: 'project',
   data () {
     return {
+      theme: {
+        main: null,
+        mainHover: null,
+        mainActive: null,
+        auxiliary: null,
+        auxiliaryHover: null,
+        auxiliaryActive: null,
+        weaking: null
+      },
       members: [
         {
           value: '001',
@@ -171,6 +180,30 @@ export default {
   },
   created () {
     window.members = this.members
+  },
+  mounted () {
+    window.vm = this
+    const vm = this
+    const div = document.createElement('div')
+    div.setAttribute('class', 'u-styledone')
+    document.body.appendChild(div)
+
+    const initThemeColor = function () {
+      for (const color in vm.theme) {
+        div.setAttribute('class', 'tw-colorcell x' + color)
+        console.log(window.getComputedStyle(div).backgroundColor)
+        vm.theme[color] = window.getComputedStyle(div).backgroundColor
+      }
+    }
+
+    const timer = setInterval(() => {
+      console.log(window.getComputedStyle(div).width)
+      if (window.getComputedStyle(div).width === '3px') {
+        clearInterval(timer)
+        initThemeColor()
+        document.body.removeChild(div)
+      }
+    }, 17)
   }
 }
 </script>
