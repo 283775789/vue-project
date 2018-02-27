@@ -28,6 +28,7 @@
 @import "teewon/arrow";
 @import "teewon/fonts";
 @import "teewon/block";
+@import "teewon/button";
 
 // 布局组件(teewon)
 // ------------------------------------------------------------
@@ -62,11 +63,10 @@
 // ------------------------------------------------------------
 @import "app/app";
 
-
 // 判断样式是否加载完成
 // ------------------------------------------------------------
 .u-styledone {
   position: absolute;
-  opacity: 0;
   width: 3px;
+  opacity: 0;
 }

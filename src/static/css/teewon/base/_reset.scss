@@ -85,6 +85,7 @@ a {
 }
 
 // 重置表单元素点位符颜色
+// stylelint-disable
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: $color-text-placeholder;
