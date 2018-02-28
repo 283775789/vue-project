@@ -1,0 +1,158 @@
+/* --------------------------- 重置teewon框架样式 --------------------------- */
+.tw-sidebar:after {
+  @include lineY($color-border-auxiliary);
+  left: 200px;
+}
+
+/* --------------------------- 通用组件 --------------------------- */
+/* 色板 */
+.tw-palette {
+  margin-bottom: $margin-large;
+}
+
+.tw-palette > .tw-block + .tw-block {
+  margin-left: $margin-large;
+}
+
+.tw-palette > .tw-block.xlml {
+  margin-left: $margin-large * 2;
+}
+
+/* 颜色单元 */
+.tw-colorcell {
+  width: 65px;
+  height: 65px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+// stylelint-disable
+.tw-colorcell > .el-color-picker__trigger {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.tw-colorcell .el-color-picker__color {
+  border-style: dashed;
+  border-color: $color-border-main;
+}
+
+.tw-colorcell .el-color-picker__empty,
+.tw-colorcell .el-color-picker__icon {
+  display: none !important;
+}
+// stylelint-enable
+
+.tw-colorcell.xmain {
+  background: $color-main;
+}
+
+.tw-colorcell.xmain-hover {
+  background: $color-main-hover;
+}
+
+.tw-colorcell.xmain-active {
+  background: $color-main-active;
+}
+
+.tw-colorcell.xauxiliary {
+  background: $color-auxiliary;
+}
+
+.tw-colorcell.xauxiliary-hover {
+  background: $color-auxiliary-hover;
+}
+
+.tw-colorcell.xauxiliary-active {
+  background: $color-auxiliary-active;
+}
+
+.tw-colorcell.xweaking {
+  background: $color-weaking;
+}
+
+.tw-colorcell.xsuccess {
+  background: $color-success;
+}
+
+.tw-colorcell.xwarning {
+  background: $color-warning;
+}
+
+.tw-colorcell.xerror {
+  background: $color-error;
+}
+
+.tw-colorcell.xbg-body {
+  background: $color-bg-body;
+}
+
+.tw-colorcell.xbg-footer {
+  background: $color-bg-footer;
+}
+
+.tw-colorcell.xbg-disabled {
+  background: $color-bg-disabled;
+}
+
+.tw-colorcell.xtext-main {
+  background: $color-text-main;
+}
+
+.tw-colorcell.xtext-auxiliary {
+  background: $color-text-auxiliary;
+}
+
+.tw-colorcell.xtext-weaking {
+  background: $color-text-weaking;
+}
+
+.tw-colorcell.xtext-disabled {
+  background: $color-text-disabled;
+}
+
+.tw-colorcell.xtext-highlight {
+  background: $color-text-highlight;
+}
+
+.tw-colorcell.xtext-error {
+  background: $color-text-error;
+}
+
+.tw-colorcell.xtext-inverse {
+  background: $color-text-inverse;
+}
+
+.tw-colorcell.xtext-link {
+  background: $color-text-link;
+}
+
+.tw-colorcell.xtext-link-hover {
+  background: $color-text-link-hover;
+}
+
+.tw-colorcell.xtext-placeholder {
+  background: $color-text-placeholder;
+}
+
+.tw-colorcell.xborder-main {
+  background: $color-border-main;
+}
+
+.tw-colorcell.xborder-auxiliary {
+  background: $color-border-auxiliary;
+}
+
+.tw-colorcell.xborder-disabled {
+  background: $color-bg-disabled;
+}
+
+.tw-colorcell.xborder-weaking {
+  background: $color-border-weaking;
+}
+
+.tw-colorcell + .tw-colorcell {
+  margin-left: $margin-large;
+}

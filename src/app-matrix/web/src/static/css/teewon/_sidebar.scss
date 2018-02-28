@@ -1,0 +1,93 @@
+/* 侧边栏 */
+$sidebar-width:200px !default;
+$sidebar-bg:#fff !default;
+$sidebar-padding: $padding-medium !default;
+$sidebar-lineheight:50px !default;
+$sidebar-collapse-lineheight: 40px !default;
+$sidebar-collapse-bg: #fff !default;
+$sidebar-hover-color: $color-main-hover !default;
+$sidebar-active-bg: $color-main-active !default;
+$sidebar-reversal-color:#fff !default;
+$sidebar-link-divider:1px dashed $color-border-main !default;
+$sidebar-icon-size:20px !default;
+$sidebar-icon-font-color:$color-auxiliary !default;
+
+// 侧边栏-容器
+.tw-sidebar {
+  width: $sidebar-width;
+  line-height: $sidebar-lineheight;
+  background: $sidebar-bg;
+}
+
+// 侧边栏-导航
+.tw-nav.xsidebar > li > a {
+  padding-right: $sidebar-padding * 2;
+  padding-left: $sidebar-padding + $sidebar-icon-size + 15px;
+}
+
+.tw-nav.xsidebar > li > a:hover {
+  color: $sidebar-hover-color;
+}
+
+.tw-nav.xsidebar > li > a.xactive {
+  color: $sidebar-reversal-color;
+  background: $sidebar-active-bg;
+}
+
+.tw-nav.xsidebar > li > a.xactive > .tw-arrow.xright {
+  border-right-color: $sidebar-reversal-color;
+  border-bottom-color: $sidebar-reversal-color;
+}
+
+// 侧边栏-导航-图标
+.tw-nav.xsidebar > li > a > .tw-ico,
+.tw-nav.xsidebar > li > a > .tw-font {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: $sidebar-padding + 5px;
+  margin: auto;
+}
+
+.tw-nav.xsidebar > li > a > .tw-font {
+  width: $sidebar-icon-size;
+  height: $sidebar-icon-size;
+  line-height: 1;
+  font-size: $sidebar-icon-size;
+  color: $sidebar-icon-font-color;
+  white-space: nowrap;
+}
+
+.tw-nav.xsidebar > li > a:hover > .tw-font {
+  color: $sidebar-hover-color;
+}
+
+.tw-nav.xsidebar > li > a.xactive > .tw-font {
+  color: $sidebar-reversal-color;
+}
+
+// 侧边栏-导航-箭头
+.tw-nav.xsidebar > li > a > .tw-arrow {
+  right: $sidebar-padding + 10px;
+}
+
+// 侧边栏-分隔线
+.tw-nav.xsidebar > li + li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: $sidebar-padding;
+  left: $sidebar-padding;
+  height: 1px;
+  border-top: $sidebar-link-divider;
+}
+
+// 侧边栏-折叠面板
+.tw-collapse.xsidebar {
+  line-height: $sidebar-collapse-lineheight;
+  background: $sidebar-collapse-bg;
+}
+
+.tw-collapse.xsidebar > .tw-nav.xsidebar > li:before {
+  display: none;
+}

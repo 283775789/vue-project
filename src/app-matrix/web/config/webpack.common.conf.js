@@ -1,8 +1,6 @@
 const path = require('path')
 const config = require('./app.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const WriteFilePlugin = require('write-file-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -65,15 +63,7 @@ const webpackConfig = {
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: resolve('src/app-matrix'),
-        to: resolve('dist/app-matrix')
-      }
-    ]),
-    new WriteFilePlugin()
-  ]
+  plugins: []
 }
 
 // 按入口文件输出相对应的html文件

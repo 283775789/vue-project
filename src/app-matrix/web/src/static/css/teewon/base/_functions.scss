@@ -1,0 +1,43 @@
+/* ---------------------------------------------------------------------
+ * 描述：函数定义
+ * --------------------------------------------------------------------- */
+// stylelint-disable block-closing-brace-newline-after
+
+// 获取前一个map值
+@function map-prev($map, $key, $keys:map-keys($map)) {
+  $n:index($keys, $key);
+
+  @if $n == null or $n == 1 {
+    @return null;
+  } @else {
+    @return nth(map-values($map), $n - 1);
+  }
+}
+
+// 获取后一个map值
+@function map-next($map, $key, $keys:map-keys($map)) {
+  $n:index($keys, $key);
+
+  @if $n == null or $n == length($map) {
+    @return null;
+  } @else {
+    @return nth(map-values($map), $n + 1);
+  }
+}
+
+// 获指定色在色板的右下侧颜色
+@function rightDownColor($color, $value) {
+  @return darken(saturate($color, $value), $value);
+}
+
+// 获取hover色值
+// 计算公式：饱和度增加6%,亮度降低6%
+@function hover($color) {
+  @return rightDownColor($color, 4%);
+}
+
+// 获取active色值
+// 计算公式：饱和度增加10%,亮度降低10%
+@function active($color) {
+  @return rightDownColor($color, 8%);
+}

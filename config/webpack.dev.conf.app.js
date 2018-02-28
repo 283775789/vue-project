@@ -4,8 +4,6 @@ const baseWebpackConfig = require('./webpack.common.conf')
 const config = require('./app.conf')
 const cssSourceMap = config.dev.cssSourceMap
 const portfinder = require('portfinder')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -46,7 +44,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     host: config.dev.host,
     open: true,
-    openPage: `${config.dev.openPage}`
+    openPage: `${config.dev.openPage}`,
+    publicPath: '/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

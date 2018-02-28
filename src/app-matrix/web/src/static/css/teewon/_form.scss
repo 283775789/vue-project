@@ -1,0 +1,39 @@
+/* 表单 */
+$form-line-height: 30px !default;
+$form-mb: $margin-medium !default;
+$form-item-pb: $padding-medium !default;
+$form-item-pl: $margin-medium !default;
+
+// 表单-以表格方式布局
+.tw-form.xtable {
+  display: table;
+  width: 100%;
+  line-height: $form-line-height;
+  margin-bottom: $form-mb;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.tw-form-row {
+  display: table-row;
+}
+
+.tw-form-col {
+  position: relative;
+  display: table-cell;
+  padding-bottom: $form-item-pb;
+  vertical-align: top;
+}
+
+.tw-form-col > .tw-input,
+.tw-form-col > .tw-ctrlabel {
+  width: 100%;
+}
+
+.tw-form-col > .tw-ctrlabel {
+  padding-left: $form-item-pl;
+}
+
+.tw-form-col:first-child > .tw-ctrlabel {
+  padding-left: 0;
+}

@@ -1,0 +1,70 @@
+/* 弹出面板 */
+
+// 弹出面板-触发链接
+.tw-popswitch {
+  position: relative;
+  display: block;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+// 弹出面板-置左时-触发链接
+.tw-popswitch[class*="xleft"] {
+  padding-right: 0;
+  padding-left: 15px;
+}
+
+// 弹出面板-禁用
+.tw-popswitch.xdisabled {
+  @include disable();
+}
+
+// 弹出面板-箭头
+.tw-popswitch > .tw-triangle {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  margin-top: -2px;
+  transition: all $time linear;
+}
+
+.tw-popswitch > .tw-triangle.xleft,
+.tw-popswitch > .tw-triangle.xright {
+  margin-top: -5px;
+}
+
+.tw-popswitch[class*="xleft"] > .tw-triangle {
+  right: auto;
+  left: 0;
+}
+
+.tw-popswitch.xopen > .tw-triangle,
+.tw-popswitch.xhover:hover > .tw-triangle {
+  transform: rotate(180deg);
+}
+
+// 弹出层
+.tw-poplayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+// 弹出面板
+.tw-poppane {
+  position: absolute;
+  transform-origin: top center;
+}
+
+.tw-poppane.xleftbottom,
+.tw-poppane.xrightbottom,
+.tw-poppane[class*="xtop"],
+.tw-poppane[class*="xauto"][style*="bottom"] {
+  transform-origin: bottom center;
+}
+
+.tw-poppane.xleftcenter,
+.tw-poppane.xrightcenter {
+  transform-origin: center center;
+}
