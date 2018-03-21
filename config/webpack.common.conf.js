@@ -1,8 +1,6 @@
 const path = require('path')
 const config = require('./app.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const WriteFilePlugin = require('write-file-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -22,6 +20,7 @@ const webpackConfig = {
       '@tw': resolve('src/components/teewon'),
       '@css': resolve('src/static/css'),
       '@font': resolve('src/static/font'),
+      '@pages': resolve('src/pages'),
       '@images': resolve('src/static/images')
     }
   },
@@ -65,21 +64,13 @@ const webpackConfig = {
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: resolve('src/app-matrix'),
-        to: resolve('dist/app-matrix')
-      }
-    ]),
-    new WriteFilePlugin()
-  ]
+  plugins: []
 }
 
 // 按入口文件输出相对应的html文件
 for (const entry in config.entry) {
   const option = {
-    filename: `${entry}.html`,
+    filename: `html/${entry}.html`,
     template: './src/html/index.html',
     chunks: ['manifest', 'vendor', `${entry}`]
   }

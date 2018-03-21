@@ -4,7 +4,7 @@
       <div class="tw-header-inner">
         <h1 class="tw-header-left">
           <router-link to="/">
-            <img src="@images/logo.png">
+            <img src="/static/images/logo-3d8eedb.png">
           </router-link>
         </h1>
         <div class="tw-header-body">
@@ -19,7 +19,7 @@
               <router-link to="/component"><span>组件</span></router-link>
             </li>
             <li>
-              <a class="tw-popswitch xheader js-menu1" href="project.html"><span>项目</span></a>
+              <router-link to="/project" class="tw-popswitch xheader js-menu1"><span>项目</span></router-link>
               <tw-poppane class="js-position" switch=".js-menu1">
                 <ul class="tw-header-menu">
                     <li><a>新项目</a></li>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="tw-body">
-
+      <router-view></router-view>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>

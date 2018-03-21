@@ -7,6 +7,11 @@ import App from '@/app'
 import router from '@/config/router'
 import '@/config/components'
 
+import { Button, ColorPicker } from 'element-ui'
+
+Vue.use(Button)
+Vue.use(ColorPicker)
+
 // 解决ios click bug
 var attachFastClick = require('fastclick')
 attachFastClick.attach(document.body)
