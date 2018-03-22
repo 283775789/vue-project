@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="tw-stickybox">
     <table class="tw-form xtable">
       <colgroup>
         <col style="width:6em;" />
@@ -109,7 +109,7 @@
         </td>
       </tr>
     </table>
-    <div style="padding:15px 0 0; border-top:1px solid #ccc; text-align:center;">
+    <div class="tw-stickybox-footer" v-tw-sticky:bottom="80">
       <a class="tw-btn xmain xlarge">生成项目</a>
       <a class="tw-btn xauxiliary xlarge">保存为模板</a>
       <a class="tw-btn xweaking xlarge">取消</a>
