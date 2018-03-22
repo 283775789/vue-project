@@ -1,5 +1,5 @@
 /* 多栏布局 */
-$multicol-content-padding:$padding-medium;
+$multicol-content-padding:$spacing-medium;
 
 .tw-multicol {
   @include clearfix;

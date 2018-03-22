@@ -3,9 +3,9 @@ $nav-item-hover-bg: $color-main-hover !default;
 $nav-item-hover-color: $color-text-inverse !default;
 $nav-item-active-bg: $color-main-active !default;
 $nav-item-active-color: $color-text-inverse !default;
-$nav-item-px: $padding-small !default;
+$nav-item-px: $spacing-small !default;
 $nav-item-font-size: inherit !default;
-$nav-item-ico-mr: $margin-step - 1 !default;
+$nav-item-ico-mr: $spacing-step - 1 !default;
 
 // 导航-列表
 .tw-nav > li {

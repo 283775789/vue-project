@@ -3,9 +3,17 @@ import '@css/main.scss'
 
 // 引入库及应用配置
 import Vue from 'vue'
+import axios from 'axios'
 import App from '@/app'
 import router from '@/config/router'
 import '@/config/components'
+
+import { Button, ColorPicker } from 'element-ui'
+
+Vue.use(Button)
+Vue.use(ColorPicker)
+
+Vue.prototype.axios = axios
 
 // 解决ios click bug
 var attachFastClick = require('fastclick')

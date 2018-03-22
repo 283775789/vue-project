@@ -6,10 +6,10 @@ $content-bg: #fff !default;
   position: relative;
   @include make-container($paddingY:true);
   min-height: 450px;
-  margin-bottom: $margin-large;
+  margin-bottom: $spacing-large;
   background: $content-bg;
 }
 
 .tw-body > .tw-multicol {
-  margin: -$padding-medium;
+  margin: -$spacing-medium;
 }

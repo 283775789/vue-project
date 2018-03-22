@@ -25,9 +25,7 @@
 
 /* ------------------------------ 全局配置 ------------------------------ */
 /* 应用类型 */
-// 前台样式: web
-// 后台样式: admin
-$app-type: web;
+$app-type: web; // [前台样式: web, 后台样式: admin]
 
 /* ------------------------------ 颜色体系 ------------------------------ */
 /* 主题色 */
@@ -80,22 +78,11 @@ $font-size-large: $font-size-default + 6px !default;
 /* ------------------------------ 间距体系 ------------------------------ */
 /* 间距步长 */
 $spacing-step: 5px !default;
-
-/* 外边距 */
-$margin-step: $spacing-step !default;
-$margin-tiny: $margin-step * 2;
-$margin-small: $margin-step * 3;
-$margin-medium: $margin-step * 4;
-$margin-large: $margin-step * 6;
-$margin-huge: $margin-step * 8;
-
-/* 内边距 */
-$padding-step: $spacing-step !default;
-$padding-tiny: $padding-step * 2;
-$padding-small: $padding-step * 3;
-$padding-medium: $padding-step * 4;
-$padding-large: $padding-step * 6;
-$padding-huge: $padding-step * 8;
+$spacing-tiny: $spacing-step * 2;
+$spacing-small: $spacing-step * 3;
+$spacing-medium: $spacing-step * 4;
+$spacing-large: $spacing-step * 6;
+$spacing-huge: $spacing-step * 8;
 
 /* 行高 */
 $line-height-default: 1.5 !default;
@@ -110,7 +97,7 @@ $container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:aut
 
 /* 栅格 */
 $grid-columns:12 !default;
-$grid-gutter-width:$padding-small * 2 !default;
+$grid-gutter-width:$spacing-small * 2 !default;
 
 /* ------------------------------ 过渡效果 ------------------------------ */
 /* 过渡时间 */

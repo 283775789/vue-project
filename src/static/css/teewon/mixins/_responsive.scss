@@ -67,12 +67,12 @@
   }
 
   @if $paddingX == true {
-    padding-right: $padding-medium;
-    padding-left: $padding-medium;
+    padding-right: $spacing-medium;
+    padding-left: $spacing-medium;
   }
 
   @if $paddingY == true {
-    padding-top: $padding-medium;
-    padding-bottom: $padding-medium;
+    padding-top: $spacing-medium;
+    padding-bottom: $spacing-medium;
   }
 }

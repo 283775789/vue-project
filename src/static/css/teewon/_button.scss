@@ -1,7 +1,7 @@
 /* 按钮 */
 $btn-min-width: 80px !default;
 $btn-default-height: 30px !default;
-$btn-px: $padding-small !default;
+$btn-px: $spacing-small !default;
 $btn-font-size: $font-size-default !default;
 $btn-border-radius: 3px !default;
 $btn-main-bg: $color-main !default;
@@ -30,7 +30,7 @@ $btn-huge-height: $btn-default-height + 10px !default;
 }
 
 .tw-btn + .tw-btn {
-  margin-left: $margin-small - 4px;
+  margin-left: $spacing-small - 4px;
 }
 
 // 主按钮
@@ -79,4 +79,47 @@ $btn-huge-height: $btn-default-height + 10px !default;
 .tw-btn.xhuge {
   height: $btn-huge-height;
   line-height: $btn-huge-height - 2px;
+}
+
+// 添加按钮
+.tw-addbtn {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border: 1px dashed $color-border-main;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    margin-top: -1px;
+    margin-left: -30%;
+    border-top: 1px dashed $color-border-main;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 60%;
+    margin-top: -30%;
+    margin-left: -1px;
+    border-left: 1px dashed $color-border-main;
+  }
+
+  &:hover {
+    border-color: $color-main;
+
+    &:before {
+      border-top-color: $color-main;
+    }
+
+    &:after {
+      border-left-color: $color-main;
+    }
+  }
 }
