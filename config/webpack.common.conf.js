@@ -79,7 +79,7 @@ const webpackConfig = {
 // 按入口文件输出相对应的html文件
 for (const entry in config.entry) {
   const option = {
-    filename: `${entry}.html`,
+    filename: `html/${entry}.html`,
     template: './src/html/index.html',
     chunks: ['manifest', 'vendor', `${entry}`]
   }
