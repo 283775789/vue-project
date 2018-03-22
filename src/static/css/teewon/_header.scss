@@ -4,17 +4,17 @@ $header-line-height: $header-height !default;
 $header-font-size: $font-size-default !default;
 $header-bg: $color-main !default;
 $header-color: $color-text-inverse !default;
-$header-mb: $margin-medium !default;
+$header-mb: $spacing-medium !default;
 $header-title-font-size: $font-size-medium !default;
-$header-title-pl: $padding-small !default;
-$header-left-mr: $margin-medium !default;
+$header-title-pl: $spacing-small !default;
+$header-left-mr: $spacing-medium !default;
 $header-hover-color: $color-main-hover;
 $header-active-color: $color-main-active;
 $header-navlink-hover-bg: $color-main-hover !default;
 $header-navlink-hover-color: $color-text-inverse !default;
 $header-navlink-active-bg: $color-main-active !default;
 $header-navlink-active-color: $color-text-inverse !default;
-$header-navlink-px: $padding-small !default;
+$header-navlink-px: $spacing-small !default;
 
 // 头部-容器
 .tw-header {
@@ -100,7 +100,7 @@ $header-navlink-px: $padding-small !default;
 // 头部-下拉菜单项
 .tw-header-menu {
   line-height: 36px;
-  padding: $padding-tiny 5px;
+  padding: $spacing-tiny 5px;
   color: $header-color;
   white-space: nowrap;
   background: $header-navlink-hover-bg;

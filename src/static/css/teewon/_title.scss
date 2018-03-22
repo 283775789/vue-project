@@ -1,10 +1,10 @@
 /* 标题 */
-$title-marker-left: -$margin-medium !default;
+$title-marker-left: -$spacing-medium !default;
 $title-marker-bg: $color-main !default;
 $title-marker-width: 3px !default;
 $title-line-height: $line-height-default !default;
-$title-pb: $padding-small !default;
-$title-mb: $margin-small !default;
+$title-pb: $spacing-small !default;
+$title-mb: $spacing-small !default;
 $title-font-size: $font-size-medium !default;
 $title-color: $color-text-main;
 $title-border-color: $color-border-main !default;
@@ -41,7 +41,7 @@ $title-sub-marker-size: 4px !default;
 
 // 标题-标注
 .tw-title-note {
-  margin-left: $margin-step;
+  margin-left: $spacing-step;
   font-size: 85%;
   color: lighten($title-color, 20%);
 }
@@ -54,7 +54,7 @@ $title-sub-marker-size: 4px !default;
 // 标题-副标题
 .tw-title.xsub {
   padding-bottom: 0;
-  margin-bottom: $title-mb - $margin-step;
+  margin-bottom: $title-mb - $spacing-step;
   font-size: $title-font-size - 2px;
   border-bottom: none;
 }

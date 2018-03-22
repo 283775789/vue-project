@@ -57,6 +57,7 @@
     "write-file-webpack-plugin": "^4.2.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.2.0",
     "fastclick": "^1.0.6",
     "vue": "^2.5.13",

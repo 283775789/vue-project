@@ -1,8 +1,8 @@
 /* 表单 */
 $form-line-height: 30px !default;
-$form-mb: $margin-medium !default;
-$form-item-pb: $padding-medium !default;
-$form-item-pl: $margin-medium !default;
+$form-mb: $spacing-medium !default;
+$form-item-pb: $spacing-medium !default;
+$form-item-pl: $spacing-medium !default;
 
 // 表单-以表格方式布局
 .tw-form.xtable {
