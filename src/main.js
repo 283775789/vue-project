@@ -15,6 +15,7 @@ Vue.use(Button)
 Vue.use(ColorPicker)
 
 Vue.prototype.axios = axios
+window.Vue = Vue
 
 // 解决ios click bug
 var attachFastClick = require('fastclick')

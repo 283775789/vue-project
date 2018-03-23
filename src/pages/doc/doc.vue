@@ -1,0 +1,118 @@
+<template>
+    <div class="tw-multicol">
+    <div class="tw-multicol-left">
+      <!-- 规范导航菜单 -->
+      <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='guid'">
+        <ul class="tw-nav xsidebar">
+          <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font xico"></i>设计规范</router-link></li>
+          <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>版本管理</router-link></li>
+          <li><router-link to="/doc/guid/dir" class="jst-close"><i class="tw-font xico"></i>目录及文件</router-link></li>
+          <li><router-link to="/doc/guid/js" class="jst-close"><i class="tw-font xico"></i>JS规范</router-link></li>
+          <li><router-link to="/doc/guid/css" class="jst-close"><i class="tw-font xico"></i>CSS规范</router-link></li>
+          <li><router-link to="/doc/guid/html" class="jst-close"><i class="tw-font xico"></i>HTML规范</router-link></li>
+          <li><router-link to="/doc/guid/shortcut" class="jst-close"><i class="tw-font xico"></i>快捷输入</router-link></li>
+        </ul>
+      </tw-collapse-group>
+      <!-- /规范导航菜单 -->
+
+      <!-- 组件导航菜单 -->
+      <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='component'">
+        <ul class="tw-nav xsidebar">
+          <li><a class="jst-close"><i class="tw-font xico"></i>SCSS相关</a></li>
+          <li>
+            <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-layout">
+              <ul class="tw-nav xsidebar">
+                <li><a>整体布局</a></li>
+                <li><a>栅格系统</a></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
+            <a class="js-nav"><i class="tw-font xico"></i>导航<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-nav">
+              <ul class="tw-nav xsidebar">
+                <li><a>头部导航</a></li>
+                <li><a>侧边栏导航</a></li>
+                <li><a>面包屑</a></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
+            <a class="js-unit"><i class="tw-font xico"></i>元件<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-unit">
+              <ul class="tw-nav xsidebar">
+                <li><a>图标</a></li>
+                <li><a>按钮</a></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
+            <a class="js-function"><i class="tw-font xico"></i>功能<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-function">
+              <ul class="tw-nav xsidebar">
+                <li><a>下拉列表</a></li>
+                <li><a>折叠面板</a></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
+            <a class="js-function"><i class="tw-font xico"></i>表单<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-function">
+              <ul class="tw-nav xsidebar">
+                <li><a>单选/复选</a></li>
+                <li><a>选择列表</a></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li><a class="jst-close"><i class="tw-font xico"></i>侧边导航项</a></li>
+        </ul>
+      </tw-collapse-group>
+      <!-- /组件导航菜单 -->
+    </div>
+    <div class="tw-multicol-cell">
+      <div class="tw-multicol-cell-table">
+        <div class="tw-multicol-cell-cell">
+          <tw-markdown :content="markdownText"></tw-markdown>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import PoppaneBase from '@tw/vue/poppane/demo/poppane-base'
+import Markdown from '@tw/vue/markdown/markdown'
+
+export default {
+  name: 'intro',
+  components: {
+    twPoppaneBase: PoppaneBase,
+    twMarkdown: Markdown
+  },
+  data () {
+    return {
+      markdownText: ''
+    }
+  },
+  methods: {
+    updateMarkdown () {
+      const vm = this
+
+      vm.axios(`http://localhost:83/getMarkdown/?name=${vm.$route.params.name}`).then(function (responed) {
+        vm.markdownText = responed.data
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+  mounted () {
+    this.updateMarkdown()
+  },
+  watch: {
+    '$route' () {
+      this.updateMarkdown()
+    }
+  }
+}
+</script>

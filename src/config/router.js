@@ -1,19 +1,37 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@pages/index'
-import Project from '@pages/project'
+import Doc from '@pages/doc/doc'
+import Project from '@pages/project/project-new'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  linkActiveClass: 'xactive',
+  linkExactActiveClass: 'xcurrent',
   routes: [
     {
       path: '/',
-      component: Index
+      redirect: '/doc'
     },
     {
-      path: '/project',
+      path: '/doc/:type/:name',
+      name: 'doc',
+      component: Doc
+    },
+    {
+      path: '/doc/summary',
+      redirect: '/doc/summary/teewon'
+    },
+    {
+      path: '/doc/guid',
+      redirect: '/doc/guid/design'
+    },
+    {
+      path: '/doc/component',
+      redirect: '/doc/component/scss'
+    },
+    {
+      path: '/project-new',
       component: Project
     }
   ]

@@ -60,6 +60,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.2.0",
     "fastclick": "^1.0.6",
+    "marked": "^0.3.18",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1"
   },

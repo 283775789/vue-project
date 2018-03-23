@@ -12,7 +12,7 @@ module.exports = {
     host: host,
     port: 80,
     // 指定devServer启动时打开的入口页
-    openPage: 'html/main.html',
+    openPage: 'main.html',
     cssSourceMap: true
   },
   build: {

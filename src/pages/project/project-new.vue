@@ -110,6 +110,7 @@
       </tr>
     </table>
     <div class="tw-stickybox-footer" v-tw-sticky:bottom="80">
+      <a class="tw-btn xauxiliary xlarge">选择模板</a>
       <a class="tw-btn xmain xlarge">生成项目</a>
       <a class="tw-btn xauxiliary xlarge">保存为模板</a>
       <a class="tw-btn xweaking xlarge">取消</a>
@@ -119,7 +120,7 @@
 
 <script>
 export default {
-  name: 'project',
+  name: 'newProject',
   data () {
     return {
       scssVars: []

@@ -16,6 +16,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      'vue$': 'vue/dist/vue.esm.js', // teewon专用
       '@': resolve('src'),
       '@tw': resolve('src/components/teewon'),
       '@css': resolve('src/static/css'),
@@ -70,7 +71,7 @@ const webpackConfig = {
 // 按入口文件输出相对应的html文件
 for (const entry in config.entry) {
   const option = {
-    filename: `html/${entry}.html`,
+    filename: `${entry}.html`,
     template: './src/html/index.html',
     chunks: ['manifest', 'vendor', `${entry}`]
   }

@@ -10,19 +10,19 @@
         <div class="tw-header-body">
           <ul class="tw-nav xheader xhorizontal">
             <li>
-              <router-link class="xactive" to="/intro"><span>概要</span></router-link>
+              <router-link to="/doc/summary"><span>概要</span></router-link>
             </li>
             <li>
-              <router-link class="js-delegate" to="/guid"><span>规范</span></router-link>
+              <router-link class="js-delegate" to="/doc/guid"><span>规范</span></router-link>
             </li>
             <li>
-              <router-link to="/component"><span>组件</span></router-link>
+              <router-link to="/doc/component"><span>组件</span></router-link>
             </li>
             <li>
-              <router-link to="/project" class="tw-popswitch xheader js-menu1"><span>项目</span></router-link>
-              <tw-poppane class="js-position" switch=".js-menu1">
+              <a class="tw-popswitch xheader js-projects" :class="{xactive:/^\/project-/.test($route.path)}"><span>项目</span></a>
+              <tw-poppane class="js-position" switch=".js-projects">
                 <ul class="tw-header-menu">
-                    <li><a>新项目</a></li>
+                    <li><router-link to="/project-new">新项目</router-link></li>
                     <li><a>项目库</a></li>
                 </ul>
               </tw-poppane>

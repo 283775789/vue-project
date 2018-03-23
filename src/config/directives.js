@@ -34,14 +34,12 @@ Vue.directive('tw-sticky', {
       }
 
       if (binding.arg === 'bottom') {
-        console.log(docHeight - scrollTop)
         if (docHeight - scrollTop - window.innerHeight > binding.value) {
           toSticky()
         } else {
           resetEl()
         }
       } else {
-        console.log(scrollTop)
         if (scrollTop > binding.value) {
           toSticky()
         } else {

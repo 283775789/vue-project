@@ -33,11 +33,11 @@
 // 获取hover色值
 // 计算公式：饱和度增加6%,亮度降低6%
 @function hover($color) {
-  @return rightDownColor($color, 4%);
+  @return rightDownColor($color, 6%);
 }
 
 // 获取active色值
 // 计算公式：饱和度增加10%,亮度降低10%
 @function active($color) {
-  @return rightDownColor($color, 8%);
+  @return rightDownColor($color, 10%);
 }
