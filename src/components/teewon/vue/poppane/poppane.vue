@@ -141,7 +141,10 @@
         this.switchEl = switchEl
         this.eventTarget = event.target
 
-        this.created || document.body.appendChild(this.popLayer)
+        if (!this.created) {
+          document.body.appendChild(this.popLayer)
+          this.created = true
+        }
 
         if (!switchEl.twPopSwitch) {
           this.noArrow = true
