@@ -60,7 +60,7 @@ $title-sub-marker-size: 4px !default;
 }
 
 .tw-title.xsub:before {
-  top: $title-font-size * $line-height-default / 2;
+  top: floor(($title-font-size - 2px) * $line-height-default / 2);
   left: $title-marker-left / 2;
   width: $title-sub-marker-size;
   height: $title-sub-marker-size;

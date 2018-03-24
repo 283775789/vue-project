@@ -1,0 +1,247 @@
+/* vars */
+$markdown-px: $spacing-medium !default; // 容器水平内边距
+$markdown-color: $color-text-auxiliary !default; // 默认文字颜色
+$markdown-title-color: $color-text-auxiliary !default; // 标题文字颜色
+$markdown-title1-font-size: $font-size-large !default;  // 一级标题字号
+$markdown-title2-font-size: $font-size-medium !default; // 二级标题字号
+$markdown-title3-font-size: $font-size-default !default; // 三级标题字号
+$markdown-title-pb: $spacing-small !default; // 标题底部内边距
+$markdonw-title-mt: $spacing-large !default; // 标题顶部外边距
+$markdown-title-mb: $spacing-small !default; // 标题底部外边距
+$markdown-title-border-color: $color-border-main !default; //标题边框颜色
+$markdown-title-mark-color: $color-main !default; // 标题标记颜色
+$markdown-list-ml: $spacing-medium !default; // 列表左外边距
+$markdown-table-header-bg: #f5f5f5 !default; // 表格头部背景
+$markdown-table-pd: $spacing-tiny !default; // 表格单元格内边距
+$markdown-table-border-color: $color-border-main !default; // 表格边框色
+
+// markdown容器
+.tw-markdown {
+  min-height: 1000px;
+  line-height: 1.75;
+  padding: 0 $markdown-px;
+  color: $markdown-color;
+}
+
+// markdown标题
+.tw-markdown h1,
+.tw-markdown h2,
+.tw-markdown h3,
+.tw-markdown h4,
+.tw-markdown h5,
+.tw-markdown h6 {
+  position: relative;
+  font-weight: bold;
+  color: $markdown-title-color;
+}
+
+.tw-markdown h1:before,
+.tw-markdown h2:before,
+.tw-markdown h3:before,
+.tw-markdown h4:before,
+.tw-markdown h5:before,
+.tw-markdown h6:before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: -16px;
+  width: 5px;
+  height: 5px;
+  background: $markdown-title-mark-color;
+}
+
+.tw-markdown h1,
+.tw-markdown h2 {
+  padding-bottom: $markdown-title-pb;
+  margin-top: $markdonw-title-mt;
+  margin-bottom: $markdown-title-mb;
+  border-bottom: 1px dashed $markdown-title-border-color;
+}
+
+.tw-markdown h1 {
+  font-size: $markdown-title1-font-size;
+}
+
+.tw-markdown > h1:first-child {
+  margin-top: 0;
+}
+
+.tw-markdown h2 {
+  font-size: $markdown-title2-font-size;
+}
+
+.tw-markdown h3,
+.tw-markdown h4,
+.tw-markdown h5,
+.tw-markdown h6 {
+  position: relative;
+  padding-bottom: $markdown-title-pb - 5px;
+  margin-top: $markdonw-title-mt - 10px;
+  font-size: $markdown-title3-font-size;
+}
+
+// markdown列表
+.tw-markdown ul > li,
+.tw-markdown ol > li {
+  margin-left: $markdown-list-ml;
+}
+
+.tw-markdown ul > li {
+  list-style: circle;
+}
+
+.tw-markdown ol > li {
+  list-style: decimal;
+}
+
+// markdown表格
+.tw-markdown table {
+  width: 100%;
+}
+
+.tw-markdown table > thead > tr > th {
+  background: $markdown-table-header-bg;
+}
+
+.tw-markdown table > thead > tr > th,
+.tw-markdown table > tbody > tr > td {
+  min-width: 120px;
+  padding: $markdown-table-pd;
+  text-align: left;
+  border: 1px solid $markdown-table-border-color;
+}
+
+// markdown 代码
+/* stylelint-disable */
+.tw-markdown pre {
+  margin: -10px 0 0;
+}
+
+.tw-markdown-shortcut {
+  position: relative;
+  z-index: 1;
+  top: 17px;
+  display: inline-block;
+  padding: 3px 6px;
+  font-size: 12px;
+  color: #eee;
+  background: #171922;
+}
+
+.tw-markdown pre > code {
+  position: relative;
+  display: block;
+  overflow-x: auto;
+  padding: 3em 1em 1em;
+  background: #282a36;
+  color: #dcdcdc;
+}
+
+.tw-markdown-copybtn {
+  position: absolute;
+  top:.1em;
+  right: .5em;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+  color: #569CD6;
+}
+.hljs-link {
+  color: #569CD6;
+  text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #4EC9B0;
+}
+
+.hljs-number,
+.hljs-class {
+  color: #B8D7A3;
+}
+
+.hljs-string,
+.hljs-meta-string {
+  color: #D69D85;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+  color: #9A5334;
+}
+
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+  color: #DCDCDC;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #57A64A;
+  font-style: italic;
+}
+
+.hljs-doctag {
+  color: #608B4E;
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+  color: #9B9B9B;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #BD63C5;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin-name {
+  color: #9CDCFE;
+}
+
+.hljs-section {
+  color: gold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #D7BA7D;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}

@@ -11,6 +11,7 @@
 // 弹出面板
 .tw-poppane {
   position: absolute;
+  z-index: 1000;
   display: none;
   overflow: hidden;
   background: #fff;
@@ -84,5 +85,5 @@
 
 // 弹出面板-触发开关-无箭头
 .tw-popswitch.xnoarrow {
-  padding-right:0;
+  padding-right: 0;
 }

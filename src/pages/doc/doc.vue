@@ -81,13 +81,11 @@
 </template>
 
 <script>
-import PoppaneBase from '@tw/vue/poppane/demo/poppane-base'
 import Markdown from '@tw/vue/markdown/markdown'
 
 export default {
   name: 'intro',
   components: {
-    twPoppaneBase: PoppaneBase,
     twMarkdown: Markdown
   },
   data () {
