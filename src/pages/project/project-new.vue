@@ -68,44 +68,53 @@
       <tr v-for="(scssGroup, index) in scssModule.children" :key="index">
         <td colspan="4">
           <div class="tw-title xsub">{{ scssGroup.name }}</div>
-          <!-- 非颜色模板渲染 -->
+          <!-- 非颜色相关变量 -->
           <div v-if="scssGroup.type !== 'Color'">
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
+            <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="scssGroup.type && scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
               <div v-if="!scssVar.values" class="tw-scssvar-body">
-                <input v-if="scssGroup.type === 'String'" type="text" class="tw-scssvar-value" v-model="scssVar.value" />
-                <input v-if="scssGroup.type === 'FontSize'" :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" />
+                <input v-if="scssGroup.type === 'String'" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+                <input v-if="scssGroup.type === 'FontSize'" :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
               </div>
               <div v-if="!scssVar.values" class="tw-scssvar-title">{{scssVar.name}}</div>
               <div v-if="scssVar.values">
-                <label class="tw-optbox xradio" v-for="(item, index) in scssVar.values" :key="index"><input type="radio" :value="item.replace(/.*:/,'')" v-model="scssVar.value"  /><span>{{ item.replace(/:.*/,'') }}</span></label>
+                <label class="tw-optbox xradio" v-for="(item, index) in scssVar.values" :key="index"><input type="radio" :value="item.replace(/.*:/,'')" v-model="scssVar.value" @change="changeScssVars"  /><span>{{ item.replace(/:.*/,'') }}</span></label>
               </div>
             </div>
             <a class="tw-addbtn xscssvar" v-if="scssGroup.addable && scssGroup.type === 'FontSize'"></a>
-            <!-- 间距模板渲染 -->
+            <!-- 间距相关变量 -->
             <div v-if="scssGroup.type === 'Spacing'">
               <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName" :style="{marginLeft:index === 0 ? 0 : scssVar.value}">
                   <div class="tw-scssvar-body">
-                    <input type="text" class="tw-scssvar-value" v-model="scssVar.value" />
+                    <input type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
                   </div>
                   <div class="tw-scssvar-title">{{scssVar.name}}</div>
               </div>
               <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
             </div>
-            <!-- 间距模板渲染 -->
-          </div>
-          <!-- /非颜色模板渲染 -->
+            <!-- 间距相关变量 -->
 
-          <!-- 颜色模板渲染 -->
+            <!-- 组件相关变量 -->
+            <div class="tw-form xtable" v-if="!scssGroup.type">
+              <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
+                <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel">{{ scssVar.name }}:</label></div>
+                <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value"></div>
+              </div>
+            </div>
+            <!-- /组件相关变量 -->
+          </div>
+          <!-- /非颜色相关变量 -->
+
+          <!-- 颜色相关变量 -->
           <div class="tw-palette" v-if="scssGroup.type === 'Color'">
             <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName+':'+scssVar.value">
               <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value"></el-color-picker>
+                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
               </div>
               <div class="tw-scssvar-title">{{scssVar.name}}</div>
             </div>
             <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
           </div>
-          <!-- /颜色模板渲染 -->
+          <!-- /颜色相关变量 -->
         </td>
       </tr>
     </table>
@@ -123,17 +132,33 @@ export default {
   name: 'newProject',
   data () {
     return {
-      scssVars: []
+      scssVars: [],
+      styleEl: null
     }
   },
   created () {
     const vm = this
+    vm.styleEl = document.createElement('style')
+    document.querySelector('head').appendChild(vm.styleEl)
 
     vm.axios('http://localhost:83/getScssVars').then(function (responed) {
       vm.scssVars = responed.data
     }).catch(function (error) {
       console.log(error)
     })
+  },
+  methods: {
+    changeScssVars () {
+      const vm = this
+      vm.axios.post('http://localhost:83/css', vm.scssVars).then(function (responed) {
+        vm.styleEl.textContent = responed.data
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+  beforeDestroy () {
+    document.querySelector('head').removeChild(this.styleEl)
   }
 }
 </script>

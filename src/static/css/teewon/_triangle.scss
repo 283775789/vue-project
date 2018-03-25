@@ -1,4 +1,5 @@
-/* 小三角形 */
+// 小三角形
+
 .tw-triangle.xup {
   @include triangle(up);
   transform-origin: 50% 80%;

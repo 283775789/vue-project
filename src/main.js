@@ -7,7 +7,8 @@ import axios from 'axios'
 import App from '@/app'
 import router from '@/config/router'
 import '@/config/components'
-import '@/examples/demo/demo-components.js'
+import '@/config/directives'
+import '@/examples/config/demo-components.js'
 
 import { Button, ColorPicker } from 'element-ui'
 

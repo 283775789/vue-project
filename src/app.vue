@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="tw-header">
+    <div class="tw-header" v-tw-sticky="0">
       <div class="tw-header-inner">
         <h1 class="tw-header-left">
           <router-link to="/">

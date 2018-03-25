@@ -57,8 +57,8 @@
             </tw-collapse>
           </li>
           <li>
-            <a class="js-function"><i class="tw-font xico"></i>表单<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-function">
+            <a class="js-form"><i class="tw-font xico"></i>表单<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-form">
               <ul class="tw-nav xsidebar">
                 <li><a>单选/复选</a></li>
                 <li><a>选择列表</a></li>

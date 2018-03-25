@@ -19,7 +19,7 @@ $header-navlink-px: $spacing-small !default;
 // 头部-容器
 .tw-header {
   position: relative;
-  z-index: 1;
+  z-index: 1000;
   height: $header-height;
   line-height: $header-line-height;
   margin-bottom: $header-mb;
