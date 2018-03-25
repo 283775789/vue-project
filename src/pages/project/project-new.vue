@@ -65,7 +65,7 @@
           <div class="tw-title">{{ scssModule.name }}</div>
         </td>
       </tr>
-      <tr v-for="(scssGroup, index) in scssModule.children" :key="index">
+      <tr v-for="(scssGroup, index) in scssModule.children" v-if="scssGroup.type !== 'NoChange'" :key="index">
         <td colspan="4">
           <div class="tw-title xsub">{{ scssGroup.name }}</div>
           <!-- 非颜色相关变量 -->
@@ -97,7 +97,7 @@
             <div class="tw-form xtable" v-if="!scssGroup.type">
               <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
                 <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel">{{ scssVar.name }}:</label></div>
-                <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value"></div>
+                <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value" @change="changeScssVars"></div>
               </div>
             </div>
             <!-- /组件相关变量 -->

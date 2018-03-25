@@ -1,34 +1,14 @@
 /** ---------------------------------------------------------------------
- ** 描述：变量定义
- ** 注释：语义说明
- ** ---------------------------------------------------------------------
- ** 颜色体系:
- ** main: 主色
- ** auxiliary: 辅助色
- ** weaking: 弱化色
- ** ---------------------------------------------------------------------
- ** 尺寸体系:
- ** step: 尺寸体系的步长值,相关的尺寸都是该步长的整数倍(特例情况可以n.5倍)
- ** tiny: 超小尺寸, 默认计算公式为 base * 2
- ** small: 小尺寸, 默认计算公式为 base * 3
- ** medium: 中等尺寸, 默认计算公式为 base * 4
- ** large: 大尺寸, 默认计算公式为 base * 6
- ** huge: 超大尺寸, 默认计算公式为 base * 8
- ** ---------------------------------------------------------------------
- ** 响应式体系(l === landscape):
- ** pc: 电脑屏幕,  1200px <= 默认分辨率
- ** lpad: pad横屏, 992px <= 默认分辨率 < 1200px
- ** pad: pad坚屏, 768px <= 默认分辨率 < 992px
- ** lphone: 手机横屏, 554px <= 默认分辨率 < 768px
- ** phone: 手机坚屏, 默认分辨率 < 554px
+ ** 描述：scss模板
  ** --------------------------------------------------------------------- */
+ @import "functions";
 
 /* ------------------------------ 全局配置 ------------------------------ */
-/* 应用类型 */
-$app-type: web; // [前台样式: web, 后台样式: admin]
+/* 应用类型{String} */
+$app-type: web; // [前台样式:web, 后台样式:admin, 移动端样式:mobile]
 
 /* ------------------------------ 颜色体系 ------------------------------ */
-/* 主题色 */
+/* 主题色{Color+} */
 $color-main: #26a8ff !default; // 主色
 $color-main-hover: hover($color-main) !default; // 主色:滑过
 $color-main-active: active($color-main) !default; // 主色:激活
@@ -37,68 +17,65 @@ $color-auxiliary-hover: hover($color-auxiliary) !default; // 辅色:滑过
 $color-auxiliary-active: active($color-auxiliary) !default; // 辅色:激活
 $color-weaking: #fff !default; // 弱化色
 
-/* vi色 */
-$color-success:#78cf70 !default;
-$color-warning:#ffb555 !default;
-$color-error:#ff6c60 !default;
-
-/* 背景色 */
+/* 背景色{Color+} */
 $color-bg-body:#f5f5f5 !default; // 页面背景
-$color-bg-footer: #afb9c9 !default;
-$color-bg-disabled: #eee !default;
+$color-bg-footer: #afb9c9 !default; // 页脚背景
+$color-bg-disabled: #eee !default; // 禁用背景
 
-/* 文本色 */
-$color-text-main:#333 !default;
-$color-text-auxiliary:#666 !default;
-$color-text-weaking:#999 !default;
-$color-text-disabled:#ccc !default;
-$color-text-highlight:#479025 !default;
-$color-text-error:#f00 !default;
-$color-text-inverse: #fff !default;
-$color-text-link:$color-main !default;
-$color-text-link-hover: hover($color-text-link) !default;
-$color-text-placeholder: $color-text-weaking !default;
+/* 标识色{Color+} */
+$color-success:#78cf70 !default; // 成功
+$color-warning:#ffb555 !default; // 警告
+$color-error:#ff6c60 !default; // 错误
 
-/* 边框色 */
-$color-border-main:#ccc !default;
-$color-border-auxiliary:#ddd !default;
-$color-border-disabled:#eee !default;
-$color-border-weaking:#eee !default;
+/* 文本色{Color+} */
+$color-text-main:#333 !default; // 主文本
+$color-text-auxiliary:#666 !default; // 辅助文本
+$color-text-weaking:#999 !default; // 弱化文本
+$color-text-disabled:#ccc !default; // 禁用文本
+$color-text-highlight:#479025 !default; // 高亮文本
+$color-text-error:#f00 !default; // 错误文本
+$color-text-inverse: #fff !default; // 反转文本
+$color-text-link:$color-main !default; // 链接色
+$color-text-link-hover: hover($color-text-link) !default; // 链接滑过色
+$color-text-placeholder: $color-text-weaking !default; // 占位文本
+
+/* 边框色{Color+} */
+$color-border-main:#ccc !default; // 主边框
+$color-border-auxiliary:#ddd !default; // 辅边框
+$color-border-disabled:#eee !default; // 禁用边框
+$color-border-weaking:#eee !default; // 弱化边框
 
 /* ------------------------------ 字体体系 ------------------------------ */
-/* 字体 */
-$font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", Arial, Helvetica, sans-serif !default;
+/* 字体{NoChange} */
+$font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", Arial, Helvetica, sans-serif !default; // 字体
 
-/* 字体尺寸 */
-$font-size-default: 14px !default;
-$font-size-small: $font-size-default - 2px !default;
-$font-size-medium: $font-size-default + 2px !default;
-$font-size-large: $font-size-default + 6px !default;
+/* 字体尺寸{FontSize+} */
+$font-size-default: 14px !default; // 小字号
+$font-size-small: $font-size-default - 2px !default; // 默认字号
+$font-size-medium: $font-size-default + 2px !default; // 中字号
+$font-size-large: $font-size-default + 6px !default; // 大字号
 
 /* ------------------------------ 间距体系 ------------------------------ */
-/* 间距步长 */
-$spacing-step: 5px !default;
-$spacing-tiny: $spacing-step * 2;
-$spacing-small: $spacing-step * 3;
-$spacing-medium: $spacing-step * 4;
-$spacing-large: $spacing-step * 6;
-$spacing-huge: $spacing-step * 8;
+/* 行高{NoChange} */
+$line-height-default: 1.5 !default; // 行高
 
-/* 行高 */
-$line-height-default: 1.5 !default;
+/* 间距{Spacing+} */
+$spacing-step: 5px !default; // 间距步长
+$spacing-tiny: $spacing-step * 2; // 超小间距
+$spacing-small: $spacing-step * 3; // 小间距
+$spacing-medium: $spacing-step * 4; // 中间距
+$spacing-large: $spacing-step * 6; // 大间距
+$spacing-huge: $spacing-step * 8; // 超大间距
 
 /* ------------------------------ 响应式体系(pc优先) ------------------------------ */
-/* 响应式断点 */
-$media-breakpoints: ( pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0) !default;
+/* 响应式断点{NoChange} */
+$media-breakpoints: ( pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0) !default; // 媒体查询断点
+$container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:auto) !default; // 主容器宽度
 
-/* 断点对应的主容器宽度 */
-// 默认状态下，平板电脑竖屏及其更小的屏幕容器自适应设备屏幕宽度
-$container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:auto) !default;
-
-/* 栅格 */
-$grid-columns:12 !default;
-$grid-gutter-width:$spacing-small * 2 !default;
+/* 栅格{String} */
+$grid-columns:12 !default; // 栅格数量
+$grid-gutter-width:$spacing-small * 2 !default; // 栅格宽度
 
 /* ------------------------------ 过渡效果 ------------------------------ */
-/* 过渡时间 */
-$time: .12s;
+/* 过渡时间{String} */
+$time: .12s; // 过渡时间
