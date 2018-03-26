@@ -1,27 +1,25 @@
 /* 按钮 */
-$btn-min-width: 80px !default;
-$btn-default-height: 30px !default;
-$btn-px: $spacing-small !default;
-$btn-font-size: $font-size-default !default;
-$btn-border-radius: 3px !default;
-$btn-main-bg: $color-main !default;
-$btn-main-bg-hover: $color-main-hover !default;
-$btn-main-color: $color-text-inverse !default;
-$btn-auxiliary-bg: $color-auxiliary !default;
-$btn-auxiliary-bg-hover: $color-auxiliary-hover !default;
-$btn-auxiliary-color: $color-text-inverse !default;
-$btn-weaking-bg: $color-weaking !default;
-$btn-weaking-border-color: $color-border-main !default;
-$btn-weaking-color: $color-text-main !default;
-$btn-large-height: $btn-default-height + 6px !default;
-$btn-huge-height: $btn-default-height + 10px !default;
+$btn-min-width: 80px !default; // 按钮最小宽度
+$btn-height: 30px !default; // 按钮默认高度
+$btn-px: $spacing-small !default; // 按钮水平内边距
+$btn-font-size: $font-size-default !default; // 按钮字体大小
+$btn-border-radius: 3px !default; // 按钮边框
+$btn-main-bg: $color-main !default; // 主按钮背景
+$btn-main-bg-hover: $color-main-hover !default; // 主按钮背景滑过色
+$btn-main-color: $color-text-inverse !default; // 主按钮文本色
+$btn-auxiliary-bg: $color-auxiliary !default; // 辅助按钮背景
+$btn-auxiliary-bg-hover: $color-auxiliary-hover !default; // 辅助按钮背景色
+$btn-auxiliary-color: $color-text-inverse !default; // 辅助按钮文本色
+$btn-weaking-bg: $color-weaking !default; // 弱化按钮背景
+$btn-weaking-border-color: $color-border-main !default; // 弱化按钮背景色
+$btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
 
 // 按钮-默认
 .tw-btn {
   display: inline-block;
   min-width: $btn-min-width;
-  height: $btn-default-height;
-  line-height: $btn-default-height - 2px;
+  height: $btn-height;
+  line-height: $btn-height - 2px;
   padding: 0 $btn-px;
   font-size: $btn-font-size;
   text-align: center;
@@ -69,16 +67,16 @@ $btn-huge-height: $btn-default-height + 10px !default;
   }
 }
 
-// 按钮-大
-.tw-btn.xlarge {
-  height: $btn-large-height;
-  line-height: $btn-large-height - 2px;
+// 按钮-小
+.tw-btn.xsmall {
+  height: $btn-height - 6px;
+  line-height: $btn-height - 8px;
 }
 
-// 按钮-超大
-.tw-btn.xhuge {
-  height: $btn-huge-height;
-  line-height: $btn-huge-height - 2px;
+// 按钮-大
+.tw-btn.xlarge {
+  height: $btn-height + 6px;
+  line-height: $btn-height + 4px;
 }
 
 // 添加按钮

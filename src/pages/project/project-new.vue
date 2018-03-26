@@ -59,18 +59,18 @@
         </td>
       </tr>
     </table>
-    <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" :key="index">
+    <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
       <tr>
         <td colspan="4">
           <div class="tw-title">{{ scssModule.name }}</div>
         </td>
       </tr>
-      <tr v-for="(scssGroup, index) in scssModule.children" v-if="scssGroup.type !== 'NoChange'" :key="index">
+      <tr v-for="(scssGroup, index) in scssModule.children" v-if="scssGroup.type" :key="index">
         <td colspan="4">
           <div class="tw-title xsub">{{ scssGroup.name }}</div>
           <!-- 非颜色相关变量 -->
           <div v-if="scssGroup.type !== 'Color'">
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="scssGroup.type && scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
+            <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="!/tw-/.test(scssGroup.type) && scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
               <div v-if="!scssVar.values" class="tw-scssvar-body">
                 <input v-if="scssGroup.type === 'String'" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
                 <input v-if="scssGroup.type === 'FontSize'" :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
@@ -94,12 +94,12 @@
             <!-- 间距相关变量 -->
 
             <!-- 组件相关变量 -->
-            <div class="tw-form xtable" v-if="!scssGroup.type">
+            <!-- <div class="tw-form xtable" v-if="/tw-/.test(scssGroup.type)">
               <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
                 <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel">{{ scssVar.name }}:</label></div>
                 <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value" @change="changeScssVars"></div>
               </div>
-            </div>
+            </div> -->
             <!-- /组件相关变量 -->
           </div>
           <!-- /非颜色相关变量 -->
@@ -118,6 +118,34 @@
         </td>
       </tr>
     </table>
+
+    <div class="tw-title" style="margin-bottom:0;">组件</div>
+    <div class="tw-multicol">
+      <div class="tw-multicol-left">
+        <!-- 组件导航菜单 -->
+        <tw-collapse-group class="tw-sidebar" v-if="compGroup" style="position:relative;">
+          <ul class="tw-nav xsidebar">
+            <li v-for="(group, groupKey, groupIndex) in compGroup" :key="groupIndex">
+              <a :class="['js-group-'+groupIndex]"><i class="tw-font xico"></i>{{ groupKey }}<i class="tw-arrow xright"></i></a>
+              <tw-collapse class="xsidebar" :switch="'.js-group-'+groupIndex">
+                <ul class="tw-nav xsidebar">
+                  <li v-for="(type, typeKey, index) in group" :key="index" @click="currentCompType=type"><a>{{ typeKey }}</a></li>
+                </ul>
+              </tw-collapse>
+            </li>
+          </ul>
+        </tw-collapse-group>
+        <!-- /组件导航菜单 -->
+      </div>
+      <div class="tw-multicol-cell">
+        <div class="tw-multicol-cell-table">
+          <div class="tw-multicol-cell-cell">
+            <label class="tw-optbox" v-for="(demo,index) in currentCompType.demos" :key="index"><input type="checkbox" name="app-framework" :key="demo.tag" /><span>{{ demo.name }}</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tw-stickybox-footer" v-tw-sticky:bottom="80">
       <a class="tw-btn xauxiliary xlarge">选择模板</a>
       <a class="tw-btn xmain xlarge">生成项目</a>
@@ -133,7 +161,9 @@ export default {
   data () {
     return {
       scssVars: [],
-      styleEl: null
+      compGroup: null,
+      styleEl: null,
+      currentCompType: null
     }
   },
   created () {
@@ -141,8 +171,14 @@ export default {
     vm.styleEl = document.createElement('style')
     document.querySelector('head').appendChild(vm.styleEl)
 
-    vm.axios('http://localhost:83/getScssVars').then(function (responed) {
+    vm.axios.get('http://localhost:83/getScssVars').then(function (responed) {
       vm.scssVars = responed.data
+    }).catch(function (error) {
+      console.log(error)
+    })
+
+    vm.axios.get('http://localhost:83/examples/config/components.json').then(function (responed) {
+      vm.compGroup = responed.data
     }).catch(function (error) {
       console.log(error)
     })

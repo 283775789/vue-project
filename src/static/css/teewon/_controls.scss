@@ -1,16 +1,16 @@
 /* 表单控件 */
-$control-width: 160px !default;
-$control-height: 30px !default;
-$control-padding: $spacing-step !default;
-$control-font-size: $font-size-default !default;
-$control-color: $color-text-auxiliary !default;
-$control-radius: 3px !default;
-$control-border-color: $color-border-main !default;
-$control-focus-border-color: $color-main !default;
-$control-label-space: $spacing-step !default;
-$optbox-marker-color: $color-border-main !default;
-$optbox-marker-checked-color: $color-main !default;
-$optbox-checkbox-checked-color: $color-text-inverse !default;
+$control-width: 160px !default; // 控件宽度
+$control-height: 30px !default; // 控件高度
+$control-padding: $spacing-step !default; // 控件内边距
+$control-font-size: $font-size-default !default; // 控件字体尺寸
+$control-color: $color-text-auxiliary !default; // 控件文本色
+$control-border-color: $color-border-main !default; // 控件边框颜色
+$control-focus-border-color: $color-main !default; // 控件选中边框色
+$control-radius: 3px !default; // 控件边框圆色
+$control-label-space: $spacing-step !default; // 控件标签右边距
+$optbox-marker-color: $color-border-main !default; // 选项框标记色
+$optbox-marker-checked-color: $color-main !default; // 选项框选中色
+$optbox-checkbox-checked-color: $color-text-inverse !default; // 多选框对勾色
 
 // 输入框
 .tw-input {
