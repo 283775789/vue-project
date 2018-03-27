@@ -1,13 +1,12 @@
 <template>
   <ul class="tw-menu">
-    <tw-menu-item class="tw-menu-item" v-for="item in items" :value="item.value" :text="item.text" :key="item.key">
+    <li class="tw-menu-item" v-for="(item, index) in items" :key="index" @click='selectItem(item, index)'>
       <slot v-bind="item">{{ item.text }}</slot>
-    </tw-menu-item>
+    </li>
   </ul>
 </template>
 
 <script>
-import MenuItem from './menu-item'
 
 export default {
   name: 'twMenu',
@@ -15,10 +14,28 @@ export default {
     items: {
       type: Array,
       default: []
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    value: [String, Number, Boolean, Object, Array]
+  },
+  data () {
+    return {
+      result: []
     }
   },
-  components: {
-    'twMenuItem': MenuItem
+  methods: {
+    selectItem (value, index) {
+      if (this.multiple) {
+        const index = this.result.indexOf(value)
+        if (index === -1) {
+          this.result.push(value)
+        } else {
+        }
+      }
+    }
   }
 }
 </script>

@@ -67,6 +67,21 @@ $spacing-medium: $spacing-step * 4; // 中间距
 $spacing-large: $spacing-step * 6; // 大间距
 $spacing-huge: $spacing-step * 8; // 超大间距
 
+/* ------------------------------ 尺寸体系 ------------------------------ */
+/* 控件高度 */
+$ctr-height-step: 6px !default; // 高度步长
+$ctr-height-default: 30px !default; // 默认高度
+$ctr-height-small: $ctr-height-default - $ctr-height-step; // 小高度
+$ctr-height-medium: $ctr-height-default + $ctr-height-step; // 中高度
+$ctr-height-large: $ctr-height-default + $ctr-height-step * 2; // 大高度
+
+/* 控件宽度 */
+$ctr-width-step: 40px !default; // 宽度步长
+$ctr-width-default: 160px !default; // 默认高度
+$ctr-width-small: $ctr-width-default - $ctr-width-step; // 小宽度
+$ctr-width-medium: $ctr-width-default + $ctr-width-step; // 中宽度
+$ctr-width-large: $ctr-width-default + $ctr-width-step * 2; // 大宽度
+
 /* ------------------------------ 响应式体系(pc优先) ------------------------------ */
 /* 响应式断点{NoChange} */
 $media-breakpoints: ( pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0) !default; // 媒体查询断点

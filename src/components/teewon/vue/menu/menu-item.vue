@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     clickHandler () {
-      this.$emit('click', this.value)
+      this.$emit('select', this.value)
     }
   }
 }

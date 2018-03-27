@@ -97,3 +97,21 @@ $block-border-color:$color-border-main !default;
   height: 65px;
   margin-left: $spacing-large;
 }
+
+// 组件样式演示
+.tw-compscssdemo {
+  position: relative;
+  min-height: 600px;
+}
+
+.tw-compscssdemo-setbar {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  bottom: 0;
+  width: 360px;
+  padding: $spacing-small;
+  overflow: auto;
+  background: rgba(255, 255, 255, .85);
+  border-left: 1px dashed $color-border-main;
+}

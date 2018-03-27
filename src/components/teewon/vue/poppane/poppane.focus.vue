@@ -17,6 +17,10 @@
         type: String,
         required: true
       },
+      triggerEvent: {
+        type: String,
+        default: 'click'
+      },
       placement: {
         type: String,
         default: 'auto'
@@ -135,7 +139,6 @@
         removeClass(this.switchEl, 'xopen')
         this.open = false
         this.setParent(false)
-        this.switchEl.blur()
         document.removeEventListener('click', this.closePoppane, true)
       },
       togglePoppane (switchEl, event) {
@@ -180,7 +183,11 @@
           this.closePoppane()
         } else {
           this.openPoppane()
-          document.addEventListener('click', this.closePoppane, true)
+          if (this.triggerEvent === 'click') {
+            document.addEventListener('click', this.closePoppane, true)
+          } else {
+            this.switchEl.addEventListener('blur', this.closePoppane)
+          }
         }
       },
       initSwitch () {
@@ -204,9 +211,22 @@
       }
     },
     created () {
-      delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane)
+      if (this.triggerEvent === 'click') {
+        delegate(document, 'click.' + this._uid, this.switch, this.togglePoppane)
+      }
     },
     mounted () {
+      const vm = this
+
+      if (this.triggerEvent === 'focus') {
+        const targets = document.querySelectorAll(this.switch)
+        targets.forEach(target => {
+          target.addEventListener('focus', function (event) {
+            vm.togglePoppane(target, event)
+          })
+        })
+      }
+
       const popLayer = document.createElement('div')
       popLayer.setAttribute('class', 'tw-poplayer')
       popLayer.appendChild(this.$el)

@@ -46,6 +46,9 @@
 
     <div class="tw-body">
       <router-view></router-view>
+      <tw-menu :items="[{text:'陈今斌',value:'001'},{text:'陈知然',value:'002'}]">
+        <a slot-scope="item"><i>3</i>{{ item.text }}</a>
+      </tw-menu>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>

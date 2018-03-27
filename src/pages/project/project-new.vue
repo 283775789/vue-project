@@ -1,6 +1,6 @@
 <template>
-  <form class="tw-stickybox">
-    <table class="tw-form xtable">
+  <form>
+    <table style="display:none;" class="tw-form xtable">
       <colgroup>
         <col style="width:6em;" />
         <col />
@@ -59,7 +59,7 @@
         </td>
       </tr>
     </table>
-    <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
+    <table style="display:none;" class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
       <tr>
         <td colspan="4">
           <div class="tw-title">{{ scssModule.name }}</div>
@@ -124,12 +124,12 @@
       <div class="tw-multicol-left">
         <!-- 组件导航菜单 -->
         <tw-collapse-group class="tw-sidebar" v-if="compGroup" style="position:relative;">
-          <ul class="tw-nav xsidebar">
+          <ul class="tw-nav xsidebar tw-stickybox" style="min-height:600px;">
             <li v-for="(group, groupKey, groupIndex) in compGroup" :key="groupIndex">
               <a :class="['js-group-'+groupIndex]"><i class="tw-font xico"></i>{{ groupKey }}<i class="tw-arrow xright"></i></a>
               <tw-collapse class="xsidebar" :switch="'.js-group-'+groupIndex">
                 <ul class="tw-nav xsidebar">
-                  <li v-for="(type, typeKey, index) in group" :key="index" @click="currentCompType=type"><a>{{ typeKey }}</a></li>
+                  <li v-for="(type, typeKey, index) in group" :key="index" @click="clickCompType(type)"><a>{{ typeKey }}</a></li>
                 </ul>
               </tw-collapse>
             </li>
@@ -139,8 +139,19 @@
       </div>
       <div class="tw-multicol-cell">
         <div class="tw-multicol-cell-table">
-          <div class="tw-multicol-cell-cell">
-            <label class="tw-optbox" v-for="(demo,index) in currentCompType.demos" :key="index"><input type="checkbox" name="app-framework" :key="demo.tag" /><span>{{ demo.name }}</span></label>
+          <div class="tw-multicol-cell-cell tw-stickybox">
+            <div class="tw-compscssdemo">
+              <div id="demos"></div>
+                <div class="tw-compscssdemo-setbar">
+                  <div class="tw-title xsub">{{ currentCompScssVar.name }}样式设置</div>
+                  <div class="tw-form xtable xsmall">
+                    <div class="tw-form-row" v-for="(scssVar, index) in currentCompScssVar.children" :key="index" :title="scssVar.varName">
+                      <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel xsmall">{{ scssVar.name }}:</label></div>
+                      <div class="tw-form-col"><input type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -163,7 +174,22 @@ export default {
       scssVars: [],
       compGroup: null,
       styleEl: null,
-      currentCompType: null
+      currentComp: null,
+      currentCompScssVar: [],
+      demosVm: null
+    }
+  },
+  computed: {
+    compScssVars () {
+      let result = null
+
+      this.scssVars.forEach(module => {
+        if (module.name === '组件变量') {
+          result = module
+        }
+      })
+
+      return result
     }
   },
   created () {
@@ -190,6 +216,32 @@ export default {
         vm.styleEl.textContent = responed.data
       }).catch(function (error) {
         console.log(error)
+      })
+    },
+    clickCompType (type) {
+      if (this.demosVm) this.demosVm.$destroy()
+
+      // 生成组件demo
+      this.demosVm = new window.Vue({
+        el: '#demos',
+        render (h) {
+          const demoVnodes = []
+
+          type.demos.forEach(demo => {
+            demoVnodes.push(h('div', {attrs: {class: 'tw-title xsub'}}, demo.name))
+            demoVnodes.push(h(demo.tag))
+          })
+
+          return h('div', {attrs: {id: 'demos'}}, [demoVnodes])
+        }
+      })
+
+      // 获取组件scss变量
+      this.currentCompScssVar = []
+      this.compScssVars.children.forEach(compVars => {
+        if (compVars.name === type.name) {
+          this.currentCompScssVar = compVars
+        }
       })
     }
   },

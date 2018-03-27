@@ -1,5 +1,5 @@
 <template>
-    <div class="tw-multicol">
+  <div class="tw-multicol">
     <div class="tw-multicol-left">
       <!-- 规范导航菜单 -->
       <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='guid'">
