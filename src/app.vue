@@ -46,7 +46,7 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-menu :items="[{text:'陈今斌',value:'001'},{text:'陈知然',value:'002'}]">
+      <tw-menu :items="members" multiple v-model="currentMember" @change="changeMember">
         <a slot-scope="item"><i>3</i>{{ item.text }}</a>
       </tw-menu>
     </div>
@@ -74,10 +74,15 @@ export default {
           text: '陈知然'
         }
       ],
+      currentMember: [],
       classDemo: ''
     }
   },
   methods: {
+    changeMember (value, item) {
+      debugger
+      console.log(this.currentMember)
+    },
     changeHandler (value) {
       console.log(value)
     },
@@ -90,6 +95,7 @@ export default {
     }
   },
   created () {
+    window.app = this
     window.members = this.members
   }
 }
