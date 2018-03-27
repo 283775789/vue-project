@@ -1,6 +1,6 @@
 <template>
-  <li @click="clickHandler">
-    <slot></slot>
+  <li class="tw-menu-item" :class="{xdisabled:disabled}" @click="handleClick()">
+    <slot v-bind="{value, text}">{{text}}</slot>
   </li>
 </template>
 
@@ -9,17 +9,21 @@ export default {
   name: 'twMenuItem',
   props: {
     value: {
-      type: String,
+      type: [String, Number, Object],
       required: true
     },
     text: {
-      type: String,
-      required: true
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
-    clickHandler () {
-      this.$emit('select', this.value)
+    handleClick () {
+      if (this.disabled) return
+      this.$parent.selectItem(this.value)
     }
   }
 }

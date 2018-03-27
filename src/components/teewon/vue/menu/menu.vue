@@ -1,8 +1,6 @@
 <template>
   <ul class="tw-menu">
-    <li class="tw-menu-item" :class="{xselected: value===item.value || value.indexOf(item.value)!==-1}" v-for="(item, index) in items" :key="index" @click='selectItem(item)'>
-      <slot v-bind="item">{{ item.text }}</slot>
-    </li>
+    <slot></slot>
   </ul>
 </template>
 
@@ -11,10 +9,6 @@
 export default {
   name: 'twMenu',
   props: {
-    items: {
-      type: Array,
-      default: []
-    },
     multiple: {
       type: Boolean,
       default: false
@@ -22,29 +16,24 @@ export default {
     value: [String, Number, Object, Array]
   },
   methods: {
-    selectItem (item) {
-      let items = item
-      let values = item.value
+    selectItem (val) {
+      let result = val
 
       if (this.multiple) {
-        debugger
-        const valueIndex = this.value.indexOf(item.value)
-        values = [...this.value]
-        items = this.items.filter(el => values.indexOf(el.value) !== -1)
+        const valueIndex = this.value.indexOf(val)
+        result = [...this.value]
 
         if (valueIndex === -1) {
-          values.push(item.value)
-          items.push(item)
+          result.push(val)
         } else {
-          values.splice(valueIndex, 1)
-          items.splice(valueIndex, 1)
+          result.splice(valueIndex, 1)
         }
       } else {
-        if (this.value === item.value) return
+        if (this.value === val) return
       }
 
-      this.$emit('input', values)
-      this.$emit('change', values, items)
+      this.$emit('input', result)
+      this.$emit('change', result)
     }
   }
 }

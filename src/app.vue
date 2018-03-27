@@ -46,8 +46,12 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-menu :items="members" multiple v-model="currentMember" @change="changeMember">
-        <a slot-scope="item"><i>3</i>{{ item.text }}</a>
+      <tw-menu multiple v-model="currentMember" @change="changeMember">
+        <tw-menu-item v-for="member in members" :value="member.value" :text="member.name" :key="member.value"><span slot-scope="prop"><i>i</i>{{prop.text}}</span></tw-menu-item>
+      </tw-menu>
+      <tw-menu multiple v-model="currentMember" @change="changeMember">
+        <tw-menu-item value="333">f00</tw-menu-item>
+        <tw-menu-item value="334">bar</tw-menu-item>
       </tw-menu>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
@@ -62,16 +66,16 @@ export default {
       members: [
         {
           value: '001',
-          text: '陈今斌',
+          name: '陈今斌',
           className: 'abc'
         },
         {
           value: '002',
-          text: '荣珍'
+          name: '荣珍'
         },
         {
           value: '003',
-          text: '陈知然'
+          name: '陈知然'
         }
       ],
       currentMember: [],
