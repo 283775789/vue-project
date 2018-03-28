@@ -52,14 +52,14 @@
       <label class="tw-optbox xcheckbox"><input type="checkbox" disabled checked /><span>选项文本</span></label>
       <label class="tw-optbox xcheckbox"><input type="checkbox" /><span>选项文本</span></label>
 
-      <tw-menu id="foo" :items="members" @change="changeHandler" style="max-width:100%; height:100px; overflow:auto; white-space:nowrap; background:pink;">
+      <tw-list id="foo" :items="members" @change="changeHandler" style="max-width:100%; height:100px; overflow:auto; white-space:nowrap; background:pink;">
         <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
-      </tw-menu>
+      </tw-list>
 
       <tw-poppane trigger="click">
-        <tw-menu slot="poppane-body" :items="members" @change="changeHandler">
+        <tw-list slot="poppane-body" :items="members" @change="changeHandler">
           <a slot-scope="{text, value, className}"><i :class="['tw-ico', 'x'+className]"></i>{{value}} text:{{text}}</a>
-        </tw-menu>
+        </tw-list>
       </tw-poppane>
 
         <a id="link">link</a>

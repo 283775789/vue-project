@@ -2,6 +2,8 @@
 $select-height: $ctr-height-default !default; // 默认选择框高度
 $select-height-small: $ctr-height-small !default; // 小选择框高度
 $select-height-large: $ctr-height-large !default; // 大选择框高度
+$select-padding-right: $spacing-tiny !default; // 选择框右内边距
+$select-triangle-color: $color-border-main !default; // 选择框三角形颜色
 $select-list-border-color: $color-border-main !default; // 选项列表边框色
 $select-list-item-line-height: $ctr-height-default !default; // 选项列表项行高
 $select-list-item-px: $spacing-tiny !default; // 选项水平内边距
@@ -11,6 +13,21 @@ $select-list-item-hover-bg: $color-main !default; // 选项滑过背景
 // 选择框
 .tw-select {
   position: relative;
+  display:inline-block;
+}
+
+.tw-select .tw-popswitch {
+  padding-right: 0;
+}
+
+.tw-select .tw-triangle {
+  position: absolute;
+  right: $select-padding-right;
+  color: $select-triangle-color;
+}
+
+.tw-select-input {
+  padding-right: $select-padding-right + 10px;
 }
 
 .tw-select-label {
@@ -18,12 +35,12 @@ $select-list-item-hover-bg: $color-main !default; // 选项滑过背景
 }
 
 // 选项列表
-.tw-list.xselect {
+.tw-select-pane {
   border: 1px solid $select-list-border-color;
 }
 
 // 选项列表项
-.tw-list.xselect > .tw-list-item {
+.tw-select-item {
   line-height: $select-list-item-line-height;
   padding: 0 $select-list-item-px;
   cursor: pointer;

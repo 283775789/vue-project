@@ -46,15 +46,15 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <div class="tw-select">
-        <input class="tw-input" type="text" />
-      </div>
-      <tw-list multiple class="xselect" v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".tw-select" :filterText="filterMember">
+      <!-- <div id="ccc" class="tw-select">
+        <input id="abc" v-model="filterMember" class="tw-input js-input" type="text" />
+      </div> -->
+      <tw-select multiple v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".js-input" :filterText="filterMember">
         <a slot-scope="item">{{item.name}}</a>
         <!-- <template slot="listLabel" slot-scope="selectedItem">
           <span>{{selectedItem.name}}</span>
         </template> -->
-      </tw-list>
+      </tw-select>
       <!-- <tw-list  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
         <a slot-scope="itemprops">{{itemprops.text}}</a>
       </tw-list> -->
@@ -83,7 +83,7 @@ export default {
           name: '陈知然'
         }
       ],
-      currentMember: '002',
+      currentMember: [],
       filterMember: '',
       classDemo: '',
       aa: null

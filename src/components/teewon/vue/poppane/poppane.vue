@@ -118,12 +118,23 @@
         })
       },
       openPoppane () {
-        toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'add'})
+        const vm = this
+        vm.$emit('show')
+
+        toggleSpecialTransitionClass(this.$el, 'xopen', {
+          type: 'add',
+          endCallback () {
+            vm.$emit('shown')
+          }
+        })
         addClass(this.switchEl, 'xopen')
         this.open = true
         this.setParent(true)
       },
       closePoppane (event) {
+        const vm = this
+        vm.$emit('hide')
+
         if (event) {
           this.eventTarget = event.target
           if (this.hasOpenChildPoppane) return
@@ -131,7 +142,12 @@
           if (this.$el.contains(event.target) && this.isSwitchElement(event.target)) return
         }
 
-        toggleSpecialTransitionClass(this.$el, 'xopen', {type: 'remove'})
+        toggleSpecialTransitionClass(this.$el, 'xopen', {
+          type: 'remove',
+          endCallback () {
+            vm.$emit('hidden')
+          }
+        })
         removeClass(this.switchEl, 'xopen')
         this.open = false
         this.setParent(false)

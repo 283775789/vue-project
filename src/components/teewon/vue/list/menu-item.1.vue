@@ -1,12 +1,12 @@
 <template>
-  <li class="tw-menu-item" v-if="menuValue.length===0 || text.indexOf(menuValue)!==-1" :class="{xdisabled:disabled,xselected:menuValue===value || menuValue.indexOf(value)!==-1}" @click="handleClick()">
+  <li class="tw-list-item" v-if="menuValue.length===0 || text.indexOf(menuValue)!==-1" :class="{xdisabled:disabled,xselected:menuValue===value || menuValue.indexOf(value)!==-1}" @click="handleClick()">
     <slot v-bind="{value, text}">{{text}}</slot>
   </li>
 </template>
 
 <script>
 export default {
-  name: 'twMenuItem',
+  name: 'twListItem',
   props: {
     value: {
       type: [String, Number, Object],
@@ -38,7 +38,7 @@ export default {
 
     if (typeof this.value === 'object') {
       if (typeof this.valueKey === 'undefined' || typeof this.value[this.valueKey] === 'undefined') {
-        throw TypeError('当tw-menu-item的value值为对象时，必须指定var')
+        throw TypeError('当tw-list-item的value值为对象时，必须指定var')
       } else {
 
       }

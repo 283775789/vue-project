@@ -1,6 +1,6 @@
 <template>
-  <ul class="tw-menu">
-    <li class="tw-menu-item" :class="{xdisabled:item[disabledKey]}" v-for="(item, index) in items" :key="index">
+  <ul class="tw-list">
+    <li class="tw-list-item" :class="{xdisabled:item[disabledKey]}" v-for="(item, index) in items" :key="index">
         <slot v-bind="{item:item}">{{ item[textKey] }}</slot>
     </li>
   </ul>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'twMenu',
+  name: 'twList',
   props: {
     items: {
       type: Array

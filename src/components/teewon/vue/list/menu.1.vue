@@ -1,12 +1,12 @@
 <template>
-  <ul class="tw-menu">
+  <ul class="tw-list">
     <slot></slot>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'twMenu',
+  name: 'twList',
   props: {
     multiple: {
       type: Boolean,
