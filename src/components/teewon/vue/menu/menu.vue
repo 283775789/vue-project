@@ -95,7 +95,6 @@ export default {
     this.getSElectedItems(this.value)
   },
   mounted () {
-    window.menu = this
     if (this.link) {
       this.displayElement = document.querySelector(this.link)
       if (!this.displayElement) throw Error(`使用属性link未查找到任何元素，请确定link指定的选择器是否正确并确保link指向的元素已经在页面中渲染!`)
