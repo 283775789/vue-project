@@ -1,17 +1,15 @@
 <template>
-  <ul class="tw-menu">
-    <li class="tw-menu-item" v-if="filterText===''||item[textKey].indexOf(filterText)!==-1" :class="{xdisabled:item[disabledKey],xselected:multiple?value.indexOf(item[valueKey])!==-1:value===item[valueKey]}" v-for="(item, index) in items" :key="index" @click="selectItem(item)">
+  <ul class="tw-list">
+    <li class="tw-list-item" v-if="filterText===''||item[textKey].indexOf(filterText)!==-1" :class="{xdisabled:item[disabledKey],xselected:multiple?value.indexOf(item[valueKey])!==-1:value===item[valueKey]}" v-for="(item, index) in items" :key="index" @click="selectItem(item)">
         <slot v-bind="item"></slot>
     </li>
-    <span class="tw-menu-text" ref="menuText">
-      <slot name="menuText" v-bind="selectedItems"></slot>
-    </span>
+    <span v-if="link" class="tw-list-label" ref="listLabel"><slot name="listLabel" v-bind="selectedItem">{{ labelDefaultText }}</slot></span>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'twMenu',
+  name: 'twList',
   props: {
     items: {
       type: Array
@@ -36,6 +34,10 @@ export default {
       type: String,
       default: ''
     },
+    placeholder: {
+      type: String,
+      default: ''
+    },
     link: {
       type: String
     }
@@ -43,24 +45,32 @@ export default {
   data () {
     return {
       displayElement: null,
-      selectedItems: []
+      selectedItem: []
+    }
+  },
+  computed: {
+    labelDefaultText () {
+      if (this.multiple) {
+        if (this.selectedItem.length === 0) {
+          return '请选择'
+        } else if (this.selectedItem.length === 1) {
+          return this.selectedItem[0][this.textKey]
+        } else {
+          return `已选择${this.selectedItem.length}项`
+        }
+      } else {
+        return this.selectedItem[this.textKey]
+      }
     }
   },
   methods: {
-    isSelected (value) {
+    getselectedItem (val) {
       if (this.multiple) {
-        return this.value.indexOf(value) !== -1
-      } else {
-        return this.value === value
-      }
-    },
-    getSElectedItems (values) {
-      if (this.multiple) {
-        this.selectedItems = this.items.filter(element => values.indexOf(element[this.valueKey]) !== -1)
+        this.selectedItem = this.items.filter(element => val.indexOf(element[this.valueKey]) !== -1)
       } else {
         for (let i = 0; i < this.items.length; i++) {
-          if (values === this.items[i][this.valueKey]) {
-            this.selectedItems = this.items[i]
+          if (val === this.items[i][this.valueKey]) {
+            this.selectedItem = this.items[i]
             break
           }
         }
@@ -80,25 +90,25 @@ export default {
           result.splice(itemIndexInResult, 1)
         }
 
-        this.getSElectedItems(result)
+        this.getselectedItem(result)
       } else {
         if (result === itemVal) return
         result = itemVal
-        this.selectedItems = item
+        this.selectedItem = item
       }
 
       this.$emit('input', result)
-      this.$emit('change', result, this.selectedItems)
+      this.$emit('change', result, this.selectedItem)
     }
   },
   created () {
-    this.getSElectedItems(this.value)
+    this.getselectedItem(this.value)
   },
   mounted () {
     if (this.link) {
       this.displayElement = document.querySelector(this.link)
       if (!this.displayElement) throw Error(`使用属性link未查找到任何元素，请确定link指定的选择器是否正确并确保link指向的元素已经在页面中渲染!`)
-      this.displayElement.appendChild(this.$refs.menuText)
+      this.displayElement.appendChild(this.$refs.listLabel)
     }
   }
 }

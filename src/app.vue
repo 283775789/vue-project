@@ -46,16 +46,18 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <div class="js-menu333333"></div>
-      <tw-menu v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".js-menu333333" :filterText="filterMember">
+      <div class="tw-select">
+        <input class="tw-input" type="text" />
+      </div>
+      <tw-list multiple class="xselect" v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".tw-select" :filterText="filterMember">
         <a slot-scope="item">{{item.name}}</a>
-        <span slot="menuText" slot-scope="selectedItems">
-          <span>{{selectedItems.name}}</span>
-        </span>
-      </tw-menu>
-      <!-- <tw-menu  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
+        <!-- <template slot="listLabel" slot-scope="selectedItem">
+          <span>{{selectedItem.name}}</span>
+        </template> -->
+      </tw-list>
+      <!-- <tw-list  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
         <a slot-scope="itemprops">{{itemprops.text}}</a>
-      </tw-menu> -->
+      </tw-list> -->
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>
@@ -83,7 +85,8 @@ export default {
       ],
       currentMember: '002',
       filterMember: '',
-      classDemo: ''
+      classDemo: '',
+      aa: null
     }
   },
   methods: {
