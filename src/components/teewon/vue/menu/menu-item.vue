@@ -1,6 +1,6 @@
 <template>
-  <li class="tw-menu-item" :class="{xdisabled:disabled}" @click="handleClick()">
-    <slot v-bind="{value, text}">{{text}}</slot>
+  <li class="tw-menu-item" :class="{xdisabled:disabled}">
+    <slot v-bind="{value, text}"></slot>
   </li>
 </template>
 
@@ -13,17 +13,12 @@ export default {
       required: true
     },
     text: {
-      type: String
+      type: String,
+      required: true
     },
     disabled: {
       type: Boolean,
       default: false
-    }
-  },
-  methods: {
-    handleClick () {
-      if (this.disabled) return
-      this.$parent.selectItem(this.value)
     }
   }
 }

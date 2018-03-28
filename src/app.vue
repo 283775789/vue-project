@@ -46,13 +46,16 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-menu multiple v-model="currentMember" @change="changeMember">
-        <tw-menu-item v-for="member in members" :value="member.value" :text="member.name" :key="member.value"><span slot-scope="prop"><i>i</i>{{prop.text}}</span></tw-menu-item>
+      <div class="js-menu333333"></div>
+      <tw-menu v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".js-menu333333" :filterText="filterMember">
+        <a slot-scope="item">{{item.name}}</a>
+        <span slot="menuText" slot-scope="selectedItems">
+          <span>{{selectedItems.name}}</span>
+        </span>
       </tw-menu>
-      <tw-menu multiple v-model="currentMember" @change="changeMember">
-        <tw-menu-item value="333">f00</tw-menu-item>
-        <tw-menu-item value="334">bar</tw-menu-item>
-      </tw-menu>
+      <!-- <tw-menu  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
+        <a slot-scope="itemprops">{{itemprops.text}}</a>
+      </tw-menu> -->
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>
@@ -78,13 +81,13 @@ export default {
           name: '陈知然'
         }
       ],
-      currentMember: [],
+      currentMember: '002',
+      filterMember: '',
       classDemo: ''
     }
   },
   methods: {
-    changeMember (value, item) {
-      debugger
+    changeMember (value, resultItems) {
       console.log(this.currentMember)
     },
     changeHandler (value) {
