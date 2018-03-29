@@ -60,13 +60,13 @@
             </td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">项目名称:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">项目名称:</label></td>
             <td class="tw-form-col"><input type="text" class="tw-input"></td>
-            <td class="tw-form-col"><label class="tw-ctrlabel">版本号:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">版本号:</label></td>
             <td class="tw-form-col"><input type="text" class="tw-input"></td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">项目组成员:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
             <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
           </tr>
 
@@ -76,19 +76,19 @@
             </td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">高保真:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">高保真:</label></td>
             <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">源文件:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">源文件:</label></td>
             <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">前端Html:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">前端Html:</label></td>
             <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">交付Html:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
             <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
           </tr>
 
@@ -98,12 +98,12 @@
             </td>
           </tr>
           <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-ctrlabel">应用类型:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">应用类型:</label></td>
             <td class="tw-form-col">
               <label class="tw-optbox xradio"><input type="radio" name="app-type" /><span>web端应用</span></label>
               <label class="tw-optbox xradio"><input type="radio" name="app-type" /><span>移动端应用</span></label>
             </td>
-            <td class="tw-form-col"><label class="tw-ctrlabel">底层JS框架:</label></td>
+            <td class="tw-form-col"><label class="tw-inputlabel">底层JS框架:</label></td>
             <td class="tw-form-col">
               <label class="tw-optbox xradio"><input type="radio" name="app-framework" /><span>Vue(前后端分离)</span></label>
               <label class="tw-optbox xradio xdisabled"><input type="radio" name="app-framework" disabled /><span>jQuery(经典)</span></label>

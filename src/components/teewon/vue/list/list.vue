@@ -1,7 +1,11 @@
 <template>
   <ul class="tw-list">
-    <li class="tw-list-item" v-if="filterText===''||item[textKey].indexOf(filterText)!==-1" :class="{xdisabled:item[disabledKey],xselected:multiple?value.indexOf(item[valueKey])!==-1:value===item[valueKey]}" v-for="(item, index) in items" :key="index" @click="selectItem(item)">
-        <slot v-bind="item"></slot>
+    <li class="tw-list-item"
+      v-if="filterText===''||item[textKey].indexOf(filterText)!==-1"
+      :class="{xdisabled:item[disabledKey],xselected:multiple?value.indexOf(item[valueKey])!==-1:value===item[valueKey]}"
+      v-for="(item, index) in items"
+      :key="index" @click="selectItem(item)">
+      <slot v-bind="item">{{item.name}}<i v-if="multiple" class="tw-font xselect"></i></slot>
     </li>
     <span v-if="link && labelVisible" class="tw-list-label" ref="listLabel"><slot name="listLabel" v-bind="selectedItem">{{ labelText }}</slot></span>
   </ul>

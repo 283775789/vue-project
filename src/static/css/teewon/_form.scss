@@ -26,16 +26,21 @@ $form-label-pl: $spacing-medium !default; // 表单项标签左边距
 }
 
 .tw-form-col > .tw-input,
-.tw-form-col > .tw-ctrlabel {
+.tw-form-col > .tw-select,
+.tw-form-col > .tw-inputlabel {
   width: 100%;
   vertical-align: top;
 }
 
-.tw-form-col > .tw-ctrlabel {
+.tw-form-col > .tw-select .tw-select-input {
+  width: 100%;
+}
+
+.tw-form-col > .tw-inputlabel {
   padding-left: $form-label-pl;
 }
 
-.tw-form-col:first-child > .tw-ctrlabel {
+.tw-form-col:first-child > .tw-inputlabel {
   padding-left: 0;
 }
 

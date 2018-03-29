@@ -49,12 +49,11 @@
       <!-- <div id="ccc" class="tw-select">
         <input id="abc" v-model="filterMember" class="tw-input js-input" type="text" />
       </div> -->
-      <tw-select multiple v-model="currentMember" :items="members" textKey="name" @change="changeMember" link=".js-input" :filterText="filterMember">
-        <a slot-scope="item">{{item.name}}</a>
+      <tw-select-group v-model="currentMember" :group="{nameKey:'name', itemsKey: 'children'}" :items="membersGroup" textKey="name" @change="changeMember" link=".js-input" :filterText="filterMember">
         <!-- <template slot="listLabel" slot-scope="selectedItem">
           <span>{{selectedItem.name}}</span>
         </template> -->
-      </tw-select>
+      </tw-select-group>
       <!-- <tw-list  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
         <a slot-scope="itemprops">{{itemprops.text}}</a>
       </tw-list> -->
@@ -68,6 +67,44 @@ export default {
   name: 'app',
   data () {
     return {
+      membersGroup: [
+        {
+          name: '组1',
+          children: [
+            {
+              value: '001',
+              name: '陈今斌',
+              className: 'abc'
+            },
+            {
+              value: '002',
+              name: '荣珍'
+            },
+            {
+              value: '003',
+              name: '陈知然'
+            }
+          ]
+        },
+        {
+          name: '组2',
+          children: [
+            {
+              value: '004',
+              name: '陈今东',
+              className: 'abc'
+            },
+            {
+              value: '005',
+              name: '欧阳花梅'
+            },
+            {
+              value: '006',
+              name: '陈宇欣'
+            }
+          ]
+        }
+      ],
       members: [
         {
           value: '001',
@@ -83,7 +120,7 @@ export default {
           name: '陈知然'
         }
       ],
-      currentMember: [],
+      currentMember: '003',
       filterMember: '',
       classDemo: '',
       aa: null

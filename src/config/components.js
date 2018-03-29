@@ -6,6 +6,7 @@ import Collapse from '@tw/vue/collapse/collapse'
 import CollapseGroup from '@tw/vue/collapse/collapse-group'
 import List from '@tw/vue/list/list'
 import Select from '@tw/vue/select/select'
+import SelectGroup from '@tw/vue/select/select-group'
 
 const components = [
   Footer,
@@ -13,7 +14,8 @@ const components = [
   Collapse,
   CollapseGroup,
   List,
-  Select
+  Select,
+  SelectGroup
 ]
 
 components.forEach(function (component) {

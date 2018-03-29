@@ -51,7 +51,7 @@ $optbox-checkbox-checked-color: $color-text-inverse !default; // 多选框对勾
 }
 
 // 控件标签
-.tw-ctrlabel {
+.tw-inputlabel {
   display: inline-block;
   line-height: $control-height;
   padding-right: $control-label-space;
@@ -60,11 +60,11 @@ $optbox-checkbox-checked-color: $color-text-inverse !default; // 多选框对勾
   vertical-align: top;
 }
 
-.tw-ctrlabel.xsmall {
+.tw-inputlabel.xsmall {
   line-height: $control-height-small;
 }
 
-.tw-ctrlabel.tw-input.xlarge {
+.tw-inputlabel.tw-input.xlarge {
   line-height: $control-height-large;
 }
 

@@ -98,6 +98,14 @@ $block-border-color:$color-border-main !default;
   margin-left: $spacing-large;
 }
 
+// 小色块
+.tw-colorcell.xdemo {
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin-top: 7px;
+}
+
 // 组件样式演示
 .tw-compscssdemo {
   position: relative;

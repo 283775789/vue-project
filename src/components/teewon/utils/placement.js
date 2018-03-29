@@ -154,11 +154,13 @@ const placement = function (el, relatedElement, relatedWidth) {
 
     matrix.auto = {
       top: relatedTop + relatedRect.height + 'px',
-      left: relatedLeft + 'px'
+      left: relatedLeft + 'px',
+      bottom: ''
     }
 
     if (overallHeight > window.innerHeight && relatedRect.top > elHeight) {
       matrix.auto.top = relatedTop - elHeight + 'px'
+      matrix.auto.bottom = 'auto'
     }
 
     if (overallWidth > window.innerWidth && relatedRect.left + relatedRect.width > elWidth) {

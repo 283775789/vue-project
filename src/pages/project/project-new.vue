@@ -1,6 +1,6 @@
 <template>
   <form>
-    <table style="display:none;" class="tw-form xtable">
+    <table class="tw-form xtable">
       <colgroup>
         <col style="width:6em;" />
         <col />
@@ -14,13 +14,13 @@
         </td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">项目名称:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">项目名称:</label></td>
         <td class="tw-form-col"><input type="text" class="tw-input"></td>
-        <td class="tw-form-col"><label class="tw-ctrlabel">版本号:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">版本号:</label></td>
         <td class="tw-form-col"><input type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">项目组成员:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
         <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
       </tr>
 
@@ -30,19 +30,19 @@
         </td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">高保真:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">高保真:</label></td>
         <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">源文件:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">源文件:</label></td>
         <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">前端Html:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">前端Html:</label></td>
         <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">交付Html:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
         <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
       </tr>
 
@@ -52,14 +52,14 @@
         </td>
       </tr>
       <tr class="tw-form-row">
-        <td class="tw-form-col"><label class="tw-ctrlabel">底层JS框架:</label></td>
+        <td class="tw-form-col"><label class="tw-inputlabel">底层JS框架:</label></td>
         <td class="tw-form-col" colspan="3">
           <label class="tw-optbox xradio"><input type="radio" name="app-framework" /><span>Vue(前后端分离)</span></label>
           <label class="tw-optbox xradio xdisabled"><input type="radio" name="app-framework" disabled /><span>jQuery(经典)</span></label>
         </td>
       </tr>
     </table>
-    <table style="display:none;" class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
+    <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
       <tr>
         <td colspan="4">
           <div class="tw-title">{{ scssModule.name }}</div>
@@ -96,7 +96,7 @@
             <!-- 组件相关变量 -->
             <!-- <div class="tw-form xtable" v-if="/tw-/.test(scssGroup.type)">
               <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
-                <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel">{{ scssVar.name }}:</label></div>
+                <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel">{{ scssVar.name }}:</label></div>
                 <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value" @change="changeScssVars"></div>
               </div>
             </div> -->
@@ -146,8 +146,13 @@
                   <div class="tw-title xsub">{{ currentCompScssVar.name }}样式设置</div>
                   <div class="tw-form xtable xsmall">
                     <div class="tw-form-row" v-for="(scssVar, index) in currentCompScssVar.children" :key="index" :title="scssVar.varName">
-                      <div class="tw-form-col" style="width:10em;"><label class="tw-ctrlabel xsmall">{{ scssVar.name }}:</label></div>
-                      <div class="tw-form-col"><input type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars"></div>
+                      <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel xsmall">{{ scssVar.name }}:</label></div>
+                      <div class="tw-form-col">
+                        <input v-if="typeof compOptions[index] === 'undefined'" type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars">
+                        <tw-select-group v-else v-model="scssVar.value" :group="{nameKey:'name', itemsKey: 'children'}" :items="compOptions[index]" valueKey="varName" textKey="name" inputClass="xsmall" @change="changeScssVars">
+                          <span slot-scope="item">{{ item.name }}<i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i></span>
+                        </tw-select-group>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -176,7 +181,8 @@ export default {
       styleEl: null,
       currentComp: null,
       currentCompScssVar: [],
-      demosVm: null
+      demosVm: null,
+      compOptions: []
     }
   },
   computed: {
@@ -240,9 +246,33 @@ export default {
       this.currentCompScssVar = []
       this.compScssVars.children.forEach(compVars => {
         if (compVars.name === type.name) {
+          this.compOptions = []
+
+          compVars.children.forEach(compVar => {
+            this.compOptions.push(this.createCompVarMap(compVar.value))
+          })
+
           this.currentCompScssVar = compVars
         }
       })
+    },
+    // 通过变量名查找scssVars所在的组与模块
+    createCompVarMap (varName) {
+      const modules = this.scssVars
+
+      for (let i = 0; i < modules.length; i++) {
+        if (modules[i].name !== '组件变量') {
+          const groups = modules[i].children
+          for (let j = 0; j < groups.length; j++) {
+            const scssVars = groups[j].children
+            for (let n = 0; n < scssVars.length; n++) {
+              if (scssVars[n].varName === varName) {
+                return [].concat(groups[j]).concat(groups.filter(group => group !== groups[j] && group.type !== 'NoChange'))
+              }
+            }
+          }
+        }
+      }
     }
   },
   beforeDestroy () {
