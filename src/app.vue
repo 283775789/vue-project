@@ -46,17 +46,9 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <!-- <div id="ccc" class="tw-select">
-        <input id="abc" v-model="filterMember" class="tw-input js-input" type="text" />
-      </div> -->
-      <tw-select-group v-model="currentMember" :group="{nameKey:'name', itemsKey: 'children'}" :items="membersGroup" textKey="name" @change="changeMember" link=".js-input" :filterText="filterMember">
-        <!-- <template slot="listLabel" slot-scope="selectedItem">
-          <span>{{selectedItem.name}}</span>
-        </template> -->
-      </tw-select-group>
-      <!-- <tw-list  v-model="currentMember" :items="[{value:'001',text:'学生1'},{value:'002',text:'学生2'}]">
-        <a slot-scope="itemprops">{{itemprops.text}}</a>
-      </tw-list> -->
+      <tw-draggrid :cols="3">
+        <tw-draggrid-col v-for="n in 4" :key="n"></tw-draggrid-col>
+      </tw-draggrid>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>

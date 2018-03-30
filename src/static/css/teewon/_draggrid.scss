@@ -1,0 +1,19 @@
+/* 可拖动栅格 */
+
+// 可拖动栅格-容器
+.tw-draggrid {
+  position: relative;
+}
+
+// 可拖动栅格-列容器
+.tw-draggrid-col {
+  position: absolute;
+}
+
+
+/* stylelint-disable */
+// demo
+.tw-draggrid-col {
+  padding:15px;
+  border: 1px solid #ccc;
+}
