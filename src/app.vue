@@ -47,7 +47,9 @@
     <div class="tw-body">
       <router-view></router-view>
       <tw-draggrid :cols="3">
-        <tw-draggrid-col v-for="n in 4" :key="n"></tw-draggrid-col>
+        <tw-draggrid-col colspan="2" :no="0"></tw-draggrid-col>
+        <tw-draggrid-col colspan="1" :no="1"></tw-draggrid-col>
+        <tw-draggrid-col colspan="1" :no="2"></tw-draggrid-col>
       </tw-draggrid>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
@@ -119,6 +121,9 @@ export default {
     }
   },
   methods: {
+    handleOk () {
+      console.log('ok')
+    },
     changeMember (value, resultItems) {
       console.log(this.currentMember)
     },
