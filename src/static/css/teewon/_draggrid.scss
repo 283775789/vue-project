@@ -8,8 +8,36 @@
 // 可拖动栅格-列容器
 .tw-draggrid-col {
   position: absolute;
+  transition: all $time * 2;
 }
 
+.tw-draggrid-col.xdragging {
+  z-index: 1;
+  outline: 1px dashed #f00;
+}
+
+.tw-draggrid-col-inner {
+  position: relative;
+}
+
+.tw-draggrid-col-resize {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  cursor: col-resize;
+  background: #f00;
+}
+
+.tw-draggrid.xnotrnasition .tw-draggrid-col {
+  transition: none;
+}
+
+.tw-draggrid.xdrag .tw-draggrid-col-inner {
+  cursor: move;
+}
 
 /* stylelint-disable */
 // demo
@@ -17,3 +45,5 @@
   padding:15px;
   border: 1px solid #ccc;
 }
+
+

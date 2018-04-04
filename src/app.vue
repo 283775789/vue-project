@@ -46,10 +46,11 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-draggrid :cols="3">
-        <tw-draggrid-col colspan="2" :no="0"></tw-draggrid-col>
-        <tw-draggrid-col colspan="1" :no="1"></tw-draggrid-col>
-        <tw-draggrid-col colspan="1" :no="2"></tw-draggrid-col>
+      <tw-draggrid :colsData="colsData" :cols="5" enableDrag>
+        <div slot-scope="col">
+          <div class="tw-col" v-if="col.name==='模块2'" style="height:74px;">{{col.name}}</div>
+          <div class="tw-col" v-else>{{col.name}}</div>
+        </div>
       </tw-draggrid>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
@@ -117,7 +118,73 @@ export default {
       currentMember: '003',
       filterMember: '',
       classDemo: '',
-      aa: null
+      aa: null,
+      colsData: [
+        {
+          colspan: 2,
+          name: '模块1'
+        },
+        {
+          colspan: 1,
+          name: '模块6'
+        },
+        {
+          colspan: 1,
+          name: '模块3'
+        },
+        {
+          colspan: 1,
+          name: '模块4'
+        },
+        {
+          colspan: 1,
+          name: '模块5'
+        },
+        {
+          colspan: 1,
+          name: '模块2'
+        },
+        {
+          colspan: 1,
+          name: '模块7'
+        },
+        {
+          colspan: 1,
+          name: '模块8'
+        },
+        {
+          colspan: 2,
+          name: '模块9'
+        },
+        {
+          colspan: 1,
+          name: '模块10'
+        },
+        {
+          colspan: 1,
+          name: '模块11'
+        },
+        {
+          colspan: 1,
+          name: '模块12'
+        },
+        {
+          colspan: 1,
+          name: '模块13'
+        },
+        {
+          colspan: 1,
+          name: '模块14'
+        },
+        {
+          colspan: 1,
+          name: '模块15'
+        },
+        {
+          colspan: 1,
+          name: '模块16'
+        }
+      ]
     }
   },
   methods: {
