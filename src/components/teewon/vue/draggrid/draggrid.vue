@@ -1,17 +1,22 @@
 <template>
-  <div class="tw-draggrid" :class="{xdrag:enableDrag && !lockDrag}">
+  <div class="tw-draggrid" :class="{xdrag:enableDrag && !lockDrag}" :style="{height:gridHeight}">
     <transition-group tag="div">
-      <div class="tw-draggrid-col" :class="[resultStyles[index] && resultStyles[index].isDragging ? 'xdragging' : '']" v-for="(col, index) in resultColsData" :ref="'col'+index" :style="resultStyles[index] || ''" :key="col.name">
+      <div class="tw-draggrid-col"
+        v-for="(col, index) in resultColsData"
+        :ref="'col'+index"
+        :style="resultStyles[index] || ''" :key="col[idKey]">
         <div class="tw-draggrid-col-inner"
+          :class="resultStyles[index] && resultStyles[index].statusClass"
           :draggable="enableDrag && !lockDrag"
           @dragstart="handleDragStart(index, $event)"
+          @dragend="handleDragend(index, $event)"
           @dragenter="handleDragenter(index, $event)"
           @dragleave="handleDragleave(index, $event)"
-          @dragover = "handleDragover"
+          @dragover="handleDragover(index, $event)"
           @drop="handleDrop(index)">
           <slot v-bind="col">默认内容{{index}}</slot>
-        </div>
           <a class="tw-draggrid-col-resize" v-if="enableDrag" @mousedown="handleResize(index, $event)"></a>
+        </div>
       </div>
     </transition-group>
   </div>
@@ -33,6 +38,14 @@
         type: String,
         default: 'colspan'
       },
+      idKey: {
+        type: String,
+        required: true
+      },
+      draggableKey: {
+        type: String,
+        default: 'draggable'
+      },
       cols: {
         type: Number,
         default: 1
@@ -48,7 +61,8 @@
         colStyles: [],
         resultStyles: [],
         lockDrag: false,
-        currentDragIndex: 0
+        currentDragIndex: 0,
+        gridHeight: 0
       }
     },
     methods: {
@@ -58,7 +72,10 @@
 
         vm.colStyles.forEach(colStyle => {
           let result = {}
-          result.isDragging = false
+          result.statusClass = {}
+          result.statusClass.xdropping = false
+          result.statusClass.xdragging = false
+          result.statusClass.xresizing = false
 
           for (const key in colStyle) {
             if (key === 'top') {
@@ -114,12 +131,19 @@
           currentCol += colspan
         })
 
+        vm.gridHeight = Math.max(...tops) + 'px'
         vm.$nextTick(() => {
           this.updateStyles()
         })
       },
       handleDragStart (index, event) {
         this.currentDragIndex = index
+        this.resultStyles[index].statusClass.xdragging = true
+
+        event.dataTransfer.setDragImage(document.createElement('img'), 0, 0)
+      },
+      handleDragend (index, event) {
+        this.resultStyles[index].statusClass.xdragging = false
       },
       handleDrop (index) {
         const dragCol = this.resultColsData[this.currentDragIndex]
@@ -138,22 +162,24 @@
         })
       },
       handleDragenter (index, event) {
-        this.resultStyles[index].isDragging = true
+        this.resultStyles[index].statusClass.xdropping = true
       },
       handleDragleave (index, event) {
-        this.resultStyles[index].isDragging = false
+        this.resultStyles[index].statusClass.xdropping = false
       },
-      handleDragover (event) {
+      handleDragover (index, event) {
+        this.resultStyles[index].statusClass.xdropping = true
         event.preventDefault()
       },
       handleResize (index, event) {
         const vm = this
-
+        vm.resultStyles[index].statusClass.xresizing = true
         vm.lockDrag = true
 
         const col = vm.resultColsData[index]
         const originalX = event.pageX
         const colWidth = parseFloat(this.resultStyles[index].width)
+        const colLeft = parseFloat(this.resultStyles[index].left)
         const span = col.colspan
         const unitWidth = 1 / this.cols * 100
 
@@ -161,25 +187,18 @@
         el.style.transition = 'none'
 
         const resizeCol = function (event) {
+          event.preventDefault()
           const increment = (event.pageX - originalX) / vm.$el.offsetWidth * 100
           let resultWidth = colWidth + increment
-          const incrementSpan = increment >= 0 ? Math.ceil(increment / unitWidth) : Math.floor(increment / unitWidth)
-          let resultSpan = span + incrementSpan
 
-          if (resultSpan > vm.cols) {
-            resultSpan = this.cols
-            resultWidth = 100
-          }
+          if (colLeft + resultWidth > 100 || resultWidth < unitWidth) return
 
-          if (resultSpan < 2) {
-            resultSpan = 1
-          }
+          const incrementSpan = increment >= 0 ? (increment / unitWidth).toFixed(0) : Math.floor(increment / unitWidth)
+          let resultSpan = span + parseInt(incrementSpan)
+          console.log(incrementSpan)
 
-          if (resultWidth < unitWidth) {
-            resultWidth = unitWidth
-          }
+          el.style.width = unitWidth * resultSpan + '%'
 
-          el.style.width = resultWidth + '%'
           col.colspan = resultSpan
         }
 
@@ -194,13 +213,10 @@
       }
     },
     created () {
-      debugger
       this.resultColsData = this.colsData
     },
     mounted () {
-      setTimeout(() => {
-        this.layout(true)
-      }, 300)
+      this.layout(true)
     }
   }
 </script>

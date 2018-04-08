@@ -4,38 +4,36 @@ const baseWebpackConfig = require('./webpack.common.conf')
 const config = require('./app.conf')
 const cssSourceMap = config.dev.cssSourceMap
 const portfinder = require('portfinder')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
         test: /\.(scss|css)$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              sourceMap: cssSourceMap
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: cssSourceMap
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: cssSourceMap
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: cssSourceMap
+              }
             }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: cssSourceMap
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: cssSourceMap
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: cssSourceMap
-            }
-          }
-        ]
+          ]
+        })
       }
     ]
   },
@@ -48,7 +46,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin('static/css/main.css')
   ]
 })
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="tw-header" v-tw-sticky="0">
+    <div class="tw-header">
       <div class="tw-header-inner">
         <h1 class="tw-header-left">
           <router-link to="/">
@@ -46,10 +46,9 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-draggrid :colsData="colsData" :cols="5" enableDrag>
+      <tw-draggrid :colsData="colsData" :cols="3" idKey="name" enableDrag>
         <div slot-scope="col">
-          <div class="tw-col" v-if="col.name==='模块2'" style="height:74px;">{{col.name}}</div>
-          <div class="tw-col" v-else>{{col.name}}</div>
+          <div class="tw-col" style="height:360px;"><span>{{col.name}}</span></div>
         </div>
       </tw-draggrid>
     </div>
@@ -121,12 +120,12 @@ export default {
       aa: null,
       colsData: [
         {
-          colspan: 2,
+          colspan: 1,
           name: '模块1'
         },
         {
           colspan: 1,
-          name: '模块6'
+          name: '模块2'
         },
         {
           colspan: 1,
@@ -142,7 +141,7 @@ export default {
         },
         {
           colspan: 1,
-          name: '模块2'
+          name: '模块6'
         },
         {
           colspan: 1,
@@ -153,36 +152,12 @@ export default {
           name: '模块8'
         },
         {
-          colspan: 2,
+          colspan: 1,
           name: '模块9'
         },
         {
           colspan: 1,
           name: '模块10'
-        },
-        {
-          colspan: 1,
-          name: '模块11'
-        },
-        {
-          colspan: 1,
-          name: '模块12'
-        },
-        {
-          colspan: 1,
-          name: '模块13'
-        },
-        {
-          colspan: 1,
-          name: '模块14'
-        },
-        {
-          colspan: 1,
-          name: '模块15'
-        },
-        {
-          colspan: 1,
-          name: '模块16'
         }
       ]
     }
