@@ -123,16 +123,3 @@ $block-border-color:$color-border-main !default;
   background: rgba(255, 255, 255, .85);
   border-left: 1px dashed $color-border-main;
 }
-
-/* --------------------------- 颜色体系 --------------------------- */
-.tw-colorcell.xmd {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.tw-colorcell.xmd.xmain {
-  background: $color-main;
-}
-
