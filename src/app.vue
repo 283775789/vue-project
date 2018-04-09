@@ -46,11 +46,11 @@
 
     <div class="tw-body">
       <router-view></router-view>
-      <tw-draggrid :colsData="colsData" :cols="3" idKey="name" enableDrag>
+      <!-- <tw-draggrid :colsData="colsData" :cols="3" idKey="name" enableDrag>
         <div slot-scope="col">
           <div class="tw-col" style="height:360px;"><span>{{col.name}}</span></div>
         </div>
-      </tw-draggrid>
+      </tw-draggrid> -->
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>

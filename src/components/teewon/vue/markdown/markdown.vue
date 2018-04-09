@@ -38,6 +38,7 @@
           }
         })
 
+        debugger
         const temp = `<div class="tw-markdown">${mdHtml}</div>`
 
         window.Vue.component(name, {

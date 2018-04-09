@@ -9,6 +9,6 @@
 
 <script>
   export default {
-    name: 'twPoppaneBase'
+    name: 'poppaneBase'
   }
 </script>
