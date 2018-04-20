@@ -18,8 +18,8 @@ $block-border-color:$color-border-main !default;
   vertical-align: top;
 }
 
-.tw-scssvar + .tw-scssvar {
-  margin-left: $spacing-large;
+.tw-scssvar {
+  margin:0 $spacing-large/2;
 }
 
 // 内容块-主体
