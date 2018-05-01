@@ -2,6 +2,7 @@
 import Vue from 'vue'
 let handleScroll
 
+// 仿position:sticky
 Vue.directive('tw-sticky', {
   bind (el, binding) {
     handleScroll = function (e) {
@@ -56,5 +57,32 @@ Vue.directive('tw-sticky', {
     window.removeEventListener('scroll', handleScroll)
     window.removeEventListener('resize', handleScroll)
     document.body.addEventListener('DOMSubtreeModified', handleScroll)
+  }
+})
+
+// 初始化元素的高度
+let updateHeight
+Vue.directive('tw-to-bottom', {
+  inserted: function (el, binding) {
+    updateHeight = function () {
+      const rect = el.getBoundingClientRect()
+      const top = rect.top + window.pageYOffset - document.documentElement.clientTop
+      let diffHeight = window.innerHeight - top
+
+      if (typeof binding.value === 'number') {
+        diffHeight -= binding.value
+      }
+
+      if (binding.modifiers.fixed) {
+        el.style.height = diffHeight + 'px'
+      } else {
+        el.style.minHeight = diffHeight + 'px'
+      }
+    }
+    updateHeight()
+    window.addEventListener('resize', updateHeight)
+  },
+  unbind () {
+    window.removeEventListener('resize', updateHeight)
   }
 })

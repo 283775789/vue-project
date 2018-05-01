@@ -2,6 +2,7 @@
 $draggrid-gutter-width: $spacing-medium; // 栅格槽宽
 $draggrid-col-outline-color: $color-main; // 栅格激活外边框色
 $draggrid-risizebar-bg: $color-border-main; // 栅格调整大小边框色
+$draggrid-resizebox-border-color: $color-main; // 调整大小虚拟容器边框色
 
 // 可拖动栅格-容器
 .tw-draggrid {
@@ -16,28 +17,31 @@ $draggrid-risizebar-bg: $color-border-main; // 栅格调整大小边框色
   transition: all $time * 2;
 }
 
+// 可拖动栅格-列内容区
 .tw-draggrid-col-inner {
   position: relative;
   transition: transform $time * 2;
 }
 
-
+// 可拖动栅格-列内容区-置入状态
 .tw-draggrid-col-inner.xdropping {
   z-index: 1;
   outline: 1px dashed $draggrid-col-outline-color;
   transform: scale(1.05);
 }
 
+// 可拖动栅格-列内容区-拖动状态
 .tw-draggrid-col-inner.xdragging {
   z-index: 1;
   opacity: .3;
   transform: scale(.95);
 }
 
+// 可拖动栅格-列内容区-调整大小状态
 .tw-draggrid-col-inner.xresizing {
   z-index: 2;
-  opacity: .8;
   cursor: ew-resize;
+  opacity: .8;
 }
 
 .tw-draggrid-col-resize {
@@ -51,12 +55,26 @@ $draggrid-risizebar-bg: $color-border-main; // 栅格调整大小边框色
   border-right: 1px solid #ccc;
 }
 
-.tw-draggrid.xnotrnasition .tw-draggrid-col {
-  transition: none;
-}
+// .tw-draggrid.xnotrnasition .tw-draggrid-col {
+//   transition: none;
+// }
 
 .tw-draggrid.xdrag .tw-draggrid-col-inner {
   cursor: move;
+}
+
+.tw-draggrid-resizebox {
+  position: absolute;
+  z-index: 3;
+  padding: $draggrid-gutter-width / 2;
+  cursor: ew-resize;
+}
+
+.tw-draggrid-resizebox:before {
+  content: "";
+  display: block;
+  height: 100%;
+  outline: 2px dashed $draggrid-resizebox-border-color;
 }
 
 /* stylelint-disable */

@@ -86,6 +86,8 @@
           }
           vm.resultStyles.push(result)
         })
+
+        vm.$emit('change', vm.resultColsData)
       },
       layout () {
         const vm = this
@@ -134,6 +136,7 @@
         vm.gridHeight = Math.max(...tops) + 'px'
         vm.$nextTick(() => {
           this.updateStyles()
+          vm.$emit('change', this.resultColsData)
         })
       },
       handleDragStart (index, event) {
@@ -148,6 +151,14 @@
       handleDrop (index) {
         const dragCol = this.resultColsData[this.currentDragIndex]
         const dropCol = this.resultColsData[index]
+        const resultStyle = this.resultStyles[index]
+
+        if (dragCol === dropCol) {
+          resultStyle.statusClass.xdropping = false
+          resultStyle.statusClass.xdragging = false
+          return
+        }
+
         const dragColspan = dragCol.colspan
         const dropColspan = dropCol.colspan
 
@@ -159,6 +170,7 @@
 
         this.$nextTick(() => {
           this.layout()
+          this.$emit('swap', dragCol, dropCol)
         })
       },
       handleDragenter (index, event) {
@@ -178,38 +190,53 @@
 
         const col = vm.resultColsData[index]
         const originalX = event.pageX
-        const colWidth = parseFloat(this.resultStyles[index].width)
-        const colLeft = parseFloat(this.resultStyles[index].left)
+        const resultStyle = this.resultStyles[index]
+        const colWidth = resultStyle.width
+        const colLeft = resultStyle.left
         const span = col.colspan
         const unitWidth = 1 / this.cols * 100
+        let resultSpan = span
 
-        const el = this.$refs['col' + index][0]
-        el.style.transition = 'none'
+        const resizeBox = document.createElement('div')
+        resizeBox.setAttribute('class', 'tw-draggrid-resizebox')
+        resizeBox.style.width = colWidth
+        resizeBox.style.height = vm.$refs['col' + index][0].offsetHeight + 'px'
+        resizeBox.style.left = colLeft
+        resizeBox.style.top = resultStyle.top
+        vm.$el.appendChild(resizeBox)
 
-        const resizeCol = function (event) {
+        const resizeReady = function (event) {
           event.preventDefault()
           const increment = (event.pageX - originalX) / vm.$el.offsetWidth * 100
-          let resultWidth = colWidth + increment
+          let resultWidth = parseFloat(colWidth) + increment
 
           if (colLeft + resultWidth > 100 || resultWidth < unitWidth) return
 
           const incrementSpan = increment >= 0 ? (increment / unitWidth).toFixed(0) : Math.floor(increment / unitWidth)
-          let resultSpan = span + parseInt(incrementSpan)
-          console.log(incrementSpan)
+          resultSpan = span + parseInt(incrementSpan)
 
-          el.style.width = unitWidth * resultSpan + '%'
-
-          col.colspan = resultSpan
+          resizeBox.style.width = unitWidth * resultSpan + '%'
         }
 
-        document.addEventListener('mousemove', resizeCol)
+        document.addEventListener('mousemove', resizeReady)
 
-        document.addEventListener('mouseup', () => {
-          document.removeEventListener('mousemove', resizeCol)
-          el.style.transition = ''
+        const resizeCol = function () {
+          document.removeEventListener('mousemove', resizeReady)
+          document.removeEventListener('mouseup', resizeCol)
+          vm.$el.removeChild(resizeBox)
           vm.lockDrag = false
+
+          if (resultSpan === span) {
+            resultStyle.statusClass.xresizing = false
+            return
+          }
+
+          col.colspan = resultSpan
+          vm.$emit('resize', col, span, resultSpan)
           vm.layout()
-        })
+        }
+
+        document.addEventListener('mouseup', resizeCol)
       }
     },
     created () {
@@ -217,6 +244,14 @@
     },
     mounted () {
       this.layout(true)
+    },
+    watch: {
+      colsData (value) {
+        this.resultColsData = value
+        this.$nextTick(() => {
+          this.layout(true)
+        })
+      }
     }
   }
 </script>

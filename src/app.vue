@@ -44,9 +44,9 @@
       </div>
     </div>
 
-    <div class="tw-body">
+    <div class="tw-body" v-tw-to-bottom="80">
       <router-view></router-view>
-      <tw-draggrid :colsData="colsData" :cols="3" idKey="name" enableDrag>
+      <tw-draggrid :colsData="colsData" :cols="10" idKey="name" enableDrag @swap="handleDragChange">
         <div slot-scope="col">
           <div class="tw-col" style="height:360px;"><span>{{col.name}}</span></div>
         </div>
@@ -178,6 +178,9 @@ export default {
     testmethod () {
       window.test = this.$refs.test
       window.test.classList.add('xstart')
+    },
+    handleDragChange (col, originalSpan, currentSpan) {
+      debugger
     }
   },
   created () {
