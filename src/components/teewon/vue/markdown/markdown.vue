@@ -1,9 +1,9 @@
 <template>
-  <component v-bind:is="currentView">
-  </component>
+  <div class="tw-markdown"></div>
 </template>
 
 <script>
+  import Vue from 'vue'
   import marked from 'marked'
   import hljs from 'highlight.js'
   import Clipboard from 'clipboard'
@@ -19,17 +19,15 @@
     data () {
       return {
         renderer: null,
-        currentView: '',
-        componentIndex: 0,
         codes: []
       }
     },
     methods: {
       updateContent () {
         const vm = this
-        const name = 'md' + this.componentIndex++
 
         vm.codes = []
+
         const mdHtml = marked(this.content, {
           renderer: vm.renderer,
           highlight: function (code) {
@@ -38,16 +36,19 @@
           }
         })
 
-        const temp = `<div class="tw-markdown">${mdHtml}</div>`
+        this.$el.innerHTML = mdHtml
 
-        window.Vue.component(name, {
-          template: temp
-        })
-
-        vm.currentView = name
-
-        // 添加代码复制功能
         vm.$nextTick(() => {
+          // 生成组件demo实例
+          const componentDemos = this.$el.querySelectorAll('.tw-dropdown-demo')
+
+          for (let i = 0; i < componentDemos.length; i++) {
+            new Vue({
+              el: componentDemos[i]
+            })
+          }
+
+          // 添加代码复制功能
           const copyBtn = document.querySelectorAll('.js-copy')
           copyBtn.forEach((element, index) => {
             const copy = new Clipboard(element, {

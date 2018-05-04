@@ -46,11 +46,6 @@
 
     <div class="tw-body" v-tw-to-bottom="80">
       <router-view></router-view>
-      <tw-draggrid :colsData="colsData" :cols="10" idKey="name" enableDrag @swap="handleDragChange">
-        <div slot-scope="col">
-          <div class="tw-col" style="height:360px;"><span>{{col.name}}</span></div>
-        </div>
-      </tw-draggrid>
     </div>
     <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>

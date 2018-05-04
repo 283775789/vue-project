@@ -10,7 +10,7 @@ $block-ml: $spacing-medium !default;
 $block-title-color: $color-text-auxiliary !default;
 $block-border-color:$color-border-main !default;
 
-// 内容块列表
+// scss变量容器
 .tw-scssvar {
   position: relative;
   display: inline-block;
@@ -18,8 +18,8 @@ $block-border-color:$color-border-main !default;
   vertical-align: top;
 }
 
-.tw-scssvar + .tw-scssvar {
-  margin-left: $spacing-large;
+.tw-scssvar {
+  margin:0 $spacing-large/2;
 }
 
 // 内容块-主体
@@ -106,6 +106,8 @@ $block-border-color:$color-border-main !default;
   margin-top: 7px;
 }
 
+.tw-scssvar.xsmall
+
 // 组件样式演示
 .tw-compscssdemo {
   position: relative;
@@ -122,4 +124,9 @@ $block-border-color:$color-border-main !default;
   overflow: auto;
   background: rgba(255, 255, 255, .85);
   border-left: 1px dashed $color-border-main;
+}
+
+// markdown-scss变量单元格
+.tw-scsstd {
+  padding: $spacing-small $spacing-medium !important;
 }

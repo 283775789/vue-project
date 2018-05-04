@@ -2,10 +2,12 @@
 import Vue from 'vue'
 import PoppaneBase from '@/examples/demo/poppane-base'
 import ButtonBase from '@/examples/demo/button-base'
+import DesignGuid from '@/examples/docs/design'
 
 const components = [
   PoppaneBase,
-  ButtonBase
+  ButtonBase,
+  DesignGuid
 ]
 
 components.forEach(function (component) {

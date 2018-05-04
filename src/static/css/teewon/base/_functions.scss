@@ -41,3 +41,8 @@
 @function active($color) {
   @return rightDownColor($color, 10%);
 }
+
+// 获取精确的间距值
+@function getExactSpacing($spacing, $font-size: $font-size-default, $line-height: $line-height-default) {
+  @return $spacing - ($font-size * $line-height - $font-size) / 2;
+}

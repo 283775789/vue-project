@@ -1,6 +1,6 @@
 /* markdown */
 $markdown-px: $spacing-medium !default; // 容器水平内边距
-$markdown-color: $color-text-auxiliary !default; // 默认文字颜色
+$markdown-color: $color-text-main !default; // 默认文字颜色
 $markdown-title-color: $color-text-auxiliary !default; // 标题文字颜色
 $markdown-title1-font-size: $font-size-large !default;  // 一级标题字号
 $markdown-title2-font-size: $font-size-medium !default; // 二级标题字号
@@ -11,7 +11,7 @@ $markdown-title-mb: $spacing-small !default; // 标题底部外边距
 $markdown-title-border-color: $color-border-main !default; //标题边框颜色
 $markdown-title-mark-color: $color-main !default; // 标题标记颜色
 $markdown-list-ml: $spacing-medium !default; // 列表左外边距
-$markdown-table-header-bg: #f5f5f5 !default; // 表格头部背景
+$markdown-table-header-bg: $color-bg-body !default; // 表格头部背景
 $markdown-table-pd: $spacing-tiny !default; // 表格单元格内边距
 $markdown-table-border-color: $color-border-main !default; // 表格边框色
 

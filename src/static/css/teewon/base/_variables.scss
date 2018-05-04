@@ -77,10 +77,12 @@ $ctr-height-large: $ctr-height-default + $ctr-height-step * 2; // 大高度
 
 /* 控件宽度 */
 $ctr-width-step: 40px !default; // 宽度步长
-$ctr-width-default: 160px !default; // 默认高度
-$ctr-width-small: $ctr-width-default - $ctr-width-step; // 小宽度
-$ctr-width-medium: $ctr-width-default + $ctr-width-step; // 中宽度
-$ctr-width-large: $ctr-width-default + $ctr-width-step * 2; // 大宽度
+$ctr-width-default: 100% !default; // 默认高度
+$ctr-width-tiny: $ctr-width-step * 2; // 超小宽度
+$ctr-width-small: $ctr-width-step * 3; // 小宽度
+$ctr-width-medium: $ctr-width-step * 4; // 中宽度
+$ctr-width-large: $ctr-width-step * 5; // 大宽度
+$ctr-width-large: $ctr-width-step * 6; // 超大宽度
 
 /* ------------------------------ 响应式体系(pc优先) ------------------------------ */
 /* 响应式断点{NoChange} */
