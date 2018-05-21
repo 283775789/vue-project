@@ -371,7 +371,7 @@
           <td rowspan="5">PC-Web端系统</td>
           <td rowspan="5">PC端优先</td>
           <td>默认(pc)</td>
-          <td>默认所有的css都为pc端优先</td>
+          <td>所有默认的css都为pc端优先</td>
         </tr>
         <tr>
           <td>pad横屏(lpad)</td>
@@ -393,7 +393,7 @@
           <td rowspan="5">移动App</td>
           <td rowspan="5">移动端优先</td>
           <td>默认(phone)</td>
-          <td>默认所有的css都为移动端优先</td>
+          <td>所有默认的css都为移动端优先</td>
         </tr>
         <tr>
           <td>手机横屏(lphone)</td>
