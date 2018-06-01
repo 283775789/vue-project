@@ -80,6 +80,14 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
   font-size: $markdown-title3-font-size;
 }
 
+.tw-markdown a {
+  color: $color-main;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // markdown列表
 .tw-markdown ul > li,
 .tw-markdown ol > li {

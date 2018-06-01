@@ -8,7 +8,8 @@
     "build": "webpack --config config/webpack.prod.conf.js",
     "ui": "gulp watch",
     "git": "git add -A && git commit -m '新提交' && git push",
-    "eg": "ncp E:/teewon/src/examples E:/teewon-node/examples"
+    "eg": "ncp E:/teewon/src/examples E:/teewon-node/examples",
+    "dist": "ncp E:/teewon/dist E:/teewon-node/www"
   },
   "author": "",
   "license": "SEE LICENSE IN <teewon-license.txt>",

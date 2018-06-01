@@ -3,11 +3,13 @@ import Vue from 'vue'
 import PoppaneBase from '@/examples/demo/poppane-base'
 import ButtonBase from '@/examples/demo/button-base'
 import DesignGuid from '@/examples/docs/design'
+import DevFlow from '@/examples/docs/dev-flow'
 
 const components = [
   PoppaneBase,
   ButtonBase,
-  DesignGuid
+  DesignGuid,
+  DevFlow
 ]
 
 components.forEach(function (component) {

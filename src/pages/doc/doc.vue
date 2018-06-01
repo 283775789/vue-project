@@ -5,12 +5,32 @@
       <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='guid'">
         <ul class="tw-nav xsidebar">
           <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font xico"></i>设计规范</router-link></li>
-          <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>版本管理</router-link></li>
-          <li><router-link to="/doc/guid/dir" class="jst-close"><i class="tw-font xico"></i>目录及文件</router-link></li>
-          <li><router-link to="/doc/guid/js" class="jst-close"><i class="tw-font xico"></i>JS规范</router-link></li>
-          <li><router-link to="/doc/guid/css" class="jst-close"><i class="tw-font xico"></i>CSS规范</router-link></li>
-          <li><router-link to="/doc/guid/html" class="jst-close"><i class="tw-font xico"></i>HTML规范</router-link></li>
-          <li><router-link to="/doc/guid/shortcut" class="jst-close"><i class="tw-font xico"></i>快捷输入</router-link></li>
+          <li>
+            <a class="js-fe"><i class="tw-font xico"></i>前端体系<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-fe">
+              <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>技术框架</router-link></li>
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>开发流程</router-link></li>
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>编辑器</router-link></li>
+                <li><router-link to="/doc/guid/dev-flow" class="jst-close"><i class="tw-font xico"></i>快捷输入</router-link></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
+            <a class="js-code"><i class="tw-font xico"></i>代码规范<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-code">
+              <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>版本管理</router-link></li>
+                <li><router-link to="/doc/guid/dir" class="jst-close"><i class="tw-font xico"></i>目录及文件</router-link></li>
+                <li><router-link to="/doc/guid/js" class="jst-close"><i class="tw-font xico"></i>JS规范</router-link></li>
+                <li><router-link to="/doc/guid/css" class="jst-close"><i class="tw-font xico"></i>CSS规范</router-link></li>
+                <li><router-link to="/doc/guid/html" class="jst-close"><i class="tw-font xico"></i>HTML规范</router-link></li>
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>开发流程</router-link></li>
+                <li><router-link to="/doc/guid/version" class="jst-close"><i class="tw-font xico"></i>编辑器</router-link></li>
+                <li><router-link to="/doc/guid/dev-flow" class="jst-close"><i class="tw-font xico"></i>快捷输入</router-link></li>
+              </ul>
+            </tw-collapse>
+          </li>
         </ul>
       </tw-collapse-group>
       <!-- /规范导航菜单 -->
