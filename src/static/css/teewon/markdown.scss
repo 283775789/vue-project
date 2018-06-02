@@ -17,7 +17,7 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
 
 // markdown容器
 .tw-markdown {
-  min-height: 1000px;
+  min-height: 300px;
   line-height: 1.75;
   padding: 0 $markdown-px;
   color: $markdown-color;
@@ -77,6 +77,7 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
   position: relative;
   padding-bottom: $markdown-title-pb - 5px;
   margin-top: $markdonw-title-mt - 10px;
+  margin-left: 16px;
   font-size: $markdown-title3-font-size;
 }
 
