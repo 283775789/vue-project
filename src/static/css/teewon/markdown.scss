@@ -122,10 +122,6 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
 
 // markdown 代码
 /* stylelint-disable */
-.tw-markdown pre {
-  margin: -10px 0 0;
-}
-
 .tw-markdown-shortcut {
   position: relative;
   z-index: 1;
@@ -137,11 +133,17 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
   background: #171922;
 }
 
+.tw-markdown-shortcut + pre {
+  position: relative;
+  margin-top: -10px;
+}
+
 .tw-markdown pre > code {
   position: relative;
   display: block;
-  overflow-x: auto;
+  font-family: Consolas, "Microsoft YaHei", monospace;
   padding: 3em 1em 1em;
+  overflow-x: auto;
   background: #282a36;
   color: #dcdcdc;
 }

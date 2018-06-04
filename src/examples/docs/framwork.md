@@ -1,8 +1,8 @@
-# 该规范解决以下问题
+# 技术框架
 
 定义前端工程师最基本的技术栈
 
-## 前端技术框架
+## 内容
 
 | 项目 | 内容 |
 | ----- | ----- |
@@ -16,6 +16,6 @@
 | CSS规范 | [style-lint默认](https://stylelint.io/) + [bootstrap](http://getbootstrap.com/) |
 | Api规范 | [RESTful Api](http://www.ruanyifeng.com/blog/2014/05/restful_api.html?bsh_bid=516759003) + 部份自定义，[github api示例](https://developer.github.com/v3/) |
 
-## 框架要求
+## 要求
 + 无技术级别划分，所有前端工程师都必须熟念使用技术框架中的各项内容
 + 技术框架确定后，如无特殊原因，原则上所有项目(包括外包)不允许更换其他框架，因为会带来不可预期的维护成本与开发风险

@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/doc'
+      redirect: '/doc/guid'
     },
     {
       path: '/doc/:type/:name',
@@ -19,12 +19,8 @@ export default new Router({
       component: Doc
     },
     {
-      path: '/doc/summary',
-      redirect: '/doc/summary/teewon'
-    },
-    {
       path: '/doc/guid',
-      redirect: '/doc/guid/design'
+      redirect: '/doc/guid/role'
     },
     {
       path: '/doc/component',

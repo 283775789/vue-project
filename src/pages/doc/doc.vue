@@ -4,7 +4,6 @@
       <!-- 规范导航菜单 -->
       <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='guid'">
         <ul class="tw-nav xsidebar">
-          <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font xico"></i>设计规范</router-link></li>
           <li>
             <a class="js-fe"><i class="tw-font xico"></i>前端体系<i class="tw-arrow xright"></i></a>
             <tw-collapse class="xsidebar" switch=".js-fe">
@@ -29,10 +28,11 @@
               </ul>
             </tw-collapse>
           </li>
+          <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font xico"></i>设计规范</router-link></li>
         </ul>
       </tw-collapse-group>
       <!-- /规范导航菜单 -->
-
+      
       <!-- 组件导航菜单 -->
       <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='component'">
         <ul class="tw-nav xsidebar">

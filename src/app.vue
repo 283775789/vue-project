@@ -10,9 +10,6 @@
         <div class="tw-header-body">
           <ul class="tw-nav xheader xhorizontal">
             <li>
-              <router-link to="/doc/summary"><span>概要</span></router-link>
-            </li>
-            <li>
               <router-link class="js-delegate" to="/doc/guid"><span>规范</span></router-link>
             </li>
             <li>
