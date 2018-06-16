@@ -1,13 +1,17 @@
 /** ---------------------------------------------------------------------
- ** 描述：scss模板
+ ** 描述：sass变量
  ** --------------------------------------------------------------------- */
 @import "functions";
 
+
 /* ------------------------------ 全局配置 ------------------------------ */
+
 /* 应用类型{String} */
-$app-type: web; // [前台样式:web, 后台样式:admin, 移动端样式:mobile]
+$app-type: web !default; // [前台样式:web, 后台样式:admin, 移动端样式:mobile]
+
 
 /* ------------------------------ 颜色体系 ------------------------------ */
+
 /* 主题色{Color+} */
 $color-main: #26a8ff !default; // 主色
 $color-main-hover: hover($color-main) !default; // 主色:滑过
@@ -45,9 +49,11 @@ $color-border-auxiliary:#ddd !default; // 辅边框
 $color-border-disabled:#eee !default; // 禁用边框
 $color-border-weaking:#eee !default; // 弱化边框
 
+
 /* ------------------------------ 字体体系 ------------------------------ */
+
 /* 字体{NoChange} */
-$font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", Arial, Helvetica, sans-serif !default; // 字体
+$font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", "Arial", "Helvetica", sans-serif !default; // 字体
 
 /* 字体尺寸{FontSize+} */
 $font-size-default: 14px !default; // 小字号
@@ -55,36 +61,42 @@ $font-size-small: $font-size-default - 2px !default; // 默认字号
 $font-size-medium: $font-size-default + 2px !default; // 中字号
 $font-size-large: $font-size-default + 6px !default; // 大字号
 
+
 /* ------------------------------ 间距体系 ------------------------------ */
+
 /* 行高{NoChange} */
 $line-height-default: 1.5 !default; // 行高
 
 /* 间距{Spacing+} */
 $spacing-step: 5px !default; // 间距步长
-$spacing-tiny: $spacing-step * 2; // 超小间距
-$spacing-small: $spacing-step * 3; // 小间距
-$spacing-medium: $spacing-step * 4; // 中间距
-$spacing-large: $spacing-step * 6; // 大间距
-$spacing-huge: $spacing-step * 8; // 超大间距
+$spacing-tiny: $spacing-step * 2 !default; // 超小间距
+$spacing-small: $spacing-step * 3 !default; // 小间距
+$spacing-medium: $spacing-step * 4 !default; // 中间距
+$spacing-large: $spacing-step * 6 !default; // 大间距
+$spacing-huge: $spacing-step * 8 !default; // 超大间距
+
 
 /* ------------------------------ 尺寸体系 ------------------------------ */
+
 /* 控件高度 */
 $ctr-height-step: 6px !default; // 高度步长
 $ctr-height-default: 30px !default; // 默认高度
-$ctr-height-small: $ctr-height-default - $ctr-height-step; // 小高度
-$ctr-height-medium: $ctr-height-default + $ctr-height-step; // 中高度
-$ctr-height-large: $ctr-height-default + $ctr-height-step * 2; // 大高度
+$ctr-height-small: $ctr-height-default - $ctr-height-step !default; // 小高度
+$ctr-height-medium: $ctr-height-default + $ctr-height-step !default; // 中高度
+$ctr-height-large: $ctr-height-default + $ctr-height-step * 2 !default; // 大高度
 
 /* 控件宽度 */
 $ctr-width-step: 40px !default; // 宽度步长
 $ctr-width-default: 100% !default; // 默认高度
-$ctr-width-tiny: $ctr-width-step * 2; // 超小宽度
-$ctr-width-small: $ctr-width-step * 3; // 小宽度
-$ctr-width-medium: $ctr-width-step * 4; // 中宽度
-$ctr-width-large: $ctr-width-step * 5; // 大宽度
-$ctr-width-large: $ctr-width-step * 6; // 超大宽度
+$ctr-width-tiny: $ctr-width-step * 2 !default; // 超小宽度
+$ctr-width-small: $ctr-width-step * 3 !default; // 小宽度
+$ctr-width-medium: $ctr-width-step * 4 !default; // 中宽度
+$ctr-width-large: $ctr-width-step * 5 !default; // 大宽度
+$ctr-width-large: $ctr-width-step * 6 !default; // 超大宽度
+
 
 /* ------------------------------ 响应式体系(pc优先) ------------------------------ */
+
 /* 响应式断点{NoChange} */
 $media-breakpoints: ( pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0) !default; // 媒体查询断点
 $container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:auto) !default; // 主容器宽度
@@ -93,6 +105,8 @@ $container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:aut
 $grid-columns:12 !default; // 栅格数量
 $grid-gutter-width:$spacing-small * 2 !default; // 栅格宽度
 
+
 /* ------------------------------ 过渡效果 ------------------------------ */
+
 /* 过渡时间{String} */
-$time: .12s; // 过渡时间
+$time: .12s !default; // 过渡时间

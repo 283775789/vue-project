@@ -1,74 +1,32 @@
 /* !------------------------------------------------------------
- * 样式:twui.scss
- * 版本:v1.0.0
- * ------------------------------------------------------------ */
-// 框架设置
-
-// app变量与公用scss
-// ------------------------------------------------------------
-@import "app/variables";
-
-// 变量与公用scss
-// ------------------------------------------------------------
-@import "teewon/base/variables";
-@import "teewon/mixins/utils";
-@import "teewon/mixins/responsive";
+* 样式:twui.scss
+* 版本:v1.0.0
+* ------------------------------------------------------------ */
 
 // 通用样式
 // ------------------------------------------------------------
-@import "teewon/base/reset";
-@import "teewon/transitions";
+@import "reset.scss";
 
-// 全局组件(teewon)
+// 样式模块: 组件
 // ------------------------------------------------------------
-@import "teewon/nav";
-@import "teewon/controls";
-@import "teewon/triangle";
-@import "teewon/arrow";
-@import "teewon/fonts";
-@import "teewon/button";
-@import "teewon/widget";
-@import "teewon/markdown";
+@import "modules/nav/nav.scss";
+@import "modules/controls/controls.scss";
+@import "modules/triangle/triangle.scss";
+@import "modules/arrow/arrow.scss";
+// @import "modules/fonts/fonts.scss";
+@import "modules/button/button.scss";
+@import "modules/widget/widget.scss";
 
-// 布局组件(teewon)
+// 样式模块: 布局
 // ------------------------------------------------------------
-@import "teewon/grid";
-@import "teewon/multicol";
-@import "teewon/title";
-@import "teewon/header";
-@import "teewon/body";
-@import "teewon/footer";
-@import "teewon/sidebar";
-@import "teewon/form";
-@import "teewon/poppane";
-@import "teewon/collapse";
-@import "teewon/list";
-@import "teewon/draggrid";
+@import "modules/grid/grid.scss";
+@import "modules/multicol/multicol.scss";
+@import "modules/title/title.scss";
+@import "modules/header/header.scss";
+@import "modules/body/body.scss";
+@import "modules/sidebar/sidebar.scss";
+@import "modules/form/form.scss";
 
-// 样式单元(teewon)
+// 项目公用
 // ------------------------------------------------------------
-@import "teewon/units";
-
-// App图标
-// ------------------------------------------------------------
-.tw-ico {
-  box-sizing: content-box;
-  display: inline-block;
-  padding: 1px;
-  vertical-align: middle;
-  background-image: url(../images/icons.png);
-  background-origin: content-box;
-}
-@import "sprite";
-
-// App(当前项目)
-// ------------------------------------------------------------
-@import "app/app";
-
-// 判断样式是否加载完成
-// ------------------------------------------------------------
-.u-styledone {
-  position: absolute;
-  width: 3px;
-  opacity: 0;
-}
+@import "app.scss";

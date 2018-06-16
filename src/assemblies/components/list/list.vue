@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import selectList from '@tw/mixins/select-list'
+import selectList from '@mixins/select-list'
 
 export default {
   name: 'twList',
@@ -45,3 +45,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "list.scss";
+</style>

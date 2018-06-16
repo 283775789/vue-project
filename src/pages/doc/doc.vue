@@ -2,7 +2,10 @@
   <div class="tw-multicol">
     <div class="tw-multicol-left">
       <!-- 规范导航菜单 -->
-      <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='guid'">
+      <tw-collapse-group
+        v-if="$route.params.type==='guid'"
+        class="tw-sidebar"
+        key="guid-nav">
         <ul class="tw-nav xsidebar">
           <li>
             <a class="js-fe"><i class="tw-font xico"></i>前端体系<i class="tw-arrow xright"></i></a>
@@ -20,7 +23,7 @@
             <a class="js-code"><i class="tw-font xico"></i>代码规范<i class="tw-arrow xright"></i></a>
             <tw-collapse class="xsidebar" switch=".js-code">
               <ul class="tw-nav xsidebar">
-                <li><router-link to="/doc/guid/version"></i>版本管理</router-link></li>
+                <li><router-link to="/doc/guid/version">版本管理</router-link></li>
                 <li><router-link to="/doc/guid/dir">目录及文件</router-link></li>
                 <li><router-link to="/doc/guid/js">JS规范</router-link></li>
                 <li><router-link to="/doc/guid/css">CSS规范</router-link></li>
@@ -32,16 +35,19 @@
         </ul>
       </tw-collapse-group>
       <!-- /规范导航菜单 -->
-      
+
       <!-- 组件导航菜单 -->
-      <tw-collapse-group class="tw-sidebar" v-if="$route.params.type==='component'">
+      <tw-collapse-group
+        v-if="$route.params.type==='comps' || $route.params.type==='css'"
+        class="tw-sidebar"
+        key="comps-nav">
         <ul class="tw-nav xsidebar">
           <li><a class="jst-close"><i class="tw-font xico"></i>SCSS相关</a></li>
           <li>
             <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
             <tw-collapse class="xsidebar" switch=".js-layout">
               <ul class="tw-nav xsidebar">
-                <li><a>整体布局</a></li>
+                <li><router-link to="/doc/css/layout">整体布局</router-link></li>
                 <li><a>栅格系统</a></li>
               </ul>
             </tw-collapse>
@@ -99,7 +105,7 @@
 </template>
 
 <script>
-import Markdown from '@tw/vue/markdown/markdown'
+import Markdown from '@comps/markdown/markdown'
 
 export default {
   name: 'intro',
@@ -115,7 +121,7 @@ export default {
     updateMarkdown () {
       const vm = this
 
-      vm.axios(`http://localhost:83/getMarkdown/?name=${vm.$route.params.name}`).then(function (responed) {
+      vm.axios.get(`docs/${vm.$route.params.type}/${vm.$route.params.name}`).then(function (responed) {
         vm.markdownText = responed.data
       }).catch(function (error) {
         console.log(error)

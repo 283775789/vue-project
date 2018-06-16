@@ -1,0 +1,129 @@
+/* 头部 */
+$header-height: 60px !default;
+$header-line-height: $header-height !default;
+$header-font-size: $font-size-default !default;
+$header-bg: $color-main !default;
+$header-color: $color-text-inverse !default;
+$header-mb: $spacing-medium !default;
+$header-title-font-size: $font-size-medium !default;
+$header-title-pl: $spacing-small !default;
+$header-left-mr: $spacing-medium !default;
+$header-hover-color: $color-main-hover !default;
+$header-active-color: $color-main-active !default;
+$header-navlink-hover-bg: $color-main-hover !default;
+$header-navlink-hover-color: $color-text-inverse !default;
+$header-navlink-active-bg: $color-main-active !default;
+$header-navlink-active-color: $color-text-inverse !default;
+$header-navlink-px: $spacing-small !default;
+
+// 头部-容器
+.tw-header {
+  position: relative;
+  z-index: 1000;
+  height: $header-height;
+  line-height: $header-line-height;
+  margin-bottom: $header-mb;
+  font-size: $header-font-size;
+  color: $header-color;
+  background: $header-bg;
+}
+
+// 头部-内部内容区
+.tw-header-inner {
+  @if $app-type == web {
+    @include make-container(fasle);
+  }
+  @else {
+    @include make-container;
+  }
+}
+
+// 头部-左侧内容区(logo及站点名称等)
+// 头部-主体
+.tw-header-left,
+.tw-header-body {
+  float: left;
+}
+
+.tw-header-left {
+  margin-right: $header-left-mr;
+  font-size: 0;
+  color: $header-color;
+}
+
+// 头部-标题
+.tw-header-title {
+  display: inline-block;
+  padding-left: $header-title-pl;
+  font-size: $header-title-font-size;
+  vertical-align: middle;
+}
+
+// 头部-右侧内容区
+.tw-header-right {
+  float: right;
+}
+
+// 头部-导航
+.tw-nav.xheader > li > a {
+  padding: 0 $header-navlink-px;
+
+  &:hover {
+    color: $header-navlink-hover-color;
+    background: $header-navlink-hover-bg;
+  }
+
+  &.xactive {
+    color: $header-navlink-active-color;
+    background: $header-navlink-active-bg;
+  }
+}
+
+// 头部-弹出开关
+.tw-popswitch.xheader {
+  display: block;
+}
+
+.tw-popswitch.xheader,
+.tw-nav.xheader > li > .tw-popswitch.xheader {
+  padding: 0 $header-navlink-px * 2 0 $header-navlink-px;
+}
+
+.tw-popswitch.xheader > .tw-triangle {
+  right: $header-navlink-px;
+}
+
+.tw-popswitch.xheader.xopen {
+  background: $header-navlink-hover-bg;
+}
+
+// 头部-下拉菜单项
+.tw-header-menu {
+  line-height: 36px;
+  padding: $spacing-tiny 5px;
+  color: $header-color;
+  white-space: nowrap;
+  background: $header-navlink-hover-bg;
+}
+
+.tw-header-menu:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5px;
+  left: 5px;
+  height: 1px;
+  background: rightDownColor($header-navlink-active-bg, 4%);
+}
+
+// stylelint-disable no-descending-specificity
+.tw-header-menu > li > a {
+  display: block;
+  padding: 0 $header-navlink-px;
+  border-radius: 3px;
+
+  &:hover {
+    color: $header-navlink-active-color;
+    background: $header-navlink-active-bg;
+  }
+}

@@ -6,7 +6,7 @@
   $prev: map-prev($breakpoints, $key);
 
   @if $prev {
-    @media (max-width:$prev - 1) {
+    @media (max-width: $prev - 1) {
       & {
         @content;
       }
@@ -23,7 +23,7 @@
   $next: map-next($media-breakpoints, $key);
 
   @if $next {
-    @media (min-width:map-get($breakpoints, $key)) {
+    @media (min-width: map-get($breakpoints, $key)) {
       & {
         @content;
       }

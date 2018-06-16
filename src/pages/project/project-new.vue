@@ -203,7 +203,7 @@ export default {
     vm.styleEl = document.createElement('style')
     document.querySelector('head').appendChild(vm.styleEl)
 
-    vm.axios.get('http://localhost:83/getScssVars').then(function (responed) {
+    vm.axios.get('scss-vars').then(function (responed) {
       vm.scssVars = responed.data
     }).catch(function (error) {
       console.log(error)
@@ -218,7 +218,7 @@ export default {
   methods: {
     changeScssVars () {
       const vm = this
-      vm.axios.post('http://localhost:83/css', vm.scssVars).then(function (responed) {
+      vm.axios.post('css', vm.scssVars).then(function (responed) {
         vm.styleEl.textContent = responed.data
       }).catch(function (error) {
         console.log(error)

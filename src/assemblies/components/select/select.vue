@@ -17,36 +17,36 @@
 </template>
 
 <script>
-  import selectList from '@tw/mixins/select-list'
+import selectList from '@mixins/select-list'
 
-  export default {
-    name: 'twSelect',
-    mixins: [selectList],
-    data () {
-      return {
-        filterText: '',
-        switchSelector: ''
-      }
+export default {
+  name: 'twSelect',
+  mixins: [selectList],
+  data () {
+    return {
+      filterText: '',
+      switchSelector: ''
+    }
+  },
+  methods: {
+    focusInput () {
+      this.$refs.filter.select()
     },
-    methods: {
-      focusInput () {
-        this.$refs.filter.select()
-      },
-      hidePane () {
-        this.$refs.filter.blur()
-      }
-    },
-    created () {
-      this.switchSelector = 'js-tw-poppane-switch-select-' + this._uid
-    },
-    mounted () {
+    hidePane () {
+      this.$refs.filter.blur()
+    }
+  },
+  created () {
+    this.switchSelector = 'js-tw-poppane-switch-select-' + this._uid
+  },
+  mounted () {
+    this.$refs.filter.value = this.labelText
+  },
+  watch: {
+    value () {
       this.$refs.filter.value = this.labelText
-    },
-    watch: {
-      value () {
-        this.$refs.filter.value = this.labelText
-        this.filterText = ''
-      }
+      this.filterText = ''
     }
   }
+}
 </script>

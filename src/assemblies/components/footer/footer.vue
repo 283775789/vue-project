@@ -7,3 +7,7 @@ export default {
   name: 'twFooter'
 }
 </script>
+
+<style lang="scss">
+  @import "./footer.scss";
+</style>

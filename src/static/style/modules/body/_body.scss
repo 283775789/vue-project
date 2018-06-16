@@ -1,0 +1,18 @@
+/* 主体 */
+$content-bg: #fff !default; // 主体背景
+
+.tw-body {
+  margin-bottom: $spacing-large;
+}
+
+//
+.tw-body-inner {
+  position: relative;
+  @include make-container($paddingY:true);
+  min-height: 450px;
+  background: $content-bg;
+}
+
+.tw-body-inner > .tw-multicol {
+  margin: -$spacing-medium;
+}

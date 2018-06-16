@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  export default {
-    name: 'poppane-base'
-  }
+export default {
+  name: 'poppane-base'
+}
 </script>

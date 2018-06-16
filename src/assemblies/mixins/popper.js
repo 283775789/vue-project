@@ -1,7 +1,7 @@
 /**
  * 类弹出面板需实现的属性
  */
-import { addClass } from '@tw/utils/dom'
+import { addClass } from '@utils/dom'
 
 export default {
   props: {

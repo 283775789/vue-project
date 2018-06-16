@@ -7,30 +7,30 @@
 </template>
 
 <script>
-  export default {
-    name: 'twDraggridCol',
-    props: {
-      no: {
-        type: Number,
-        required: true
-      },
-      colspan: {
-        type: Number,
-        default: 1
-      }
+export default {
+  name: 'twDraggridCol',
+  props: {
+    no: {
+      type: Number,
+      required: true
     },
-    data () {
-      return {
-        top: 0,
-        left: 0,
-        width: 0
-      }
-    },
-    created () {
-
-    },
-    mounted () {
-      this.$emit('ok', this)
+    colspan: {
+      type: Number,
+      default: 1
     }
+  },
+  data () {
+    return {
+      top: 0,
+      left: 0,
+      width: 0
+    }
+  },
+  created () {
+
+  },
+  mounted () {
+    this.$emit('ok', this)
   }
+}
 </script>

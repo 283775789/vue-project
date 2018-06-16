@@ -21,47 +21,47 @@
 </template>
 
 <script>
-  import selectList from '@tw/mixins/select-list'
-  import select from '@tw/mixins/select'
+import selectList from '@mixins/select-list'
+import select from '@mixins/select'
 
-  export default {
-    name: 'twSelectGroup',
-    mixins: [selectList, select],
-    props: {
-      group: {
-        type: Object,
-        required: true,
-        validator (value) {
-          return typeof value.nameKey === 'string' && typeof value.itemsKey === 'string'
-        }
+export default {
+  name: 'twSelectGroup',
+  mixins: [selectList, select],
+  props: {
+    group: {
+      type: Object,
+      required: true,
+      validator (value) {
+        return typeof value.nameKey === 'string' && typeof value.itemsKey === 'string'
       }
-    },
-    computed: {
-      resultItems () {
-        const vm = this
-        let result = []
+    }
+  },
+  computed: {
+    resultItems () {
+      const vm = this
+      let result = []
 
-        this.items.forEach(item => {
-          result.push(item[this.group.nameKey])
-          result = result.concat(item[vm.group.itemsKey])
-        })
+      vm.items.forEach(item => {
+        result.push(item[vm.group.nameKey])
+        result = result.concat(item[vm.group.itemsKey])
+      })
 
-        return result
-      }
-    },
-    methods: {
-      getselectedItem (val) {
-        if (this.multiple) {
-          this.selectedItem = this.resultItems.filter(element => val.indexOf(element[this.valueKey]) !== -1)
-        } else {
-          for (let i = 0; i < this.resultItems.length; i++) {
-            if (val === this.resultItems[i][this.valueKey]) {
-              this.selectedItem = this.resultItems[i]
-              break
-            }
+      return result
+    }
+  },
+  methods: {
+    getselectedItem (val) {
+      if (this.multiple) {
+        this.selectedItem = this.resultItems.filter(element => val.indexOf(element[this.valueKey]) !== -1)
+      } else {
+        for (let i = 0; i < this.resultItems.length; i++) {
+          if (val === this.resultItems[i][this.valueKey]) {
+            this.selectedItem = this.resultItems[i]
+            break
           }
         }
       }
     }
   }
+}
 </script>

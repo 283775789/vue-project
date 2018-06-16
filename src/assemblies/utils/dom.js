@@ -171,13 +171,10 @@ const toggleSpecialTransitionClass = function (el, className, option = {}) {
 
 /**
  * 设置临时样式值
- * @param {HTMLElement} el
- * @param {String} name
- * 样式属性名称
- * @param {String} value
- * 临时样式值
- * @param {Function} callback
- * 设置临时样式完成后的回调函数
+ * @param {HTMLElement} el 元素
+ * @param {String} name 样式属性名称
+ * @param {String} value 临时样式值
+ * @param {Function} callback 设置临时样式完成后的回调函数
  */
 const setTempStyle = function (el, name, value, callback) {
   const originalValue = el.style[name]

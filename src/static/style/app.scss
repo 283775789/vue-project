@@ -1,0 +1,140 @@
+﻿/* ------------------------------------------------------------
+* 样式:项目通用的公用样式
+* ------------------------------------------------------------ */
+
+/* --------------------------- 重置CSS组件 --------------------------- */
+// 侧边栏右侧分隔线
+.tw-sidebar::after {
+  @include lineY($color-border-auxiliary);
+  left: 200px;
+}
+
+/* --------------------------- 通用组件 --------------------------- */
+
+/* 文档 */
+.tw-doc {
+  padding: 0 $spacing-medium;
+}
+
+/* 内容块 */
+$block-ml: $spacing-medium !default;
+$block-title-color: $color-text-auxiliary !default;
+$block-border-color:$color-border-main !default;
+
+// scss变量容器
+.tw-scssvar {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 30px;
+  margin: 0 $spacing-large/2;
+  vertical-align: top;
+}
+
+// 内容块-主体
+.tw-scssvar-body {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  border: 1px dashed $color-border-main;
+}
+
+.tw-scssvar-value {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff;
+  vertical-align: top;
+  border: none;
+}
+
+// 内容块-标题
+.tw-scssvar-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 30px;
+  color: $block-title-color;
+  text-align: center;
+  white-space: nowrap;
+  border-top: none;
+}
+
+/* 色板 */
+.tw-palette {
+  margin-bottom: $spacing-large;
+}
+
+.tw-palette > .tw-scssvar.xlml {
+  margin-left: $spacing-large * 2;
+}
+
+/* 颜色单元 */
+.tw-colorcell {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+// stylelint-disable
+.tw-colorcell > .el-color-picker__trigger {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.tw-colorcell .el-color-picker__color {
+  border: none;
+}
+
+.tw-colorcell .el-color-picker__empty,
+.tw-colorcell .el-color-picker__icon {
+  display: none !important;
+}
+// stylelint-enable
+
+.tw-addbtn.xscssvar {
+  width: 65px;
+  height: 65px;
+  margin-left: $spacing-large;
+}
+
+// 小色块
+.tw-colorcell.xdemo {
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin-top: 7px;
+}
+
+.tw-scssvar.xsmall
+
+// 组件样式演示
+.tw-compscssdemo {
+  position: relative;
+  min-height: 600px;
+}
+
+.tw-compscssdemo-setbar {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  bottom: 0;
+  width: 360px;
+  padding: $spacing-small;
+  overflow: auto;
+  background: rgba(255, 255, 255, .85);
+  border-left: 1px dashed $color-border-main;
+}
+
+// markdown-scss变量单元格
+.tw-scsstd {
+  padding: $spacing-small $spacing-medium !important;
+}
