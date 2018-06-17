@@ -61,7 +61,7 @@
         <tr>
           <td class="tw-scsstd" colspan="4">
             <div class="tw-title xsub">背景色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[2].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
+            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[1].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
               <div class="tw-scssvar-body">
                 <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
               </div>
@@ -86,7 +86,7 @@
         <tr>
           <td class="tw-scsstd" colspan="4">
             <div class="tw-title xsub">标识色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[1].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
+            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[2].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
               <div class="tw-scssvar-body">
                 <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
               </div>
@@ -440,11 +440,8 @@ export default {
       const vm = this
 
       vm.axios.post('css', vm.scssVars).then(function (responed) {
-        debugger
         vm.styleEl.textContent = responed.data
-        debugger
       }).catch(function (error) {
-        debugger
         console.log(error)
       })
     }

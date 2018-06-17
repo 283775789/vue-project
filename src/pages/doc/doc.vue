@@ -42,7 +42,7 @@
         class="tw-sidebar"
         key="comps-nav">
         <ul class="tw-nav xsidebar">
-          <li><a class="jst-close"><i class="tw-font xico"></i>SCSS相关</a></li>
+          <li><router-link to="/doc/css/scss" class="jst-close"><i class="tw-font xico"></i>SCSS相关</router-link></li>
           <li>
             <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
             <tw-collapse class="xsidebar" switch=".js-layout">

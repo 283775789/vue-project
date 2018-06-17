@@ -89,7 +89,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "markdown.scss";
-</style>

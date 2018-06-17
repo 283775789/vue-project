@@ -10,7 +10,8 @@
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
     "docs": "ncp E:/teewon3/docs E:/teewon-node/docs",
-    "src": "ncp E:/teewon3/src E:/teewon-node/teewon/apps/web/src",
+    "factory": "ncp E:/teewon3/src E:/teewon-node/teewon/apps/web/src",
+    "src": "ncp E:/teewon3/src E:/teewon-node/src",
     "git": "git add -A && git commit -m '新提交' && git push"
   },
   "dependencies": {

@@ -1,32 +1,48 @@
 /* !------------------------------------------------------------
 * 样式:twui.scss
 * 版本:v1.0.0
+* 1.引入普通的scss文件,请按标准的sass语言的@import语法
+* 2.引入CSS模块或Vue组件,无需加文件夹前缀，在sass-loader中已经加了
+*   全局的includePaths路径，会自动为@import的组件添加所在的文件夹前缀
+* 3.css模块与vue组件不能重名
 * ------------------------------------------------------------ */
+
+// 引入变量、mixins、functions
+// ------------------------------------------------------------
+@import "base/functions.scss";
+@import "base/variables.scss";
+@import "mixins/responsive.scss";
+@import "mixins/utils.scss";
 
 // 通用样式
 // ------------------------------------------------------------
 @import "reset.scss";
 
-// 样式模块: 组件
+// 样式模块
 // ------------------------------------------------------------
-@import "modules/nav/nav.scss";
-@import "modules/controls/controls.scss";
-@import "modules/triangle/triangle.scss";
-@import "modules/arrow/arrow.scss";
+@import "nav/nav.scss";
+@import "controls/controls.scss";
+@import "triangle/triangle.scss";
+@import "arrow/arrow.scss";
 // @import "modules/fonts/fonts.scss";
-@import "modules/button/button.scss";
-@import "modules/widget/widget.scss";
+@import "button/button.scss";
+@import "widget/widget.scss";
 
-// 样式模块: 布局
+// vue组件
 // ------------------------------------------------------------
-@import "modules/grid/grid.scss";
-@import "modules/multicol/multicol.scss";
-@import "modules/title/title.scss";
-@import "modules/header/header.scss";
-@import "modules/body/body.scss";
-@import "modules/sidebar/sidebar.scss";
-@import "modules/form/form.scss";
+@import "markdown/markdown.scss";
 
-// 项目公用
+// 样式模块
+// ------------------------------------------------------------
+@import "grid/grid.scss";
+@import "multicol/multicol.scss";
+@import "title/title.scss";
+@import "header/header.scss";
+@import "body/body.scss";
+@import "sidebar/sidebar.scss";
+@import "form/form.scss";
+
+// 项目
 // ------------------------------------------------------------
 @import "app.scss";
+

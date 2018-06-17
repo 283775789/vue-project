@@ -60,7 +60,13 @@ exports.cssLoaders = function (options) {
     postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass').concat({
+    scss: generateLoaders('sass',{
+      includePaths: [
+        path.resolve(__dirname,'../src/static/style'),
+        path.resolve(__dirname,'../src/assemblies/components'),
+        path.resolve(__dirname,'../src/static/style/modules')
+      ]
+    }).concat({
       loader: 'sass-resources-loader',
       options: {
         resources: [

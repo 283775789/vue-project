@@ -1,6 +1,4 @@
 /* 主体 */
-$content-bg: #fff !default; // 主体背景
-
 .tw-body {
   margin-bottom: $spacing-large;
 }
@@ -10,7 +8,7 @@ $content-bg: #fff !default; // 主体背景
   position: relative;
   @include make-container($paddingY:true);
   min-height: 450px;
-  background: $content-bg;
+  background: $color-bg-content;
 }
 
 .tw-body-inner > .tw-multicol {
