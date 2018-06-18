@@ -1,10 +1,11 @@
-# SCSS相关
+# mixins
 
-全局可用的mixins, functions, 及功能样式
+全局可用sass-mixins。
++ 提高编写css的效率
++ 规范css代码
 
-## mixins
+## 媒体查询相关
 
-### 媒体查询相关
 媒体查询关键字与断点为：pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0
 <br>
 
@@ -34,7 +35,7 @@
 }
 ```
 
-### 工具类
+## 工具类
 | 名称 | 描述 |
 | ----- | ----- |
 | cutoff | 单行字符超出省略 |
@@ -42,30 +43,14 @@
 | clearfix | 清除当前元素浮动 |
 | disable | 生成禁用样式 |
 | triangle([$direction,$size]) | 生成小三角形<br>$direction:[top,left,bottom,right] |
+| lines([$placement, $color]) | 生成移动端的1px边框<br>默认值:<br>$placement:bottom, $color:$color-border-main |
 
+用法举例：
+```
+/* 生成4个1像素边框 */
+.tw-1pxborderbox {
+  @include lines(top right bottom left, $color-border-main);
+}
+```
 
-## 组件说明
-在前台系统中，头部内容分为两种尺寸：
-1. 浏览器大于1200px分辨率时，内容宽度为:1200px
-2. 浏览器小于1200px分辨率时，内容宽度为:960px
-
-## 基本用法
-
-## data属性
-
-| 列标题 | 列标题 | 列标题 |
-| ----- | ----- | ----- |
-| 内容 | 内容 | 内容 |
-
-## 事件
-
-| 列标题 | 列标题 | 列标题 |
-| ----- | ----- | ----- |
-| 内容 | 内容 | 内容 |
-
-## 方法
-
-| 列标题 | 列标题 | 列标题 |
-| ----- | ----- | ----- |
-| 内容 | 内容 | 内容 |
-
+<div class="tw-1pxborderbox">移动端的1px边框演示</div>

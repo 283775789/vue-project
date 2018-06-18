@@ -1,7 +1,7 @@
 /* markdown */
 $markdown-px: $spacing-medium !default; // 容器水平内边距
 $markdown-color: $color-text-main !default; // 默认文字颜色
-$markdown-title-color: $color-text-auxiliary !default; // 标题文字颜色
+$markdown-title-color: $color-text-secondary !default; // 标题文字颜色
 $markdown-title1-font-size: $font-size-large !default;  // 一级标题字号
 $markdown-title2-font-size: $font-size-medium !default; // 二级标题字号
 $markdown-title3-font-size: $font-size-default !default; // 三级标题字号
@@ -62,6 +62,10 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
 
 .tw-markdown > h1:first-child {
   margin-top: 0;
+}
+
+.tw-markdown > p {
+  margin: 1em 0;
 }
 
 .tw-markdown h2 {

@@ -6,11 +6,11 @@
 .namespace-unit.xmodifier
 
 ### 名词解释
-+ 样式单元：指页面中有明显视觉边界的视觉单元或完整的功能模块(如:导航，布局结构等);
++ 样式模块：指页面中有明显视觉边界的视觉单元或完整的功能模块(如:导航，布局结构等);
 + 功能单元：指整站通用的单一功能性样式;
 + 命名空间：指项目采用的统一css前缀,分为两种：
-   + `.tw-`：表示一个样式单元前缀;
-   + `.u-`：表示一个功能单元前缀。
+   + `.tw-`：表示一个样式模块前缀;
+   + `.name-function`：表示一个功能单元。
 
 ### 命名方式
 1. 样式单元：命名空间-单元名称(如: `.tw-nav` )；
@@ -30,12 +30,12 @@
 
 ### 代码示例
 ```
-/* 头部:通用 */ 
+/* 头部:通用 */
 .tw-header { height:60px; }
 .tw-header-logo { padding-top:12px;  }
 .tw-header-logotext { font-size:16px; }
 
-/* 头部:小尺寸(用修饰符更改细节) */ 
+/* 头部:小尺寸(用修饰符更改细节) */
 .tw-header.xsmall { height:45px; }
 .tw-header-logo.xsmall { padding-top:8px;  }
 .tw-header-logotext.xsmall { font-size:14px; }
@@ -52,7 +52,7 @@
 | `.tw-card-header-text` | `.tw-card-headertext` | 样式单元所有后代元素的类名:样式单元-后代类名 |
 | `.xblue` | `.tw-card.xblue` | 修饰符不能单独使用 |
 | `.tw-card.blue` | `.tw-card.xblue` | 修饰符必须以字母x开头 |
-| `.tw-hide {distway:none;}` | `.u-hide {distway:none;}` | 功能单元命名空间前缀必须以命名空间+"x"字母开头 |
+| `.tw-textmain {color: $color-text-main;}` | `.text-main {color: $color-text-main;}` | 功能单元命名格式为 `.name-function` |
 
 
 ## 验证

@@ -18,7 +18,7 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/doc/css/scss">
+              <router-link to="/doc/css/mixins">
                 <span>组件</span>
               </router-link>
             </li>

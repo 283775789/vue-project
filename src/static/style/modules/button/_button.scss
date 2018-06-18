@@ -7,9 +7,9 @@ $btn-border-radius: 3px !default; // 按钮边框
 $btn-main-bg: $color-main !default; // 主按钮背景
 $btn-main-bg-hover: $color-main-hover !default; // 主按钮背景滑过色
 $btn-main-color: $color-text-inverse !default; // 主按钮文本色
-$btn-auxiliary-bg: $color-auxiliary !default; // 辅助按钮背景
-$btn-auxiliary-bg-hover: $color-auxiliary-hover !default; // 辅助按钮背景色
-$btn-auxiliary-color: $color-text-inverse !default; // 辅助按钮文本色
+$btn-secondary-bg: $color-secondary !default; // 辅助按钮背景
+$btn-secondary-bg-hover: $color-secondary-hover !default; // 辅助按钮背景色
+$btn-secondary-color: $color-text-inverse !default; // 辅助按钮文本色
 $btn-weaking-bg: $color-weaking !default; // 弱化按钮背景
 $btn-weaking-border-color: $color-border-main !default; // 弱化按钮背景色
 $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
@@ -44,14 +44,14 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
 }
 
 // 铺按钮
-.tw-btn.xauxiliary {
-  color: $btn-auxiliary-color;
-  background: $btn-auxiliary-bg;
-  border-color: $btn-auxiliary-bg;
+.tw-btn.xsecondary {
+  color: $btn-secondary-color;
+  background: $btn-secondary-bg;
+  border-color: $btn-secondary-bg;
 
   &:hover {
-    background: $btn-auxiliary-bg-hover;
-    border-color: $btn-auxiliary-bg-hover;
+    background: $btn-secondary-bg-hover;
+    border-color: $btn-secondary-bg-hover;
   }
 }
 

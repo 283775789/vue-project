@@ -42,7 +42,17 @@
         class="tw-sidebar"
         key="comps-nav">
         <ul class="tw-nav xsidebar">
-          <li><router-link to="/doc/css/scss" class="jst-close"><i class="tw-font xico"></i>SCSS相关</router-link></li>
+          <li>
+            <a class="js-scss"><i class="tw-font xico"></i>SCSS相关<i class="tw-arrow xright"></i></a>
+            <tw-collapse class="xsidebar" switch=".js-scss">
+              <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/css/mixins">mixins</router-link></li>
+                <li><router-link to="/doc/css/text">文本颜色</router-link></li>
+                <li><router-link to="/doc/css/spacing">间距尺寸</router-link></li>
+                <li><router-link to="/doc/css/border">边框和背景</router-link></li>
+              </ul>
+            </tw-collapse>
+          </li>
           <li>
             <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
             <tw-collapse class="xsidebar" switch=".js-layout">

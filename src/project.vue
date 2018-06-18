@@ -147,19 +147,19 @@
                 </div>
                 <div class="tw-block xlml">
                   <div class="tw-block-body">
-                    <el-color-picker class="tw-colorcell" v-model="color['auxiliary']"></el-color-picker>
+                    <el-color-picker class="tw-colorcell" v-model="color['secondary']"></el-color-picker>
                   </div>
                   <div class="tw-block-title">辅色</div>
                 </div>
                 <div class="tw-block">
                   <div class="tw-block-body">
-                    <el-color-picker class="tw-colorcell" v-model="color['auxiliary-hover']"></el-color-picker>
+                    <el-color-picker class="tw-colorcell" v-model="color['secondary-hover']"></el-color-picker>
                   </div>
                   <div class="tw-block-title">辅色-滑过</div>
                 </div>
                 <div class="tw-block">
                   <div class="tw-block-body">
-                    <el-color-picker class="tw-colorcell" v-model="color['auxiliary-active']"></el-color-picker>
+                    <el-color-picker class="tw-colorcell" v-model="color['secondary-active']"></el-color-picker>
                   </div>
                   <div class="tw-block-title">辅色-激活</div>
                 </div>
@@ -190,7 +190,7 @@
                 </div>
                 <div class="tw-block">
                   <div class="tw-block-body">
-                    <el-color-picker class="tw-colorcell" v-model="color['text-auxiliary']"></el-color-picker>
+                    <el-color-picker class="tw-colorcell" v-model="color['text-secondary']"></el-color-picker>
                   </div>
                   <div class="tw-block-title">铺文本</div>
                 </div>
@@ -322,7 +322,7 @@
                 </div>
                 <div class="tw-block">
                   <div class="tw-block-body">
-                    <el-color-picker class="tw-colorcell" v-model="color['border-auxiliary']"></el-color-picker>
+                    <el-color-picker class="tw-colorcell" v-model="color['border-secondary']"></el-color-picker>
                   </div>
                   <div class="tw-block-title">铺边框</div>
                 </div>
@@ -371,9 +371,9 @@ export default {
         'main': null,
         'main-hover': null,
         'main-active': null,
-        'auxiliary': null,
-        'auxiliary-hover': null,
-        'auxiliary-active': null,
+        'secondary': null,
+        'secondary-hover': null,
+        'secondary-active': null,
         'weaking': null,
         'success': null,
         'warning': null,
@@ -382,7 +382,7 @@ export default {
         'bg-footer': null,
         'bg-disabled': null,
         'text-main': null,
-        'text-auxiliary': null,
+        'text-secondary': null,
         'text-weaking': null,
         'text-link': null,
         'text-link-hover': null,
@@ -392,7 +392,7 @@ export default {
         'text-inverse': null,
         'text-placeholder': null,
         'border-main': null,
-        'border-auxiliary': null,
+        'border-secondary': null,
         'border-weaking': null,
         'border-link': null,
         'border-disabled': null

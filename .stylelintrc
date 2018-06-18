@@ -38,6 +38,7 @@
     "selector-nested-pattern": "^(&:(hover|focus|active|checked|disabled|before|after))|(&.x\\w*)$",
     "max-nesting-depth": 4,
     "order/properties-order": [
+      "content",
       "position",
       "top",
       "right",
@@ -162,7 +163,6 @@
       "caption-side",
       "border-spacing",
       "border-collapse",
-      "content",
       "quotes",
       "counter-reset",
       "counter-increment",

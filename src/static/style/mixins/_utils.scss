@@ -23,7 +23,7 @@
 @mixin clearfix {
   &:after {
     content: " ";
-    display: table;
+    display: block;
     clear: both;
   }
 }
@@ -66,16 +66,26 @@
   background: $lineColor;
 }
 
-/*
-  background: [background-color] [background-image] [background-repeat] [background-attachment] [background-position] / [ background-size] [background-origin] [background-clip];
-  background-image:-webkit-linear-gradient(bottom, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-image:linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size:100% 1px;
-    background-repeat:no-repeat;
-    background-position:bottom;
+// 在手机端生成1个像素的边框
+@mixin lines($placements: bottom, $color: #ccc) {
 
+  $bgs: ();
 
-      background:url("haoroomsCSS1_s.jpg") 0 0 no-repeat,
-                     url("haoroomsCSS2_s.jpg") 200px 0 no-repeat,
-                     url("haorooms.jpg") 400px 201px no-repeat;
-*/
+  @each $placement in $placements {
+    @if $placement == top {
+      $bg: linear-gradient(to top, transparent 49%, $color 50%) no-repeat top left / 100% 1px;
+      $bgs: append($bgs, $bg, comma);
+    } @else if $placement == right {
+      $bg: linear-gradient(to right, transparent 49%, $color 50%) no-repeat top right / 1px 100%;
+      $bgs: append($bgs, $bg, comma);
+    } @else if $placement == bottom {
+      $bg: linear-gradient(to bottom, transparent 49%, $color 50%) no-repeat bottom left / 100% 1px;
+      $bgs: append($bgs, $bg, comma);
+    } @else if $placement == left {
+      $bg: linear-gradient(to left, transparent 49%, $color 50%) no-repeat top left  / 1px 100%;
+      $bgs: append($bgs, $bg, comma);
+    }
+  }
+
+  background: $bgs;
+}
