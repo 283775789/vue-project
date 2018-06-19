@@ -6,6 +6,7 @@
 
 | 项目 | 内容 |
 | ----- | ----- |
+| IE兼容性支持 | IE10+ |
 | JS框架 | [Vue](https://vuejs.org/)，[jQuery](http://jquery.com//) |
 | 第三方组件库 | [web端:element-ui](http://element.eleme.io/#/zh-CN/component/installation)，[移动端:mint-ui](http://mint-ui.github.io/#!/zh-cn) |
 | ajax组件 | [axios](https://github.com/axios/axios/) |

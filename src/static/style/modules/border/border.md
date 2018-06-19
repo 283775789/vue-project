@@ -17,15 +17,15 @@
 <p class="tw-demosquare xborder noborder-left">noborder-left</p>
 
 ## 边框颜色
-<p class="tw-demosquare xborder border-main">noborder-main</p>
-<p class="tw-demosquare xborder border-secondary">noborder-secondary</p>
-<p class="tw-demosquare xborder border-disabled">noborder-disabled</p>
-<p class="tw-demosquare xborder border-weaking">noborder-weaking</p>
-<p class="tw-demosquare xborder border-info">noborder-info</p>
-<p class="tw-demosquare xborder border-success">noborder-success</p>
-<p class="tw-demosquare xborder border-warning">noborder-warning</p>
-<p class="tw-demosquare xborder border-error">noborder-error</p>
-<p class="tw-demosquare xborder border-white">noborder-white</p>
+<p class="tw-demosquare xborder border-main">border-main</p>
+<p class="tw-demosquare xborder border-secondary">border-secondary</p>
+<p class="tw-demosquare xborder border-disabled">border-disabled</p>
+<p class="tw-demosquare xborder border-weaking">border-weaking</p>
+<p class="tw-demosquare xborder border-info">border-info</p>
+<p class="tw-demosquare xborder border-success">border-success</p>
+<p class="tw-demosquare xborder border-warning">border-warning</p>
+<p class="tw-demosquare xborder border-error">border-error</p>
+<p class="tw-demosquare xborder border-white">border-white</p>
 
 
 ## 边框圆角

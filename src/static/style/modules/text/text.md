@@ -14,7 +14,7 @@
 <p class="text-success">.text-success</p>
 <p class="text-warning">.text-warning</p>
 <p class="text-error">.text-error</p>
-<p class="text-white">.text-white</p>
+<p class="text-white bg-card">.text-white</p>
 
 ## 文本对齐
 
