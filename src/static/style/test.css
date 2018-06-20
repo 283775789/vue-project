@@ -47,34 +47,10 @@
   display: block;
   clear: both; }
 
-@media (min-width: 1200px) {
-  .float-left {
-    float: left !important; }
-
-  .float-right {
-    float: right !important; } }
-@media (min-width: 992px) {
-  .float-left-lpad {
-    float: left !important; }
-
-  .float-right-lpad {
-    float: right !important; } }
-@media (min-width: 768px) {
-  .float-left-pad {
-    float: left !important; }
-
-  .float-right-pad {
-    float: right !important; } }
-@media (min-width: 554px) {
-  .float-left-lphone {
-    float: left !important; }
-
-  .float-right-lphone {
-    float: right !important; } }
-.float-left-phone {
+.float-left {
   float: left !important; }
 
-.float-right-phone {
+.float-right {
   float: right !important; }
 
 .float-none {
