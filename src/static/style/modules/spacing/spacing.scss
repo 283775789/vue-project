@@ -79,8 +79,10 @@ $sizes: (
 
 @each $propKey, $propVal in $props {
   @each $sideKey, $sideVal in $sides {
+    $side: if($sideKey != a, $sideKey, '');
+
     @each $sizeKey, $sizeVal in $sizes {
-      .#{$propKey}#{$sideKey}-#{$sizeKey} {
+      .#{$propKey}#{$side}-#{$sizeKey} {
         @each $value in $sideVal {
           #{$propVal}-#{$value}: $sizeVal !important;
         }

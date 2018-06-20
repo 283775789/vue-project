@@ -1,0 +1,31 @@
+/* 浮动 */
+
+// stylelint-disable
+.clear-float {
+  @include clearfix();
+}
+
+
+@each $key in map-keys($media-breakpoints) {
+  $suffix: if($key != pc, -#{$key}, '');
+
+  @include media-up($key, $media-breakpoints) {
+    .float-left#{$suffix} {
+      float: left !important;
+    }
+
+    .float-right#{$suffix} {
+      float: right !important;
+    }
+  }
+}
+
+@each $key in map-keys($media-breakpoints) {
+  $suffix: if($key != pc, -#{$key}, '');
+
+  @include media-down($key, $media-breakpoints) {
+    .float-none#{$suffix} {
+      float: none !important;
+    }
+  }
+}

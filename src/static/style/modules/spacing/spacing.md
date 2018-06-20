@@ -6,21 +6,21 @@
 + 按tiny、small、default、medium、large、huge递增。
 
 ## 宽度
-<p class="w-step border-all">.w-step</p>
-<p class="w-default border-all">.w-default</p>
-<p class="w-tiny border-all">.w-tiny</p>
-<p class="w-small border-all">.w-small</p>
-<p class="w-medium border-all">.w-medium</p>
-<p class="w-large border-all">.w-large</p>
-<p class="w-huge border-all">.w-huge</p>
+<p class="w-step border">.w-step</p>
+<p class="w-tiny border">.w-tiny</p>
+<p class="w-small border">.w-small</p>
+<p class="w-medium border">.w-medium</p>
+<p class="w-large border">.w-large</p>
+<p class="w-huge border">.w-huge</p>
+<p class="w-default border">.w-default</p>
 
 ## 高度
 .h-step
-<p class="h-step border-all"></p>
-<p class="h-small border-all">.h-small</p>
-<p class="h-default border-all">.h-default</p>
-<p class="h-medium border-all">.h-medium</p>
-<p class="h-large border-all">.h-large</p>
+<p class="h-step border"></p>
+<p class="h-small border">.h-small</p>
+<p class="h-default border">.h-default</p>
+<p class="h-medium border">.h-medium</p>
+<p class="h-large border">.h-large</p>
 
 ## 间距
 + 相关属性值缩写对照:m-margin, p-padding, t-top, r-right, b-bottom, l-left, a-all, x-left and right, y-top and bottom。
@@ -209,31 +209,31 @@
     margin-bottom: 0!important
 }
 
-.ma-step {
+.m-step {
     margin: 5px!important
 }
 
-.ma-tiny {
+.m-tiny {
     margin: 10px!important
 }
 
-.ma-small {
+.m-small {
     margin: 15px!important
 }
 
-.ma-medium {
+.m-medium {
     margin: 20px!important
 }
 
-.ma-large {
+.m-large {
     margin: 30px!important
 }
 
-.ma-huge {
+.m-huge {
     margin: 40px!important
 }
 
-.ma-0 {
+.m-0 {
     margin: 0!important
 }
 
@@ -419,31 +419,31 @@
     padding-bottom: 0!important
 }
 
-.pa-step {
+.p-step {
     padding: 5px!important
 }
 
-.pa-tiny {
+.p-tiny {
     padding: 10px!important
 }
 
-.pa-small {
+.p-small {
     padding: 15px!important
 }
 
-.pa-medium {
+.p-medium {
     padding: 20px!important
 }
 
-.pa-large {
+.p-large {
     padding: 30px!important
 }
 
-.pa-huge {
+.p-huge {
     padding: 40px!important
 }
 
-.pa-0 {
+.p-0 {
     padding: 0!important
 }
 ```

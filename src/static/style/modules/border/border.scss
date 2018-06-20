@@ -2,7 +2,7 @@
 
 // stylelint-disable
 // 边框
-.border-all {
+.border {
   border: 1px solid $color-border-main !important;
 }
 
@@ -23,7 +23,7 @@
 }
 
 // 取消边框
-.noborder-all {
+.noborder {
   border: 0 !important;
 }
 
@@ -80,7 +80,7 @@
 }
 
 // 边框圆角
-.rounded-all {
+.rounded {
   border-radius: $border-radius !important;
 }
 
@@ -108,7 +108,7 @@
   border-radius: 50% !important;
 }
 
-.rounded-no {
+.rounded-0 {
   border-radius: 0 !important;
 }
 
