@@ -42,6 +42,16 @@
   border-left: 0 !important;
 }
 
+// 边框样式
+.border-solid {
+  border-style: solid !important;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
+
+
 // 边框颜色
 .border-main {
   border-color: $color-border-main !important;

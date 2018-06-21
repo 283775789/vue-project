@@ -19,16 +19,12 @@
 @mixin media-up($key, $breakpoints:$media-breakpoints) {
   $next: map-next($media-breakpoints, $key);
 
-  @if type == web {
-    
-  } @else {
-    @if $next {
-      @media (min-width: map-get($breakpoints, $key)) {
-        @content;
-      }
-    } @else {
+  @if $next {
+    @media (min-width: map-get($breakpoints, $key)) {
       @content;
     }
+  } @else {
+    @content;
   }
 }
 

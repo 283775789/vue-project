@@ -16,6 +16,10 @@
 <p class="tw-demosquare xborder noborder-bottom">noborder-bottom</p>
 <p class="tw-demosquare xborder noborder-left">noborder-left</p>
 
+## 边框样式
+<p class="border border-solid tw-demosquare">border-solid</p>
+<p class="border border-dashed tw-demosquare">border-dashed</p>
+
 ## 边框颜色
 <p class="tw-demosquare xborder border-main">border-main</p>
 <p class="tw-demosquare xborder border-secondary">border-secondary</p>

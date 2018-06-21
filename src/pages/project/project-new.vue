@@ -137,7 +137,7 @@
         </tw-collapse-group>
         <!-- /组件导航菜单 -->
       </div>
-      <div class="tw-multicol-cell">
+      <!-- <div class="tw-multicol-cell">
         <div class="tw-multicol-cell-table">
           <div class="tw-multicol-cell-cell tw-stickybox">
             <div class="tw-compscssdemo">
@@ -159,7 +159,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="tw-stickybox-footer" v-tw-sticky:bottom="80">
