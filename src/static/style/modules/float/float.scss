@@ -5,19 +5,12 @@
   @include clearfix();
 }
 
+.float-left {
+  float: left !important;
+}
 
-@each $key in map-keys($media-breakpoints) {
-  $suffix: if($key != pc, -#{$key}, '');
-
-  @include media-up($key, $media-breakpoints) {
-    .float-left#{$suffix} {
-      float: left !important;
-    }
-
-    .float-right#{$suffix} {
-      float: right !important;
-    }
-  }
+.float-right {
+  float: right !important;
 }
 
 @each $key in map-keys($media-breakpoints) {

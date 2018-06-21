@@ -9,6 +9,8 @@
 + EditorConfig for VS Code
 + ESLint
 + stylelint
++ SCSS IntelliSense
++ IntelliSense for CSS class names in HTML
 + Vetur
 + Vue VSCode Snippets
 + Vue 2 Snippets

@@ -47,7 +47,8 @@
             <tw-collapse class="xsidebar" switch=".js-scss">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/css/mixins">mixins</router-link></li>
-                <li><router-link to="/doc/css/display">display</router-link></li>
+                <li><router-link to="/doc/css/display">盒子模型</router-link></li>
+                <li><router-link to="/doc/css/float">浮动</router-link></li>
                 <li><router-link to="/doc/css/text">文本颜色</router-link></li>
                 <li><router-link to="/doc/css/spacing">间距尺寸</router-link></li>
                 <li><router-link to="/doc/css/border">边框和背景</router-link></li>

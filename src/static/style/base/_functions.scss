@@ -25,6 +25,18 @@
   }
 }
 
+// 获取反序的map-keys
+@function map-reverse-keys($map) {
+  $result: ();
+  $keys: map-keys($map);
+
+  @for $i from length($keys) through 1 {
+    $result: append($result, nth($keys, $i));
+  }
+
+  @return $result;
+}
+
 // 获指定色在色板的右下侧颜色
 @function rightDownColor($color, $value) {
   @return darken(saturate($color, $value), $value);

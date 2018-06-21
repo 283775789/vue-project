@@ -16,7 +16,7 @@
 }
 
 // 向上媒体查询：大于等于媒体关键字所在范围
-@mixin media-up($key, $breakpoints:$media-breakpoints, type: $app-type) {
+@mixin media-up($key, $breakpoints:$media-breakpoints) {
   $next: map-next($media-breakpoints, $key);
 
   @if type == web {
