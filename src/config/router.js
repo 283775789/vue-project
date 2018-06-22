@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Doc from '@pages/doc/doc'
-import Project from '@pages/project/project-new'
+import Project from '@pages/project/new'
 
 Vue.use(Router)
 

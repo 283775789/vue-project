@@ -49,6 +49,8 @@ $title-sub-marker-size: 4px !default;
 // 标题-右侧内容
 .tw-title-right {
   float: right;
+  font-size: $font-size-default;
+  font-weight: normal;
 }
 
 // 标题-可折叠

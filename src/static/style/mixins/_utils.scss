@@ -29,13 +29,20 @@
 }
 
 // 生成禁用样式
-@mixin disable {
+@mixin disable($isControl: false) {
+  @if $isControl == true {
+    color: $color-text-disabled;
+    background-color: $color-bg-disabled;
+    border-color: $color-border-disabled;
+  } @else {
+    opacity: .45;
+  }
+
   cursor: not-allowed;
-  opacity: .45;
 }
 
 // 生成小三角形
-@mixin triangle($direction:bottom, $size:5px) {
+@mixin triangle($direction:down, $size:5px, $color:null) {
   $placements: top, left, bottom, right;
 
   $placement-map:(
@@ -53,6 +60,10 @@
     @if $placement != $direction-reversal {
       border-#{$placement}-color: transparent;
     }
+  }
+
+  @if $color != null {
+    border-#{$direction-reversal}-color: $color;
   }
 }
 

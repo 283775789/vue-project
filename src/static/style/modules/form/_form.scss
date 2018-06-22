@@ -52,3 +52,10 @@ $form-label-pl: $spacing-medium !default; // 表单项标签左边距
 .tw-form.xtable.xsmall .tw-form-col {
   padding-bottom: $form-item-pb - $spacing-step;
 }
+
+// stylelint-disable
+// element控件: select
+.tw-form-col > .el-select {
+  width: 100%;
+  vertical-align: middle;
+}

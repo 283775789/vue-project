@@ -6,10 +6,6 @@
   width: $ctr-width-step !important;
 }
 
-.w-default {
-  width: $ctr-width-default !important;
-}
-
 .w-tiny {
   width: $ctr-width-tiny !important;
 }
@@ -28,6 +24,13 @@
 
 .w-huge {
   width: $ctr-width-huge !important;
+}
+
+// 百分比宽度
+@for $i from 1 through 20 {
+  .w-#{$i * 5} {
+    width: $i * 5 + % !important;
+  }
 }
 
 // 高度尺寸

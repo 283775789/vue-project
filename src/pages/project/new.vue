@@ -21,12 +21,24 @@
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
-        <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col" colspan="3">
+          <el-select v-model="projectMemebers" multiple filterable placeholder="请选择项目组成员，选择的第一个成员即为当前项目负责人...">
+            <el-option
+              v-for="(developer,index) in developers"
+              :key="index"
+              :label="developer.name"
+              :value="`${developer.name}<${developer.email}>`">
+            </el-option>
+          </el-select>
+        </td>
       </tr>
 
       <tr>
         <td colspan="4">
-          <div class="tw-title">svn地址</div>
+          <div class="tw-title">
+            <div class="tw-title-left">svn地址</div>
+            <a target="bottom" class="tw-title-right text-link">查看svn目录</a>
+          </div>
         </td>
       </tr>
       <tr class="tw-form-row">
@@ -182,7 +194,9 @@ export default {
       currentComp: null,
       currentCompScssVar: [],
       demosVm: null,
-      compOptions: []
+      compOptions: [],
+      developers: [],
+      projectMemebers: []
     }
   },
   computed: {
@@ -197,23 +211,6 @@ export default {
 
       return result
     }
-  },
-  created () {
-    const vm = this
-    vm.styleEl = document.createElement('style')
-    document.querySelector('head').appendChild(vm.styleEl)
-
-    vm.axios.get('scss-vars').then(function (responed) {
-      vm.scssVars = responed.data
-    }).catch(function (error) {
-      console.log(error)
-    })
-
-    vm.axios.get('http://localhost:83/examples/config/components.json').then(function (responed) {
-      vm.compGroup = responed.data
-    }).catch(function (error) {
-      console.log(error)
-    })
   },
   methods: {
     changeScssVars () {
@@ -273,7 +270,35 @@ export default {
           }
         }
       }
+    },
+    // 获取项目取成员
+    getMemebers () {
+      const vm = this
+      vm.axios.get('developers').then(function (responed) {
+        vm.developers = responed.data
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
+  },
+  created () {
+    const vm = this
+    vm.styleEl = document.createElement('style')
+    document.querySelector('head').appendChild(vm.styleEl)
+
+    this.getMemebers()
+
+    vm.axios.get('scss-vars').then(function (responed) {
+      vm.scssVars = responed.data
+    }).catch(function (error) {
+      console.log(error)
+    })
+
+    vm.axios.get('http://localhost:83/examples/config/components.json').then(function (responed) {
+      vm.compGroup = responed.data
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   beforeDestroy () {
     document.querySelector('head').removeChild(this.styleEl)
