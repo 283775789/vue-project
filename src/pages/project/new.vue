@@ -15,14 +15,14 @@
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">项目名称:</label></td>
-        <td class="tw-form-col"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col"><input v-model="project.name" type="text" class="tw-input"></td>
         <td class="tw-form-col"><label class="tw-inputlabel">版本号:</label></td>
-        <td class="tw-form-col"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col"><input v-model="project.version" type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
         <td class="tw-form-col" colspan="3">
-          <el-select v-model="projectMemebers" multiple filterable placeholder="请选择项目组成员，选择的第一个成员即为当前项目负责人...">
+          <el-select v-model="project.developers" multiple filterable placeholder="请选择项目组成员，选择的第一个成员即为当前项目负责人...">
             <el-option
               v-for="(developer,index) in developers"
               :key="index"
@@ -43,19 +43,19 @@
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">高保真:</label></td>
-        <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.svn.designImage" type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">源文件:</label></td>
-        <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.svn.designFile" type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">前端Html:</label></td>
-        <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.svn.html" type="text" class="tw-input"></td>
       </tr>
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
-        <td class="tw-form-col" colspan="3"><input type="text" class="tw-input"></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.svn.publish" type="text" class="tw-input"></td>
       </tr>
 
       <tr>
@@ -66,8 +66,8 @@
       <tr class="tw-form-row">
         <td class="tw-form-col"><label class="tw-inputlabel">底层JS框架:</label></td>
         <td class="tw-form-col" colspan="3">
-          <label class="tw-optbox xradio"><input type="radio" name="app-framework" /><span>Vue(前后端分离)</span></label>
-          <label class="tw-optbox xradio xdisabled"><input type="radio" name="app-framework" disabled /><span>jQuery(经典)</span></label>
+          <label class="tw-optbox xradio"><input v-model="project.framwork" type="radio" name="app-framework" value="vue" /><span>Vue(前后端分离)</span></label>
+          <label class="tw-optbox xradio xdisabled"><input v-model="project.framwork" type="radio" name="app-framework" value="jquery" disabled /><span>jQuery(经典)</span></label>
         </td>
       </tr>
     </table>
@@ -188,15 +188,26 @@ export default {
   name: 'newProject',
   data () {
     return {
+      project: {
+        name: '',
+        version: '',
+        developers: [],
+        svn: {
+          designImage: '',
+          designFile: '',
+          html: '',
+          publish: ''
+        },
+        framework: ''
+      },
+      developers: [],
       scssVars: [],
       compGroup: null,
       styleEl: null,
       currentComp: null,
       currentCompScssVar: [],
       demosVm: null,
-      compOptions: [],
-      developers: [],
-      projectMemebers: []
+      compOptions: []
     }
   },
   computed: {
