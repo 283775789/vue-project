@@ -57,6 +57,24 @@
         <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
         <td class="tw-form-col" colspan="3"><input v-model="project.svn.publish" type="text" class="tw-input"></td>
       </tr>
+      <tr class="tw-form-row">
+        <td class="tw-form-col"><label class="tw-inputlabel">过程文件:</label></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.svn.flow" type="text" class="tw-input"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">
+          <div class="tw-title">项目文档地址</div>
+        </td>
+      </tr>
+      <tr class="tw-form-row">
+        <td class="tw-form-col"><label class="tw-inputlabel">需求文档:</label></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.document.prd" type="text" class="tw-input"></td>
+      </tr>
+      <tr class="tw-form-row">
+        <td class="tw-form-col"><label class="tw-inputlabel">接口地址:</label></td>
+        <td class="tw-form-col" colspan="3"><input v-model="project.document.api" type="text" class="tw-input"></td>
+      </tr>
 
       <tr>
         <td colspan="4">
@@ -175,8 +193,8 @@
     </div>
 
     <div class="tw-stickybox-footer" v-tw-sticky:bottom="80">
-      <a class="tw-btn xsecondary xlarge">选择模板</a>
       <a class="tw-btn xmain xlarge">生成项目</a>
+      <a class="tw-btn xsecondary xlarge">选择模板</a>
       <a class="tw-btn xsecondary xlarge">保存为模板</a>
       <a class="tw-btn xweaking xlarge">取消</a>
     </div>
@@ -196,7 +214,12 @@ export default {
           designImage: '',
           designFile: '',
           html: '',
-          publish: ''
+          publish: '',
+          flow: ''
+        },
+        document: {
+          prd: '',
+          api: ''
         },
         framework: ''
       },

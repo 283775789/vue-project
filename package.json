@@ -91,5 +91,21 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "app": {
+    "name": "",
+    "version": "",
+    "developers": [],
+    "svn": {
+      "designImage": "",
+      "designFile": "",
+      "html": "",
+      "publish": ""
+    },
+    "document": {
+      "prd": "",
+      "api": ""
+    },
+    "framework": ""
+  }
 }

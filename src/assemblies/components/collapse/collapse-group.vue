@@ -9,6 +9,12 @@ import {delegate} from '@utils/event'
 
 export default {
   name: 'twCollapseGroup',
+  props: {
+    disableToggleSelf: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       activeCollapse: null
@@ -25,7 +31,6 @@ export default {
             if (vm.activeCollapse && vm.activeCollapse !== child) {
               vm.activeCollapse.closeCollapse()
             }
-            vm.activeCollapse = child
           })
 
           child.$on('hide', () => {

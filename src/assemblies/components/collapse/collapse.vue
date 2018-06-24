@@ -11,6 +11,10 @@ import { addClass, removeClass, toggleSpecialTransitionClass } from '@utils/dom'
 export default {
   name: 'twCollapse',
   props: {
+    defaultOpen: {
+      type: Boolean,
+      default: false
+    },
     switch: {
       type: String,
       required: true
@@ -30,6 +34,9 @@ export default {
         heightAuto: true,
         endCallback () {
           vm.$emit('shown')
+          if (vm.$parent.$options.name === 'twCollapseGroup') {
+            vm.$parent.activeCollapse = vm
+          }
         }
       })
       addClass(this.switchEl, 'xopen')
@@ -49,6 +56,10 @@ export default {
     toggleCollapse (switchEl) {
       this.switchEl = switchEl
 
+      // 折叠组禁用切换自身功能
+      const activeIsMe = this.$parent.$options.name === 'twCollapseGroup' && this === this.$parent.activeCollapse
+      if (activeIsMe && this.$parent.disableToggleSelf) return
+
       if (/\bxopen\b/.test(this.$el.getAttribute('class'))) {
         this.$emit('hide')
         this.closeCollapse()
@@ -56,10 +67,22 @@ export default {
         this.$emit('show')
         this.openCollapse()
       }
+    },
+    toggle () {
+      let elemets = document.querySelectorAll(this.switch)
+
+      for (let i = 0; i < elemets.length; i++) {
+        this.toggleCollapse(elemets[i])
+      }
     }
   },
   created () {
     delegate(document, 'click.' + this._uid, this.switch, this.toggleCollapse)
+  },
+  mounted () {
+    if (this.defaultOpen) {
+      this.toggle()
+    }
   },
   beforeDestroy () {
     delegateOff(document, 'click.' + this._uid)

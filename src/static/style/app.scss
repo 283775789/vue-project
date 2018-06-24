@@ -10,6 +10,26 @@
 }
 
 /* --------------------------- 通用组件 --------------------------- */
+// stylelint-disable
+body.xnewapp {
+  padding-top: 16px;
+  padding-left: 16px;
+  background-image: url("~@images/px-ruler-y.png");
+  background-repeat: repeat-y;
+}
+
+body.xnewapp::before {
+  content: "";
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  height: 16px;
+  width: 100%;
+  background: url("~@images/px-ruler-x.png") repeat-x fixed top left;
+}
+
+// stylelint-enable
 
 /* 文档 */
 .tw-doc {

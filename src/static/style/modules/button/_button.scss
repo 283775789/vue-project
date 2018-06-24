@@ -55,7 +55,7 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
   }
 }
 
-// 弱化铺按钮
+// 弱化按钮
 .tw-btn.xweaking {
   color: $btn-weaking-color;
   background: $btn-weaking-bg;
@@ -120,4 +120,34 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
       border-left-color: $color-main;
     }
   }
+}
+
+// 按钮组
+.tw-btngroup {
+  display: inline-flex;
+}
+
+.tw-btngroup > li {
+  margin-left: -1px;
+}
+
+.tw-btngroup > li > .tw-btn {
+  border-radius: 0;
+}
+
+.tw-btngroup > li:first-child > .tw-btn {
+  border-top-left-radius: $btn-border-radius;
+  border-bottom-left-radius: $btn-border-radius;
+}
+
+.tw-btngroup > li:last-child > .tw-btn {
+  border-top-right-radius: $btn-border-radius;
+  border-bottom-right-radius: $btn-border-radius;
+}
+
+// 弱化按钮: 激活状态
+.tw-btngroup > .xopen > .tw-btn.xweaking {
+  color: $btn-main-color;
+  background: $btn-main-bg;
+  border-color: $btn-main-bg;
 }

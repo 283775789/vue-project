@@ -32,7 +32,7 @@
 // ------------------------------------------------------------
 @import "markdown/markdown.scss";
 
-// 样式模块
+// 样式模块:布局
 // ------------------------------------------------------------
 @import "grid/grid.scss";
 @import "multicol/multicol.scss";
@@ -41,6 +41,7 @@
 @import "body/body.scss";
 @import "sidebar/sidebar.scss";
 @import "form/form.scss";
+@import "tabs/tabs.scss";
 
 // 项目
 // ------------------------------------------------------------

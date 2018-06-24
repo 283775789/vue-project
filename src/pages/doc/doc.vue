@@ -9,7 +9,16 @@
         <ul class="tw-nav xsidebar">
           <li>
             <a class="js-fe"><i class="tw-font xico"></i>前端体系<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-fe">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-fe"
+              :default-open="[
+                '/doc/guid/role',
+                '/doc/guid/framwork',
+                '/doc/guid/dev-flow',
+                '/doc/guid/ide',
+                '/doc/guid/shortcut'
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/guid/role">编码准则</router-link></li>
                 <li><router-link to="/doc/guid/framwork">技术框架</router-link></li>
@@ -21,7 +30,16 @@
           </li>
           <li>
             <a class="js-code"><i class="tw-font xico"></i>代码规范<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-code">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-code"
+              :default-open="[
+                '/doc/guid/version',
+                '/doc/guid/dir',
+                '/doc/guid/js',
+                '/doc/guid/css',
+                '/doc/guid/html'
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/guid/version">版本管理</router-link></li>
                 <li><router-link to="/doc/guid/dir">目录及文件</router-link></li>
@@ -44,7 +62,18 @@
         <ul class="tw-nav xsidebar">
           <li>
             <a class="js-scss"><i class="tw-font xico"></i>功能样式<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-scss">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-scss"
+              :default-open="[
+                '/doc/css/mixins',
+                '/doc/css/display',
+                '/doc/css/flex',
+                '/doc/css/float',
+                '/doc/css/text',
+                '/doc/css/spacing',
+                '/doc/css/border'
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/css/mixins">mixins</router-link></li>
                 <li><router-link to="/doc/css/display">盒子模型</router-link></li>
@@ -58,7 +87,12 @@
           </li>
           <li>
             <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-layout">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-layout"
+              :default-open="[
+                '/doc/guid/role',
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/css/layout">整体布局</router-link></li>
                 <li><a>栅格系统</a></li>
@@ -67,17 +101,28 @@
           </li>
           <li>
             <a class="js-nav"><i class="tw-font xico"></i>导航<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-nav">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-nav"
+              :default-open="[
+                '/doc/css/tabs',
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>头部导航</a></li>
                 <li><a>侧边栏导航</a></li>
                 <li><a>面包屑</a></li>
+                <li><router-link to="/doc/css/tabs">tab选项卡</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
             <a class="js-unit"><i class="tw-font xico"></i>元件<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-unit">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-unit"
+              :default-open="[
+                '',
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>图标</a></li>
                 <li><a>按钮</a></li>
@@ -86,7 +131,12 @@
           </li>
           <li>
             <a class="js-function"><i class="tw-font xico"></i>功能<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-function">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-function"
+              :default-open="[
+                '',
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>下拉列表</a></li>
                 <li><a>折叠面板</a></li>
@@ -95,7 +145,12 @@
           </li>
           <li>
             <a class="js-form"><i class="tw-font xico"></i>表单<i class="tw-arrow xright"></i></a>
-            <tw-collapse class="xsidebar" switch=".js-form">
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-form"
+              :default-open="[
+                '',
+              ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>单选/复选</a></li>
                 <li><a>选择列表</a></li>
