@@ -1,5 +1,18 @@
 <template>
   <div id="app">
+    <div class="design-header">
+      <router-link to="/">
+        <img class="design-header-logo" src="@images/logo.png" alt="SAP">
+      </router-link>
+      <div class="design-header-menu">
+        <a>项目(P)</a>
+        <a>模板(T)</a>
+        <a>新项目(N)</a>
+        <a>保存项目(B)</a>
+        <a>保存为模板(M)</a>
+        <a>取消</a>
+      </div>
+    </div>
 
     <div class="tw-header">
       <div class="tw-header-inner">
@@ -23,22 +36,9 @@
               </router-link>
             </li>
             <li>
-              <a class="tw-popswitch xheader js-projects"
-                 :class="{xactive:/^\/project-/.test($route.path)}">
+              <router-link to="/project">
                 <span>项目</span>
-              </a>
-              <tw-poppane
-                class="js-position"
-                switch=".js-projects">
-                <ul class="tw-header-menu">
-                    <li>
-                      <router-link to="/project-new">新项目</router-link>
-                    </li>
-                    <li>
-                      <a>项目库</a>
-                    </li>
-                </ul>
-              </tw-poppane>
+              </router-link>
             </li>
           </ul>
         </div>
