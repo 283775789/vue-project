@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Doc from '@pages/doc/doc'
 import Project from '@pages/project/project'
+import ProjectNew from '@pages/project/new/new'
 
 Vue.use(Router)
 
@@ -28,7 +29,14 @@ export default new Router({
     },
     {
       path: '/project',
-      component: Project
+      name: 'project',
+      component: Project,
+      children: [
+        {
+          path: 'new',
+          component: ProjectNew
+        }
+      ]
     }
   ]
 })

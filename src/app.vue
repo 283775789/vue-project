@@ -1,23 +1,7 @@
 <template>
   <div id="app">
-    <div class="design-header" v-if="$route.path==='/project'">
-      <router-link to="/">
-        <img class="design-header-logo" src="@images/logo.png" alt="SAP">
-      </router-link>
-      <div class="design-header-menu">
-        <a>项目(P)</a>
-        <a>模板(T)</a>
-        <a>新项目(N)</a>
-        <a>保存项目(B)</a>
-        <a>保存为模板(M)</a>
-        <a>项目设置(C)</a>
-        <a>全局样式(G)</a>
-        <a>取消</a>
-      </div>
-      <a class="tw-ico xdc design-header-close"></a>
-    </div>
-
-    <template v-if="$route.path!=='/project'">
+    <!-- 文档相关 -->
+    <template v-if="$route.path.indexOf('/project')===-1">
       <div class="tw-header">
         <div class="tw-header-inner">
 
@@ -40,9 +24,7 @@
                 </router-link>
               </li>
               <li @click="fullScreen">
-                <router-link to="/project">
-                  <span>项目</span>
-                </router-link>
+                <a @click="goToProject"><span>项目</span></a>
               </li>
             </ul>
           </div>
@@ -68,7 +50,9 @@
 
       <tw-footer @click.native.stop="demoMethod"></tw-footer>
     </template>
+    <!-- /文档相关 -->
 
+    <!-- 项目相关 -->
     <router-view v-else></router-view>
   </div>
 </template>
@@ -77,13 +61,18 @@
 export default {
   name: 'app',
   methods: {
-    fullScreen (e) {
-      // 全屏浏览器
-      const element = e.currentTarget
+    // 全屏
+    fullScreen () {
+      const element = document.documentElement
       const requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen
       if (requestMethod) {
         requestMethod.call(element)
       }
+    },
+    // 跳转到项目页
+    goToProject () {
+      window.sessionStorage.setItem('prevPath', this.$route.path)
+      this.$router.push('/project')
     }
   }
 }
