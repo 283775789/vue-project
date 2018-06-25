@@ -9,6 +9,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
+    "ui": "gulp watch",
     "docs": "ncp E:/teewon3/docs E:/teewon-node/docs",
     "factory": "ncp E:/teewon3/src E:/teewon-node/teewon/apps/web/src",
     "src": "ncp E:/teewon3/src E:/teewon-node/src",
@@ -81,7 +82,11 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-replace": "^0.6.1",
+    "gulp-watch": "^4.3.11",
+    "gulp.spritesmith": "^6.8.0"
   },
   "engines": {
     "node": ">= 6.0.0",

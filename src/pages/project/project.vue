@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form v-if="false">
     <table class="tw-form xtable">
       <colgroup>
         <col style="width:6em;" />

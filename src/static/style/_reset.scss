@@ -111,3 +111,14 @@ input::placeholder,
 textarea::placeholder {
   color: $color-text-placeholder;
 }
+
+// 图标
+.tw-ico {
+  box-sizing: content-box;
+    padding: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url("~@images/icons.png");
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+}
