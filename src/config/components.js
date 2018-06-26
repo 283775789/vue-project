@@ -9,6 +9,7 @@ import Select from '@comps/select/select'
 import SelectGroup from '@comps/select/select-group'
 import Draggrid from '@comps/draggrid/draggrid'
 import Dragcol from '@comps/draggrid/draggrid-col'
+import Modal from '@comps/modal/modal'
 
 const components = [
   Footer,
@@ -19,7 +20,8 @@ const components = [
   Select,
   SelectGroup,
   Draggrid,
-  Dragcol
+  Dragcol,
+  Modal
 ]
 
 components.forEach(function (component) {

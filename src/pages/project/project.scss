@@ -5,11 +5,13 @@ body.xproject {
   background: #282828;
 }
 
-/* --------------------------- 设计器 --------------------------- */
-.design-header {
+// stylelint-enable
+
+// 项目头部
+.tw-project-header {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   z-index: 10000;
   display: flex;
   width: 100%;
@@ -19,45 +21,69 @@ body.xproject {
   border-bottom: 1px solid #282828;
 }
 
-.design-header-logo {
+.tw-project-header-logo {
   height: 19px;
   vertical-align: top;
 }
 
-.design-header-menu {
+.tw-project-header-menu {
   margin-left: 15px;
 }
 
-.design-header-menu > a {
-  padding: 0 8px;
+.tw-project-header-menu > a {
   line-height: 18px;
-  color: #fff;
+  padding: 0 8px;
   font-size: 12px;
+  color: #fff;
   border: 1px solid transparent;
   border-radius: 3px;
 }
 
-.design-header-menu > a.disabled {
+.tw-project-header-menu > a.disabled {
   @include disable();
 }
 
-.design-header-menu > a:hover {
+.tw-project-header-menu > a:hover {
   background: #6a6a6a;
   border-color: #2c2c2c;
 }
 
-.design-header-right {
+.tw-project-header-right {
   display: flex;
-  margin:-5px -2px 0 auto;
+  margin: -5px -2px 0 auto;
 }
 
-.design-header-right > a {
+.tw-project-header-right > a {
   margin-left: -3px;
-  opacity: .8;
-  border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  opacity: .8;
 }
 
-.design-header-right > a:hover {
+.tw-project-header-right > a:hover {
   opacity: 1;
+}
+
+// 项目属性
+.tw-project-props {
+  position: fixed;
+  top: 46px;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  width: 900px;
+  padding: $spacing-small $spacing-large;
+  color: #fff;
+  background: #343434;
+  border: 1px solid #141414;
+  box-shadow: 0 3px 6px #000;
+}
+
+.tw-project-props .tw-title {
+  color: #fff;
+}
+
+.tw-project-props [type="text"] {
+  background: transparent;
+  border: 1px solid #797b8d;
 }

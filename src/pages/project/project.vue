@@ -1,11 +1,11 @@
 <template>
   <div class="tw-project">
     <!-- 设计器头部 -->
-    <div class="design-header">
-      <a @click="returnHome">
-        <img class="design-header-logo" src="@images/logo.png" alt="SAP">
+    <div class="tw-project-header">
+      <a @click="returnHome" v-if="false">
+        <img class="tw-project-header-logo" src="@images/logo.png" alt="SAP">
       </a>
-      <div class="design-header-menu">
+      <div class="tw-project-header-menu">
         <template v-if="$route.path.indexOf('/project/new')===-1">
           <a>项目(P)</a>
           <a>模板(T)</a>
@@ -14,12 +14,13 @@
         <template v-else>
           <a>保存项目(B)</a>
           <a>保存为模板(M)</a>
-          <a>项目设置(C)</a>
+          <a>项目设置()</a>
+          <a>选择组件(C)</a>
           <a>全局样式(G)</a>
           <a @click="cancelNewProject">取消</a>
         </template>
       </div>
-      <div class="design-header-right">
+      <div class="tw-project-header-right">
         <a class="tw-ico xdm"
            @click="toggleFullScreen"
            :class="{xfull:maxScreen}">

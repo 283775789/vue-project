@@ -135,11 +135,12 @@
               class="xsidebar"
               switch=".js-function"
               :default-open="[
-                '',
+                '/doc/comps/modal',
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>下拉列表</a></li>
                 <li><a>折叠面板</a></li>
+                <li><router-link to="/doc/comps/modal">弹窗(modal)</router-link></li>
               </ul>
             </tw-collapse>
           </li>

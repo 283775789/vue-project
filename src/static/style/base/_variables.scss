@@ -27,6 +27,7 @@ $color-bg-content:#fff !default; // 内容背景
 $color-bg-card:#ebf4fc !default; // 卡片背景
 $color-bg-footer: #afb9c9 !default; // 页脚背景
 $color-bg-disabled: #eee !default; // 禁用背景
+$color-bg-mask: rgba(0, 0, 0, .4) !default; // 摭盖层背景
 
 /* 标识色{Color+} */
 $color-info:#78cf70 !default; // 提示
@@ -115,3 +116,12 @@ $border-radius: 3px !default; // 边框圆角
 
 /* 过渡时间{String} */
 $time: .12s !default; // 过渡时间
+
+/* z-index层级 */
+$zindex-dropdown:          1000 !default;
+$zindex-sticky:            1020 !default;
+$zindex-fixed:             1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
