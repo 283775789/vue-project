@@ -1,4 +1,4 @@
-<template>
+<template group="导航" type="tab选项卡" name="基本">
   <tw-collapse-group disable-toggle-self>
     <ul class="tw-tabs">
       <li class="js-tab1"><a>选项卡1</a></li>

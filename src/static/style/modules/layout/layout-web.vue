@@ -1,4 +1,4 @@
-<template>
+<template group="布局" type="整体布局" name="前台系统">
   <div class="tw-demobox">
     <!-- 头部 -->
     <div class="tw-header">

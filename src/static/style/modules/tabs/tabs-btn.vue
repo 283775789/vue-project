@@ -1,4 +1,4 @@
-<template>
+<template group="导航" type="tab选项卡" name="按钮式">
   <tw-collapse-group disable-toggle-self>
     <ul class="tw-btngroup">
       <li class="js-btn1"><a class="tw-btn xweaking">选项卡1</a></li>

@@ -1,44 +1,28 @@
 <template>
-  <div class="tw-project">
-    <!-- 设计器头部 -->
-    <div class="tw-project-header">
-      <a @click="returnHome" v-if="false">
-        <img class="tw-project-header-logo" src="@images/logo.png" alt="SAP">
-      </a>
-      <div class="tw-project-header-menu">
-        <template v-if="$route.path.indexOf('/project/new')===-1">
-          <a>项目(P)</a>
-          <a>模板(T)</a>
-          <router-link to="/project/new">新项目(N)</router-link>
-        </template>
-        <template v-else>
-          <a>保存项目(B)</a>
-          <a>保存为模板(M)</a>
-          <a>项目设置()</a>
-          <a>选择组件(C)</a>
-          <a>全局样式(G)</a>
-          <a @click="cancelNewProject">取消</a>
-        </template>
-      </div>
-      <div class="tw-project-header-right">
-        <a class="tw-ico xdm"
-           @click="toggleFullScreen"
-           :class="{xfull:maxScreen}">
-        </a>
-        <a class="tw-ico xdc"
-           @click="closeProject">
-        </a>
-      </div>
+  <!-- 设计器头部 -->
+  <div class="tw-design-header">
+    <a @click="returnHome" v-if="false">
+      <img class="tw-design-header-logo" src="@images/logo.png" alt="SAP">
+    </a>
+    <div class="tw-design-header-menu">
+      <slot></slot>
     </div>
-    <!-- /设计器头部 -->
-
-    <router-view ref="child" />
+    <div class="tw-design-header-right">
+      <a class="tw-ico xdm"
+          @click="toggleFullScreen"
+          :class="{xfull:maxScreen}">
+      </a>
+      <a class="tw-ico xdc"
+          @click="closeProject">
+      </a>
+    </div>
   </div>
+  <!-- /设计器头部 -->
 </template>
 
 <script>
 export default {
-  name: 'page-project',
+  name: 'tw-design-header',
   data () {
     return {
       maxScreen: true
@@ -49,10 +33,6 @@ export default {
     returnHome () {
       this.quitFullScreen()
       this.$router.push('/')
-    },
-    cancelNewProject () {
-      // undone: 需要提示
-      this.$router.push('/project')
     },
     // 全屏
     fullScreen () {
@@ -91,16 +71,10 @@ export default {
         this.$router.push(prevPath)
       }
     }
-  },
-  mounted () {
-    document.body.classList.add('xproject')
-  },
-  beforeDestroy () {
-    document.body.classList.remove('xproject')
   }
 }
 </script>
 
 <style lang="scss">
-  @import "./project.scss";
+  @import "./style.scss";
 </style>

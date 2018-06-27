@@ -3,6 +3,26 @@
 * ------------------------------------------------------------ */
 
 /* --------------------------- 重置CSS组件 --------------------------- */
+
+// stylelint-disable
+// 滚动条样式
+.tw-scroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 6px;
+	background-color: #000;
+}
+
+.tw-scroll::-webkit-scrollbar-thumb {
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+.tw-scroll::-webkit-scrollbar {
+	width: 8px;
+	background-color: #343434;
+}
+
 // 侧边栏右侧分隔线
 .tw-sidebar::after {
   @include lineY($color-border-secondary);
@@ -10,6 +30,7 @@
 }
 
 /* --------------------------- 通用组件 --------------------------- */
+
 /* 文档 */
 .tw-doc {
   padding: 0 $spacing-medium;
@@ -159,3 +180,8 @@ $block-border-color:$color-border-main !default;
 .tw-demosquare.xrounded {
   border-radius: $border-radius;
 }
+
+
+
+
+

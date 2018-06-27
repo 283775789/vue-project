@@ -1,0 +1,66 @@
+// stylelint-disable
+body.xnew {
+  background:#282828 url("~@images/px-ruler-y.png") repeat-y 0 30px;
+}
+
+body.xnew::before {
+  content: "";
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 30px;
+  height: 16px;
+  width: 100%;
+  background: url("~@images/px-ruler-x.png") repeat-x top left;
+}
+
+// 项目相关弹窗
+.tw-modal.xproject {
+  z-index: 10001;
+}
+
+.tw-modal.xproject .tw-modal-window {
+  border: 1px solid #141414;
+  box-shadow: 0 3px 6px #000;
+}
+
+.tw-modal.xproject .tw-modal-window-header {
+  background-color: rgba(68, 68, 68, .95);
+}
+
+.tw-modal.xproject .tw-modal-window-footer {
+  background-color: rgba(52, 52, 52, .95);
+}
+
+.tw-modal.xproject .tw-modal-window-body {
+  min-height: 680px;
+  color: #fff;
+  background: rgba(52, 52, 52, .95);;
+  @include scroll(8px, #343434, #222, #666);
+}
+
+.tw-modal.xproject .tw-title {
+  color: #fff;
+}
+
+.tw-modal.xproject .tw-input,
+.tw-modal.xproject .el-select .el-input__inner {
+  color: #fff;
+  background: transparent;
+  border: 1px solid #797b8d;
+}
+
+.tw-modal.xproject .el-select__tags {
+  max-width: none !important;
+}
+
+.tw-modal.xproject .el-select-dropdown {
+  position: absolute !important;
+  left: 0 !important;
+  width: 100%;
+  margin-top: 2px !important;
+}
+
+body.xproject .el-color-dropdown {
+  z-index: 10001 !important;
+}

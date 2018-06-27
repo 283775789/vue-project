@@ -1,4 +1,4 @@
-<template>
+<template group="导航" type="tab选项卡" name="卡片式">
   <tw-collapse-group disable-toggle-self>
     <ul class="tw-tabs xcard">
       <li class="js-nav1"><a>选项卡1</a></li>

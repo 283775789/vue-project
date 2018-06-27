@@ -1,97 +1,151 @@
 <template>
-  <div class="tw-project-body">
-    <!-- 侧边栏:项目属性 -->
-    <div class="tw-project-props">
-      <form>
-        <table class="tw-form xtable">
-          <colgroup>
-            <col style="width:6em;" />
-            <col />
-            <col style="width:8em;" />
-            <col />
-          </colgroup>
+  <div class="tw-project">
+    <tw-design-header>
+      <a>保存项目(B)</a>
+      <a>保存为模板(M)</a>
+      <a @click="newProjectModal.visible = true">项目设置()</a>
+      <a @click="compsModal.visible = true">选择组件(C)</a>
+      <a @click="newProjectModal.visible = true">全局样式(G)</a>
+      <a @click="cancelNewProject">取消</a>
+    </tw-design-header>
 
-          <tr>
-            <td colspan="4">
-              <div class="tw-title">项目属性</div>
-            </td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">项目名称:</label></td>
-            <td class="tw-form-col"><input v-model="project.name" type="text" class="tw-input"></td>
-            <td class="tw-form-col"><label class="tw-inputlabel">版本号:</label></td>
-            <td class="tw-form-col"><input v-model="project.version" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
-            <td class="tw-form-col" colspan="3">
-              <el-select v-model="project.developers" multiple filterable placeholder="请选择项目组成员，选择的第一个成员即为当前项目负责人...">
-                <el-option
-                  v-for="(developer,index) in developers"
-                  :key="index"
-                  :label="developer.name"
-                  :value="`${developer.name}<${developer.email}>`">
-                </el-option>
-              </el-select>
-            </td>
-          </tr>
+    <div class="tw-project-body">
+      内容
+    </div>
 
-          <tr>
-            <td colspan="4">
-              <div class="tw-title xsub">
-                <div class="tw-title-left">svn地址</div>
-                <a target="bottom" class="tw-title-right text-link">查看svn目录</a>
-              </div>
-            </td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">高保真:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.svn.designImage" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">源文件:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.svn.designFile" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">前端Html:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.svn.html" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.svn.publish" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">过程文件:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.svn.flow" type="text" class="tw-input"></td>
-          </tr>
+    <!-- 弹窗:项目属性 -->
+    <tw-modal
+      class="xnomask xhuge xproject"
+      :visible.sync="newProjectModal.visible">
+      <template slot="header">项目设置</template>
+      <div slot="body">
+        <form>
+          <table class="tw-form xtable">
+            <colgroup>
+              <col style="width:6em;" />
+              <col />
+              <col style="width:8em;" />
+              <col />
+            </colgroup>
+            <tr>
+              <td colspan="4">
+                <div class="tw-title">通用</div>
+              </td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">项目名称:</label></td>
+              <td class="tw-form-col"><input v-model="project.name" type="text" class="tw-input"></td>
+              <td class="tw-form-col"><label class="tw-inputlabel">版本号:</label></td>
+              <td class="tw-form-col"><input v-model="project.version" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">项目组成员:</label></td>
+              <td class="tw-form-col" colspan="3">
+                <el-select
+                  v-model="project.developers"
+                  multiple filterable
+                  :popper-append-to-body = "false"
+                  placeholder="请选择项目组成员，选择的第一个成员即为当前项目负责人...">
+                  <el-option
+                    v-for="(developer,index) in developers"
+                    :key="index"
+                    :label="developer.name"
+                    :value="`${developer.name}<${developer.email}>`">
+                  </el-option>
+                </el-select>
+              </td>
+            </tr>
 
-          <tr>
-            <td colspan="4">
-              <div class="tw-title xsub">项目文档地址</div>
-            </td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">需求文档:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.document.prd" type="text" class="tw-input"></td>
-          </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">接口地址:</label></td>
-            <td class="tw-form-col" colspan="3"><input v-model="project.document.api" type="text" class="tw-input"></td>
-          </tr>
+            <tr>
+              <td colspan="4">
+                <div class="tw-title">
+                  <div class="tw-title-left">svn地址</div>
+                  <a target="bottom" class="tw-title-right text-link">查看svn目录</a>
+                </div>
+              </td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">高保真:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.svn.designImage" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">源文件:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.svn.designFile" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">前端Html:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.svn.html" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">交付Html:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.svn.publish" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">过程文件:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.svn.flow" type="text" class="tw-input"></td>
+            </tr>
 
+            <tr>
+              <td colspan="4">
+                <div class="tw-title">项目文档地址</div>
+              </td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">需求文档:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.document.prd" type="text" class="tw-input"></td>
+            </tr>
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">接口地址:</label></td>
+              <td class="tw-form-col" colspan="3"><input v-model="project.document.api" type="text" class="tw-input"></td>
+            </tr>
+          </table>
+        </form>
+
+        <!-- 组件导航菜单 -->
+        <!-- <tw-collapse-group class="tw-sidebar" v-if="compGroup" style="position:relative;">
+          <ul class="tw-nav xsidebar tw-stickybox" style="min-height:600px;">
+            <li v-for="(group, groupKey, groupIndex) in compGroup" :key="groupIndex">
+              <a :class="['js-group-'+groupIndex]"><i class="tw-font xico"></i>{{ groupKey }}<i class="tw-arrow xright"></i></a>
+              <tw-collapse class="xsidebar" :switch="'.js-group-'+groupIndex">
+                <ul class="tw-nav xsidebar">
+                  <li v-for="(type, typeKey, index) in group" :key="index" @click="clickCompType(type)"><a>{{ typeKey }}</a></li>
+                </ul>
+              </tw-collapse>
+            </li>
+          </ul>
+        </tw-collapse-group> -->
+        <!-- /组件导航菜单 -->
+
+        <table
+          class="tw-form xtable"
+          v-for="(group, groupKey, groupIndex) in compGroup"
+          :key="`comps${groupIndex}`">
           <tr>
-            <td colspan="4">
-              <div class="tw-title xsub">底层JS框架</div>
+            <td>
+              <div class="tw-title">{{ groupKey }}</div>
             </td>
           </tr>
-          <tr class="tw-form-row">
-            <td class="tw-form-col"><label class="tw-inputlabel">底层JS框架:</label></td>
-            <td class="tw-form-col" colspan="3">
-              <label class="tw-optbox xradio"><input v-model="project.framwork" type="radio" name="app-framework" value="vue" /><span>Vue(前后端分离)</span></label>
-              <label class="tw-optbox xradio xdisabled"><input v-model="project.framwork" type="radio" name="app-framework" value="jquery" disabled /><span>jQuery(经典)</span></label>
-            </td>
+          <tr v-for="(type, typeKey, typeIndex) in group"
+              :key="`comps${groupIndex}-${typeIndex}`">
+              <td>
+                <div class="tw-title xsub">{{ typeKey }}</div>
+                <div>
+                  <label
+                    class="tw-optbox"
+                    v-for="demo in type.demos"
+                    :key="demo.tag">
+                    <input
+                      type="checkbox"
+                      :value="demo.tag"
+                      v-model="selectedComps"
+                      @change="selectComps(demo.tag)" />
+                      <span>{{demo.name}}</span>
+                  </label>
+                </div>
+              </td>
           </tr>
         </table>
+
         <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
           <tr>
             <td colspan="4">
@@ -151,58 +205,24 @@
             </td>
           </tr>
         </table>
-
-        <div class="tw-title" style="margin-bottom:0;">组件</div>
-        <div class="tw-multicol">
-          <div class="tw-multicol-left">
-            <!-- 组件导航菜单 -->
-            <tw-collapse-group class="tw-sidebar" v-if="compGroup" style="position:relative;">
-              <ul class="tw-nav xsidebar tw-stickybox" style="min-height:600px;">
-                <li v-for="(group, groupKey, groupIndex) in compGroup" :key="groupIndex">
-                  <a :class="['js-group-'+groupIndex]"><i class="tw-font xico"></i>{{ groupKey }}<i class="tw-arrow xright"></i></a>
-                  <tw-collapse class="xsidebar" :switch="'.js-group-'+groupIndex">
-                    <ul class="tw-nav xsidebar">
-                      <li v-for="(type, typeKey, index) in group" :key="index" @click="clickCompType(type)"><a>{{ typeKey }}</a></li>
-                    </ul>
-                  </tw-collapse>
-                </li>
-              </ul>
-            </tw-collapse-group>
-            <!-- /组件导航菜单 -->
-          </div>
-          <!-- <div class="tw-multicol-cell">
-            <div class="tw-multicol-cell-table">
-              <div class="tw-multicol-cell-cell tw-stickybox">
-                <div class="tw-compscssdemo">
-                  <div id="demos"></div>
-                    <div class="tw-compscssdemo-setbar">
-                      <div class="tw-title xsub">{{ currentCompScssVar.name }}样式设置</div>
-                      <div class="tw-form xtable xsmall">
-                        <div class="tw-form-row" v-for="(scssVar, index) in currentCompScssVar.children" :key="index" :title="scssVar.varName">
-                          <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel xsmall">{{ scssVar.name }}:</label></div>
-                          <div class="tw-form-col">
-                            <input v-if="typeof compOptions[index] === 'undefined'" type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars">
-                            <tw-select-group v-else v-model="scssVar.value" :group="{nameKey:'name', itemsKey: 'children'}" :items="compOptions[index]" valueKey="varName" textKey="name" inputClass="xsmall" @change="changeScssVars">
-                              <span slot-scope="item">{{ item.name }}<i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i></span>
-                            </tw-select-group>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
-      </form>
-    </div>
-    <!-- /侧边栏:项目属性 -->
+      </div>
+      <template slot="footer">
+        <a class="tw-btn xmain xlarge" @click="createProject">下一步</a>
+        <a class="tw-btn xweaking xlarge" @click="newProjectModal.visible=false">取消</a>
+      </template>
+    </tw-modal>
+    <!-- /弹窗:项目属性 -->
   </div>
 </template>
 
 <script>
+import DesignHeader from '@/components/design-header'
+
 export default {
   name: 'newProject',
+  components: {
+    'tw-design-header': DesignHeader
+  },
   data () {
     return {
       project: {
@@ -223,13 +243,20 @@ export default {
         framework: ''
       },
       developers: [],
+      newProjectModal: {
+        visible: true
+      },
+      compsModal: {
+        visible: false
+      },
       scssVars: [],
       compGroup: null,
       styleEl: null,
       currentComp: null,
       currentCompScssVar: [],
       demosVm: null,
-      compOptions: []
+      compOptions: [],
+      selectedComps: []
     }
   },
   computed: {
@@ -253,6 +280,10 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
+    },
+    // 选择组件
+    selectComps () {
+
     },
     clickCompType (type) {
       if (this.demosVm) this.demosVm.$destroy()
@@ -312,6 +343,16 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
+    },
+    // 新建工程
+    createProject () {
+      document.body.classList.add('xnew')
+      this.newProjectModal.visible = false
+    },
+    // 取消新建工程
+    cancelNewProject () {
+      // undone: 需要提示
+      this.$router.push('/project')
     }
   },
   created () {
@@ -327,14 +368,11 @@ export default {
       console.log(error)
     })
 
-    vm.axios.get('http://localhost:83/examples/config/components.json').then(function (responed) {
+    vm.axios.get(`${this.host}/data/app/components.json`).then(function (responed) {
       vm.compGroup = responed.data
     }).catch(function (error) {
       console.log(error)
     })
-  },
-  mounted () {
-    document.body.classList.add('xnew')
   },
   beforeDestroy () {
     document.body.classList.remove('xnew')
@@ -344,5 +382,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "./new.scss";
+  @import "./style.scss";
 </style>

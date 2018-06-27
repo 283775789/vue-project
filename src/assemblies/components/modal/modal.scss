@@ -1,4 +1,6 @@
 /* 弹窗(modal) */
+$modal-default-width: 400px !default; // 弹窗默认宽度
+$modal-mw: map-get($media-breakpoints, pc) !default; // 弹窗最大宽度
 $modal-size-tiny: 320px !default; // 超小弹窗宽度
 $modal-size-small: 480px !default; // 小弹窗宽度
 $modal-size-medium: 640px !default; // 中弹窗宽度
@@ -30,9 +32,14 @@ $modal-footer-bg: #fff !default; // 底部背景
   bottom: 0;
   left: 0;
   z-index: $zindex-modal;
+  display: none;
   text-align: center;
   background-color: $modal-mask-bg;
   @include center-y;
+}
+
+.tw-modal.xopen {
+  display: block;
 }
 
 .tw-modal.xnomask {
@@ -43,10 +50,36 @@ $modal-footer-bg: #fff !default; // 底部背景
 .tw-modal-window {
   position: relative;
   display: inline-block;
-  width: 400px;
+  width: $modal-default-width;
+  max-width: $modal-mw;
   text-align: left;
   white-space: normal;
   vertical-align: middle;
+}
+
+// 弹窗:窗体-超小
+.tw-modal.xtiny > .tw-modal-window {
+  width: $modal-size-tiny;
+}
+
+// 弹窗:窗体-小
+.tw-modal.xsmall > .tw-modal-window {
+  width: $modal-size-small;
+}
+
+// 弹窗:窗体-中
+.tw-modal.xmedium > .tw-modal-window {
+  width: $modal-size-medium;
+}
+
+// 弹窗:窗体-大
+.tw-modal.xlarge > .tw-modal-window {
+  width: $modal-size-large;
+}
+
+// 弹窗:窗体-超大
+.tw-modal.xhuge > .tw-modal-window {
+  width: $modal-size-huge;
 }
 
 // 弹窗:窗体-头部
@@ -57,9 +90,14 @@ $modal-footer-bg: #fff !default; // 底部背景
   padding: 0 $modal-px;
   font-size: $modal-header-font-size;
   color: $modal-header-color;
+  cursor: move;
   background-color: $modal-header-bg;
   border-top-left-radius: $modal-border-radius;
   border-top-right-radius: $modal-border-radius;
+}
+
+.tw-modal-window-header.xnodrag {
+  cursor: default;
 }
 
 .tw-modal-window-header > h4 {
@@ -87,6 +125,11 @@ $modal-footer-bg: #fff !default; // 底部背景
   font-size: 1.5em;
   font-weight: 300;
   text-align: center;
+  opacity: .85;
+}
+
+.tw-modal-window-colose:hover {
+  opacity: 1;
 }
 
 .tw-modal-window-header.xweaking > .tw-modal-window-colose {

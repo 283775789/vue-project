@@ -217,7 +217,7 @@ $optbox-checkbox-checked-color: $color-text-inverse !default; // 多选框对勾
 
 // 小尺寸
 .el-input--small .el-input__inner {
-  height: $control-height !important;
+  height: $control-height;
 }
 
 .el-input--small .el-input__inner,
@@ -227,7 +227,7 @@ $optbox-checkbox-checked-color: $color-text-inverse !default; // 多选框对勾
 
 // 最小尺寸
 .el-input--mini .el-input__inner {
-  height: $control-height-small !important;
+  height: $control-height-small;
   font-size: $control-font-size-small;
 }
 
