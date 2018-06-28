@@ -138,7 +138,7 @@
                       :key="demo.tag">
                       <input
                         type="checkbox"
-                        :value="demo.tag"
+                        :value="`${demo.tag}|${typeKey}`"
                         v-model="selectedComps"
                         @change="selectComps" />
                         <span>{{demo.name}}</span>
@@ -230,6 +230,21 @@
       </template>
     </tw-modal>
     <!-- /弹窗:新建项目 -->
+
+    <div class="tw-compscssdemo-setbar">
+      <div class="tw-title xsub">{{ currentCompScssVar.name }}样式设置</div>
+      <div class="tw-form xtable xsmall">
+        <div class="tw-form-row" v-for="(scssVar, index) in currentCompScssVar.children" :key="index" :title="scssVar.varName">
+          <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel xsmall">{{ scssVar.name }}:</label></div>
+          <div class="tw-form-col">
+            <input v-if="typeof compOptions[index] === 'undefined'" type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars">
+            <tw-select-group v-else v-model="scssVar.value" :group="{nameKey:'name', itemsKey: 'children'}" :items="compOptions[index]" valueKey="varName" textKey="name" inputClass="xsmall" @change="changeScssVars">
+              <span slot-scope="item">{{ item.name }}<i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i></span>
+            </tw-select-group>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -330,9 +345,8 @@ export default {
     },
     // 选择组件
     selectComps () {
-      if (this.compsRoot) this.compsRoot.$destroy()
-
       // undone 需提示未选择布局前...
+      if (this.compsRoot) this.compsRoot.$destroy()
       if (!document.getElementById('comps-root')) return
 
       const vm = this
@@ -342,8 +356,12 @@ export default {
           const tagVnodes = []
 
           vm.selectedComps.forEach(comp => {
-            tagVnodes.push(h(comp, {nativeOn: {
-              click: vm.setComponentStyle
+            comp = comp.split('|')
+
+            tagVnodes.push(h(comp[0], {nativeOn: {
+              dblclick (e) {
+                vm.setComponentStyle(comp[1])
+              }
             }}))
             tagVnodes.push(h('hr', {class: 'tw-project-hr'}))
           })
@@ -353,8 +371,19 @@ export default {
       })
     },
     // 设置组件样式
-    setComponentStyle () {
-      alert(333)
+    setComponentStyle (type) {
+      // 获取组件scss变量
+      this.currentCompScssVar = []
+      this.compScssVars.children.forEach(compVars => {
+        if (compVars.name === type) {
+          this.compOptions = []
+          compVars.children.forEach(compVar => {
+            this.compOptions.push(this.createCompVarMap(compVar.value))
+          })
+
+          this.currentCompScssVar = compVars
+        }
+      })
     },
     clickCompType (type) {
       if (this.demosVm) this.demosVm.$destroy()
@@ -371,20 +400,6 @@ export default {
           })
 
           return h('div', {attrs: {id: 'comps', class: 'tw-project-content'}}, [demoVnodes])
-        }
-      })
-
-      // 获取组件scss变量
-      this.currentCompScssVar = []
-      this.compScssVars.children.forEach(compVars => {
-        if (compVars.name === type.name) {
-          this.compOptions = []
-
-          compVars.children.forEach(compVar => {
-            this.compOptions.push(this.createCompVarMap(compVar.value))
-          })
-
-          this.currentCompScssVar = compVars
         }
       })
     },

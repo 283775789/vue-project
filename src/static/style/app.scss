@@ -154,10 +154,11 @@ $block-border-color:$color-border-main !default;
 }
 
 .tw-compscssdemo-setbar {
-  position: absolute;
-  top: -20px;
-  right: -20px;
+  position: fixed;
+  top: 36px;
+  right: 0;
   bottom: 0;
+  z-index: 9999;
   width: 360px;
   padding: $spacing-small;
   overflow: auto;

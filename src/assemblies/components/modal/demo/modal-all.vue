@@ -1,4 +1,4 @@
-<template group="容器" type="弹窗" name="其它所有">
+<template group="功能" type="弹窗" name="其它所有">
   <div class="tw-demobox">
     <a class="tw-btn xmain" @click="modal1Visible=true">不可拖动</a>
     <a class="tw-btn xmain" @click="modal2Visible=true">摭罩层无背景</a>

@@ -1,4 +1,4 @@
-<template group="容器" type="弹窗" name="基本">
+<template group="功能" type="弹窗" name="基本">
   <div class="tw-demobox">
     <a class="tw-btn xmain" @click="modal.visible=true">打开弹窗</a>
     <!-- 弹窗:名称 -->
