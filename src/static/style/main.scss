@@ -44,10 +44,6 @@
 @import "form/form.scss";
 @import "tabs/tabs.scss";
 
-// 项目
-// ------------------------------------------------------------
-@import "app.scss";
-
 // 功能样式
 // ------------------------------------------------------------
 @import "display/display.scss";
@@ -57,3 +53,7 @@
 @import "spacing/spacing.scss";
 @import "border/border.scss";
 @import "animate/animate.scss";
+
+// 页面
+// ------------------------------------------------------------
+@import "app.scss";

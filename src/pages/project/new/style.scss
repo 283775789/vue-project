@@ -1,6 +1,8 @@
 // stylelint-disable
-body.xnew {
-  background:#282828 url("~@images/px-ruler-y.png") repeat-y 0 30px;
+html.xnew {
+  background-image:url("~@images/px-ruler-y.png") !important;
+  background-repeat: repeat-y !important;
+  background-position: 0 30px !important;
 }
 
 body.xnew::before {
@@ -11,7 +13,13 @@ body.xnew::before {
   top: 30px;
   height: 16px;
   width: 100%;
-  background: url("~@images/px-ruler-x.png") repeat-x top left;
+  background: url("~@images/px-ruler-x.png") repeat-x top left !important;
+}
+
+// 组件分隔线
+.tw-project-hr {
+  padding: 10px;
+  border: none;
 }
 
 // 项目相关弹窗

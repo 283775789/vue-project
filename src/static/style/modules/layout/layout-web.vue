@@ -23,7 +23,7 @@
     <!-- 主体 -->
     <div class="tw-body">
       <div class="tw-body-inner">
-        页面主内容
+        <div id="comps-root"></div>
       </div>
     </div>
     <!-- /主体 -->

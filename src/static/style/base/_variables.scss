@@ -59,8 +59,8 @@ $color-border-weaking:#eee !default; // 弱化边框
 $font-family-default: "Helvetica Neue", "Microsoft YaHei", "\5b8b\4f53", "Arial", "Helvetica", sans-serif !default; // 字体
 
 /* 字体尺寸{FontSize+} */
-$font-size-default: 14px !default; // 小字号
-$font-size-small: $font-size-default - 2px !default; // 默认字号
+$font-size-default: 14px !default; // 默认字号
+$font-size-small: $font-size-default - 2px !default; // 小字号
 $font-size-medium: $font-size-default + 2px !default; // 中字号
 $font-size-large: $font-size-default + 6px !default; // 大字号
 
@@ -81,14 +81,14 @@ $spacing-huge: $spacing-step * 8 !default; // 超大间距
 
 /* ------------------------------ 尺寸体系 ------------------------------ */
 
-/* 控件高度 */
+/* 控件高度{String+} */
 $ctr-height-step: 6px !default; // 高度步长
 $ctr-height-default: 30px !default; // 默认高度
 $ctr-height-small: $ctr-height-default - $ctr-height-step !default; // 小高度
 $ctr-height-medium: $ctr-height-default + $ctr-height-step !default; // 中高度
 $ctr-height-large: $ctr-height-default + $ctr-height-step * 2 !default; // 大高度
 
-/* 控件宽度 */
+/* 控件宽度{String+} */
 $ctr-width-step: 40px !default; // 宽度步长
 $ctr-width-default: 100% !default; // 默认高度
 $ctr-width-tiny: $ctr-width-step * 2 !default; // 超小宽度
@@ -117,11 +117,5 @@ $border-radius: 3px !default; // 边框圆角
 /* 过渡时间{String} */
 $time: .12s !default; // 过渡时间
 
-/* z-index层级 */
-$zindex-dropdown:          1000 !default;
-$zindex-sticky:            1020 !default;
-$zindex-fixed:             1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
+/* 渲染层级{String} */
+$zindex-modal: 1050 !default; // 弹窗

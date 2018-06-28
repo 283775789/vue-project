@@ -3,24 +3,26 @@
     <tw-design-header>
       <a>保存项目(B)</a>
       <a>保存为模板(M)</a>
-      <a @click="newProjectModal.visible = true">项目设置()</a>
+      <a href="#" @click="newProjectModal.visible = true">项目设置()</a>
       <a @click="compsModal.visible = true">选择组件(C)</a>
       <a @click="newProjectModal.visible = true">全局样式(G)</a>
       <a @click="cancelNewProject">取消</a>
     </tw-design-header>
 
-    <div class="tw-project-body">
+    <div id="design-canvas">
       内容
     </div>
 
-    <!-- 弹窗:项目属性 -->
+    <!-- 弹窗:新建项目 -->
     <tw-modal
-      class="xnomask xhuge xproject"
-      :visible.sync="newProjectModal.visible">
-      <template slot="header">项目设置</template>
+      class="xhuge xproject"
+      :visible.sync="newProjectModal.visible"
+      :style="{display: newProjectModal.hide ? 'none': ''}">
+      <template slot="header">新建 - {{ newStep === 1 ? '设置项目属性' :  newStep === 2 ? '选择组件' : '设置全局样式' }}</template>
       <div slot="body">
         <form>
-          <table class="tw-form xtable">
+          <!-- 项目属性 -->
+          <table class="tw-form xtable" v-if="newStep === 1">
             <colgroup>
               <col style="width:6em;" />
               <col />
@@ -99,123 +101,140 @@
               <td class="tw-form-col" colspan="3"><input v-model="project.document.api" type="text" class="tw-input"></td>
             </tr>
           </table>
-        </form>
+          <!-- /项目属性 -->
 
-        <!-- 组件导航菜单 -->
-        <!-- <tw-collapse-group class="tw-sidebar" v-if="compGroup" style="position:relative;">
-          <ul class="tw-nav xsidebar tw-stickybox" style="min-height:600px;">
-            <li v-for="(group, groupKey, groupIndex) in compGroup" :key="groupIndex">
-              <a :class="['js-group-'+groupIndex]"><i class="tw-font xico"></i>{{ groupKey }}<i class="tw-arrow xright"></i></a>
-              <tw-collapse class="xsidebar" :switch="'.js-group-'+groupIndex">
-                <ul class="tw-nav xsidebar">
-                  <li v-for="(type, typeKey, index) in group" :key="index" @click="clickCompType(type)"><a>{{ typeKey }}</a></li>
-                </ul>
-              </tw-collapse>
-            </li>
-          </ul>
-        </tw-collapse-group> -->
-        <!-- /组件导航菜单 -->
-
-        <table
-          class="tw-form xtable"
-          v-for="(group, groupKey, groupIndex) in compGroup"
-          :key="`comps${groupIndex}`">
-          <tr>
-            <td>
-              <div class="tw-title">{{ groupKey }}</div>
-            </td>
-          </tr>
-          <tr v-for="(type, typeKey, typeIndex) in group"
-              :key="`comps${groupIndex}-${typeIndex}`">
+          <!-- 选择控件 -->
+          <table
+            v-else-if = "newStep === 2"
+            class="tw-form xtable"
+            v-for="(group, groupKey, groupIndex) in compGroup"
+            :key="`comps${groupIndex}`">
+            <tr>
               <td>
-                <div class="tw-title xsub">{{ typeKey }}</div>
-                <div>
-                  <label
-                    class="tw-optbox"
-                    v-for="demo in type.demos"
-                    :key="demo.tag">
-                    <input
-                      type="checkbox"
-                      :value="demo.tag"
-                      v-model="selectedComps"
-                      @change="selectComps(demo.tag)" />
-                      <span>{{demo.name}}</span>
-                  </label>
-                </div>
+                <div class="tw-title">{{ groupKey }}</div>
               </td>
-          </tr>
-        </table>
+            </tr>
+            <tr v-for="(type, typeKey, typeIndex) in group"
+                :key="`comps${groupIndex}-${typeIndex}`">
+                <td>
+                  <div class="tw-title xsub">{{ typeKey }}</div>
+                  <div>
+                    <label
+                      v-if="typeKey === '整体布局'"
+                      class="tw-optbox"
+                      v-for="demo in type.demos"
+                      :key="demo.tag">
+                      <input
+                        type="radio"
+                        :value="demo.tag"
+                        v-model="selectedLayout"
+                        @change="selectLayout(demo.tag)" />
+                        <span>{{demo.name}}</span>
+                    </label>
+                    <label
+                      v-if="typeKey !== '整体布局'"
+                      class="tw-optbox"
+                      v-for="demo in type.demos"
+                      :key="demo.tag">
+                      <input
+                        type="checkbox"
+                        :value="demo.tag"
+                        v-model="selectedComps"
+                        @change="selectComps" />
+                        <span>{{demo.name}}</span>
+                    </label>
+                  </div>
+                </td>
+            </tr>
+          </table>
+          <!-- /选择控件 -->
 
-        <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name!=='组件变量'" :key="index">
-          <tr>
-            <td colspan="4">
-              <div class="tw-title">{{ scssModule.name }}</div>
-            </td>
-          </tr>
-          <tr v-for="(scssGroup, index) in scssModule.children" v-if="scssGroup.type" :key="index">
-            <td colspan="4">
-              <div class="tw-title xsub">{{ scssGroup.name }}</div>
-              <!-- 非颜色相关变量 -->
-              <div v-if="scssGroup.type !== 'Color'">
-                <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="!/tw-/.test(scssGroup.type) && scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
-                  <div v-if="!scssVar.values" class="tw-scssvar-body">
-                    <input v-if="scssGroup.type === 'String'" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
-                    <input v-if="scssGroup.type === 'FontSize'" :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+          <!-- 全局样式 -->
+          <template v-else>
+            <table class="tw-form xtable" v-for="(scssModule, index) in scssVars" v-if="scssModule.name !== '组件变量'" :key="index">
+              <tr>
+                <td colspan="4">
+                  <div class="tw-title">{{ scssModule.name }}</div>
+                </td>
+              </tr>
+              <tr v-for="(scssGroup, index) in scssModule.children" v-if="scssGroup.type" :key="index">
+                <td colspan="4">
+                  <div class="tw-title xsub">{{ scssGroup.name }}</div>
+                  <!-- 非颜色相关变量 -->
+                  <div v-if="scssGroup.type !== 'Color'">
+                    <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" v-if="!/tw-/.test(scssGroup.type) && scssGroup.type !== 'Spacing'" :key="index" :title="scssVar.varName">
+                      <div v-if="!scssVar.values"
+                        class="tw-scssvar-body"
+                        :class="{xauto: scssVar.value.indexOf('$') !== -1}">
+                        <input v-if="scssGroup.type === 'String'" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+                        <input v-if="scssGroup.type === 'FontSize'" :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+                      </div>
+                      <div v-if="!scssVar.values" class="tw-scssvar-title">{{scssVar.name}}</div>
+                      <div v-if="scssVar.values">
+                        <label class="tw-optbox xradio" v-for="(item, index) in scssVar.values" :key="index"><input type="radio" :value="item.replace(/.*:/,'')" v-model="scssVar.value" @change="changeScssVars"  /><span>{{ item.replace(/:.*/,'') }}</span></label>
+                      </div>
+                    </div>
+                    <a class="tw-addbtn xscssvar" v-if="scssGroup.addable && scssGroup.type === 'FontSize'"></a>
+                    <!-- 间距相关变量 -->
+                    <div v-if="scssGroup.type === 'Spacing'">
+                      <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName" :style="{marginLeft:index === 0 ? 0 : scssVar.value}">
+                          <div class="tw-scssvar-body"
+                               :class="{xauto: scssVar.value.indexOf('$') !== -1}">
+                               <input type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+                          </div>
+                          <div class="tw-scssvar-title">{{scssVar.name}}</div>
+                      </div>
+                      <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
+                    </div>
+                    <!-- 间距相关变量 -->
+
+                    <!-- 组件相关变量 -->
+                    <!-- <div class="tw-form xtable" v-if="/tw-/.test(scssGroup.type)">
+                      <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
+                        <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel">{{ scssVar.name }}:</label></div>
+                        <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value" @change="changeScssVars"></div>
+                      </div>
+                    </div> -->
+                    <!-- /组件相关变量 -->
                   </div>
-                  <div v-if="!scssVar.values" class="tw-scssvar-title">{{scssVar.name}}</div>
-                  <div v-if="scssVar.values">
-                    <label class="tw-optbox xradio" v-for="(item, index) in scssVar.values" :key="index"><input type="radio" :value="item.replace(/.*:/,'')" v-model="scssVar.value" @change="changeScssVars"  /><span>{{ item.replace(/:.*/,'') }}</span></label>
-                  </div>
-                </div>
-                <a class="tw-addbtn xscssvar" v-if="scssGroup.addable && scssGroup.type === 'FontSize'"></a>
-                <!-- 间距相关变量 -->
-                <div v-if="scssGroup.type === 'Spacing'">
-                  <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName" :style="{marginLeft:index === 0 ? 0 : scssVar.value}">
+                  <!-- /非颜色相关变量 -->
+
+                  <!-- 颜色相关变量 -->
+                  <div class="tw-palette" v-if="scssGroup.type === 'Color'">
+                    <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName+':'+scssVar.value">
                       <div class="tw-scssvar-body">
-                        <input type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
+                        <el-color-picker
+                          class="tw-colorcell"
+                          :class="{xauto: scssVar.value.indexOf('$') !== -1}"
+                          v-model="scssVar.value"
+                          show-alpha @change="changeScssVars">
+                        </el-color-picker>
                       </div>
                       <div class="tw-scssvar-title">{{scssVar.name}}</div>
+                    </div>
+                    <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
                   </div>
-                  <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
-                </div>
-                <!-- 间距相关变量 -->
-
-                <!-- 组件相关变量 -->
-                <!-- <div class="tw-form xtable" v-if="/tw-/.test(scssGroup.type)">
-                  <div class="tw-form-row" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName">
-                    <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel">{{ scssVar.name }}:</label></div>
-                    <div class="tw-form-col"><input type="text" class="tw-input" v-model="scssVar.value" @change="changeScssVars"></div>
-                  </div>
-                </div> -->
-                <!-- /组件相关变量 -->
-              </div>
-              <!-- /非颜色相关变量 -->
-
-              <!-- 颜色相关变量 -->
-              <div class="tw-palette" v-if="scssGroup.type === 'Color'">
-                <div class="tw-scssvar" v-for="(scssVar, index) in scssGroup.children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-                  <div class="tw-scssvar-body">
-                    <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-                  </div>
-                  <div class="tw-scssvar-title">{{scssVar.name}}</div>
-                </div>
-                <a class="tw-addbtn xscssvar" v-if="scssGroup.addable"></a>
-              </div>
-              <!-- /颜色相关变量 -->
-            </td>
-          </tr>
-        </table>
+                  <!-- /颜色相关变量 -->
+                </td>
+              </tr>
+            </table>
+          </template>
+          <!-- /全局样式 -->
+        </form>
       </div>
       <template slot="footer">
-        <a class="tw-btn xmain xlarge" @click="createProject">下一步</a>
-        <a class="tw-btn xweaking xlarge" @click="newProjectModal.visible=false">取消</a>
+        <a class="tw-btn xmain xlarge" v-if="newStep > 1" @click="newStep -= 1">上一步</a>
+        <a class="tw-btn xmain xlarge" v-if="newStep < 3" @click="newStep += 1">下一步</a>
+        <a class="tw-btn xsecondary xlarge" @click="createProject">确定</a>
+        <a class="tw-btn xweaking xlarge" @click="newProjectModal.visible = false">取消</a>
       </template>
     </tw-modal>
-    <!-- /弹窗:项目属性 -->
+    <!-- /弹窗:新建项目 -->
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import DesignHeader from '@/components/design-header'
 
 export default {
@@ -244,7 +263,8 @@ export default {
       },
       developers: [],
       newProjectModal: {
-        visible: true
+        visible: true,
+        hide: false
       },
       compsModal: {
         visible: false
@@ -256,7 +276,11 @@ export default {
       currentCompScssVar: [],
       demosVm: null,
       compOptions: [],
-      selectedComps: []
+      selectedLayout: '',
+      selectedComps: [],
+      newStep: 1,
+      canvasVm: null,
+      compsRoot: null
     }
   },
   computed: {
@@ -272,6 +296,15 @@ export default {
       return result
     }
   },
+  filters: {
+    autoComputedValue (value) {
+      if (value.indexOf('$') === -1) {
+        return value
+      } else {
+        return '自动'
+      }
+    }
+  },
   methods: {
     changeScssVars () {
       const vm = this
@@ -281,9 +314,47 @@ export default {
         console.log(error)
       })
     },
+    // 选择布局
+    selectLayout (tag) {
+      document.body.style.backgroundColor = ''
+      document.documentElement.style.backgroundColor = ''
+
+      if (this.canvasVm) this.canvasVm.$destroy()
+
+      this.canvasVm = new Vue({
+        el: '#design-canvas',
+        render (h) {
+          return h(tag, {attrs: {id: 'design-canvas', class: ''}})
+        }
+      })
+    },
     // 选择组件
     selectComps () {
+      if (this.compsRoot) this.compsRoot.$destroy()
 
+      // undone 需提示未选择布局前...
+      if (!document.getElementById('comps-root')) return
+
+      const vm = this
+      this.compsRoot = new Vue({
+        el: '#comps-root',
+        render (h) {
+          const tagVnodes = []
+
+          vm.selectedComps.forEach(comp => {
+            tagVnodes.push(h(comp, {nativeOn: {
+              click: vm.setComponentStyle
+            }}))
+            tagVnodes.push(h('hr', {class: 'tw-project-hr'}))
+          })
+
+          return h('div', {attrs: {id: 'comps-root'}}, [tagVnodes])
+        }
+      })
+    },
+    // 设置组件样式
+    setComponentStyle () {
+      alert(333)
     },
     clickCompType (type) {
       if (this.demosVm) this.demosVm.$destroy()
@@ -299,7 +370,7 @@ export default {
             demoVnodes.push(h(demo.tag))
           })
 
-          return h('div', {attrs: {id: 'demos'}}, [demoVnodes])
+          return h('div', {attrs: {id: 'comps', class: 'tw-project-content'}}, [demoVnodes])
         }
       })
 
@@ -335,7 +406,19 @@ export default {
         }
       }
     },
-    // 获取项目取成员
+    // 隐藏新建弹窗
+    hideNewProjectModal (e) {
+      if (e.altKey && this.newProjectModal.visible) {
+        this.newProjectModal.hide = true
+      }
+    },
+    // 显示新建弹窗
+    showNewProjectModal (e) {
+      if (e.key === 'Alt' && this.newProjectModal.visible) {
+        this.newProjectModal.hide = false
+      }
+    },
+    // 获取项目开发成员
     getMemebers () {
       const vm = this
       vm.axios.get('developers').then(function (responed) {
@@ -346,7 +429,6 @@ export default {
     },
     // 新建工程
     createProject () {
-      document.body.classList.add('xnew')
       this.newProjectModal.visible = false
     },
     // 取消新建工程
@@ -374,8 +456,15 @@ export default {
       console.log(error)
     })
   },
+  mounted () {
+    document.body.classList.add('xnew')
+    document.documentElement.classList.add('xnew')
+    document.addEventListener('keydown', this.hideNewProjectModal)
+    document.addEventListener('keyup', this.showNewProjectModal)
+  },
   beforeDestroy () {
     document.body.classList.remove('xnew')
+    document.documentElement.classList.remove('xnew')
     document.querySelector('head').removeChild(this.styleEl)
   }
 }
