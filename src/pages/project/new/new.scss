@@ -16,6 +16,52 @@ body.xnew::before {
   background: url("~@images/px-ruler-x.png") repeat-x top left !important;
 }
 
+// 样式设置区
+.tw-stylebox {
+  position: fixed;
+  top: 30px;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  width: 360px;
+  background: #2b2b2b;
+  border-left: 1px solid 141414;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .6);
+}
+
+.tw-stylebox > .tw-title {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+}
+
+.tw-stylebox-inner {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $spacing-small;
+  overflow: auto;
+  @include scroll(8px, #343434, #222, #666);
+}
+
+.tw-tabs.xcard.xstyle {
+  background-color: #1e1e1e;
+  border: none;
+}
+
+.tw-tabs.xcard.xstyle > li > a {
+  padding: 2px $spacing-tiny;
+  font-size: 12px;
+}
+
+.tw-tabs.xcard.xstyle > .xopen > a {
+  color: #ccc;
+  background-color: #2b2b2b;
+  border: none;
+}
+
 // 组件分隔线
 .tw-project-hr {
   padding: 10px;
@@ -42,7 +88,6 @@ body.xnew::before {
 
 .tw-modal.xproject .tw-modal-window-body {
   min-height: 680px;
-  color: #fff;
   background: rgba(52, 52, 52, .95);;
   @include scroll(8px, #343434, #222, #666);
 }
@@ -51,24 +96,30 @@ body.xnew::before {
   color: #fff;
 }
 
-.tw-modal.xproject .tw-input,
-.tw-modal.xproject .el-select .el-input__inner {
+.tw-project-props {
+  color: #fff;
+}
+
+.tw-project-props .tw-input,
+.tw-project-props .el-select .el-input__inner {
   color: #fff;
   background: transparent;
   border: 1px solid #797b8d;
 }
 
-.tw-modal.xproject .el-select__tags {
+.tw-project-props .el-select__tags {
   max-width: none !important;
 }
 
-.tw-modal.xproject .el-select-dropdown {
+.tw-project-props .el-select-dropdown {
   position: absolute !important;
   left: 0 !important;
   width: 100%;
   margin-top: 2px !important;
 }
 
-body.xproject .el-color-dropdown {
+body.xproject .el-color-dropdown,
+body.xproject .tw-poplayer {
   z-index: 10001 !important;
 }
+

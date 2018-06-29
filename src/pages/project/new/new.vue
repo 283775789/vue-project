@@ -19,7 +19,7 @@
       :visible.sync="newProjectModal.visible"
       :style="{display: newProjectModal.hide ? 'none': ''}">
       <template slot="header">新建 - {{ newStep === 1 ? '设置项目属性' :  newStep === 2 ? '选择组件' : '设置全局样式' }}</template>
-      <div slot="body">
+      <div class="tw-project-props" slot="body">
         <form>
           <!-- 项目属性 -->
           <table class="tw-form xtable" v-if="newStep === 1">
@@ -231,16 +231,38 @@
     </tw-modal>
     <!-- /弹窗:新建项目 -->
 
-    <div class="tw-compscssdemo-setbar">
-      <div class="tw-title xsub">{{ currentCompScssVar.name }}样式设置</div>
-      <div class="tw-form xtable xsmall">
-        <div class="tw-form-row" v-for="(scssVar, index) in currentCompScssVar.children" :key="index" :title="scssVar.varName">
-          <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel xsmall">{{ scssVar.name }}:</label></div>
-          <div class="tw-form-col">
-            <input v-if="typeof compOptions[index] === 'undefined'" type="text" class="tw-input xsmall" v-model="scssVar.value" @change="changeScssVars">
-            <tw-select-group v-else v-model="scssVar.value" :group="{nameKey:'name', itemsKey: 'children'}" :items="compOptions[index]" valueKey="varName" textKey="name" inputClass="xsmall" @change="changeScssVars">
-              <span slot-scope="item">{{ item.name }}<i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i></span>
-            </tw-select-group>
+    <div class="tw-stylebox">
+      <ul class="tw-tabs xcard xstyle">
+        <li class="xopen"><a>{{ currentCompScssVar.name }}样式设置</a></li>
+        <li class="flex-fill"></li>
+      </ul>
+      <div class="tw-stylebox-inner tw-project-props">
+        <div class="tw-form xtable xsmall">
+          <div class="tw-form-row" v-for="(compScss, index) in currentCompScssVar.children" :key="index" :title="compScss.varName">
+            <div class="tw-form-col" style="width:10em;"><label class="tw-inputlabel xsmall">{{ compScss.name }}:</label></div>
+
+            <div class="tw-form-col">
+              <input v-if="typeof compScss.options === 'undefined'"
+                    class="tw-input xsmall"
+                    type="text"
+                    v-model="compScss.value"
+                    @change="changeScssVars">
+
+              <tw-select-group
+                v-else v-model="compScss.value"
+                :group="{nameKey:'name', itemsKey: 'children'}"
+                :items="compScss.options"
+                valueKey="varName"
+                textKey="name" inputClass="xsmall"
+                @change="changeScssVars">
+                <span slot-scope="item">
+                  {{ item.name }}
+                  <i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i>
+                </span>
+              </tw-select-group>
+
+              <i></i>
+            </div>
           </div>
         </div>
       </div>
@@ -290,7 +312,6 @@ export default {
       currentComp: null,
       currentCompScssVar: [],
       demosVm: null,
-      compOptions: [],
       selectedLayout: '',
       selectedComps: [],
       newStep: 1,
@@ -373,15 +394,15 @@ export default {
     // 设置组件样式
     setComponentStyle (type) {
       // 获取组件scss变量
-      this.currentCompScssVar = []
-      this.compScssVars.children.forEach(compVars => {
+      const vm = this
+      vm.currentCompScssVar = []
+      vm.compScssVars.children.forEach(compVars => {
         if (compVars.name === type) {
-          this.compOptions = []
           compVars.children.forEach(compVar => {
-            this.compOptions.push(this.createCompVarMap(compVar.value))
+            compVar.options = vm.createCompVarMap(compVar.value)
           })
 
-          this.currentCompScssVar = compVars
+          vm.currentCompScssVar = compVars
         }
       })
     },
@@ -486,5 +507,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "./style.scss";
+  @import "./new.scss";
 </style>

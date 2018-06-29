@@ -153,19 +153,6 @@ $block-border-color:$color-border-main !default;
   min-height: 600px;
 }
 
-.tw-compscssdemo-setbar {
-  position: fixed;
-  top: 36px;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  width: 360px;
-  padding: $spacing-small;
-  overflow: auto;
-  background: rgba(255, 255, 255, .85);
-  border-left: 1px dashed $color-border-main;
-}
-
 // markdown-scss变量单元格
 .tw-scsstd {
   padding: $spacing-small $spacing-medium !important;

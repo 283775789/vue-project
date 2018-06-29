@@ -8,7 +8,7 @@ $select-triangle-color: $color-border-main !default; // 选择框三角形颜色
 $select-list-border-color: $color-border-main !default; // 选项列表边框色
 $select-list-item-line-height: $ctr-height-default !default; // 选项列表项行高
 $select-list-item-px: $spacing-tiny !default; // 选项水平内边距
-$select-list-item-hover-bg: transparent; // 选项滑过背景
+$select-list-item-hover-bg: transparent !default; // 选项滑过背景
 $select-list-item-hover-color: $color-main-hover !default; // 选项滑过字体颜色
 $select-list-item-selected-bg: $color-main-hover !default; // 选项选中背景
 $select-list-item-selected-color: $color-text-inverse !default; // 选项选中背景

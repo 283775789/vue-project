@@ -6,15 +6,16 @@ $tab-margin-bottom: $spacing-small !default; // 底部外边距
 $tab-font-size: $font-size-default !default; // 字体大小
 $tab-color: $color-text-secondary !default; // 字体颜色
 $tab-color-active: $color-main !default; // 选中颜色
-$tab-bg: $color-bg-card !default; // 背景色
+$tab-bg: $color-bg-card !default; // 卡片式tab背景色
 $tab-border-color: $color-border-main !default; // 边框色
-$tab-border-radius: 0 !default; // 边框圆角
+$tab-border-radius: 0 !default; // 卡片式tab边框圆角
 
 // tab选项卡
 .tw-tabs {
   display: flex;
   flex-wrap: nowrap;
   margin-bottom: $tab-margin-bottom;
+  overflow: hidden;
   border-bottom: 1px solid $tab-border-color;
 }
 
