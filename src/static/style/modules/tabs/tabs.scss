@@ -16,6 +16,7 @@ $tab-border-radius: 0 !default; // 卡片式tab边框圆角
   flex-wrap: nowrap;
   margin-bottom: $tab-margin-bottom;
   overflow: hidden;
+  font-size: $tab-font-size;
   border-bottom: 1px solid $tab-border-color;
 }
 

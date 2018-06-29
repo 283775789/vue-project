@@ -1,12 +1,27 @@
 <template>
   <div class="tw-select">
-    <div class="tw-popswitch" :class=[switchSelector]>
-      <input ref='filter' class="tw-input tw-select-input" :class="[inputClass]" type="text" :placeholder="placeholder" @focus="focusInput" @input="filterText=$event.target.value" />
+    <div class="tw-popswitch"
+      :class=[switchSelector]>
+      <input ref='filter'
+        class="tw-input tw-select-input"
+        :class="[inputClass]"
+        type="text"
+        :placeholder="placeholder"
+        @focus="focusInput"
+        @input = "filterText=$event.target.value" />
     </div>
-    <tw-poppane :switch="`.${switchSelector}`" @hide="hidePane">
-      <ul class="tw-select-pane" :class="[multiple ? 'xmultiple' : 'xsingle']">
+
+    <tw-poppane
+      :switch="`.${switchSelector}`"
+      @hide="hidePane">
+      <ul class="tw-select-pane"
+        :class="[multiple ? 'xmultiple' : 'xsingle']">
         <template v-for="(item, index) in resultItems">
-          <li v-if="typeof item === 'string'" class="tw-select-groupname" :key="index"><slot name="groupName" v-bind="item">{{item}}</slot></li>
+          <li v-if="typeof item === 'string'"
+            class="tw-select-groupname"
+            :key="index">
+            <slot name="groupName" v-bind="item">{{item}}</slot>
+          </li>
           <li class="tw-select-item"
             v-else-if="filterText===''||item[textKey].indexOf(filterText)!==-1"
             :class="{xdisabled:item[disabledKey],xselected:multiple?value.indexOf(item[valueKey])!==-1:value===item[valueKey]}"

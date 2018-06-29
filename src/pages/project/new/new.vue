@@ -249,11 +249,14 @@
                     @change="changeScssVars">
 
               <tw-select-group
+                :ref = 'compScss.name'
                 v-else v-model="compScss.value"
+                :class = "{xstyle:compScss.options instanceof Array && compScss.options[0].type === 'Color'}"
                 :group="{nameKey:'name', itemsKey: 'children'}"
                 :items="compScss.options"
                 valueKey="varName"
-                textKey="name" inputClass="xsmall"
+                textKey="name"
+                inputClass="xsmall"
                 @change="changeScssVars">
                 <span slot-scope="item">
                   {{ item.name }}
@@ -261,7 +264,18 @@
                 </span>
               </tw-select-group>
 
-              <i></i>
+              <div v-if="compScss.options instanceof Array && compScss.options[0].type === 'Color'"
+                class="tw-scssvar xstyle">
+                <div class="tw-scssvar-body">
+                  <el-color-picker
+                    show-alpha
+                    class="tw-colorcell"
+                    v-model="compScss.value"
+                    :class="{xauto: compScss.value.indexOf('$') !== -1}"
+                    @change="changeCompStyleColor(index, compScss)">
+                  </el-color-picker>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -441,6 +455,13 @@ export default {
           }
         }
       }
+    },
+    // 更改组件样式颜色
+    changeCompStyleColor (index, compScss) {
+      this.$nextTick(() => {
+        this.$refs[compScss.name][0].$refs.filter.value = compScss.value
+        this.changeScssVars()
+      })
     },
     // 隐藏新建弹窗
     hideNewProjectModal (e) {

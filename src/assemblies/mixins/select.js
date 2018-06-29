@@ -25,7 +25,7 @@ export default {
     this.$refs.filter.value = this.labelText
   },
   watch: {
-    value () {
+    value (v1) {
       this.$refs.filter.value = this.labelText
       this.filterText = ''
     }

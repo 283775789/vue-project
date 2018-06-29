@@ -112,9 +112,9 @@ $grid-gutter-width:$spacing-small * 2 !default; // 栅格宽度
 /* ------------------------------ 其它 ------------------------------ */
 
 /* 圆角{String} */
-$border-radius: 3px !default; // 边框圆角
+$border-radius: 3px !default; // 小圆角
 
-/* 过渡时间{String} */
+/* 过渡时间{NoChange} */
 $time: .12s !default; // 过渡时间
 
 /* 渲染层级{String} */

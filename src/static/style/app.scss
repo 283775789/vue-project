@@ -78,6 +78,21 @@ $block-border-color:$color-border-main !default;
   border: none;
 }
 
+.tw-scssvar.xstyle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  margin: 0;
+}
+
+.tw-scssvar.xstyle > .tw-scssvar-body {
+  width: 20px;
+  height: 20px;
+}
+
+.tw-select.xstyle .tw-input {
+  padding-left: 30px;
+}
 
 // 内容块-标题
 .tw-scssvar-title {
