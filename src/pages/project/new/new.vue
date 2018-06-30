@@ -339,6 +339,12 @@ export default {
 
       this.scssVars.forEach(module => {
         if (module.name === '组件变量') {
+          module.children.forEach(comp => {
+            comp.children.forEach(scssVar => {
+              if (!scssVar.originalValue) scssVar.originalValue = scssVar.value
+            })
+          })
+
           result = module
         }
       })
@@ -413,7 +419,7 @@ export default {
       vm.compScssVars.children.forEach(compVars => {
         if (compVars.name === type) {
           compVars.children.forEach(compVar => {
-            compVar.options = vm.createCompVarMap(compVar.value)
+            compVar.options = vm.createCompVarMap(compVar.originalValue)
           })
 
           vm.currentCompScssVar = compVars
@@ -459,8 +465,9 @@ export default {
     // 更改组件样式颜色
     changeCompStyleColor (index, compScss) {
       this.$nextTick(() => {
-        this.$refs[compScss.name][0].$refs.filter.value = compScss.value
         this.changeScssVars()
+        this.$refs[compScss.name][0].$refs.filter.value = compScss.value
+        // compScss.options.children[0]
       })
     },
     // 隐藏新建弹窗
