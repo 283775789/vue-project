@@ -1,16 +1,19 @@
 <template>
   <div class="tw-project">
     <tw-design-header>
-      <a>保存项目(B)</a>
-      <a>保存为模板(M)</a>
-      <a href="#" @click="newProjectModal.visible = true">项目设置()</a>
-      <a @click="compsModal.visible = true">选择组件(C)</a>
-      <a @click="newProjectModal.visible = true">全局样式(G)</a>
+      <a>保存项目(S)</a>
+      <a>生成项目(B)</a>
+      <a>保存为模板(T)</a>
+      <a href="#" @click="newProjectModal.visible = true && (newStep = 1)">项目设置(I)</a>
+      <a @click="newProjectModal.visible = true && (newStep = 2)">选择组件(C)</a>
+      <a @click="newProjectModal.visible = true && (newStep = 3)">全局样式(G)</a>
       <a @click="cancelNewProject">取消</a>
     </tw-design-header>
 
-    <div id="design-canvas">
-      内容
+    <div class="tw-projetc-body">
+      <div id="design-canvas">
+        内容
+      </div>
     </div>
 
     <!-- 弹窗:新建项目 -->
@@ -231,7 +234,8 @@
     </tw-modal>
     <!-- /弹窗:新建项目 -->
 
-    <div class="tw-stylebox">
+    <div class="tw-stylebox"
+      :class="{xopen: rightSideBar.visible}">
       <ul class="tw-tabs xcard xstyle">
         <li class="xopen"><a>{{ currentCompScssVar.name }}样式设置</a></li>
         <li class="flex-fill"></li>
@@ -250,8 +254,10 @@
 
               <tw-select-group
                 :ref = 'compScss.name'
-                v-else v-model="compScss.value"
-                :class = "{xstyle:compScss.options instanceof Array && compScss.options[0].type === 'Color'}"
+                v-else
+                v-model="compScss.value"
+                id="compScss.options[0].type"
+                :class="{xcolor: compScss.options[0].type === 'custom'}"
                 :group="{nameKey:'name', itemsKey: 'children'}"
                 :items="compScss.options"
                 valueKey="varName"
@@ -259,23 +265,22 @@
                 inputClass="xsmall"
                 @change="changeScssVars">
                 <span slot-scope="item">
-                  {{ item.name }}
-                  <i class="tw-colorcell xdemo" :style="{backgroundColor:item.value}"></i>
+                  <el-color-picker
+                    class="pt-tiny"
+                    v-if="item.varName === '自定义'"
+                    show-alpha
+                    popper-class="tw-popcolor"
+                    v-model="compScss.value"
+                    @change="setttingStyleColor(item, compScss)">
+                  </el-color-picker>
+                  <template v-else>
+                    {{ item.name }}
+                    <i class="tw-colorcell xdemo"
+                      :class="{xauto: item.value.indexOf('$') !== -1}"
+                      :style="{backgroundColor:item.value}"></i>
+                  </template>
                 </span>
               </tw-select-group>
-
-              <div v-if="compScss.options instanceof Array && compScss.options[0].type === 'Color'"
-                class="tw-scssvar xstyle">
-                <div class="tw-scssvar-body">
-                  <el-color-picker
-                    show-alpha
-                    class="tw-colorcell"
-                    v-model="compScss.value"
-                    :class="{xauto: compScss.value.indexOf('$') !== -1}"
-                    @change="changeCompStyleColor(index, compScss)">
-                  </el-color-picker>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -318,6 +323,9 @@ export default {
         hide: false
       },
       compsModal: {
+        visible: false
+      },
+      rightSideBar: {
         visible: false
       },
       scssVars: [],
@@ -401,6 +409,7 @@ export default {
 
             tagVnodes.push(h(comp[0], {nativeOn: {
               dblclick (e) {
+                vm.showDesignInterface()
                 vm.setComponentStyle(comp[1])
               }
             }}))
@@ -447,6 +456,7 @@ export default {
     // 通过变量名查找scssVars所在的组与模块
     createCompVarMap (varName) {
       const modules = this.scssVars
+      let options = []
 
       for (let i = 0; i < modules.length; i++) {
         if (modules[i].name !== '组件变量') {
@@ -455,19 +465,32 @@ export default {
             const scssVars = groups[j].children
             for (let n = 0; n < scssVars.length; n++) {
               if (scssVars[n].varName === varName) {
-                return [].concat(groups[j]).concat(groups.filter(group => group !== groups[j] && group.type !== 'NoChange'))
+                options = options.concat(groups[j]).concat(groups.filter(group => group !== groups[j] && group.type !== 'NoChange'))
+
+                if (groups[j].type === 'Color') {
+                  options.unshift({
+                    addable: true,
+                    name: '自定义',
+                    type: 'custom',
+                    children: [{
+                      name: '自定义',
+                      value: '自定义',
+                      varName: '自定义'
+                    }]
+                  })
+                }
+
+                return options
               }
             }
           }
         }
       }
     },
-    // 更改组件样式颜色
-    changeCompStyleColor (index, compScss) {
+    setttingStyleColor (item, compScss) {
       this.$nextTick(() => {
+        item.value = compScss.value
         this.changeScssVars()
-        this.$refs[compScss.name][0].$refs.filter.value = compScss.value
-        // compScss.options.children[0]
       })
     },
     // 隐藏新建弹窗
@@ -480,6 +503,33 @@ export default {
     showNewProjectModal (e) {
       if (e.key === 'Alt' && this.newProjectModal.visible) {
         this.newProjectModal.hide = false
+      } else if (e.key === 'Tab') {
+        // 只单独切换右侧样式设置面板
+        if (this.rightSideBar.visible) {
+          this.rightSideBar.visible = false
+        } else {
+          this.showDesignInterface()
+        }
+      }
+    },
+    // 显示设计器界面
+    showDesignInterface () {
+      document.documentElement.classList.remove('xfull')
+      this.rightSideBar.visible = true
+    },
+    // 隐藏显示设计器界面
+    hideDesignInterface () {
+      document.documentElement.classList.add('xfull')
+      this.rightSideBar.visible = false
+    },
+    // 切换侧边栏显示
+    keyFHandler (e) {
+      if (e.key === 'f') {
+        if (this.rightSideBar.visible) {
+          this.hideDesignInterface()
+        } else {
+          this.showDesignInterface()
+        }
       }
     },
     // 获取项目开发成员
@@ -525,6 +575,7 @@ export default {
     document.documentElement.classList.add('xnew')
     document.addEventListener('keydown', this.hideNewProjectModal)
     document.addEventListener('keyup', this.showNewProjectModal)
+    document.addEventListener('keypress', this.keyFHandler)
   },
   beforeDestroy () {
     document.body.classList.remove('xnew')

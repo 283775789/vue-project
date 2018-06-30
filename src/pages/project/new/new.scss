@@ -3,6 +3,7 @@ html.xnew {
   background-image:url("~@images/px-ruler-y.png") !important;
   background-repeat: repeat-y !important;
   background-position: 0 30px !important;
+  transition: background-position $time;
 }
 
 body.xnew::before {
@@ -14,19 +15,42 @@ body.xnew::before {
   height: 16px;
   width: 100%;
   background: url("~@images/px-ruler-x.png") repeat-x top left !important;
+  transition: all $time;
+}
+
+html.xnew.xfull {
+  background-position: -16px 30px;
+}
+
+html.xnew.xfull body.xnew {
+  padding-top:0;
+  margin-left: 0;
+}
+
+html.xnew.xfull body.xnew::before {
+  top: -16px;
+}
+
+html.xnew.xfull .tw-design-header {
+  top: -30px;
 }
 
 // 样式设置区
 .tw-stylebox {
   position: fixed;
   top: 30px;
-  right: 0;
+  right: -360px;
   bottom: 0;
   z-index: 10000;
   width: 360px;
-  background: #2b2b2b;
+  background: rgba(0, 0, 0, .85);
   border-left: 1px solid 141414;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .6);
+  transition: all .2s;
+}
+
+.tw-stylebox.xopen {
+  right: 0;
 }
 
 .tw-stylebox > .tw-title {
@@ -123,3 +147,6 @@ body.xproject .tw-poplayer {
   z-index: 10001 !important;
 }
 
+body.xproject .tw-select-pane {
+  @include scroll;
+}

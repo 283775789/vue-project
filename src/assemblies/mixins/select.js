@@ -22,11 +22,11 @@ export default {
     this.switchSelector = 'js-tw-poppane-switch-select-' + this._uid
   },
   mounted () {
-    this.$refs.filter.value = this.labelText
+    this.$refs.filter.value = this.labelText ? this.labelText : this.value
   },
   watch: {
     value (v1) {
-      this.$refs.filter.value = this.labelText
+      this.$refs.filter.value = this.labelText ? this.labelText : v1
       this.filterText = ''
     }
   }

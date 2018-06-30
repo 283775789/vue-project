@@ -49,6 +49,7 @@ $select-group-name-color: $color-text-weaking !default; // 选项组名颜色
 
 // 选项列表项
 .tw-select-item {
+  position: relative;
   line-height: $select-list-item-line-height;
   padding: 0 $select-list-item-px;
   cursor: pointer;

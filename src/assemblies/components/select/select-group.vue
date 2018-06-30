@@ -7,11 +7,13 @@
         :class="[inputClass]"
         type="text"
         :placeholder="placeholder"
+        @keypress.enter="handleEnterPress"
         @focus="focusInput"
         @input = "filterText=$event.target.value" />
     </div>
 
     <tw-poppane
+      ref = "poppane"
       :switch="`.${switchSelector}`"
       @hide="hidePane">
       <ul class="tw-select-pane"
@@ -65,6 +67,12 @@ export default {
     }
   },
   methods: {
+    handleEnterPress (e) {
+      this.selectedItem = []
+      this.$emit('input', e.target.value)
+      this.$emit('change', e.target.value, this.selectedItem)
+      this.$refs.poppane.closePoppane()
+    },
     getselectedItem (val) {
       if (this.multiple) {
         this.selectedItem = this.resultItems.filter(element => val.indexOf(element[this.valueKey]) !== -1)
