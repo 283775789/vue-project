@@ -1,7 +1,7 @@
 <template>
   <div class="tw-project">
     <tw-design-header>
-      <a>保存项目(S)</a>
+      <a @click="addPreProjects">保存项目(S)</a>
       <a>生成项目(B)</a>
       <a>保存为模板(T)</a>
       <a href="#" @click="newProjectModal.visible = true && (newStep = 1)">项目设置(I)</a>
@@ -60,7 +60,19 @@
                 </el-select>
               </td>
             </tr>
-
+            <tr class="tw-form-row">
+              <td class="tw-form-col"><label class="tw-inputlabel">项目类型:</label></td>
+              <td class="tw-form-col" colspan="3">
+                <label class="tw-optbox xradio">
+                  <input v-model="project.type" value="web" type="radio" name="project-type" />
+                  <span>pc-web端项目</span>
+                </label>
+                <label class="tw-optbox xradio">
+                  <input v-model="project.type" value="mobile" type="radio" name="project-type" />
+                  <span>移动端项目</span>
+                </label>
+              </td>
+            </tr>
             <tr>
               <td colspan="4">
                 <div class="tw-title">
@@ -304,6 +316,7 @@ export default {
         name: '',
         version: '',
         developers: [],
+        type: 'web',
         svn: {
           designImage: '',
           designFile: '',
@@ -314,8 +327,7 @@ export default {
         document: {
           prd: '',
           api: ''
-        },
-        framework: ''
+        }
       },
       developers: [],
       newProjectModal: {
@@ -541,11 +553,20 @@ export default {
         console.log(error)
       })
     },
-    // 新建工程
+    // 添加预置项目
+    addPreProjects () {
+      const vm = this
+      vm.axios.post('pre-projects', this.project).then(function (responed) {
+
+      }).catch(function (err) {
+        console.log(err)
+      })
+    },
+    // 新建项目
     createProject () {
       this.newProjectModal.visible = false
     },
-    // 取消新建工程
+    // 取消新建项目
     cancelNewProject () {
       // undone: 需要提示
       this.$router.push('/project')
