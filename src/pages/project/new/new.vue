@@ -10,7 +10,7 @@
       <a @click="cancelNewProject">取消</a>
     </tw-design-header>
 
-    <div class="tw-projetc-body">
+    <div class="tw-projetc-body" @click="rightSideBar.visible=false">
       <div id="design-canvas">
         内容
       </div>
@@ -556,7 +556,11 @@ export default {
     // 添加预置项目
     addPreProjects () {
       const vm = this
-      vm.axios.post('pre-projects', this.project).then(function (responed) {
+      vm.axios.post('pre-projects', {
+        project: this.project,
+        scssVars: this.scssVars,
+        comps: this.selectedComps
+      }).then(function (responed) {
 
       }).catch(function (err) {
         console.log(err)

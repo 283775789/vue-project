@@ -11,7 +11,9 @@
     "build": "node build/build.js",
     "ui": "gulp watch",
     "docs": "ncp E:/teewon3/docs E:/teewon-node/docs",
-    "factory": "ncp E:/teewon3/src E:/teewon-node/teewon/apps/web/src",
+    "assemblies": "ncp E:/teewon3/src/assemblies E:/teewon-node/teewon/templates/web/default/src/assemblies",
+    "modules": "ncp E:/teewon3/src/static/style/modules E:/teewon-node/teewon/templates/web/default/src/static/style/modules",
+    "copy": "npm run assemblies && npm run modules",
     "src": "ncp E:/teewon3/src E:/teewon-node/src",
     "git": "git add -A && git commit -m '新提交' && git push",
     "sass": "sass E:/teewon3/src/static/style/test.scss E:/teewon3/src/static/style/test.css"
