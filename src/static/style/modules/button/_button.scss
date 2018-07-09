@@ -1,7 +1,7 @@
 /* 按钮 */
-$btn-min-width: 80px !default; // 按钮最小宽度
+$btn-min-width: 82px !default; // 按钮最小宽度
 $btn-height: 30px !default; // 按钮默认高度
-$btn-px: $spacing-small !default; // 按钮水平内边距
+$btn-px: $spacing-small - 3 !default; // 按钮水平内边距
 $btn-font-size: $font-size-default !default; // 按钮字体大小
 $btn-border-radius: 3px !default; // 按钮边框
 $btn-main-bg: $color-main !default; // 主按钮背景
@@ -13,6 +13,9 @@ $btn-secondary-color: $color-text-inverse !default; // 辅助按钮文本色
 $btn-weaking-bg: $color-weaking !default; // 弱化按钮背景
 $btn-weaking-border-color: $color-border-main !default; // 弱化按钮背景色
 $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
+$add-btn-size: 80px !default; // 添加按钮
+$add-btn-size-small: 60px !default; // 添加按钮-小
+$add-btn-size-large: 100px !default; // 添加按钮-大
 
 // 按钮-默认
 .tw-btn {
@@ -43,6 +46,10 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
   }
 }
 
+.tw-btn.xmain.x3d {
+  box-shadow: 0 -1px 0 darken($btn-main-bg, 15%) inset;
+}
+
 // 铺按钮
 .tw-btn.xsecondary {
   color: $btn-secondary-color;
@@ -53,6 +60,10 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
     background: $btn-secondary-bg-hover;
     border-color: $btn-secondary-bg-hover;
   }
+}
+
+.tw-btn.xsecondary.x3d {
+  box-shadow: 0 -1px 0 darken($btn-secondary-bg, 15%) inset;
 }
 
 // 弱化按钮
@@ -67,10 +78,18 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
   }
 }
 
+.tw-btn.xweaking.x3d {
+  box-shadow: 0 -1px 0 darken($btn-weaking-border-color, 15%) inset;
+}
+
 // 按钮-小
 .tw-btn.xsmall {
   height: $btn-height - 6px;
   line-height: $btn-height - 8px;
+}
+
+.tw-btn.xsmall.xround {
+  border-radius: ($btn-height - 6px) / 2;
 }
 
 // 按钮-大
@@ -79,12 +98,16 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
   line-height: $btn-height + 4px;
 }
 
+.tw-btn.xlarge.xround {
+  border-radius: ($btn-height + 6px) / 2;
+}
+
 // 添加按钮
 .tw-addbtn {
   position: relative;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: $add-btn-size;
+  height: $add-btn-size;
   border: 1px dashed $color-border-main;
 
   &:before {
@@ -120,6 +143,35 @@ $btn-weaking-color: $color-text-main !default; // 弱化按钮文本色
       border-left-color: $color-main;
     }
   }
+}
+
+// 添加按钮-小
+.tw-addbtn.xsmall {
+  width: $add-btn-size-small;
+  height: $add-btn-size-small;
+}
+
+// 添加按钮-大
+.tw-addbtn.xlarge {
+  width: $add-btn-size-large;
+  height: $add-btn-size-large;
+}
+
+// 添加按钮-带圆角
+.tw-addbtn.xround {
+  border-radius: 50%;
+}
+
+// 按钮-带圆角
+.tw-btn.xround {
+  border-radius: $btn-height / 2;
+}
+
+// 按钮-禁用
+.tw-btn.xdisabled,
+.tw-addbtn.xdisabled {
+  cursor: not-allowed;
+  opacity: .4;
 }
 
 // 按钮组

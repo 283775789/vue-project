@@ -65,7 +65,6 @@ export default {
       // undone: 需要提示
       this.quitFullScreen()
 
-      debugger
       const prevPath = window.sessionStorage.getItem('prevPath')
       if (prevPath) {
         this.$router.push(prevPath)

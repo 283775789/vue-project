@@ -37,6 +37,7 @@
     "selector-class-pattern": "((tw|el)(-\\w+){1,3}$)|(x\\w+(-\\w+){0,2}$)",
     "selector-nested-pattern": "^(&:(hover|focus|active|checked|disabled|before|after))|(&.x\\w*)$",
     "max-nesting-depth": 4,
+    "selector-pseudo-element-colon-notation" : null,
     "order/properties-order": [
       "content",
       "position",

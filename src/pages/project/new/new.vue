@@ -244,7 +244,7 @@
         <a class="tw-btn xweaking xlarge" @click="newProjectModal.visible = false">取消</a>
       </template>
     </tw-modal>
-    <!-- /弹窗:新建项目 -->
+    <!-- /弹窗:新建项目  -->
 
     <div class="tw-stylebox"
       :class="{xopen: rightSideBar.visible}">

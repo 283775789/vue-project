@@ -125,7 +125,7 @@
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><a>图标</a></li>
-                <li><a>按钮</a></li>
+                <li><router-link to="/doc/css/button">按钮</router-link></li>
               </ul>
             </tw-collapse>
           </li>

@@ -4,7 +4,7 @@
     <!-- 弹窗:名称 -->
     <tw-modal :visible.sync="modal.visible">
       <template slot="header">弹窗标题</template>
-      <template class="name" slot="body">内容区</template>
+      <template slot="body">内容区</template>
       <template slot="footer">
         <a class="tw-btn xmain xlarge">确定</a>
         <a class="tw-btn xweaking xlarge" @click="modal.visible=false">取消</a>
