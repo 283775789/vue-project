@@ -1,16 +1,30 @@
 /* 主体 */
+$body-content-bm: $spacing-large !default; // 主体底部外间距
+$body-content-px: $spacing-medium !default; // 主体左右内间距
+$body-content-py: $spacing-medium !default; // 主体上下内间距
+$body-content-bg: $color-bg-content !default; // 主体背景
+$body-content-radius: 0 !default; // 主体圆角
+
+// 主体容器
 .tw-body {
   margin-bottom: $spacing-large;
 }
 
-//
+// 主体内容区
 .tw-body-inner {
   position: relative;
-  @include make-container($paddingY:true);
   min-height: 450px;
-  background: $color-bg-content;
+  padding: $body-content-py $body-content-px;
+  background: $body-content-bg;
+  @if ($body-content-radius != 0) {
+    border-radius: $body-content-radius;
+  }
+  @if ($app-type == web) {
+    @include make-container();
+  }
 }
 
+// 主体内容区：包含的多列布局
 .tw-body-inner > .tw-multicol {
-  margin: -$spacing-medium;
+  margin: -$body-content-px;
 }

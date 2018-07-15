@@ -115,10 +115,16 @@ textarea::placeholder {
 // 图标
 .tw-ico {
   box-sizing: content-box;
-    padding: 1px;
-    display: inline-block;
-    vertical-align: middle;
-    background-image: url("~@images/icons.png");
-    background-origin: padding-box;
-    background-repeat: no-repeat;
+  padding: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("~@images/icons.png");
+  background-origin: padding-box;
+  background-repeat: no-repeat;
+}
+
+.tw-ico.xwrap {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

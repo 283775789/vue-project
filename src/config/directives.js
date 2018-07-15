@@ -60,7 +60,7 @@ Vue.directive('tw-sticky', {
   }
 })
 
-// 初始化元素的高度
+// init element height
 let updateHeight
 Vue.directive('tw-to-bottom', {
   inserted: function (el, binding) {

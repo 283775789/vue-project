@@ -344,7 +344,6 @@
         </table>
       </form>
     </div>
-    <tw-footer @click.native.stop="demoMethod"></tw-footer>
   </div>
 </template>
 

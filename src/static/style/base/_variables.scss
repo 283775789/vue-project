@@ -104,11 +104,6 @@ $ctr-width-huge: $ctr-width-step * 6 !default; // 超大宽度
 $media-breakpoints: ( pc: 1200px, lpad: 992px, pad: 768px, lphone: 554px, phone: 0) !default; // 媒体查询断点
 $container-widths: ( pc:1200px,  lpad:960px,  pad:auto,  lphone:auto,  phone:auto) !default; // 主容器宽度
 
-/* 栅格{String} */
-$grid-columns:12 !default; // 栅格数量
-$grid-gutter-width:$spacing-small * 2 !default; // 栅格宽度
-
-
 /* ------------------------------ 其它 ------------------------------ */
 
 /* 圆角{String} */
@@ -118,4 +113,6 @@ $border-radius: 3px !default; // 小圆角
 $time: .12s !default; // 过渡时间
 
 /* 渲染层级{String} */
-$zindex-modal: 1050 !default; // 弹窗
+$zindex-high: 1000 !default; // 图层-高
+$zindex-higher: 1030 !default; // 图层-更高
+$zindex-highest: 1050 !default; // 图层-最高

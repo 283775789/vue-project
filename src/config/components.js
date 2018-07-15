@@ -1,6 +1,5 @@
 // 注册通用的全局组件
 import Vue from 'vue'
-import Footer from '@comps/footer/footer'
 import Poppane from '@comps/poppane/poppane'
 import Collapse from '@comps/collapse/collapse'
 import CollapseGroup from '@comps/collapse/collapse-group'
@@ -12,7 +11,6 @@ import Dragcol from '@comps/draggrid/draggrid-col'
 import Modal from '@comps/modal/modal'
 
 const components = [
-  Footer,
   Poppane,
   Collapse,
   CollapseGroup,

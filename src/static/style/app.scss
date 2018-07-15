@@ -36,6 +36,18 @@
   padding: 0 $spacing-medium;
 }
 
+/* 演示容器 */
+.tw-demo {
+  position: relative;
+}
+
+/* 演示图标 */
+.tw-ico.xname {
+  width: 16px;
+  height: 16px;
+  background: #ccc;
+}
+
 /* 内容块 */
 $block-ml: $spacing-medium !default;
 $block-title-color: $color-text-secondary !default;

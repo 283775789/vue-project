@@ -14,4 +14,6 @@
 @import "mixins/responsive.scss";
 @import "mixins/utils.scss";
 
-@import "modules/flex/flex.scss";
+.tw-abc {
+  @include make-container();
+}

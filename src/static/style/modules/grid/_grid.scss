@@ -1,3 +1,8 @@
+/* 栅格系统 */
+$grid-columns:12 !default; // 栅格数量
+$grid-gutter-width:$spacing-small * 2 !default; // 栅格宽度
+
+
 // 等分栅格
 // stylelint-disable max-nesting-depth
 // stylelint-disable selector-nested-pattern
@@ -35,5 +40,6 @@
 
 /* 全局容器 */
 .tw-container {
-  @include make-container;
+  padding: $grid-gutter-width / 2;
+  @include make-container();
 }

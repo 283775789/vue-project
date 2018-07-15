@@ -94,6 +94,7 @@
                 '/doc/guid/role',
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/css/header">头部</router-link></li>
                 <li><router-link to="/doc/css/layout">整体布局</router-link></li>
                 <li><a>栅格系统</a></li>
               </ul>
@@ -108,7 +109,7 @@
                 '/doc/css/tabs',
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
-                <li><a>头部导航</a></li>
+                 <li><router-link to="/doc/css/nav">导航</router-link></li>
                 <li><a>侧边栏导航</a></li>
                 <li><a>面包屑</a></li>
                 <li><router-link to="/doc/css/tabs">tab选项卡</router-link></li>

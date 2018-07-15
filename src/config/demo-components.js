@@ -2,6 +2,10 @@
 import Vue from 'vue'
 import Design from '@docs/guides/design'
 import DevFlow from '@docs/guides/dev-flow'
+import HeaderBase from '@modules/header/header-base'
+import HeaderIcon from '@modules/header/header-icon'
+import HeaderIconWrap from '@modules/header/header-icon-wrap'
+import NavLv2 from '@modules/nav/nav-lv2'
 import LayoutWeb from '@modules/layout/layout-web'
 import TabsBase from '@modules/tabs/tabs-base'
 import TabsCard from '@modules/tabs/tabs-card'
@@ -19,6 +23,10 @@ import ModalAll from '@comps/modal/demo/modal-all'
 // css组件示例
 Vue.component('demo-design', Design)
 Vue.component('demo-dev-flow', DevFlow)
+Vue.component('demo-header-base', HeaderBase)
+Vue.component('demo-header-icon', HeaderIcon)
+Vue.component('demo-header-icon-wrap', HeaderIconWrap)
+Vue.component('demo-nav-lv2', NavLv2)
 Vue.component('demo-layout-web', LayoutWeb)
 Vue.component('demo-tabs-base', TabsBase)
 Vue.component('demo-tabs-card', TabsCard)

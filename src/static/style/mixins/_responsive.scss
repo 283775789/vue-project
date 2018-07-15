@@ -38,7 +38,7 @@
 }
 
 // 生成内容包含容器
-@mixin make-container($paddingX:true, $paddingY:false) {
+@mixin make-container() {
   @include clearfix;
 
   $firstKey: nth(map-keys($container-widths), 1);
@@ -55,17 +55,8 @@
         width: $width;
       }
     }
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
-  }
-
-  @if $paddingX == true {
-    padding-right: $spacing-medium;
-    padding-left: $spacing-medium;
-  }
-
-  @if $paddingY == true {
-    padding-top: $spacing-medium;
-    padding-bottom: $spacing-medium;
   }
 }

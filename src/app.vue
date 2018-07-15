@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <tw-footer @click.native.stop="demoMethod"></tw-footer>
+      <div class="tw-footer">Copyright © 2008-现在 天闻数媒科技（湖南）有限公司, All Rights Reserved</div>
     </template>
     <!-- /文档相关 -->
 
