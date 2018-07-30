@@ -1,9 +1,9 @@
 /* 页脚 */
-$footer-height: 50px !default;
-$footer-line-height: $footer-height !default;
-$footer-font-size: $font-size-small !default;
-$footer-color:$color-text-inverse !default;
-$footer-bg: $color-bg-footer !default;
+$footer-height: 50px !default; // 高度
+$footer-line-height: $footer-height !default; // 行高
+$footer-font-size: $font-size-small !default; // 字体大小
+$footer-color:$color-text-inverse !default; // 文本颜色
+$footer-bg: $color-bg-footer !default; // 背景色
 
 .tw-footer {
   position: absolute;

@@ -2,5 +2,9 @@
 body.xproject {
   padding-top: 46px;
   margin-left: 16px;
+  @include scroll(8px, #343434, #222, #666);
 }
 
+.tw-projetc-body {
+  min-height: 1000px;
+}

@@ -1,9 +1,10 @@
-/* 主体 */
+/* 普通布局 */
 $body-content-bm: $spacing-large !default; // 主体底部外间距
 $body-content-px: $spacing-medium !default; // 主体左右内间距
 $body-content-py: $spacing-medium !default; // 主体上下内间距
 $body-content-bg: $color-bg-content !default; // 主体背景
 $body-content-radius: 0 !default; // 主体圆角
+$body-sidebar-mr: $spacing-medium !default; // 侧边栏右侧间隙
 
 // 主体容器
 .tw-body {
@@ -11,17 +12,34 @@ $body-content-radius: 0 !default; // 主体圆角
 }
 
 // 主体内容区
-.tw-body-inner {
+.tw-body-inner,
+.tw-body-flexinner {
   position: relative;
   min-height: 450px;
-  padding: $body-content-py $body-content-px;
-  background: $body-content-bg;
   @if ($body-content-radius != 0) {
     border-radius: $body-content-radius;
   }
+
   @if ($app-type == web) {
     @include make-container();
   }
+}
+
+.tw-body-inner {
+  padding: $body-content-py $body-content-px;
+  background: $body-content-bg;
+}
+
+// 主体内容：flex布局
+.tw-body-flexinner {
+  display: flex;
+}
+
+.tw-body-content {
+  flex: 1;
+  padding: $body-content-py $body-content-px;
+  margin-left: $body-sidebar-mr;
+  background: $body-content-bg;
 }
 
 // 主体内容区：包含的多列布局

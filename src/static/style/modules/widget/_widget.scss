@@ -4,13 +4,30 @@
 }
 
 .tw-stickybox-footer {
-  position:absolute;
-  z-index: 1;
+  position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   padding: $spacing-small 0;
-  background: rgba(255,255,255,.85);
-  border-top: 1px solid $color-border-main;
   text-align: center;
+  background: rgba(255, 255, 255, .85);
+  border-top: 1px solid $color-border-main;
+}
+
+// 垂直居中盒子
+.tw-vambox {
+  height: 100%;
+  @include center-y();
+}
+
+.tw-vambox-inner {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+// 截断盒子
+.tw-cutoff {
+  @include cutoff();
 }

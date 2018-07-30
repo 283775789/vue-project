@@ -5,8 +5,12 @@ import DevFlow from '@docs/guides/dev-flow'
 import HeaderBase from '@modules/header/header-base'
 import HeaderIcon from '@modules/header/header-icon'
 import HeaderIconWrap from '@modules/header/header-icon-wrap'
-import NavLv2 from '@modules/nav/nav-lv2'
-import LayoutWeb from '@modules/layout/layout-web'
+import NavLv2 from '@modules/nav-lv2/nav-lv2'
+import Sidebar from '@modules/sidebar/sidebar'
+import BodyBase from '@modules/body/body-base'
+import Footer from '@modules/footer/footer'
+import VamBox from '@modules/widget/vam-box'
+import cutoffBox from '@modules/widget/cutoff-box'
 import TabsBase from '@modules/tabs/tabs-base'
 import TabsCard from '@modules/tabs/tabs-card'
 import TabsBtn from '@modules/tabs/tabs-btn'
@@ -27,7 +31,11 @@ Vue.component('demo-header-base', HeaderBase)
 Vue.component('demo-header-icon', HeaderIcon)
 Vue.component('demo-header-icon-wrap', HeaderIconWrap)
 Vue.component('demo-nav-lv2', NavLv2)
-Vue.component('demo-layout-web', LayoutWeb)
+Vue.component('demo-sidebar', Sidebar)
+Vue.component('demo-body-base', BodyBase)
+Vue.component('demo-footer', Footer)
+Vue.component('demo-vam-box', VamBox)
+Vue.component('demo-cutoff-box', cutoffBox)
 Vue.component('demo-tabs-base', TabsBase)
 Vue.component('demo-tabs-card', TabsCard)
 Vue.component('demo-tabs-btn', TabsBtn)

@@ -44,6 +44,7 @@ module.exports = {
       '@style': resolve('src/static/style'),
       '@modules': resolve('src/static/style/modules'),
       '@images': resolve('src/static/images'),
+      '@fonts': resolve('src/static/fonts'),
       '@plugins': resolve('src/static/plugins'),
       '@docs': resolve('./docs')
     }

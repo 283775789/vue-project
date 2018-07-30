@@ -61,7 +61,11 @@
         key="comps-nav">
         <ul class="tw-nav xsidebar">
           <li>
-            <a class="js-scss"><i class="tw-font xico"></i>功能样式<i class="tw-arrow xright"></i></a>
+            <a class="js-scss">
+              <i class="tw-font xico"></i>
+              <span>功能样式</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-scss"
@@ -86,7 +90,11 @@
             </tw-collapse>
           </li>
           <li>
-            <a class="js-layout"><i class="tw-font xico"></i>布局<i class="tw-arrow xright"></i></a>
+            <a class="js-layout">
+              <i class="tw-font xico"></i>
+              <span>布局及导航</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-layout"
@@ -95,13 +103,20 @@
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/css/header">头部</router-link></li>
-                <li><router-link to="/doc/css/layout">整体布局</router-link></li>
+                <li><router-link to="/doc/css/nav-lv2">二级导航</router-link></li>
+                <li><router-link to="/doc/css/sidebar">侧边栏</router-link></li>
+                <li><router-link to="/doc/css/body">主体内容区</router-link></li>
+                <li><router-link to="/doc/css/widget">工具类容器</router-link></li>
                 <li><a>栅格系统</a></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
-            <a class="js-nav"><i class="tw-font xico"></i>导航<i class="tw-arrow xright"></i></a>
+            <a class="js-nav">
+              <i class="tw-font xico"></i>
+              <span>导航</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-nav"
@@ -117,7 +132,11 @@
             </tw-collapse>
           </li>
           <li>
-            <a class="js-unit"><i class="tw-font xico"></i>元件<i class="tw-arrow xright"></i></a>
+            <a class="js-unit">
+              <i class="tw-font xico"></i>
+              <span>元件</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-unit"
@@ -131,7 +150,11 @@
             </tw-collapse>
           </li>
           <li>
-            <a class="js-function"><i class="tw-font xico"></i>功能<i class="tw-arrow xright"></i></a>
+            <a class="js-function">
+              <i class="tw-font xico"></i>
+              <span>功能</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-function"
@@ -146,7 +169,11 @@
             </tw-collapse>
           </li>
           <li>
-            <a class="js-form"><i class="tw-font xico"></i>表单<i class="tw-arrow xright"></i></a>
+            <a class="js-form">
+              <i class="tw-font xico"></i>
+              <span>表单</span>
+              <i class="tw-arrow xright"></i>
+            </a>
             <tw-collapse
               class="xsidebar"
               switch=".js-form"
@@ -159,7 +186,12 @@
               </ul>
             </tw-collapse>
           </li>
-          <li><a class="jst-close"><i class="tw-font xico"></i>侧边导航项</a></li>
+          <li>
+            <a class="jst-close">
+              <i class="tw-font xico"></i>
+              <span>侧边导航项</span>
+            </a>
+          </li>
         </ul>
       </tw-collapse-group>
       <!-- /组件导航菜单 -->

@@ -1,16 +1,20 @@
-/* 侧边栏 */
-$sidebar-width:200px !default;
-$sidebar-bg:#fff !default;
-$sidebar-padding: $spacing-medium !default;
-$sidebar-lineheight:50px !default;
-$sidebar-collapse-lineheight: 40px !default;
-$sidebar-collapse-bg: #fff !default;
-$sidebar-hover-color: $color-main-hover !default;
-$sidebar-active-bg: $color-main-active !default;
-$sidebar-reversal-color:#fff !default;
-$sidebar-link-divider:1px dashed $color-border-main !default;
-$sidebar-icon-size:20px !default;
-$sidebar-icon-font-color:$color-secondary !default;
+/* 侧边栏布局 */
+$sidebar-width:200px !default; // 侧边栏宽度
+$sidebar-bg:$color-bg-content !default; // 侧边栏背景
+$sidebar-padding: $spacing-medium !default; // 侧边栏内边距
+$sidebar-lineheight:50px !default; // 侧边栏行高
+$sidebar-collapse-lineheight: 40px !default; // 侧边栏菜单行高
+$sidebar-collapse-bg: #fff !default; // 侧边栏菜单背景
+$nav-item-color: $color-text-main !default; // 导航项滑过颜色
+$nav-item-font-size: $font-size-default !default; // 导航项滑过颜色
+$nav-item-hover-color: $color-main-hover !default; // 导航项滑过颜色
+$nav-item-active-bg: $color-main-active !default; // 导航项选中背景
+$nav-item-active-color:#fff !default; // 导航项选中颜色
+$nav-item-divider-color: $color-border-main !default; // 导航分隔线颜色
+$nav-item-left-line-width: 3px !default; // 左侧标识线宽度
+$nav-item-left-line-color: $color-main !default; // 左侧标识线颜色
+$sidebar-icon-size: 20px !default; // 分类图标大小
+$sidebar-icon-font-color: $color-secondary !default; // 分类图标颜色
 
 // 侧边栏-容器
 .tw-sidebar {
@@ -22,31 +26,40 @@ $sidebar-icon-font-color:$color-secondary !default;
 // 侧边栏-导航
 .tw-nav.xsidebar > li > a {
   padding-right: $sidebar-padding * 2;
-  padding-left: $sidebar-padding + $sidebar-icon-size + 15px;
+  padding-left: $sidebar-padding + 5px;
+  font-size: $nav-item-font-size;
+  color: $nav-item-color;
 }
 
 .tw-nav.xsidebar > li > a:hover {
-  color: $sidebar-hover-color;
+  color: $nav-item-hover-color;
 }
 
 .tw-nav.xsidebar > li > a.xactive {
-  color: $sidebar-reversal-color;
-  background: $sidebar-active-bg;
+  color: $nav-item-active-color;
+  background: $nav-item-active-bg;
 }
 
-.tw-nav.xsidebar > li > a.xactive > .tw-arrow.xright {
-  border-right-color: $sidebar-reversal-color;
-  border-bottom-color: $sidebar-reversal-color;
+@if ($nav-item-left-line-width != 0 and $nav-item-left-line-width != "") {
+  .tw-nav.xsidebar > li > a.xactive:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: $nav-item-left-line-width;
+    background: $nav-item-left-line-color;
+  }
+}
+
+.tw-nav.xsidebar .tw-collapse li > a {
+  padding-left: $sidebar-padding + $sidebar-icon-size + 12px;
 }
 
 // 侧边栏-导航-图标
 .tw-nav.xsidebar > li > a > .tw-ico,
 .tw-nav.xsidebar > li > a > .tw-font {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: $sidebar-padding + 5px;
-  margin: auto;
+  vertical-align: middle;
 }
 
 .tw-nav.xsidebar > li > a > .tw-font {
@@ -59,11 +72,11 @@ $sidebar-icon-font-color:$color-secondary !default;
 }
 
 .tw-nav.xsidebar > li > a:hover > .tw-font {
-  color: $sidebar-hover-color;
+  color: $nav-item-hover-color;
 }
 
 .tw-nav.xsidebar > li > a.xactive > .tw-font {
-  color: $sidebar-reversal-color;
+  color: $nav-item-active-color;
 }
 
 // 侧边栏-导航-箭头
@@ -79,7 +92,9 @@ $sidebar-icon-font-color:$color-secondary !default;
   right: $sidebar-padding;
   left: $sidebar-padding;
   height: 1px;
-  border-top: $sidebar-link-divider;
+  @if ($nav-item-divider-color != "") {
+    border-top: 1px dashed $nav-item-divider-color;
+  }
 }
 
 // 侧边栏-折叠面板

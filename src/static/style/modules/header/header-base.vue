@@ -1,4 +1,4 @@
-<template group="布局" type="头部" name="基本">
+<template group="布局" type="1-头部" name="基本">
   <div class="tw-header">
     <div class="tw-header-inner">
       <h1 class="tw-header-left">

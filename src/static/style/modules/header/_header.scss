@@ -44,6 +44,7 @@ $header-menu-line-height: 36px !default; // 头部下拉菜单行高
 .tw-header-left,
 .tw-header-body {
   float: left;
+  height: $header-height;
 }
 
 .tw-header-left {
@@ -63,6 +64,7 @@ $header-menu-line-height: 36px !default; // 头部下拉菜单行高
 // 头部-右侧内容区
 .tw-header-right {
   float: right;
+  height: $header-height;
 }
 
 // 头部-导航

@@ -4,9 +4,9 @@
       <a @click="addPreProjects">保存项目(S)</a>
       <a>生成项目(B)</a>
       <a>保存为模板(T)</a>
-      <a href="#" @click="newProjectModal.visible = true && (newStep = 1)">项目设置(I)</a>
-      <a @click="newProjectModal.visible = true && (newStep = 2)">选择组件(C)</a>
-      <a @click="newProjectModal.visible = true && (newStep = 3)">全局样式(G)</a>
+      <a href="#" @click="(newProjectModal.visible = true) && (newStep = 1)">项目设置(I)</a>
+      <a @click="(newProjectModal.visible = true) && (newStep = 2)">选择组件(C)</a>
+      <a @click="(newProjectModal.visible = true) && (newStep = 3)">全局样式(G)</a>
       <a @click="cancelNewProject">取消</a>
     </tw-design-header>
 
@@ -122,40 +122,40 @@
           <table
             v-else-if = "newStep === 2"
             class="tw-form xtable"
-            v-for="(group, groupKey, groupIndex) in compGroup"
+            v-for="(group, groupIndex) in compGroup"
             :key="`comps${groupIndex}`">
             <tr>
               <td>
-                <div class="tw-title">{{ groupKey }}</div>
+                <div class="tw-title">{{ group.groupName }}</div>
               </td>
             </tr>
-            <tr v-for="(type, typeKey, typeIndex) in group"
+            <tr v-for="(type, typeIndex) in group.children"
                 :key="`comps${groupIndex}-${typeIndex}`">
                 <td>
-                  <div class="tw-title xsub">{{ typeKey }}</div>
-                  <div>
+                  <div class="tw-title xsub">{{ type.typeName }}</div>
+                  <div class="tw-compnams">
                     <label
-                      v-if="typeKey === '整体布局'"
-                      class="tw-optbox"
-                      v-for="demo in type.demos"
-                      :key="demo.tag">
-                      <input
-                        type="radio"
-                        :value="demo.tag"
-                        v-model="selectedLayout"
-                        @change="selectLayout(demo.tag)" />
-                        <span>{{demo.name}}</span>
-                    </label>
-                    <label
-                      v-if="typeKey !== '整体布局'"
+                      v-if="group.groupName === '布局'"
                       class="tw-optbox"
                       v-for="demo in type.demos"
                       :key="demo.tag">
                       <input
                         type="checkbox"
-                        :value="`${demo.tag}|${typeKey}`"
+                        :value="`${demo.tag}|${type.typeName}`"
+                        v-model="selectedLayout"
+                        @change="selectComps(group.groupName)" />
+                        <span>{{demo.name}}</span>
+                    </label>
+                    <label
+                      v-if="group.groupName !== '布局'"
+                      class="tw-optbox"
+                      v-for="demo in type.demos"
+                      :key="demo.tag">
+                      <input
+                        type="checkbox"
+                        :value="`${demo.tag}|${type.typeName}`"
                         v-model="selectedComps"
-                        @change="selectComps" />
+                        @change="selectComps(group.groupName)" />
                         <span>{{demo.name}}</span>
                     </label>
                   </div>
@@ -346,7 +346,7 @@ export default {
       currentComp: null,
       currentCompScssVar: [],
       demosVm: null,
-      selectedLayout: '',
+      selectedLayout: [],
       selectedComps: [],
       newStep: 1,
       canvasVm: null,
@@ -405,32 +405,54 @@ export default {
       })
     },
     // 选择组件
-    selectComps () {
-      // undone 需提示未选择布局前...
-      if (this.compsRoot) this.compsRoot.$destroy()
-      if (!document.getElementById('comps-root')) return
-
+    selectComps (group) {
       const vm = this
-      this.compsRoot = new Vue({
-        el: '#comps-root',
-        render (h) {
-          const tagVnodes = []
 
-          vm.selectedComps.forEach(comp => {
-            comp = comp.split('|')
+      const renderComps = function (vueRoot, rootEl, comps) {
+        if (vueRoot) vueRoot.$destroy()
 
-            tagVnodes.push(h(comp[0], {nativeOn: {
-              dblclick (e) {
-                vm.showDesignInterface()
-                vm.setComponentStyle(comp[1])
-              }
-            }}))
-            tagVnodes.push(h('hr', {class: 'tw-project-hr'}))
-          })
+        vueRoot = new Vue({
+          el: rootEl,
+          render (h) {
+            const tagVnodes = []
 
-          return h('div', {attrs: {id: 'comps-root'}}, [tagVnodes])
-        }
-      })
+            comps.forEach(comp => {
+              comp = comp.split('|')
+
+              tagVnodes.push(h(comp[0], {nativeOn: {
+                dblclick (e) {
+                  e.stopPropagation()
+                  vm.showDesignInterface()
+                  vm.setComponentStyle(comp[1])
+                }
+              }}))
+            })
+
+            if (group === '布局') {
+              return h('div', {attrs: {id: 'design-canvas'}}, [tagVnodes])
+            } else {
+              return h('div', {attrs: {id: 'comps-root'}}, [tagVnodes])
+            }
+          }
+        })
+      }
+
+      // undone 需提示未选择布局前...
+      if (group === '布局') {
+        // 布局组件
+        document.body.style.backgroundColor = ''
+        document.documentElement.style.backgroundColor = ''
+
+        renderComps(this.canvasVm, '#design-canvas', this.selectedLayout)
+      } else {
+        const contentEl = document.querySelector('.tw-body-content') || document.querySelector('.tw-body-inner')
+        const rootEl = document.createElement('div')
+        contentEl.innerHTML = ''
+        rootEl.id = 'comps-root'
+        contentEl.appendChild(rootEl)
+
+        renderComps(this.compsRoot, rootEl, this.selectedComps)
+      }
     },
     // 设置组件样式
     setComponentStyle (type) {
