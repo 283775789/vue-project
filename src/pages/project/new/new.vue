@@ -611,8 +611,9 @@ export default {
       console.log(error)
     })
 
-    vm.axios.get(`${this.host}/data/app/components.json`).then(function (responed) {
+    vm.axios.get(`components/web`).then(function (responed) {
       vm.compGroup = responed.data
+      debugger
     }).catch(function (error) {
       console.log(error)
     })

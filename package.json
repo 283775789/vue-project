@@ -10,13 +10,13 @@
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
     "ui": "gulp watch",
-    "docs": "ncp E:/teewon3/docs E:/teewon-node/docs",
-    "assemblies": "ncp E:/teewon3/src/assemblies E:/teewon-node/teewon/templates/web/default/src/assemblies",
-    "static": "ncp E:/teewon3/src/static E:/teewon-node/teewon/templates/web/default/src/static",
+    "docs": "ncp G:/teewon-vue/代码/trunk/docs G:/teewon-node/docs",
+    "assemblies": "ncp G:/teewon-vue/代码/trunk/src G:/teewon-node/teewon/templates/web/default/src",
+    "static": "ncp G:/teewon-vue/代码/trunk/src/static G:/teewon-node/teewon/templates/web/default/src/static",
     "copy": "npm run assemblies && npm run static",
-    "src": "ncp E:/teewon3/src E:/teewon-node/src",
+    "src": "ncp G:/teewon-vue/代码/trunk/src G:/teewon-node/src",
     "git": "git add -A && git commit -m '新提交' && git push",
-    "sass": "sass E:/teewon3/src/static/style/test.scss E:/teewon3/src/static/style/test.css"
+    "sass": "sass G:/teewon-vue/代码/trunk/src/static/style/test.scss G:/teewon-vue/代码/trunk/src/static/style/test.css"
   },
   "dependencies": {
     "animate.css": "^3.6.1",

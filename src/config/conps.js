@@ -7,7 +7,7 @@
 
 export default [
   {
-    group: '布局',
+    name: '布局',
     children: [
       {
         type: '头部',
@@ -69,7 +69,7 @@ export default [
     ]
   },
   {
-    group: 'xxx',
+    name: 'xxx',
     children: [
       {
         type: 'xxx',
@@ -83,7 +83,7 @@ export default [
     ]
   },
   {
-    group: '元件',
+    name: '元件',
     children: [
       {
         type: '按钮',
@@ -109,7 +109,7 @@ export default [
     ]
   },
   {
-    group: '功能',
+    name: '功能',
     children: [
       {
         type: 'tab选项卡',
@@ -144,7 +144,7 @@ export default [
     ]
   },
   {
-    group: 'xxx',
+    name: 'xxx',
     children: [
       {
         type: 'xxx',

@@ -27,21 +27,6 @@ export default new Router({
     {
       path: '/doc/component',
       redirect: '/doc/component/scss'
-    },
-    {
-      path: '/project',
-      component: Project,
-      redirect: '/project/home',
-      children: [
-        {
-          path: 'home',
-          component: ProjectHome
-        },
-        {
-          path: 'new',
-          component: ProjectNew
-        }
-      ]
     }
   ]
 })
