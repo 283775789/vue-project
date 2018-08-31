@@ -9,4 +9,4 @@
 
 ## 截断容器
 
-{{cutoff-box}}
+{{ellipsis-box}}

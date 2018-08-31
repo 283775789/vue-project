@@ -28,6 +28,6 @@
 }
 
 // 截断盒子
-.tw-cutoff {
-  @include cutoff();
+.tw-ellipsis {
+  @include ellipsis();
 }

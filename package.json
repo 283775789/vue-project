@@ -11,14 +11,15 @@
     "build": "node build/build.js",
     "ui": "gulp watch",
     "docs": "ncp G:/teewon-vue/代码/trunk/docs G:/teewon-node/docs",
-    "assemblies": "ncp G:/teewon-vue/代码/trunk/src G:/teewon-node/teewon/templates/web/default/src",
+    "copy": "ncp G:/teewon-vue/代码/trunk/src G:/teewon-node/teewon/templates/web/default/src",
     "static": "ncp G:/teewon-vue/代码/trunk/src/static G:/teewon-node/teewon/templates/web/default/src/static",
-    "copy": "npm run assemblies && npm run static",
+    "copy2": "npm run copy && npm run static",
     "src": "ncp G:/teewon-vue/代码/trunk/src G:/teewon-node/src",
     "git": "git add -A && git commit -m '新提交' && git push",
     "sass": "sass G:/teewon-vue/代码/trunk/src/static/style/test.scss G:/teewon-vue/代码/trunk/src/static/style/test.css"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "^17.2.0",
     "animate.css": "^3.6.1",
     "axios": "^0.18.0",
     "clipboard": "^2.0.1",

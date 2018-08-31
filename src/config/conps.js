@@ -58,7 +58,7 @@ export default [
         demos: [
           {
             name: '文字截断盒子',
-            tag: 'demo-cutoff-box'
+            tag: 'demo-ellipsis-box'
           },
           {
             name: '垂直居中盒子',

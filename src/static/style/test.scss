@@ -1,12 +1,3 @@
-/* !------------------------------------------------------------
-* 样式:twui.scss
-* 版本:v1.0.0
-* 1.引入普通的scss文件,请按标准的sass语言的@import语法
-* 2.引入CSS模块或Vue组件,无需加文件夹前缀，在sass-loader中已经加了
-*   全局的includePaths路径，会自动为@import的组件添加所在的文件夹前缀
-* 3.css模块与vue组件不能重名
-* ------------------------------------------------------------ */
-
 // 引入变量、mixins、functions
 // ------------------------------------------------------------
 @import "base/functions.scss";
@@ -14,6 +5,40 @@
 @import "mixins/responsive.scss";
 @import "mixins/utils.scss";
 
-.tw-abc {
-  @include make-container();
+/* 侧边浮动 */
+$floater-width: 82px !default; // 宽度
+$floater-spacing: 10px !default; // 与主内容的距离
+
+// 侧边浮动-容器
+.tw-floater {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  width: $floater-width;
+}
+
+// 侧边浮动-左悬浮
+.tw-floater.xleft {
+  margin-left: map-get($map: $container-widths, $key: pc) / -2 - $floater-width - $floater-spacing;
+
+  @include media-only(lpad) {
+    margin-left: map-get($map: $container-widths, $key: lpad) / -2 - $floater-width - $floater-spacing;
+  }
+
+  @include media-down(pad) {
+    display: none;
+  }
+}
+
+// 侧边浮动-右悬浮
+.tw-floater.xright {
+  margin-left: map-get($map: $container-widths, $key: pc) / 2 + $floater-spacing;
+
+  @include media-only(lpad) {
+    margin-left: map-get($map: $container-widths, $key: lpad) / 2 + $floater-spacing;
+  }
+
+  @include media-down(pad) {
+    display: none;
+  }
 }

@@ -15,7 +15,7 @@
 .tw-nav > li > a {
   position: relative;
   display: block;
-  @include cutoff;
+  @include ellipsis;
 }
 
 .tw-nav > li > a > .tw-ico,

@@ -28,6 +28,7 @@
 @import "arrow/arrow.scss";
 @import "modules/fonts/fonts.scss";
 @import "button/button.scss";
+@import "crumbs/crumbs.scss";
 @import "widget/widget.scss";
 
 // vue组件
@@ -35,6 +36,7 @@
 @import "markdown/markdown.scss";
 @import "list/list.scss";
 @import "modal/modal.scss";
+@import "steps/steps.scss";
 
 // 样式模块:布局
 // ------------------------------------------------------------
@@ -47,6 +49,7 @@
 @import "sidebar/sidebar.scss";
 @import "form/form.scss";
 @import "tabs/tabs.scss";
+@import "floater/floater.scss";
 
 // 功能样式
 // ------------------------------------------------------------
@@ -57,6 +60,7 @@
 @import "spacing/spacing.scss";
 @import "border/border.scss";
 @import "animate/animate.scss";
+@import "common/common.scss";
 
 // 页面
 // ------------------------------------------------------------

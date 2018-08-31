@@ -8,7 +8,7 @@
         key="guid-nav">
         <ul class="tw-nav xsidebar">
           <li>
-            <a class="js-fe"><i class="tw-font xico"></i>前端体系<i class="tw-arrow xright"></i></a>
+            <a class="js-fe"><i class="tw-font2 xico"></i>前端体系<i class="tw-arrow xright"></i></a>
             <tw-collapse
               class="xsidebar"
               switch=".js-fe"
@@ -20,16 +20,14 @@
                 '/doc/guid/shortcut'
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
-                <li><router-link to="/doc/guid/role">编码准则</router-link></li>
                 <li><router-link to="/doc/guid/framwork">技术框架</router-link></li>
                 <li><router-link to="/doc/guid/dev-flow">开发流程</router-link></li>
                 <li><router-link to="/doc/guid/ide">编辑器</router-link></li>
-                <li><router-link to="/doc/guid/shortcut">快捷输入</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
-            <a class="js-code"><i class="tw-font xico"></i>代码规范<i class="tw-arrow xright"></i></a>
+            <a class="js-code"><i class="tw-font2 xico"></i>代码规范<i class="tw-arrow xright"></i></a>
             <tw-collapse
               class="xsidebar"
               switch=".js-code"
@@ -43,26 +41,28 @@
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/guid/version">版本管理</router-link></li>
                 <li><router-link to="/doc/guid/dir">目录及文件</router-link></li>
+                <li><router-link to="/doc/guid/readme">项目规范</router-link></li>
+                <li><router-link to="/doc/guid/i18n">国际化规范</router-link></li>
                 <li><router-link to="/doc/guid/js">JS规范</router-link></li>
                 <li><router-link to="/doc/guid/css">CSS规范</router-link></li>
                 <li><router-link to="/doc/guid/html">HTML规范</router-link></li>
               </ul>
             </tw-collapse>
           </li>
-          <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font xico"></i>设计规范</router-link></li>
+          <li><router-link to="/doc/guid/design" class="jst-close"><i class="tw-font2 xico"></i>设计规范</router-link></li>
         </ul>
       </tw-collapse-group>
       <!-- /规范导航菜单 -->
 
       <!-- 组件导航菜单 -->
       <tw-collapse-group
-        v-if="$route.params.type==='comps' || $route.params.type==='css'"
+        v-if="$route.params.type==='comps' || $route.params.type==='css' || $route.params.type==='directives'"
         class="tw-sidebar"
         key="comps-nav">
         <ul class="tw-nav xsidebar">
           <li>
             <a class="js-scss">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>功能样式</span>
               <i class="tw-arrow xright"></i>
             </a>
@@ -86,12 +86,13 @@
                 <li><router-link to="/doc/css/text">文本颜色</router-link></li>
                 <li><router-link to="/doc/css/spacing">间距尺寸</router-link></li>
                 <li><router-link to="/doc/css/border">边框和背景</router-link></li>
+                <li><router-link to="/doc/css/common">公用样式</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
             <a class="js-layout">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>布局及导航</span>
               <i class="tw-arrow xright"></i>
             </a>
@@ -107,33 +108,16 @@
                 <li><router-link to="/doc/css/sidebar">侧边栏</router-link></li>
                 <li><router-link to="/doc/css/body">主体内容区</router-link></li>
                 <li><router-link to="/doc/css/widget">工具类容器</router-link></li>
-                <li><a>栅格系统</a></li>
-              </ul>
-            </tw-collapse>
-          </li>
-          <li>
-            <a class="js-nav">
-              <i class="tw-font xico"></i>
-              <span>导航</span>
-              <i class="tw-arrow xright"></i>
-            </a>
-            <tw-collapse
-              class="xsidebar"
-              switch=".js-nav"
-              :default-open="[
-                '/doc/css/tabs',
-              ].indexOf($route.path) !== -1">
-              <ul class="tw-nav xsidebar">
-                 <li><router-link to="/doc/css/nav">导航</router-link></li>
-                <li><a>侧边栏导航</a></li>
-                <li><a>面包屑</a></li>
+                <li><router-link to="/doc/css/grid">栅格系统</router-link></li>
+                <li><router-link to="/doc/css/crumbs">面包屑</router-link></li>
                 <li><router-link to="/doc/css/tabs">tab选项卡</router-link></li>
+                <li><router-link to="/doc/css/floater">侧边浮动</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
             <a class="js-unit">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>元件</span>
               <i class="tw-arrow xright"></i>
             </a>
@@ -144,14 +128,14 @@
                 '',
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
-                <li><a>图标</a></li>
+                <li><router-link to="/doc/css/fonts">图标</router-link></li>
                 <li><router-link to="/doc/css/button">按钮</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
             <a class="js-function">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>功能</span>
               <i class="tw-arrow xright"></i>
             </a>
@@ -162,15 +146,17 @@
                 '/doc/comps/modal',
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
-                <li><a>下拉列表</a></li>
-                <li><a>折叠面板</a></li>
+                <li><router-link to="/doc/comps/poppane">下拉列表</router-link></li>
+                <li><router-link to="/doc/comps/collapse">折叠面板</router-link></li>
+                <li><router-link to="/doc/directives/anchor">锚点</router-link></li>
+                <li><router-link to="/doc/css/steps">步骤条</router-link></li>
                 <li><router-link to="/doc/comps/modal">弹窗(modal)</router-link></li>
               </ul>
             </tw-collapse>
           </li>
           <li>
             <a class="js-form">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>表单</span>
               <i class="tw-arrow xright"></i>
             </a>
@@ -188,7 +174,7 @@
           </li>
           <li>
             <a class="jst-close">
-              <i class="tw-font xico"></i>
+              <i class="tw-font2 xico"></i>
               <span>侧边导航项</span>
             </a>
           </li>
@@ -230,9 +216,11 @@ export default {
       })
     }
   },
+
   mounted () {
     this.updateMarkdown()
   },
+
   watch: {
     '$route' () {
       this.updateMarkdown()

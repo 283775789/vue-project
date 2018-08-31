@@ -35,7 +35,7 @@ $tab-border-radius: 0 !default; // 卡片式tab边框圆角
   padding: $tab-padding-y 0;
   color: $tab-color;
   border-bottom: 2px solid transparent;
-  @include cutoff();
+  @include ellipsis();
 }
 
 .tw-tabs > .xopen > a {

@@ -14,17 +14,22 @@
           <div class="tw-header-body">
             <ul class="tw-nav xheader xhorizontal">
               <li>
-                <router-link class="js-delegate" to="/doc/guid">
+                <router-link
+                  class="js-delegate"
+                  :class="{xactive: $route.path.indexOf('/doc/guid') !== -1}"
+                  to="/doc/guid">
                   <span>规范</span>
                 </router-link>
               </li>
               <li>
-                <router-link to="/doc/css/mixins">
+                <router-link
+                  :class="{xactive: $route.path.indexOf('/doc/css') !== -1 || $route.path.indexOf('/doc/comps') !== -1}"
+                  to="/doc/css/mixins">
                   <span>组件</span>
                 </router-link>
               </li>
-              <li @click="fullScreen">
-                <a @click="goToProject"><span>项目</span></a>
+              <li>
+                <a><span>学习</span></a>
               </li>
             </ul>
           </div>
@@ -42,7 +47,7 @@
         </div>
       </div>
 
-      <div class="tw-body" v-tw-to-bottom="80">
+      <div class="tw-body">
         <div class="tw-body-inner">
           <router-view></router-view>
         </div>
@@ -59,22 +64,7 @@
 
 <script>
 export default {
-  name: 'app',
-  methods: {
-    // 全屏
-    fullScreen () {
-      const element = document.documentElement
-      const requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen
-      if (requestMethod) {
-        requestMethod.call(element)
-      }
-    },
-    // 跳转到项目页
-    goToProject () {
-      window.sessionStorage.setItem('prevPath', this.$route.path)
-      this.$router.push('/project')
-    }
-  }
+  name: 'app'
 }
 </script>
 

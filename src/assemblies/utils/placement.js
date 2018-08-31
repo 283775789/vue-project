@@ -1,9 +1,7 @@
 /**
  * 返回两个元素间位置相关的信息
- * @param {Element,String} el
- * 目标元素
- * @param {Element} relatedElement
- * 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
+ * @param {Element,String} el 目标元素
+ * @param {Element} relatedElement 参照元素， 当需要在相同的节点中返回位置信息时， relatedElement应为element的祖先元素
  */
 const placement = function (el, relatedElement, relatedWidth) {
   if (typeof relatedElement === 'string') {
@@ -24,18 +22,18 @@ const placement = function (el, relatedElement, relatedWidth) {
 
   /* eslint-disable */
   const placements = [
-    'topleft',
-    'topcenter',
-    'topright',
-    'righttop',
-    'rightcenter',
-    'rightbottom',
-    'bottomleft',
-    'bottomcenter',
-    'bottomright',
-    'lefttop',
-    'leftcenter',
-    'leftbottom'
+    'top-left',
+    'top-center',
+    'top-right',
+    'rig-httop',
+    'right-center',
+    'right-bottom',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right',
+    'left-top',
+    'left-center',
+    'left-bottom'
   ]
 
   let matrix = {}

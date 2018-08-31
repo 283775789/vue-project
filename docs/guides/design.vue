@@ -1,5 +1,5 @@
 <template>
-  <div v-if="scssVars.length>0">
+  <div>
     <h2>颜色体系</h2>
     <table>
       <thead>
@@ -34,17 +34,6 @@
           <td>相关视觉单元激活，选中效果<br />计算公式:饱和度增加10%,亮度降低10%</td>
         </tr>
         <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">主题色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[0].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
           <td rowspan="3">背景色</td>
           <td rowspan="3">划分区块或功能</td>
           <td>页面背景</td>
@@ -59,17 +48,6 @@
           <td>按钮禁用，或表单控件禁用等</td>
         </tr>
         <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">背景色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[1].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
           <td rowspan="3">标识色</td>
           <td rowspan="3">提示操作级别，系统的感情色彩呈现。</td>
           <td>成功</td>
@@ -82,17 +60,6 @@
         <tr>
           <td>错误</td>
           <td>提示异常信息</td>
-        </tr>
-        <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">标识色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[2].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
         </tr>
         <tr>
           <td rowspan="8">文本色</td>
@@ -129,17 +96,6 @@
           <td>表单占位提示信息</td>
         </tr>
         <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">文本色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[3].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
           <td rowspan="3">边框色</td>
           <td rowspan="3">模块划分, 降低用户学习成本</td>
           <td>主边框</td>
@@ -152,17 +108,6 @@
         <tr>
           <td>禁用边框</td>
           <td>用于特定的禁用元素</td>
-        </tr>
-        <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">边框色-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[1].children[4].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <el-color-picker class="tw-colorcell" v-model="scssVar.value" @change="changeScssVars"></el-color-picker>
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
         </tr>
       </tbody>
     </table>
@@ -217,17 +162,6 @@
           <td>大号字体(20px)</td>
           <td>重点强调信息</td>
         </tr>
-        <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">字号-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[2].children[1].children" :key="index" :title="scssVar.varName+':'+scssVar.value">
-              <div class="tw-scssvar-body">
-                <input :style="{fontSize:parseInt(scssVar.value)<10?'10px':scssVar.value}" type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
-              </div>
-              <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
-        </tr>
       </tbody>
     </table>
     <h2>间距体系</h2>
@@ -276,17 +210,6 @@
         <tr>
           <td>超大间距(40px)</td>
           <td>用于视觉布局，调控模块留白</td>
-        </tr>
-        <tr>
-          <td class="tw-scsstd" colspan="4">
-            <div class="tw-title xsub">间距-示例</div>
-            <div class="tw-scssvar" v-for="(scssVar, index) in scssVars[3].children[1].children" :key="index" :title="scssVar.varName" :style="{marginLeft:index === 0 ? 0 : scssVar.value}">
-                <div class="tw-scssvar-body">
-                  <input type="text" class="tw-scssvar-value" v-model="scssVar.value" @change="changeScssVars" />
-                </div>
-                <div class="tw-scssvar-title">{{scssVar.name}}</div>
-            </div>
-          </td>
         </tr>
       </tbody>
     </table>
@@ -428,34 +351,6 @@
 
 <script>
 export default {
-  name: 'design',
-  data () {
-    return {
-      scssVars: [],
-      styleEl: ''
-    }
-  },
-  methods: {
-    changeScssVars () {
-      const vm = this
-
-      vm.axios.post('css', vm.scssVars).then(function (responed) {
-        vm.styleEl.textContent = responed.data
-      }).catch(function (error) {
-        console.log(error)
-      })
-    }
-  },
-  created () {
-    const vm = this
-    vm.styleEl = document.createElement('style')
-    document.querySelector('head').appendChild(vm.styleEl)
-
-    vm.axios.get('scss-vars').then(function (responed) {
-      vm.scssVars = responed.data
-    }).catch(function (error) {
-      console.log(error)
-    })
-  }
+  name: 'design'
 }
 </script>

@@ -1,12 +1,4 @@
 @charset "UTF-8";
-/* !------------------------------------------------------------
-* 样式:twui.scss
-* 版本:v1.0.0
-* 1.引入普通的scss文件,请按标准的sass语言的@import语法
-* 2.引入CSS模块或Vue组件,无需加文件夹前缀，在sass-loader中已经加了
-*   全局的includePaths路径，会自动为@import的组件添加所在的文件夹前缀
-* 3.css模块与vue组件不能重名
-* ------------------------------------------------------------ */
 /* ---------------------------------------------------------------------
  * 描述：函数定义
  * --------------------------------------------------------------------- */
@@ -35,32 +27,37 @@
 /* 控件宽度{String+} */
 /* ------------------------------ 响应式体系(pc优先) ------------------------------ */
 /* 响应式断点{NoChange} */
-/* 栅格{String} */
 /* ------------------------------ 其它 ------------------------------ */
-/* 圆角{String} */
+/* 圆角{NoChange} */
 /* 过渡时间{NoChange} */
 /* 渲染层级{String} */
 /* ---------------------------- 响应式mixin -------------------------------- */
 /* ---------------------------- 工具类mixin -------------------------------- */
-.tw-abc {
-  width: 1200px;
-  margin-right: auto;
-  margin-left: auto; }
-  .tw-abc:after {
-    content: " ";
-    display: block;
-    clear: both; }
-  @media (max-width: 1199px) {
-    .tw-abc {
-      width: 960px; } }
+/* 侧边浮动 */
+.tw-floater {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  width: 82px; }
+
+.tw-floater.xleft {
+  margin-left: -692px; }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .tw-floater.xleft {
+    margin-left: -572px; } }
+
   @media (max-width: 991px) {
-    .tw-abc {
-      width: auto; } }
-  @media (max-width: 767px) {
-    .tw-abc {
-      width: auto; } }
-  @media (max-width: 553px) {
-    .tw-abc {
-      width: auto; } }
+    .tw-floater.xleft {
+      display: none; } }
+
+.tw-floater.xright {
+  margin-left: 610px; }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .tw-floater.xright {
+    margin-left: 490px; } }
+
+  @media (max-width: 991px) {
+    .tw-floater.xright {
+      display: none; } }
 
 /*# sourceMappingURL=test.css.map */
