@@ -3,10 +3,10 @@
  */
 
 import Vue from 'vue'
-import Anchor from '@directives/anchor/anchor'
+import Lift from '@directives/lift/lift'
 
 const directives = [
-  Anchor
+  Lift
 ]
 
 directives.forEach(function (directive) {

@@ -1,5 +1,6 @@
 // 引入库及应用配置
 import Vue from 'vue'
+import '@/config/teewon'
 import '@/config/element-ui'
 import '@/config/api'
 import '@/config/components'

@@ -7,3 +7,4 @@
 | 类名 | 描述 | 示例 |
 | ----- | ----- | ----- |
 | disabled | 禁用样式 | <div class="disabled">禁用效果</div> `<div class="disabled">禁用效果</div>` |
+| vhidden | 禁用样式 | <div class="vhidden">看不到的示例</div> `<div class="vhidden">看不到的示例</div>` |

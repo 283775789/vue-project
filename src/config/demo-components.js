@@ -39,8 +39,8 @@ import ModalAll from '@comps/modal/demo/modal-all'
 // import StepsArrow from '@comps/steps/demo/steps-arrow'
 
 // 引入vue指令示例
-import Anchor from '@directives/anchor/demo/anchor'
-import AnchorGroup from '@directives/anchor/demo/anchor-group'
+import Lift from '@directives/lift/demo/lift'
+import LiftGroup from '@directives/lift/demo/lift-group'
 
 // 所有的示例组件的组件名必须为【demo+文件名】
 // css组件示例
@@ -81,6 +81,6 @@ Vue.component('demo-collapse-group', CollapseGroup)
 Vue.component('demo-modal-base', ModalBase)
 Vue.component('demo-modal-all', ModalAll)
 
-// vue组件示例
-Vue.component('demo-anchor', Anchor)
-Vue.component('demo-anchor-group', AnchorGroup)
+// vue指令示例
+Vue.component('demo-lift', Lift)
+Vue.component('demo-lift-group', LiftGroup)

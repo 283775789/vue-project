@@ -148,7 +148,7 @@
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/comps/poppane">下拉列表</router-link></li>
                 <li><router-link to="/doc/comps/collapse">折叠面板</router-link></li>
-                <li><router-link to="/doc/directives/anchor">锚点</router-link></li>
+                <li><router-link to="/doc/directives/lift">电梯式锚点</router-link></li>
                 <li><router-link to="/doc/css/steps">步骤条</router-link></li>
                 <li><router-link to="/doc/comps/modal">弹窗(modal)</router-link></li>
               </ul>
