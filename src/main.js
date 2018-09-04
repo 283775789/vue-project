@@ -1,10 +1,10 @@
 // 引入库及应用配置
 import Vue from 'vue'
 import '@/config/teewon'
+import '@directives'
 import '@/config/element-ui'
 import '@/config/api'
 import '@/config/components'
-import '@directives'
 import '@/config/demo-components.js'
 import App from '@/App'
 import router from '@/config/router'

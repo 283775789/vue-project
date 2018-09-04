@@ -4,9 +4,11 @@
 
 import Vue from 'vue'
 import Lift from '@directives/lift/lift'
+import Fix from '@directives/fix/fix'
 
 const directives = [
-  Lift
+  Lift,
+  Fix
 ]
 
 directives.forEach(function (directive) {
