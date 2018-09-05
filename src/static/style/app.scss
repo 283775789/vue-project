@@ -69,7 +69,16 @@
 .tw-ico.xname {
   width: 16px;
   height: 16px;
+  line-height: 16px;
+  white-space: nowrap;
   background: #ccc;
+}
+
+.tw-ico.xname:before {
+  content: "ico";
+  display: inline-block;
+  font-size: 12px;
+  transform: scale(.85);
 }
 
 /* 内容块 */

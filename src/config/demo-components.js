@@ -35,6 +35,8 @@ import TItem from '@modules/titem/titem'
 import TItemDot from '@modules/titem/titem-dot'
 import TItemIcon from '@modules/titem/titem-icon'
 import HToggle from '@modules/htoggle/htoggle'
+import InfoItem from '@modules/infoitem/infoitem'
+import Images from '@modules/images/images'
 
 // 引入vue组件示例
 import Poppane from '@comps/poppane/demo/poppane'
@@ -51,6 +53,7 @@ import Lift from '@directives/lift/demo/lift'
 import LiftGroup from '@directives/lift/demo/lift-group'
 import Fix from '@directives/fix/demo/fix'
 import FixBottom from '@directives/fix/demo/fix-bottom'
+import Cut from '@directives/cut/demo/cut'
 
 // 所有的示例组件的组件名必须为【demo+文件名】
 // css组件示例
@@ -89,6 +92,8 @@ Vue.component('demo-titem', TItem)
 Vue.component('demo-titem-dot', TItemDot)
 Vue.component('demo-titem-icon', TItemIcon)
 Vue.component('demo-htoggle', HToggle)
+Vue.component('demo-infoitem', InfoItem)
+Vue.component('demo-images', Images)
 
 // vue组件示例
 Vue.component('demo-poppane', Poppane)
@@ -104,3 +109,4 @@ Vue.component('demo-lift', Lift)
 Vue.component('demo-lift-group', LiftGroup)
 Vue.component('demo-fix', Fix)
 Vue.component('demo-fix-bottom', FixBottom)
+Vue.component('demo-cut', Cut)

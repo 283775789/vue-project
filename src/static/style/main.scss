@@ -32,6 +32,8 @@
 @import "widget/widget.scss";
 @import "titem/titem.scss";
 @import "htoggle/htoggle.scss";
+@import "infoitem/infoitem.scss";
+@import "images/images.scss";
 
 // vue组件
 // ------------------------------------------------------------
@@ -55,6 +57,7 @@
 
 // 功能样式
 // ------------------------------------------------------------
+@import "cut/cut.scss";
 @import "display/display.scss";
 @import "flex/flex.scss";
 @import "float/float.scss";

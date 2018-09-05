@@ -5,10 +5,12 @@
 import Vue from 'vue'
 import Lift from '@directives/lift/lift'
 import Fix from '@directives/fix/fix'
+import Cut from '@directives/cut/cut'
 
 const directives = [
   Lift,
-  Fix
+  Fix,
+  Cut
 ]
 
 directives.forEach(function (directive) {

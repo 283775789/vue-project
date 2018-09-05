@@ -1,0 +1,60 @@
+/* 文本截断 */
+$cutter-ellipsis-width: 5em !default; // 省略号宽度
+$cutter-ellipsis-bg1: rgba(255, 255, 255, .1) !default; // 省略号渐变背景1
+$cutter-ellipsis-bg2: rgba(255, 255, 255, 1) !default; // 省略号渐变背景2
+$cutter-btn-arrow-width:  .5em !default; // 折叠箭头大小
+
+// 文本截断: 容器
+.tw-cutter {
+  position: relative;
+  overflow: hidden;
+}
+
+// 文本截断: 省略号
+.tw-cutter:after {
+  content: "...";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: $cutter-ellipsis-width;
+  padding-left: $cutter-ellipsis-width * .1;
+  background-image: linear-gradient(to right, $cutter-ellipsis-bg1, $cutter-ellipsis-bg2 10%);
+}
+
+// 文本截断: 展开收起按钮
+.tw-cutter-btn {
+  position: absolute;
+  right: .2em;
+  bottom: 0;
+  z-index: 1;
+  padding-right: $cutter-btn-arrow-width + .5;
+}
+
+// 文本截断: 展开收起按钮-箭头
+.tw-cutter-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 2px;
+  bottom: 0;
+  margin: auto;
+  @include arrow(down, $cutter-btn-arrow-width);
+}
+
+// 文本截断: 展开
+// stylelint-disable
+.tw-cutter.xmore {
+  height: auto !important;
+}
+
+// 文本截断: 展开-不显示省略号
+.tw-cutter.xmore:after {
+  display: none;
+}
+
+// 文本截断: 展开-箭头朝上
+.tw-cutter.xmore .tw-cutter-btn:after {
+  top: 40%;
+  transform: rotate(-225deg);
+}

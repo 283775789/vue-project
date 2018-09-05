@@ -64,6 +64,7 @@ exports.cssLoaders = function (options) {
       includePaths: [
         path.resolve(__dirname,'../src/static/style'),
         path.resolve(__dirname,'../src/assemblies/components'),
+        path.resolve(__dirname,'../src/assemblies/directives'),
         path.resolve(__dirname,'../src/static/style/modules')
       ]
     }).concat({

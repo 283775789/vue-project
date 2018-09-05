@@ -1,0 +1,84 @@
+/* 评论 */
+$comment-py: $spacing-small !default; // 垂直内边距
+$comment-avatarbox-width: 60px !default; // 头像区宽度
+$comment-avatar-size: 40px !default; // 头像尺寸
+$comment-border-color: $color-border-main !default; // 边框色
+$comment-header-mb: $spacing-tiny !default; // 头部底部间距
+$comment-header-right-width: 30% !default; // 头部标题宽度
+$comment-title-font-size: $font-size-medium !default; //头部标题文本大小
+$comment-content-mb: $spacing-tiny !default; // 内容底部间距
+$comment-content-font-size: $font-size-default !default; // 内容文本大小
+$comment-content-color: $color-text-secondary !default; // 内容文本颜色
+$comment-prop-font-size: $font-size-default !default; // 评论属性文本大小
+$comment-prop-color: $color-text-weaking !default; // 评论属性颜色
+
+// 评论: 容器
+.tw-infoitem {
+  display: flex;
+}
+
+// 评论: 头像区
+.tw-infoitem-avatarbox {
+  width: $comment-avatarbox-width;
+  padding: $comment-py + 5 0;
+}
+
+// 评论: 头像
+.tw-infoitem-avatar {
+  width: $comment-avatar-size;
+  height: $comment-avatar-size;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+// 评论: 主体
+.tw-infoitem-body {
+  flex: 1;
+  padding-top: $comment-py;
+}
+
+// 评论: 主体头部
+.tw-infoitem-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $comment-header-mb;
+}
+
+// 评论: 主体头部-标题
+.tw-infoitem-header-title {
+  flex: 1;
+  font-size: $comment-title-font-size;
+  @include ellipsis;
+}
+
+// 评论: 主体头部-右侧内容
+.tw-infoitem-header-right {
+  width: $comment-header-right-width;
+  text-align: right;
+}
+
+// 评论: 主体内容
+.tw-infoitem-content {
+  margin-bottom: $comment-content-mb;
+  font-size: $comment-content-font-size;
+  color: $comment-content-color;
+}
+
+// 评论: 主体内容-段落
+.tw-infoitem-content > p {
+  margin-bottom: $comment-content-mb;
+}
+
+// 评论: 主体脚注
+.tw-infoitem-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $comment-py;
+  border-bottom: 1px dashed $comment-border-color;
+}
+
+// 评论: 属性项
+.tw-infoitem-prop {
+  font-size: $comment-prop-font-size;
+  color: $comment-prop-color;
+}

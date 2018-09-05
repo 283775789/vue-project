@@ -129,9 +129,11 @@
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/css/title">标题</router-link></li>
-                <li><router-link to="/doc/css/htoggle">hover切换</router-link></li>
                 <li><router-link to="/doc/css/titem">标题项</router-link></li>
                 <li><router-link to="/doc/css/steps">步骤条</router-link></li>
+                <li><router-link to="/doc/css/infoitem">信息项</router-link></li>
+                <li><router-link to="/doc/css/images">图片组</router-link></li>
+                <li><router-link to="/doc/css/htoggle">hover切换</router-link></li>
               </ul>
             </tw-collapse>
           </li>
@@ -168,8 +170,10 @@
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/comps/poppane">下拉列表</router-link></li>
                 <li><router-link to="/doc/comps/collapse">折叠面板</router-link></li>
+                <li><router-link to="/doc/comps/">折叠面板</router-link></li>
                 <li><router-link to="/doc/directives/lift">电梯式锚点</router-link></li>
                 <li><router-link to="/doc/directives/fix">fix固定显示区域</router-link></li>
+                <li><router-link to="/doc/directives/cut">文本截断</router-link></li>
                 <li><router-link to="/doc/comps/modal">弹窗(modal)</router-link></li>
               </ul>
             </tw-collapse>
