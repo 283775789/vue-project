@@ -46,14 +46,14 @@ import Collapse from '@comps/collapse/demo/collapse'
 import CollapseGroup from '@comps/collapse/demo/collapse-group'
 import ModalBase from '@comps/modal/demo/modal-base'
 import ModalAll from '@comps/modal/demo/modal-all'
-// import StepsArrow from '@comps/steps/demo/steps-arrow'
+import CutterBase from '@comps/cutter/demo/cutter-base'
+import EditorBase from '@comps/editor/demo/editor-base'
 
 // 引入vue指令示例
 import Lift from '@directives/lift/demo/lift'
 import LiftGroup from '@directives/lift/demo/lift-group'
 import Fix from '@directives/fix/demo/fix'
 import FixBottom from '@directives/fix/demo/fix-bottom'
-import Cut from '@directives/cut/demo/cut'
 
 // 所有的示例组件的组件名必须为【demo+文件名】
 // css组件示例
@@ -103,10 +103,11 @@ Vue.component('demo-collapse', Collapse)
 Vue.component('demo-collapse-group', CollapseGroup)
 Vue.component('demo-modal-base', ModalBase)
 Vue.component('demo-modal-all', ModalAll)
+Vue.component('demo-cutter-base', CutterBase)
+Vue.component('demo-editor-base', EditorBase)
 
 // vue指令示例
 Vue.component('demo-lift', Lift)
 Vue.component('demo-lift-group', LiftGroup)
 Vue.component('demo-fix', Fix)
 Vue.component('demo-fix-bottom', FixBottom)
-Vue.component('demo-cut', Cut)

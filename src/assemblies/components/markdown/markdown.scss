@@ -156,6 +156,12 @@ $markdown-table-border-color: $color-border-main !default; // 表格边框色
   right: .5em;
 }
 
+.tw-markdown blockquote {
+  margin: 20px 0 0;
+  font-size: 70%;
+  font-style: italic;
+}
+
 .hljs-keyword,
 .hljs-literal,
 .hljs-symbol,

@@ -1,7 +1,7 @@
-import directiveCut from '@directives/cut/i18n/cut_zh'
+import cutter from '@comps/cutter/i18n/cutter-zh'
 
 const list = [
-  directiveCut
+  cutter
 ]
 
 export default Object.assign({}, ...list)

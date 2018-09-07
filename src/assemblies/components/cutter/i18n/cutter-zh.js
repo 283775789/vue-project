@@ -1,6 +1,6 @@
 export default {
-  directives: {
-    cut: {
+  components: {
+    cutter: {
       expand: '展开',
       collapse: '收起'
     }

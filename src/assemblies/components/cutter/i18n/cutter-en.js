@@ -1,6 +1,6 @@
 export default {
-  directives: {
-    cut: {
+  components: {
+    cutter: {
       expand: 'expand',
       collapse: 'collapse'
     }

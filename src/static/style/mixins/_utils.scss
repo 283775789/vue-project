@@ -82,7 +82,7 @@
   @if $color == null {
     $border: $width solid;
   } @else {
-    $border: $width $color;
+    $border: $width solid $color;
   }
 
   display: inline-block;

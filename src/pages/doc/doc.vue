@@ -41,8 +41,9 @@
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/guid/version">版本管理</router-link></li>
                 <li><router-link to="/doc/guid/dir">目录及文件</router-link></li>
-                <li><router-link to="/doc/guid/readme">项目规范</router-link></li>
+                <li><router-link to="/doc/guid/project">项目规范</router-link></li>
                 <li><router-link to="/doc/guid/i18n">国际化规范</router-link></li>
+                <li><router-link to="/doc/guid/api">api规范</router-link></li>
                 <li><router-link to="/doc/guid/js">JS规范</router-link></li>
                 <li><router-link to="/doc/guid/css">CSS规范</router-link></li>
                 <li><router-link to="/doc/guid/html">HTML规范</router-link></li>
@@ -170,11 +171,11 @@
               <ul class="tw-nav xsidebar">
                 <li><router-link to="/doc/comps/poppane">下拉列表</router-link></li>
                 <li><router-link to="/doc/comps/collapse">折叠面板</router-link></li>
-                <li><router-link to="/doc/comps/">折叠面板</router-link></li>
                 <li><router-link to="/doc/directives/lift">电梯式锚点</router-link></li>
                 <li><router-link to="/doc/directives/fix">fix固定显示区域</router-link></li>
-                <li><router-link to="/doc/directives/cut">文本截断</router-link></li>
+                <li><router-link to="/doc/comps/cutter">文本截断</router-link></li>
                 <li><router-link to="/doc/comps/modal">弹窗(modal)</router-link></li>
+                <li><router-link to="/doc/comps/editor">编辑器</router-link></li>
               </ul>
             </tw-collapse>
           </li>
@@ -205,6 +206,46 @@
         </ul>
       </tw-collapse-group>
       <!-- /组件导航菜单 -->
+
+      <!-- 前端学习 -->
+      <tw-collapse-group
+        v-if="$route.params.type==='learn'"
+        class="tw-sidebar"
+        key="learn-nav">
+        <ul class="tw-nav xsidebar">
+          <li>
+            <a class="jst-close">
+              <i class="tw-font2 xico"></i>
+              <span>书籍与教程</span>
+            </a>
+          </li>
+          <li>
+            <a class="jst-close">
+              <i class="tw-font2 xico"></i>
+              <span>技术官网</span>
+            </a>
+          </li>
+          <li>
+            <a class="jst-close">
+              <i class="tw-font2 xico"></i>
+              <span>工具库</span>
+            </a>
+          </li>
+          <li>
+            <a class="jst-close">
+              <i class="tw-font2 xico"></i>
+              <span>技术文章</span>
+            </a>
+          </li>
+          <li>
+            <a class="jst-close">
+              <i class="tw-font2 xico"></i>
+              <span>项目经验</span>
+            </a>
+          </li>
+        </ul>
+      </tw-collapse-group>
+      <!-- /前端学习 -->
     </div>
     <div class="tw-multicol-cell">
       <div class="tw-multicol-cell-table">

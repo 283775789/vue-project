@@ -16,13 +16,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.tw-font.xadd:before { content: "\e601"; }
-.tw-font.xedit:before { content: "\e602"; }
-.tw-font.xsearch:before { content: "\e603"; }
-.tw-font.xcheck:before { content: "\e604"; }
-.tw-font.xdelete:before { content: "\e605"; }
-.tw-font.xcopy:before { content: "\e606"; }
-.tw-font.xsend:before { content: "\e607"; }
-.tw-font.xsave:before { content: "\e608"; }
-.tw-font.xsend1:before { content: "\e609"; }
-.tw-font.xsubmissio:before { content: "\e60a"; }
+.tw-font.xaddl:before { content: "\e605"; }
+.tw-font.xcheck:before { content: "\e606"; }
+.tw-font.xcopy:before { content: "\e607"; }
+.tw-font.xdelete:before { content: "\e608"; }
+.tw-font.xedit:before { content: "\e609"; }
+.tw-font.xmax:before { content: "\e60a"; }
+.tw-font.xpreservation:before { content: "\e60b"; }
+.tw-font.xsend:before { content: "\e60c"; }
+.tw-font.xsearch:before { content: "\e60d"; }
+.tw-font.xsubmission:before { content: "\e60e"; }
+.tw-font.xstar:before { content: "\e60f"; }

@@ -24,7 +24,7 @@ $crm-current-item-color: $color-text-weaking !default; // 当前面包屑文本�
 .tw-crm-arrow {
   margin: 0 $crm-item-mx - 2;
   vertical-align: middle;
-  @include arrow(right, $crm-link-color, 8px);
+  @include arrow(right, 8px, 1px, $crm-link-color);
 }
 
 // 面包屑:当前项

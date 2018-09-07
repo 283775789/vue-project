@@ -13,8 +13,8 @@ function submitForm () {}  // ✗ avoid
 
 ### 数组以名词复数形式命名
 ```
-const users = [...]     // ✓ ok
-const userList = [...]  // ✗ avoid
+const users = [...]     // ✓ 推荐
+const userList = [...]  // ✗ 不推荐
 
 ```
 

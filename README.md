@@ -1,21 +1,35 @@
-# teewon
+# 前言
 
-> teewon frontend library.
+致所有该项目维护人员: 项目如果改动有需要说明的地方，请修改此文件。
 
-## Build Setup
+## 相关文档SVN地址:
 
-``` bash
-# install dependencies
-npm install
++ 需求地址:
 
-# serve with hot reload at localhost:8080
-npm run dev
++ 高保真地址:
 
-# build for production with minification
-npm run build
++ 接口文档地址:
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+## 开发环境配置向导
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+......
+
+## 生产环境打包的配置向导
+
+......
+
+## api验证方式及配置方式
+
+......
+
+## 接口联调的注意事项
+
+......
+
+## 全局变量列表及使用原因
+
+......
+
+## 布署要求
+
+......

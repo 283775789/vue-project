@@ -9,7 +9,8 @@ import SelectGroup from '@comps/select/select-group'
 import Draggrid from '@comps/draggrid/draggrid'
 import Dragcol from '@comps/draggrid/draggrid-col'
 import Modal from '@comps/modal/modal'
-import Steps from '@comps/steps/steps'
+import cutter from '@comps/cutter/cutter'
+import Editor from '@comps/editor/editor'
 
 const components = [
   Poppane,
@@ -21,7 +22,8 @@ const components = [
   Draggrid,
   Dragcol,
   Modal,
-  Steps
+  cutter,
+  Editor
 ]
 
 components.forEach(function (component) {

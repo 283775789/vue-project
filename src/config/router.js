@@ -24,6 +24,10 @@ export default new Router({
     {
       path: '/doc/component',
       redirect: '/doc/component/scss'
+    },
+    {
+      path: '/doc/learn',
+      redirect: '/doc/learn/books'
     }
   ]
 })

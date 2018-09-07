@@ -1,7 +1,9 @@
 import zh from './zh.js'
 import en from './en.js'
 
-export default {
+const lang = {
   zh,
   en
 }
+
+export default lang

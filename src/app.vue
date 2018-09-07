@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 文档相关 -->
-    <template v-if="$route.path.indexOf('/project')===-1">
+    <template v-if="$route.path!=='/project'">
       <div class="tw-header">
         <div class="tw-header-inner">
 
@@ -29,7 +29,11 @@
                 </router-link>
               </li>
               <li>
-                <a><span>学习</span></a>
+                <router-link
+                  :class="{xactive: $route.path.indexOf('/doc/learn') !== -1}"
+                  to="/doc/learn">
+                  <span>前端学习</span>
+                </router-link>
               </li>
             </ul>
           </div>

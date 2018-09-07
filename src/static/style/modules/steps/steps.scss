@@ -60,7 +60,7 @@ $big-round-border-color: #dcedff !default; // 大圆边框颜色
 
 .tw-steps-arrow:after {
   content: "";
-  @include arrow(right, $step-arrow-color, 10px);
+  @include arrow(right, 10px, 1px, $step-arrow-color);
 }
 
 // 步骤条: 序号
