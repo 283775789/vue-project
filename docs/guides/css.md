@@ -2,7 +2,7 @@
 
 规范CSS编码
 
-## 命名规范：采用<a href="http://www.getbem.com/" target="_blank">BEM</a>的一种变体规范(NUX命名法)
+## 命名规范：采用<a href="http://www.getbem.com/" target="_blank">BEM</a>的一种变体规范(re3规范)
 .namespace-unit.xmodifier
 
 ### 名词解释

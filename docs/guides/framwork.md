@@ -17,6 +17,7 @@
 | CSS规范 | [style-lint默认](https://stylelint.io/) + [bootstrap](http://getbootstrap.com/) |
 | Api规范 | [RESTful Api](http://www.ruanyifeng.com/blog/2014/05/restful_api.html?bsh_bid=516759003) + 部份自定义，[github api示例](https://developer.github.com/v3/) |
 
-## 要求
+## 说明
 + 无技术级别划分，所有前端工程师都必须熟念使用技术框架中的各项内容;
-+ 技术框架确定后，如无特殊原因，原则上所有项目(包括外包)不允许更换其他框架，因为会带来不可预期的维护成本、开发风险、安全风险。
++ 前端社招人员按该技术框架进行面试与评估;
++ 技术框架确定后，如无特殊原因，原则上所有前端项目(包括外包)不允许更换其他框架，因为会带来不可预期的维护成本、开发风险、安全风险。

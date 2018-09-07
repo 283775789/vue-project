@@ -20,6 +20,7 @@
                 '/doc/guid/shortcut'
               ].indexOf($route.path) !== -1">
               <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/guid/role">编码准则</router-link></li>
                 <li><router-link to="/doc/guid/framwork">技术框架</router-link></li>
                 <li><router-link to="/doc/guid/dev-flow">开发流程</router-link></li>
                 <li><router-link to="/doc/guid/ide">编辑器</router-link></li>
