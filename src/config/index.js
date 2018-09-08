@@ -1,3 +1,4 @@
 export default {
-  locale: 'zh'
+  // 系统默认语言
+  locale: 'zh_CN'
 }

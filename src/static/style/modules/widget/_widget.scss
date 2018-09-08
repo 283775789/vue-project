@@ -31,3 +31,12 @@
 .tw-ellipsis {
   @include ellipsis();
 }
+
+// 链接项
+.tw-link {
+  color: $color-text-link;
+
+  &:hover {
+    color: $color-text-link-hover;
+  }
+}

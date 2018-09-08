@@ -37,6 +37,8 @@ import TItemIcon from '@modules/titem/titem-icon'
 import HToggle from '@modules/htoggle/htoggle'
 import InfoItem from '@modules/infoitem/infoitem'
 import Images from '@modules/images/images'
+import TableBase from '@modules/table/table-base'
+import TableAll from '@modules/table/table-all'
 
 // 引入vue组件示例
 import Poppane from '@comps/poppane/demo/poppane'
@@ -94,6 +96,8 @@ Vue.component('demo-titem-icon', TItemIcon)
 Vue.component('demo-htoggle', HToggle)
 Vue.component('demo-infoitem', InfoItem)
 Vue.component('demo-images', Images)
+Vue.component('demo-table-base', TableBase)
+Vue.component('demo-table-all', TableAll)
 
 // vue组件示例
 Vue.component('demo-poppane', Poppane)

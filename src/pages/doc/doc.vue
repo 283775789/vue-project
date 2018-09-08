@@ -199,6 +199,24 @@
             </tw-collapse>
           </li>
           <li>
+            <a class="js-data">
+              <i class="tw-font2 xico"></i>
+              <span>数据</span>
+              <i class="tw-arrow xright"></i>
+            </a>
+            <tw-collapse
+              class="xsidebar"
+              switch=".js-data"
+              :default-open="[
+                '/doc/css/table'
+              ].indexOf($route.path) !== -1">
+              <ul class="tw-nav xsidebar">
+                <li><router-link to="/doc/css/table">样式表格</router-link></li>
+                <li><router-link to="/doc/comps/xtable">功能表格</router-link></li>
+              </ul>
+            </tw-collapse>
+          </li>
+          <li>
             <a class="jst-close">
               <i class="tw-font2 xico"></i>
               <span>侧边导航项</span>

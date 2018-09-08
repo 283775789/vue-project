@@ -1,0 +1,62 @@
+/* 表格 */
+$table-cell-px: $spacing-small !default; // 单元格内边距
+$table-bg: #fff !default; // 表格背景
+$table-header-bg: #edf2f7 !default; // 表头背景
+$table-header-font-size: $font-size-default !default; // 表头文本大小
+$table-body-font-size: $font-size-default !default; // 主体文本大小
+$table-row-hover-bg: #f6f8fb !default; // 行滑过色
+$table-small-cell-px: $spacing-tiny !default; // 小型单元格内边距
+$table-border-color: $color-border-secondary !default; // 边框色
+
+// 表格：包装容器
+.tw-twrapper {
+  overflow: auto;
+}
+
+// 表格：容器
+.tw-table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse;
+  background: $table-bg;
+}
+
+// 表格：主体
+.tw-table > tbody {
+  font-size: $table-body-font-size;
+}
+
+// 表格：主体行
+.tw-table > tbody > tr {
+  &:hover {
+    background: $table-row-hover-bg;
+  }
+}
+
+// 表格：单元格
+// stylelint-disable selector-max-type
+.tw-table > thead > tr > th {
+  padding: $table-cell-px;
+  font-size: $table-header-font-size;
+  font-weight: 700;
+  background: $table-header-bg;
+}
+
+// 表格：主体单元格下边框
+.tw-table > tbody > tr > td {
+  padding: $table-cell-px;
+  border-bottom: 1px solid $table-border-color;
+}
+
+// 表格: 小尺寸
+.tw-table.xsmall > thead > tr > th,
+.tw-table.xsmall > tbody > tr > td {
+  padding: $table-small-cell-px;
+}
+
+// 表格：全边框
+.tw-table.xborder > thead > tr > th,
+.tw-table.xborder > tbody > tr > td {
+  border: 1px solid $table-border-color;
+}
