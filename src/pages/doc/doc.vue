@@ -135,6 +135,7 @@
                 <li><router-link to="/doc/css/steps">步骤条</router-link></li>
                 <li><router-link to="/doc/css/infoitem">信息项</router-link></li>
                 <li><router-link to="/doc/css/images">图片组</router-link></li>
+                <li><router-link to="/doc/css/pitem">图片项</router-link></li>
                 <li><router-link to="/doc/css/htoggle">hover切换</router-link></li>
               </ul>
             </tw-collapse>

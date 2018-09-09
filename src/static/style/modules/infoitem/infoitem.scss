@@ -34,6 +34,7 @@ $comment-prop-color: $color-text-weaking !default; // 评论属性颜色
 // 评论: 主体
 .tw-infoitem-body {
   flex: 1;
+  min-width: 0;
   padding-top: $comment-py;
 }
 
@@ -46,7 +47,7 @@ $comment-prop-color: $color-text-weaking !default; // 评论属性颜色
 
 // 评论: 主体头部-标题
 .tw-infoitem-header-title {
-  flex: 1;
+  min-width: 0;
   font-size: $comment-title-font-size;
   @include ellipsis;
 }

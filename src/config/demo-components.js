@@ -39,6 +39,9 @@ import InfoItem from '@modules/infoitem/infoitem'
 import Images from '@modules/images/images'
 import TableBase from '@modules/table/table-base'
 import TableAll from '@modules/table/table-all'
+import PItemLR from '@modules/pitem/pitem-lr'
+import PItemTB from '@modules/pitem/pitem-tb'
+import PItemInside from '@modules/pitem/pitem-inside'
 
 // 引入vue组件示例
 import Poppane from '@comps/poppane/demo/poppane'
@@ -56,6 +59,9 @@ import Lift from '@directives/lift/demo/lift'
 import LiftGroup from '@directives/lift/demo/lift-group'
 import Fix from '@directives/fix/demo/fix'
 import FixBottom from '@directives/fix/demo/fix-bottom'
+
+// 学习示例
+import Books from '@docs/learn/books'
 
 // 所有的示例组件的组件名必须为【demo+文件名】
 // css组件示例
@@ -98,6 +104,9 @@ Vue.component('demo-infoitem', InfoItem)
 Vue.component('demo-images', Images)
 Vue.component('demo-table-base', TableBase)
 Vue.component('demo-table-all', TableAll)
+Vue.component('demo-pitem-lr', PItemLR)
+Vue.component('demo-pitem-tb', PItemTB)
+Vue.component('demo-pitem-inside', PItemInside)
 
 // vue组件示例
 Vue.component('demo-poppane', Poppane)
@@ -115,3 +124,6 @@ Vue.component('demo-lift', Lift)
 Vue.component('demo-lift-group', LiftGroup)
 Vue.component('demo-fix', Fix)
 Vue.component('demo-fix-bottom', FixBottom)
+
+// 学习相关
+Vue.component('demo-books', Books)

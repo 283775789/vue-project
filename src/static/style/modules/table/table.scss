@@ -55,8 +55,20 @@ $table-border-color: $color-border-secondary !default; // 边框色
   padding: $table-small-cell-px;
 }
 
+// 表格: 无边框
+.tw-table.xnoborder > thead > tr > th,
+.tw-table.xnoborder > tbody > tr > td {
+  border: none;
+}
+
 // 表格：全边框
 .tw-table.xborder > thead > tr > th,
 .tw-table.xborder > tbody > tr > td {
+  border: 1px solid $table-border-color;
+}
+
+// 表格：虚线边框
+.tw-table.xdashed > thead > tr > th,
+.tw-table.xdashed > tbody > tr > td {
   border: 1px solid $table-border-color;
 }

@@ -1,12 +1,12 @@
 <template>
   <div class="tw-infoitem">
     <div class="tw-infoitem-avatarbox">
-      <img class="tw-infoitem-avatar" src="@images/icons.png">
+      <img class="tw-infoitem-avatar" src="@images/demo/4.jpg">
     </div>
     <div class="tw-infoitem-body">
       <div class="tw-infoitem-header">
         <div class="tw-infoitem-header-title">
-          <span>欧阳老师</span>
+          <span>欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师欧阳老师</span>
           <span class="tw-infoitem-prop">【某某学校】</span>
         </div>
         <div class="tw-infoitem-header-right">头部右侧内容</div>
